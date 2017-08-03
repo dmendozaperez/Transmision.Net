@@ -198,10 +198,20 @@ namespace Genera_Transmision.BataTransmision {
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/ws_update_venta_empl", ReplyAction="*")]
         [System.ServiceModel.XmlSerializerFormatAttribute(SupportFaults=true)]
         string ws_update_venta_empl(string _Tip_Id_Ven, string _Nro_Dni_Ven, string _Cod_Tda_Ven, string _Nro_Doc_Ven, string _Tip_Doc_Ven, string _Ser_Doc_Ven, string _Num_Doc_Ven, string _Fec_Doc_Ven, string _Est_Doc_Ven, string _Fc_Nin_Ven);
+        
+        // CODEGEN: Se está generando un contrato de mensaje, ya que el mensaje ws_get_file_uploadRequest tiene encabezados.
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/ws_get_file_upload", ReplyAction="*")]
+        [System.ServiceModel.XmlSerializerFormatAttribute(SupportFaults=true)]
+        Genera_Transmision.BataTransmision.ws_get_file_uploadResponse ws_get_file_upload(Genera_Transmision.BataTransmision.ws_get_file_uploadRequest request);
+        
+        // CODEGEN: Se está generando un contrato de mensaje, ya que el mensaje ws_bytes_file_serverRequest tiene encabezados.
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/ws_bytes_file_server", ReplyAction="*")]
+        [System.ServiceModel.XmlSerializerFormatAttribute(SupportFaults=true)]
+        Genera_Transmision.BataTransmision.ws_bytes_file_serverResponse ws_bytes_file_server(Genera_Transmision.BataTransmision.ws_bytes_file_serverRequest request);
     }
     
     /// <comentarios/>
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.6.1087.0")]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.7.2053.0")]
     [System.SerializableAttribute()]
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.ComponentModel.DesignerCategoryAttribute("code")]
@@ -247,6 +257,140 @@ namespace Genera_Transmision.BataTransmision {
             set {
                 this.anyAttrField = value;
                 this.RaisePropertyChanged("AnyAttr");
+            }
+        }
+        
+        public event System.ComponentModel.PropertyChangedEventHandler PropertyChanged;
+        
+        protected void RaisePropertyChanged(string propertyName) {
+            System.ComponentModel.PropertyChangedEventHandler propertyChanged = this.PropertyChanged;
+            if ((propertyChanged != null)) {
+                propertyChanged(this, new System.ComponentModel.PropertyChangedEventArgs(propertyName));
+            }
+        }
+    }
+    
+    /// <comentarios/>
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.7.2053.0")]
+    [System.SerializableAttribute()]
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.ComponentModel.DesignerCategoryAttribute("code")]
+    [System.Xml.Serialization.XmlTypeAttribute(Namespace="http://tempuri.org/")]
+    public partial class File_Upload : object, System.ComponentModel.INotifyPropertyChanged {
+        
+        private string name_file_serverField;
+        
+        private string fecha_file_serverField;
+        
+        private decimal longitud_file_serverField;
+        
+        /// <comentarios/>
+        [System.Xml.Serialization.XmlElementAttribute(Order=0)]
+        public string name_file_server {
+            get {
+                return this.name_file_serverField;
+            }
+            set {
+                this.name_file_serverField = value;
+                this.RaisePropertyChanged("name_file_server");
+            }
+        }
+        
+        /// <comentarios/>
+        [System.Xml.Serialization.XmlElementAttribute(Order=1)]
+        public string fecha_file_server {
+            get {
+                return this.fecha_file_serverField;
+            }
+            set {
+                this.fecha_file_serverField = value;
+                this.RaisePropertyChanged("fecha_file_server");
+            }
+        }
+        
+        /// <comentarios/>
+        [System.Xml.Serialization.XmlElementAttribute(Order=2)]
+        public decimal longitud_file_server {
+            get {
+                return this.longitud_file_serverField;
+            }
+            set {
+                this.longitud_file_serverField = value;
+                this.RaisePropertyChanged("longitud_file_server");
+            }
+        }
+        
+        public event System.ComponentModel.PropertyChangedEventHandler PropertyChanged;
+        
+        protected void RaisePropertyChanged(string propertyName) {
+            System.ComponentModel.PropertyChangedEventHandler propertyChanged = this.PropertyChanged;
+            if ((propertyChanged != null)) {
+                propertyChanged(this, new System.ComponentModel.PropertyChangedEventArgs(propertyName));
+            }
+        }
+    }
+    
+    /// <comentarios/>
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.7.2053.0")]
+    [System.SerializableAttribute()]
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.ComponentModel.DesignerCategoryAttribute("code")]
+    [System.Xml.Serialization.XmlTypeAttribute(Namespace="http://tempuri.org/")]
+    public partial class Ruta_Update_File : object, System.ComponentModel.INotifyPropertyChanged {
+        
+        private string tda_act_rutawsField;
+        
+        private string tda_act_carpetanomField;
+        
+        private string tda_act_carpetalocalField;
+        
+        private File_Upload[] tda_act_fileField;
+        
+        /// <comentarios/>
+        [System.Xml.Serialization.XmlElementAttribute(Order=0)]
+        public string tda_act_rutaws {
+            get {
+                return this.tda_act_rutawsField;
+            }
+            set {
+                this.tda_act_rutawsField = value;
+                this.RaisePropertyChanged("tda_act_rutaws");
+            }
+        }
+        
+        /// <comentarios/>
+        [System.Xml.Serialization.XmlElementAttribute(Order=1)]
+        public string tda_act_carpetanom {
+            get {
+                return this.tda_act_carpetanomField;
+            }
+            set {
+                this.tda_act_carpetanomField = value;
+                this.RaisePropertyChanged("tda_act_carpetanom");
+            }
+        }
+        
+        /// <comentarios/>
+        [System.Xml.Serialization.XmlElementAttribute(Order=2)]
+        public string tda_act_carpetalocal {
+            get {
+                return this.tda_act_carpetalocalField;
+            }
+            set {
+                this.tda_act_carpetalocalField = value;
+                this.RaisePropertyChanged("tda_act_carpetalocal");
+            }
+        }
+        
+        /// <comentarios/>
+        [System.Xml.Serialization.XmlArrayAttribute(Order=3)]
+        public File_Upload[] tda_act_file {
+            get {
+                return this.tda_act_fileField;
+            }
+            set {
+                this.tda_act_fileField = value;
+                this.RaisePropertyChanged("tda_act_file");
             }
         }
         
@@ -1717,6 +1861,79 @@ namespace Genera_Transmision.BataTransmision {
         }
     }
     
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
+    [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
+    [System.ServiceModel.MessageContractAttribute(WrapperName="ws_get_file_upload", WrapperNamespace="http://tempuri.org/", IsWrapped=true)]
+    public partial class ws_get_file_uploadRequest {
+        
+        [System.ServiceModel.MessageHeaderAttribute(Namespace="http://tempuri.org/")]
+        public Genera_Transmision.BataTransmision.Autenticacion Autenticacion;
+        
+        public ws_get_file_uploadRequest() {
+        }
+        
+        public ws_get_file_uploadRequest(Genera_Transmision.BataTransmision.Autenticacion Autenticacion) {
+            this.Autenticacion = Autenticacion;
+        }
+    }
+    
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
+    [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
+    [System.ServiceModel.MessageContractAttribute(WrapperName="ws_get_file_uploadResponse", WrapperNamespace="http://tempuri.org/", IsWrapped=true)]
+    public partial class ws_get_file_uploadResponse {
+        
+        [System.ServiceModel.MessageBodyMemberAttribute(Namespace="http://tempuri.org/", Order=0)]
+        public Genera_Transmision.BataTransmision.Ruta_Update_File[] ws_get_file_uploadResult;
+        
+        public ws_get_file_uploadResponse() {
+        }
+        
+        public ws_get_file_uploadResponse(Genera_Transmision.BataTransmision.Ruta_Update_File[] ws_get_file_uploadResult) {
+            this.ws_get_file_uploadResult = ws_get_file_uploadResult;
+        }
+    }
+    
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
+    [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
+    [System.ServiceModel.MessageContractAttribute(WrapperName="ws_bytes_file_server", WrapperNamespace="http://tempuri.org/", IsWrapped=true)]
+    public partial class ws_bytes_file_serverRequest {
+        
+        [System.ServiceModel.MessageHeaderAttribute(Namespace="http://tempuri.org/")]
+        public Genera_Transmision.BataTransmision.Autenticacion Autenticacion;
+        
+        [System.ServiceModel.MessageBodyMemberAttribute(Namespace="http://tempuri.org/", Order=0)]
+        public string _file_ws;
+        
+        public ws_bytes_file_serverRequest() {
+        }
+        
+        public ws_bytes_file_serverRequest(Genera_Transmision.BataTransmision.Autenticacion Autenticacion, string _file_ws) {
+            this.Autenticacion = Autenticacion;
+            this._file_ws = _file_ws;
+        }
+    }
+    
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
+    [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
+    [System.ServiceModel.MessageContractAttribute(WrapperName="ws_bytes_file_serverResponse", WrapperNamespace="http://tempuri.org/", IsWrapped=true)]
+    public partial class ws_bytes_file_serverResponse {
+        
+        [System.ServiceModel.MessageBodyMemberAttribute(Namespace="http://tempuri.org/", Order=0)]
+        [System.Xml.Serialization.XmlElementAttribute(DataType="base64Binary")]
+        public byte[] ws_bytes_file_serverResult;
+        
+        public ws_bytes_file_serverResponse() {
+        }
+        
+        public ws_bytes_file_serverResponse(byte[] ws_bytes_file_serverResult) {
+            this.ws_bytes_file_serverResult = ws_bytes_file_serverResult;
+        }
+    }
+    
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
     public interface bata_transaccionSoapChannel : Genera_Transmision.BataTransmision.bata_transaccionSoap, System.ServiceModel.IClientChannel {
     }
@@ -2235,6 +2452,31 @@ namespace Genera_Transmision.BataTransmision {
         
         public string ws_update_venta_empl(string _Tip_Id_Ven, string _Nro_Dni_Ven, string _Cod_Tda_Ven, string _Nro_Doc_Ven, string _Tip_Doc_Ven, string _Ser_Doc_Ven, string _Num_Doc_Ven, string _Fec_Doc_Ven, string _Est_Doc_Ven, string _Fc_Nin_Ven) {
             return base.Channel.ws_update_venta_empl(_Tip_Id_Ven, _Nro_Dni_Ven, _Cod_Tda_Ven, _Nro_Doc_Ven, _Tip_Doc_Ven, _Ser_Doc_Ven, _Num_Doc_Ven, _Fec_Doc_Ven, _Est_Doc_Ven, _Fc_Nin_Ven);
+        }
+        
+        [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
+        Genera_Transmision.BataTransmision.ws_get_file_uploadResponse Genera_Transmision.BataTransmision.bata_transaccionSoap.ws_get_file_upload(Genera_Transmision.BataTransmision.ws_get_file_uploadRequest request) {
+            return base.Channel.ws_get_file_upload(request);
+        }
+        
+        public Genera_Transmision.BataTransmision.Ruta_Update_File[] ws_get_file_upload(Genera_Transmision.BataTransmision.Autenticacion Autenticacion) {
+            Genera_Transmision.BataTransmision.ws_get_file_uploadRequest inValue = new Genera_Transmision.BataTransmision.ws_get_file_uploadRequest();
+            inValue.Autenticacion = Autenticacion;
+            Genera_Transmision.BataTransmision.ws_get_file_uploadResponse retVal = ((Genera_Transmision.BataTransmision.bata_transaccionSoap)(this)).ws_get_file_upload(inValue);
+            return retVal.ws_get_file_uploadResult;
+        }
+        
+        [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
+        Genera_Transmision.BataTransmision.ws_bytes_file_serverResponse Genera_Transmision.BataTransmision.bata_transaccionSoap.ws_bytes_file_server(Genera_Transmision.BataTransmision.ws_bytes_file_serverRequest request) {
+            return base.Channel.ws_bytes_file_server(request);
+        }
+        
+        public byte[] ws_bytes_file_server(Genera_Transmision.BataTransmision.Autenticacion Autenticacion, string _file_ws) {
+            Genera_Transmision.BataTransmision.ws_bytes_file_serverRequest inValue = new Genera_Transmision.BataTransmision.ws_bytes_file_serverRequest();
+            inValue.Autenticacion = Autenticacion;
+            inValue._file_ws = _file_ws;
+            Genera_Transmision.BataTransmision.ws_bytes_file_serverResponse retVal = ((Genera_Transmision.BataTransmision.bata_transaccionSoap)(this)).ws_bytes_file_server(inValue);
+            return retVal.ws_bytes_file_serverResult;
         }
     }
 }

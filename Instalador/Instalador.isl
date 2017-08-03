@@ -253,7 +253,6 @@
 		<col def="S255">ISBuildSourcePath</col>
 		<row><td>ISExpHlp.dll</td><td/><td>&lt;ISRedistPlatformDependentFolder&gt;\ISExpHlp.dll</td></row>
 		<row><td>ISSELFREG.DLL</td><td/><td>&lt;ISRedistPlatformDependentFolder&gt;\isregsvr.dll</td></row>
-		<row><td>ISSetupFilesHelper</td><td/><td>&lt;ISRedistPlatformDependentFolder&gt;\SFHelper.dll</td></row>
 		<row><td>NewBinary1</td><td/><td>&lt;ISProductFolder&gt;\Support\Themes\InstallShield Blue Theme\banner.jpg</td></row>
 		<row><td>NewBinary10</td><td/><td>&lt;ISProductFolder&gt;\Redist\Language Independent\OS Independent\CompleteSetupIco.ibd</td></row>
 		<row><td>NewBinary11</td><td/><td>&lt;ISProductFolder&gt;\Redist\Language Independent\OS Independent\CustomSetupIco.ibd</td></row>
@@ -342,8 +341,8 @@
 		<col def="S0">ISDotNetInstallerArgsCommit</col>
 		<col def="S0">ISDotNetInstallerArgsUninstall</col>
 		<col def="S0">ISDotNetInstallerArgsRollback</col>
-		<row><td>Activar_Servicio.Resultado_principal</td><td>{14ED9923-B584-4A5E-B584-71048553EA22}</td><td>INSTALLDIR</td><td>2</td><td/><td>activar_servicio.resultado_p</td><td>17</td><td/><td/><td/><td>/LogFile=</td><td>/LogFile=</td><td>/LogFile=</td><td>/LogFile=</td></row>
-		<row><td>Genera_Transmision.Resultado_principal</td><td>{46E2A69A-2E6E-4CEF-997E-B6E078F6353E}</td><td>INSTALLDIR</td><td>2</td><td/><td>genera_transmision.resultado</td><td>81</td><td/><td/><td/><td>/LogFile=</td><td>/LogFile=</td><td>/LogFile=</td><td>/LogFile=</td></row>
+		<row><td>Activar_Servicio.Resultado_principal</td><td>{02B0BFC6-BFC2-4894-B2CA-E112949D27D2}</td><td>INSTALLDIR</td><td>2</td><td/><td>activar_servicio.resultado_p</td><td>17</td><td/><td/><td/><td>/LogFile=</td><td>/LogFile=</td><td>/LogFile=</td><td>/LogFile=</td></row>
+		<row><td>Genera_Transmision.Resultado_principal</td><td>{49713B9C-CA2F-4EB3-A421-A4ECE7444752}</td><td>INSTALLDIR</td><td>2</td><td/><td>genera_transmision.resultado</td><td>17</td><td/><td/><td/><td>/LogFile=</td><td>/LogFile=</td><td>/LogFile=</td><td>/LogFile=</td></row>
 		<row><td>ISX_DEFAULTCOMPONENT</td><td>{8F1B8D62-C442-4CBF-B839-3F939811334C}</td><td>PersonalFolder</td><td>2</td><td/><td/><td>17</td><td/><td/><td/><td>/LogFile=</td><td>/LogFile=</td><td>/LogFile=</td><td>/LogFile=</td></row>
 		<row><td>ISX_DEFAULTCOMPONENT1</td><td>{AB9BAC5C-7F93-4809-8B41-28C5AD1322FB}</td><td>WindowsFolder</td><td>2</td><td/><td/><td>17</td><td/><td/><td/><td>/LogFile=</td><td>/LogFile=</td><td>/LogFile=</td><td>/LogFile=</td></row>
 		<row><td>Transmision.NetWin.Update.Resultado_principal</td><td>{5BA3909F-A851-4B8B-9F6B-2356D7CE523F}</td><td>INSTALLDIR</td><td>2</td><td/><td>transmision.netwin.update.re</td><td>17</td><td/><td/><td/><td>/LogFile=</td><td>/LogFile=</td><td>/LogFile=</td><td>/LogFile=</td></row>
@@ -904,7 +903,6 @@
 		<row><td>AdminWelcome</td><td>Next</td><td>NewDialog</td><td>AdminNetworkLocation</td><td>1</td><td>0</td></row>
 		<row><td>CancelSetup</td><td>No</td><td>EndDialog</td><td>Return</td><td>1</td><td>0</td></row>
 		<row><td>CancelSetup</td><td>Yes</td><td>DoAction</td><td>CleanUp</td><td>ISSCRIPTRUNNING="1"</td><td>1</td></row>
-		<row><td>CancelSetup</td><td>Yes</td><td>DoAction</td><td>ISSetupFilesCleanup</td><td>1</td><td>200</td></row>
 		<row><td>CancelSetup</td><td>Yes</td><td>EndDialog</td><td>Exit</td><td>1</td><td>2</td></row>
 		<row><td>CustomSetup</td><td>Back</td><td>NewDialog</td><td>CustomerInformation</td><td>NOT Installed</td><td>0</td></row>
 		<row><td>CustomSetup</td><td>Back</td><td>NewDialog</td><td>MaintenanceType</td><td>Installed</td><td>0</td></row>
@@ -1014,11 +1012,9 @@
 		<row><td>SetupCompleteError</td><td>Cancel</td><td>EndDialog</td><td>Return</td><td>1</td><td>2</td></row>
 		<row><td>SetupCompleteError</td><td>Cancel</td><td>[Suspend]</td><td>1</td><td>1</td><td>1</td></row>
 		<row><td>SetupCompleteError</td><td>Finish</td><td>DoAction</td><td>CleanUp</td><td>ISSCRIPTRUNNING="1"</td><td>1</td></row>
-		<row><td>SetupCompleteError</td><td>Finish</td><td>DoAction</td><td>ISSetupFilesCleanup</td><td>1</td><td>200</td></row>
 		<row><td>SetupCompleteError</td><td>Finish</td><td>DoAction</td><td>ShowMsiLog</td><td>MsiLogFileLocation And (ISSHOWMSILOG="1")</td><td>3</td></row>
 		<row><td>SetupCompleteError</td><td>Finish</td><td>EndDialog</td><td>Exit</td><td>1</td><td>2</td></row>
 		<row><td>SetupCompleteSuccess</td><td>OK</td><td>DoAction</td><td>CleanUp</td><td>ISSCRIPTRUNNING="1"</td><td>1</td></row>
-		<row><td>SetupCompleteSuccess</td><td>OK</td><td>DoAction</td><td>ISSetupFilesCleanup</td><td>1</td><td>201</td></row>
 		<row><td>SetupCompleteSuccess</td><td>OK</td><td>DoAction</td><td>LaunchProgramFileFromSetupCompleteSuccess</td><td>LAUNCHPROGRAM And PROGRAMFILETOLAUNCHATEND &lt;&gt; "" And NOT Installed</td><td>2</td></row>
 		<row><td>SetupCompleteSuccess</td><td>OK</td><td>DoAction</td><td>ShowMsiLog</td><td>MsiLogFileLocation And (ISSHOWMSILOG="1") And NOT ISENABLEDWUSFINISHDIALOG</td><td>7</td></row>
 		<row><td>SetupCompleteSuccess</td><td>OK</td><td>EndDialog</td><td>Exit</td><td>1</td><td>3</td></row>
@@ -1035,7 +1031,6 @@
 		<row><td>SetupInterrupted</td><td>Cancel</td><td>EndDialog</td><td>Exit</td><td>1</td><td>2</td></row>
 		<row><td>SetupInterrupted</td><td>Cancel</td><td>[Suspend]</td><td>1</td><td>1</td><td>1</td></row>
 		<row><td>SetupInterrupted</td><td>Finish</td><td>DoAction</td><td>CleanUp</td><td>ISSCRIPTRUNNING="1"</td><td>1</td></row>
-		<row><td>SetupInterrupted</td><td>Finish</td><td>DoAction</td><td>ISSetupFilesCleanup</td><td>1</td><td>200</td></row>
 		<row><td>SetupInterrupted</td><td>Finish</td><td>DoAction</td><td>ShowMsiLog</td><td>MsiLogFileLocation And (ISSHOWMSILOG="1")</td><td>3</td></row>
 		<row><td>SetupInterrupted</td><td>Finish</td><td>EndDialog</td><td>Exit</td><td>1</td><td>2</td></row>
 		<row><td>SetupProgress</td><td>Cancel</td><td>SpawnDialog</td><td>CancelSetup</td><td>1</td><td>0</td></row>
@@ -1082,8 +1077,6 @@
 		<row><td>ISSelfRegisterCosting</td><td>1</td><td>ISSELFREG.DLL</td><td>ISSelfRegisterCosting</td><td/><td/></row>
 		<row><td>ISSelfRegisterFiles</td><td>3073</td><td>ISSELFREG.DLL</td><td>ISSelfRegisterFiles</td><td/><td/></row>
 		<row><td>ISSelfRegisterFinalize</td><td>1</td><td>ISSELFREG.DLL</td><td>ISSelfRegisterFinalize</td><td/><td/></row>
-		<row><td>ISSetupFilesCleanup</td><td>257</td><td>ISSetupFilesHelper</td><td>SFCleanupEx</td><td/><td/></row>
-		<row><td>ISSetupFilesExtract</td><td>257</td><td>ISSetupFilesHelper</td><td>SFStartupEx</td><td/><td/></row>
 		<row><td>ISUnSelfRegisterFiles</td><td>3073</td><td>ISSELFREG.DLL</td><td>ISUnSelfRegisterFiles</td><td/><td/></row>
 		<row><td>LaunchProgramFileFromSetupCompleteSuccess</td><td>1</td><td>NewBinary19</td><td>LaunchProgram</td><td/><td/></row>
 		<row><td>SetARPINSTALLLOCATION</td><td>51</td><td>ARPINSTALLLOCATION</td><td>[INSTALLDIR]</td><td/><td/></row>
@@ -1162,11 +1155,13 @@
 		<row><td>DIRPROPERTY2</td><td>TARGETDIR</td><td>.</td><td/><td>0</td><td/></row>
 		<row><td>DIRPROPERTY3</td><td>TARGETDIR</td><td>.</td><td/><td>0</td><td/></row>
 		<row><td>DIRPROPERTY4</td><td>TARGETDIR</td><td>.</td><td/><td>0</td><td/></row>
+		<row><td>DIRPROPERTY5</td><td>TARGETDIR</td><td>.</td><td/><td>0</td><td/></row>
+		<row><td>DIRPROPERTY6</td><td>TARGETDIR</td><td>.</td><td/><td>0</td><td/></row>
 		<row><td>DesktopFolder</td><td>TARGETDIR</td><td>.:Desktop</td><td/><td>3</td><td/></row>
 		<row><td>FavoritesFolder</td><td>TARGETDIR</td><td>.:FAVORI~1|Favorites</td><td/><td>0</td><td/></row>
 		<row><td>FontsFolder</td><td>TARGETDIR</td><td>.:Fonts</td><td/><td>0</td><td/></row>
 		<row><td>GlobalAssemblyCache</td><td>TARGETDIR</td><td>.:Global~1|GlobalAssemblyCache</td><td/><td>0</td><td/></row>
-		<row><td>INSTALLDIR</td><td>TRANSMISION.NET2</td><td>.</td><td/><td>0</td><td/></row>
+		<row><td>INSTALLDIR</td><td>TRANSMISION.NET4</td><td>.</td><td/><td>0</td><td/></row>
 		<row><td>INTERFA</td><td>DIRPROPERTY1</td><td>INTERFA</td><td/><td>0</td><td/></row>
 		<row><td>ISCommonFilesFolder</td><td>CommonFilesFolder</td><td>Instal~1|InstallShield</td><td/><td>0</td><td/></row>
 		<row><td>ISMyCompanyDir</td><td>ProgramFilesFolder</td><td>MYCOMP~1|My Company Name</td><td/><td>0</td><td/></row>
@@ -1179,6 +1174,8 @@
 		<row><td>POS</td><td>DIRPROPERTY2</td><td>POS</td><td/><td>0</td><td/></row>
 		<row><td>POS1</td><td>DIRPROPERTY3</td><td>POS</td><td/><td>0</td><td/></row>
 		<row><td>POS2</td><td>DIRPROPERTY4</td><td>POS</td><td/><td>0</td><td/></row>
+		<row><td>POS3</td><td>DIRPROPERTY5</td><td>POS</td><td/><td>0</td><td/></row>
+		<row><td>POS4</td><td>DIRPROPERTY6</td><td>POS</td><td/><td>0</td><td/></row>
 		<row><td>PersonalFolder</td><td>TARGETDIR</td><td>.:Personal</td><td/><td>0</td><td/></row>
 		<row><td>PrimaryVolumePath</td><td>TARGETDIR</td><td>.:Primar~1|PrimaryVolumePath</td><td/><td>0</td><td/></row>
 		<row><td>PrintHoodFolder</td><td>TARGETDIR</td><td>.:PRINTH~1|PrintHood</td><td/><td>0</td><td/></row>
@@ -1199,6 +1196,8 @@
 		<row><td>TRANSMISION.NET</td><td>POS</td><td>TRANSM~1|Transmision.net</td><td/><td>0</td><td/></row>
 		<row><td>TRANSMISION.NET1</td><td>POS1</td><td>TRANSM~1|Transmision.net</td><td/><td>0</td><td/></row>
 		<row><td>TRANSMISION.NET2</td><td>POS2</td><td>TRANSM~1|Transmision.net</td><td/><td>0</td><td/></row>
+		<row><td>TRANSMISION.NET3</td><td>POS3</td><td>TRANSM~1|Transmision.net</td><td/><td>0</td><td/></row>
+		<row><td>TRANSMISION.NET4</td><td>POS4</td><td>TRANSM~1|Transmision.net</td><td/><td>0</td><td/></row>
 		<row><td>TempFolder</td><td>TARGETDIR</td><td>.:Temp</td><td/><td>0</td><td/></row>
 		<row><td>TemplateFolder</td><td>TARGETDIR</td><td>.:ShellNew</td><td/><td>0</td><td/></row>
 		<row><td>USERPROFILE</td><td>TARGETDIR</td><td>.:USERPR~1|UserProfile</td><td/><td>0</td><td/></row>
@@ -2058,8 +2057,8 @@
 		<col def="S0">FTPLocation</col>
 		<col def="S0">HTTPLocation</col>
 		<col def="S0">Miscellaneous</col>
-		<row><td>Activar_Servicio.Resultado_principal</td><td/><td/><td>_B0C339BA_52CB_4CE1_BF23_C875B727C730_FILTER</td><td/><td/><td/><td/></row>
-		<row><td>Genera_Transmision.Resultado_principal</td><td/><td/><td>_509F80A4_517C_4009_8B67_37185676913C_FILTER</td><td/><td/><td/><td/></row>
+		<row><td>Activar_Servicio.Resultado_principal</td><td/><td/><td>_86F60F68_F7A4_4B92_AE23_C8CA008C2428_FILTER</td><td/><td/><td/><td/></row>
+		<row><td>Genera_Transmision.Resultado_principal</td><td/><td/><td>_B845EBF0_62EA_4046_A1AE_391141503D34_FILTER</td><td/><td/><td/><td/></row>
 		<row><td>ISX_DEFAULTCOMPONENT</td><td/><td/><td>_B6ACFB62_1036_46B5_B19C_E13A6AF791F7_FILTER</td><td/><td/><td/><td/></row>
 		<row><td>ISX_DEFAULTCOMPONENT1</td><td/><td/><td>_A6BAE908_BEE7_4B1C_821C_A724A641CDD7_FILTER</td><td/><td/><td/><td/></row>
 		<row><td>Transmision.NetWin.Update.Resultado_principal</td><td/><td/><td>_C3BF3096_1179_4C26_81CC_07A7437F36BB_FILTER</td><td/><td/><td/><td/></row>
@@ -2613,7 +2612,6 @@
 		<col def="S50">Language</col>
 		<col def="I2">Splash</col>
 		<col def="S0">Path</col>
-		<row><td>_isconfig.xml</td><td>_isconfig.xml</td><td/><td>0</td><td>0</td><td>&lt;ISProjectDataFolder&gt;\_isconfig.xml</td></row>
 	</table>
 
 	<table name="ISSetupPrerequisites">
@@ -2655,7 +2653,7 @@
 		<col def="I2">Encoded</col>
 		<col def="S0">Comment</col>
 		<col def="I4">TimeStamp</col>
-		<row><td>COMPANY_NAME</td><td>1034</td><td>Bata Peru</td><td>0</td><td/><td>-366712533</td></row>
+		<row><td>COMPANY_NAME</td><td>1034</td><td>Bata Peru</td><td>0</td><td/><td>321205641</td></row>
 		<row><td>DN_AlwaysInstall</td><td>1034</td><td>Instalar siempre</td><td>0</td><td/><td>-635128439</td></row>
 		<row><td>IDPROP_EXPRESS_LAUNCH_CONDITION_COLOR</td><td>1034</td><td>La configuración de colores de su sistema no es adecuada para ejecutar [ProductName].</td><td>0</td><td/><td>-635128439</td></row>
 		<row><td>IDPROP_EXPRESS_LAUNCH_CONDITION_DOTNETVERSION40CLIENT</td><td>1034</td><td>Microsoft .NET Framework 4.0 Client Package or greater needs to be installed for this installation to continue.</td><td>0</td><td/><td>-635128439</td></row>
@@ -3756,8 +3754,8 @@
 		<row><td>IDS__TargetReq_DESC_PROCESSOR</td><td>1034</td><td>El procesador no es el adecuado para ejecutar [ProductName].</td><td>0</td><td/><td>-635128439</td></row>
 		<row><td>IDS__TargetReq_DESC_RAM</td><td>1034</td><td>La cantidad de RAM no es la adecuada para ejecutar [ProductName].</td><td>0</td><td/><td>-635128439</td></row>
 		<row><td>IDS__TargetReq_DESC_RESOLUTION</td><td>1034</td><td>La resolución de pantalla no es la adecuada para ejecutar [ProductName].</td><td>0</td><td/><td>-635128439</td></row>
-		<row><td>ID_STRING1</td><td>1034</td><td>http://www.BataPeru.com</td><td>0</td><td/><td>-366712533</td></row>
-		<row><td>ID_STRING2</td><td>1034</td><td>Bata Peru</td><td>0</td><td/><td>-366712533</td></row>
+		<row><td>ID_STRING1</td><td>1034</td><td>http://www.BataPeru.com</td><td>0</td><td/><td>321205641</td></row>
+		<row><td>ID_STRING2</td><td>1034</td><td>Bata Peru</td><td>0</td><td/><td>321205641</td></row>
 		<row><td>ID_STRING3</td><td>1033</td><td>Service Transmision.Net (Bata)</td><td>0</td><td/><td>-635161143</td></row>
 		<row><td>ID_STRING3</td><td>1034</td><td>Service Transmision.Net (Bata)</td><td>0</td><td/><td>-635161143</td></row>
 		<row><td>ID_STRING4</td><td>1033</td><td>Service Transmision.Net (Bata)</td><td>0</td><td/><td>-635154999</td></row>
@@ -3767,7 +3765,11 @@
 		<row><td>ID_STRING6</td><td>1033</td><td>David Mendoza</td><td>0</td><td/><td>-635138583</td></row>
 		<row><td>ID_STRING6</td><td>1034</td><td>David Mendoza</td><td>0</td><td/><td>-635138583</td></row>
 		<row><td>ID_STRING7</td><td>1033</td><td>http://www.BataPeru.com</td><td>0</td><td/><td>-635130391</td></row>
-		<row><td>ID_STRING7</td><td>1034</td><td>http://www.BataPeru.com</td><td>0</td><td/><td>-366712533</td></row>
+		<row><td>ID_STRING7</td><td>1034</td><td>http://www.BataPeru.com</td><td>0</td><td/><td>321205641</td></row>
+		<row><td>ID_STRING8</td><td>1033</td><td>Service Transmision.Net (Bata)</td><td>0</td><td/><td>321220331</td></row>
+		<row><td>ID_STRING8</td><td>1034</td><td>Service Transmision.Net (Bata)</td><td>0</td><td/><td>321220331</td></row>
+		<row><td>ID_STRING9</td><td>1033</td><td>Service Transmision.Net</td><td>0</td><td/><td>321232619</td></row>
+		<row><td>ID_STRING9</td><td>1034</td><td>Service Transmision.Net</td><td>0</td><td/><td>321232619</td></row>
 		<row><td>IIDS_UITEXT_FeatureUninstalled</td><td>1034</td><td>Este componente no se instalará.</td><td>0</td><td/><td>-635128439</td></row>
 	</table>
 
@@ -3927,8 +3929,6 @@
 		<row><td>ISSelfRegisterCosting</td><td/><td>2201</td><td/><td/></row>
 		<row><td>ISSelfRegisterFiles</td><td/><td>5601</td><td/><td/></row>
 		<row><td>ISSelfRegisterFinalize</td><td/><td>6601</td><td/><td/></row>
-		<row><td>ISSetupFilesCleanup</td><td>UILevel &lt; 5</td><td>6602</td><td/><td/></row>
-		<row><td>ISSetupFilesExtract</td><td/><td>3</td><td/><td/></row>
 		<row><td>ISUnSelfRegisterFiles</td><td/><td>2202</td><td/><td/></row>
 		<row><td>InstallFiles</td><td/><td>4000</td><td>InstallFiles</td><td/></row>
 		<row><td>InstallFinalize</td><td/><td>6600</td><td>InstallFinalize</td><td/></row>
@@ -4016,7 +4016,7 @@ UwBpAG4AZwBsAGUASQBtAGEAZwBlAAEARQB4AHAAcgBlAHMAcwA=
 		<row><td>ISTheme</td><td>InstallShield Blue.theme</td></row>
 		<row><td>ISUSLock</td><td>{05C906CF-9C4D-41C9-A114-2285BB75D5F1}</td></row>
 		<row><td>ISUSSignature</td><td>{D5F5112E-1238-49D4-A928-7E197F31C429}</td></row>
-		<row><td>ISVisitedViews</td><td>viewAssistant,viewAppFiles,viewProject,viewISToday,viewLearnMore</td></row>
+		<row><td>ISVisitedViews</td><td>viewAssistant,viewAppFiles,viewProject,viewISToday,viewLearnMore,viewUpgradePaths,viewServices</td></row>
 		<row><td>Limited</td><td>1</td></row>
 		<row><td>LockPermissionMode</td><td>1</td></row>
 		<row><td>MsiExecCmdLineOptions</td><td/></row>
@@ -4046,8 +4046,6 @@ UwBpAG4AZwBsAGUASQBtAGEAZwBlAAEARQB4AHAAcgBlAHMAcwA=
 		<row><td>FileCost</td><td/><td>900</td><td>FileCost</td><td/></row>
 		<row><td>FindRelatedProducts</td><td/><td>430</td><td>FindRelatedProducts</td><td/></row>
 		<row><td>ISPreventDowngrade</td><td>ISFOUNDNEWERPRODUCTVERSION</td><td>450</td><td>ISPreventDowngrade</td><td/></row>
-		<row><td>ISSetupFilesCleanup</td><td>UILevel &lt; 5</td><td>1301</td><td/><td/></row>
-		<row><td>ISSetupFilesExtract</td><td/><td>3</td><td/><td/></row>
 		<row><td>InstallWelcome</td><td>Not Installed</td><td>1210</td><td>InstallWelcome</td><td/></row>
 		<row><td>IsolateComponents</td><td/><td>950</td><td>IsolateComponents</td><td/></row>
 		<row><td>LaunchConditions</td><td>Not Installed</td><td>410</td><td>LaunchConditions</td><td/></row>
@@ -4332,7 +4330,7 @@ UwBpAG4AZwBsAGUASQBtAGEAZwBlAAEARQB4AHAAcgBlAHMAcwA=
 		<row><td>ARPURLINFOABOUT</td><td>##ID_STRING1##</td><td/></row>
 		<row><td>AgreeToLicense</td><td>No</td><td/></row>
 		<row><td>ApplicationUsers</td><td>AllUsers</td><td/></row>
-		<row><td>DIRPROPERTY4</td><td>D:\</td><td/></row>
+		<row><td>DIRPROPERTY6</td><td>D:\</td><td/></row>
 		<row><td>DWUSINTERVAL</td><td>30</td><td/></row>
 		<row><td>DWUSLINK</td><td>CEEB97DF0EBCE798FEAC1798BE6B978F4EDC478FCE2CA74FCEFCE01F0EFBD7CF8EDC87C84EAC</td><td/></row>
 		<row><td>DefaultUIFont</td><td>ExpressDefault</td><td/></row>
@@ -4523,6 +4521,7 @@ UwBpAG4AZwBsAGUASQBtAGEAZwBlAAEARQB4AHAAcgBlAHMAcwA=
 		<col def="S255">Arguments</col>
 		<col def="I2">Wait</col>
 		<col def="s72">Component_</col>
+		<row><td>NewEvent1</td><td>Service Transmision.Net (Bata)</td><td>129</td><td/><td>0</td><td>Genera_Transmision.Resultado_principal</td></row>
 	</table>
 
 	<table name="ServiceInstall">
@@ -4539,6 +4538,7 @@ UwBpAG4AZwBsAGUASQBtAGEAZwBlAAEARQB4AHAAcgBlAHMAcwA=
 		<col def="S255">Arguments</col>
 		<col def="s72">Component_</col>
 		<col def="L255">Description</col>
+		<row><td>NewServiceInstall1</td><td>Service Transmision.Net (Bata)</td><td>##ID_STRING8##</td><td>16</td><td>2</td><td>1</td><td/><td/><td/><td/><td/><td>Genera_Transmision.Resultado_principal</td><td>##ID_STRING9##</td></row>
 	</table>
 
 	<table name="Shortcut">

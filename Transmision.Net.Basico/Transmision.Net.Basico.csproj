@@ -75,6 +75,9 @@
   <ItemGroup>
     <None Include="app.config" />
     <None Include="Properties\DataSources\System.Data.DataSet.datasource" />
+    <None Include="Service References\BataTransmision\Transmision.Net.Basico.BataTransmision.Ruta_Update_File.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
   </ItemGroup>
   <ItemGroup>
     <WCFMetadataStorage Include="Service References\BataTransmision\" />

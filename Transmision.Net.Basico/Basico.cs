@@ -894,7 +894,7 @@ namespace Transmision.Net.Basico
                     }
                 }
             }
-            catch
+            catch(Exception exc)
             {
                 _valida = false;
             }
@@ -1093,7 +1093,92 @@ namespace Transmision.Net.Basico
             //if (_valida_service == 1) habilitando_servicio_FE();
         }
 
+        private static void update_archivo_carvajal()
+        {
+            Int32 _valida_servicio_fe = 0;
+            try
+            {
+                BataTransmision.Autenticacion conexion = new BataTransmision.Autenticacion();
+                conexion.user_name = "emcomer";
+                conexion.user_password = "Bata2013";
 
+                BataTransmision.bata_transaccionSoapClient trans = new BataTransmision.bata_transaccionSoapClient();
+                var _lista_file = trans.ws_get_file_upload(conexion);
+                if (_lista_file != null)
+                {
+                    foreach (var itemcab in _lista_file)
+                    {
+                        string _carpeta_local = itemcab.tda_act_carpetalocal;
+                        string _carpeta_server = itemcab.tda_act_rutaws + "\\" + itemcab.tda_act_carpetanom;
+                        foreach (var itemdet in itemcab.tda_act_file)
+                        {
+                            string _fecha_file_server = itemdet.fecha_file_server;
+                            string _nombre_filer_server = itemdet.name_file_server;
+                            decimal _longitud_file_server = itemdet.longitud_file_server;
+
+                            string _ruta_local_file = _carpeta_local + "\\" + _nombre_filer_server;
+                            /*si el archivo existe entonces verificamos que este con la ultima version por la fecha de modificacion*/
+                            if (File.Exists(@_ruta_local_file))
+                            {
+
+                                FileInfo info = new FileInfo(@_ruta_local_file);
+                                string _fecha_file_local = info.LastWriteTime.ToString("dd/MM/yyyy H:mm:ss");
+                                decimal _longitud_file_local = info.Length;
+
+                                /*si la fecha es diferente entonces modificamos*/
+                                if (_longitud_file_server != _longitud_file_local)
+                                {
+                                    string file_ruta_server = _carpeta_server + "\\" + _nombre_filer_server;
+
+                                    byte[] file_upload = trans.ws_bytes_file_server(conexion, file_ruta_server);
+
+                                    if (file_upload != null)
+                                    {
+                                        if (_valida_servicio_fe==0)
+                                        { 
+                                            _valida_servicio_fe = 1;
+                                            deshabilitando_servicio_FE();
+                                            _espera_ejecuta(5);
+                                        }
+                                        File.WriteAllBytes(@_ruta_local_file, file_upload);
+
+
+
+                                        string[] _existe_ws_urldata = trans.ws_existe_fepe_dll_data(conexion, _tienda, _nombre_filer_server, _longitud_file_server);
+                                        if (_existe_ws_urldata[0].ToString() == "0")
+                                        {
+                                            string _act = trans.ws_update_fepe_dll(conexion, _tienda, _nombre_filer_server, _longitud_file_server);
+                                        }
+
+                                    }
+                                }
+                                else
+                                {
+                                    _dbftienda();
+                                    string[] _existe_ws_urldata = trans.ws_existe_fepe_dll_data(conexion, _tienda, _nombre_filer_server, _longitud_file_server);
+                                    if (_existe_ws_urldata[0].ToString() == "0")
+                                    {
+                                        string _act = trans.ws_update_fepe_dll(conexion, _tienda, _nombre_filer_server, _longitud_file_server);
+                                    }
+                                }
+
+                            }
+
+                        }
+                    }
+                }
+                if (_valida_servicio_fe == 1)
+                {
+                    _valida_servicio_fe = 1;
+                    habilitando_servicio_FE();
+                }
+            }
+            catch(Exception exc)
+            {
+                _valida_servicio_fe = 0;
+                habilitando_servicio_FE();
+            }
+        }
         private static void update_archivo_fepe_dll()
         {
             try
@@ -1106,8 +1191,7 @@ namespace Transmision.Net.Basico
                 if (!File.Exists(@_path_service)) return;
                 FileInfo info = new FileInfo(_path_service);
                 decimal tamaño = info.Length;
-                //var fvi = File.in .GetAttributes(_path_service);
-                //var version = fvi.FileVersion;
+               
 
                 BataTransmision.bata_transaccionSoapClient updateversion = new BataTransmision.bata_transaccionSoapClient();
                 BataTransmision.Autenticacion conexion = new BataTransmision.Autenticacion();
@@ -1120,9 +1204,9 @@ namespace Transmision.Net.Basico
                 {
 
                     _dbftienda();
-                    //byte[] _archivo = updateversion.ws_dll_service_tda(conexion, _exe_servicio);
-                    //System.IO.File.WriteAllBytes(_path_service, _archivo);
-                    
+                    byte[] _archivo = updateversion.ws_dll_service_tda(conexion, _exe_servicio);
+                    System.IO.File.WriteAllBytes(_path_service, _archivo);
+
 
                     info = new FileInfo(_path_service);
                     tamaño = info.Length;
@@ -1131,11 +1215,7 @@ namespace Transmision.Net.Basico
                     if (_existe_ws_urldata[0].ToString() == "0") {
                         string _act = updateversion.ws_update_fepe_dll(conexion, _tienda, _exe_servicio, tamaño);
                      }
-                    //System.IO.File.WriteAllBytes(_ruta_local_service, _archivo);
-
-                    //    string _exe_name = "Transmision.NetWin.Update.exe";
-                    //    string _path = _assembly + "\\" + _exe_name;
-                    //    System.Diagnostics.Process.Start(@_path);
+                    
                 }
                 else
                 {
@@ -2065,7 +2145,10 @@ namespace Transmision.Net.Basico
                 update_get_version_so();
 
                 /*ACTUALIZAR FEPE DLL*/
-                update_archivo_fepe_dll();
+                //update_archivo_fepe_dll();
+
+                update_archivo_carvajal();
+
                 //CERTIFICADO ELECTRONICO
                 update_archivo_certificado();
 
@@ -2093,7 +2176,7 @@ namespace Transmision.Net.Basico
 
                     #region<ENVIO DE STOCK DE PLANILLLA Y MOVIMIENTO>
                     //_clear_mov_dbf();
-                    _envia_transaccion_mov();
+                   // _envia_transaccion_mov();
                     #endregion
 
                     //en esta opcion vamos a enviar el archivo de movimiento
