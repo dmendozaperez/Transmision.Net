@@ -2176,9 +2176,11 @@ namespace Transmision.Net.Basico
 
                     #region<ENVIO DE STOCK DE PLANILLLA Y MOVIMIENTO>
                     //_clear_mov_dbf();
-                   // _envia_transaccion_mov();
+                    // _envia_transaccion_mov();
                     #endregion
-
+                    /*ENVIA PAQ DE TRASMISION EN TX*/
+                    envia_paq_tx();
+                    /******************************/
                     //en esta opcion vamos a enviar el archivo de movimiento
 
                     ////****************
@@ -2949,6 +2951,50 @@ namespace Transmision.Net.Basico
             string result = param.Substring(0, length);
             //return the result of the operation
             return result;
+        }
+        #endregion
+        #region<ENVIAR PAQUETES TX DEL POS>
+        public static void envia_paq_tx()
+        {
+            string ruta_tx_pos = @"D:\POS\TX";
+            try
+            {
+                string[] _archivos_paq_array = Directory.GetFiles(@ruta_tx_pos, "*.*").OrderBy(d => new FileInfo(d).CreationTime).ToArray();
+
+                if (_archivos_paq_array.Length > 0)
+                {
+                    for (Int32 a = 0; a < _archivos_paq_array.Length; ++a)
+                    {
+
+                        string _archivo = _archivos_paq_array[a].ToString();
+                        string _nombrearchivo_paq = System.IO.Path.GetFileNameWithoutExtension(@_archivo);
+                        string _ext = System.IO.Path.GetExtension(@_archivo);
+
+                        string _nom_arc_ext = _nombrearchivo_paq + _ext;
+
+                        byte[] _archivo_bytes = File.ReadAllBytes(@_archivo);
+
+
+                        BataTransmision.bata_transaccionSoapClient envia_paq = new BataTransmision.bata_transaccionSoapClient();
+                        BataTransmision.Autenticacion conexion = new BataTransmision.Autenticacion();
+                        conexion.user_name = "emcomer";
+                        conexion.user_password = "Bata2013";
+
+                        string[] valida = envia_paq.ws_transmision_ingreso(conexion, _archivo_bytes, _nom_arc_ext);
+
+                        if (valida[0] == "1")
+                            File.Delete(@_archivo);
+
+                    }
+                }
+
+
+            }
+            catch
+            {
+
+
+            }
         }
         #endregion
     }
