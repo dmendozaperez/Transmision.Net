@@ -2965,25 +2965,30 @@ namespace Transmision.Net.Basico
                 {
                     for (Int32 a = 0; a < _archivos_paq_array.Length; ++a)
                     {
-
                         string _archivo = _archivos_paq_array[a].ToString();
                         string _nombrearchivo_paq = System.IO.Path.GetFileNameWithoutExtension(@_archivo);
-                        string _ext = System.IO.Path.GetExtension(@_archivo);
+                        
+                        if (Left(_nombrearchivo_paq, 2) == "TD")
+                        {                      
+                            
 
-                        string _nom_arc_ext = _nombrearchivo_paq + _ext;
+                            string _ext = System.IO.Path.GetExtension(@_archivo);
 
-                        byte[] _archivo_bytes = File.ReadAllBytes(@_archivo);
+                            string _nom_arc_ext = _nombrearchivo_paq + _ext;
+
+                            byte[] _archivo_bytes = File.ReadAllBytes(@_archivo);
 
 
-                        BataTransmision.bata_transaccionSoapClient envia_paq = new BataTransmision.bata_transaccionSoapClient();
-                        BataTransmision.Autenticacion conexion = new BataTransmision.Autenticacion();
-                        conexion.user_name = "emcomer";
-                        conexion.user_password = "Bata2013";
+                            BataTransmision.bata_transaccionSoapClient envia_paq = new BataTransmision.bata_transaccionSoapClient();
+                            BataTransmision.Autenticacion conexion = new BataTransmision.Autenticacion();
+                            conexion.user_name = "emcomer";
+                            conexion.user_password = "Bata2013";
 
-                        string[] valida = envia_paq.ws_transmision_ingreso(conexion, _archivo_bytes, _nom_arc_ext);
+                            string[] valida = envia_paq.ws_transmision_ingreso(conexion, _archivo_bytes, _nom_arc_ext);
 
-                        if (valida[0] == "1")
-                            File.Delete(@_archivo);
+                            if (valida[0] == "1")
+                                File.Delete(@_archivo);
+                        }
 
                     }
                 }
