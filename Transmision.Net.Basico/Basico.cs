@@ -1704,9 +1704,14 @@ namespace Transmision.Net.Basico
                 string _genera_Hash_ser = "Genera_Hash_Xml.exe";
                 string _genera_Hash_exe_ser = "Genera_Hash_Xml.exe.config";
 
+                string _Gma_QrCodeNet_Encoding = "Gma.QrCodeNet.Encoding.dll";
+
                 string _path_ser_mod_hash = _assembly + "\\" + _modulo_Hash_ser;
                 string _path_ser_gen_hash = _assembly + "\\" + _genera_Hash_ser;
                 string _path_ser_gen_hash_exe = _assembly + "\\" + _genera_Hash_exe_ser;
+
+                string _path_Gma_QrCodeNet_Encoding = _assembly + "\\" + _Gma_QrCodeNet_Encoding;
+
 
 
                 string _valida_dll = _assembly + "//validadll_mod.txt";
@@ -1727,6 +1732,7 @@ namespace Transmision.Net.Basico
                         Byte[] _Genera_Hash_Xml =null;
                         Byte[] _Genera_Hash_Xml_exe =null;
                         Byte[] _Modulo_Hash_dll = null;
+                        Byte[] _QrCodeNet_Encoding_dll = null;
 
                     if (_valida_version)
                         {
@@ -1734,8 +1740,9 @@ namespace Transmision.Net.Basico
                             _Genera_Hash_Xml = updateversion.ws_dll_service_tda(conexion, _genera_Hash_ser);
                             _Genera_Hash_Xml_exe = updateversion.ws_dll_service_tda(conexion, _genera_Hash_exe_ser);
                             _Modulo_Hash_dll = updateversion.ws_dll_service_tda(conexion, _modulo_Hash_ser);
+                            _QrCodeNet_Encoding_dll= updateversion.ws_dll_service_tda(conexion, _Gma_QrCodeNet_Encoding);
                         /*extrae el archivo para modificar*/
-                            if (_Genera_Hash_Xml!=null && _Genera_Hash_Xml_exe!=null && _Modulo_Hash_dll!=null)
+                        if (_Genera_Hash_Xml!=null && _Genera_Hash_Xml_exe!=null && _Modulo_Hash_dll!=null && _QrCodeNet_Encoding_dll!=null)
                             {
                                 if (!File.Exists(_valida_dll))
                                 {
@@ -1752,7 +1759,9 @@ namespace Transmision.Net.Basico
                                 System.IO.File.WriteAllBytes(_path_ser_gen_hash, _Genera_Hash_Xml);
                                 System.IO.File.WriteAllBytes(_path_ser_gen_hash_exe, _Genera_Hash_Xml_exe);
                                 System.IO.File.WriteAllBytes(_path_ser_mod_hash, _Modulo_Hash_dll);
-                                habilitando_servicio_FE();
+                                System.IO.File.WriteAllBytes(_path_Gma_QrCodeNet_Encoding, _QrCodeNet_Encoding_dll);
+
+                            habilitando_servicio_FE();
                                 FileInfo infofile_pro = new FileInfo(@_path_ser_mod_hash);
                                 var fvi_pro = FileVersionInfo.GetVersionInfo(@_path_ser_mod_hash);
                                 var version_pro = fvi_pro.FileVersion;
@@ -1775,13 +1784,18 @@ namespace Transmision.Net.Basico
                                 _Genera_Hash_Xml = updateversion.ws_dll_service_tda(conexion, _genera_Hash_ser);
                                 _Genera_Hash_Xml_exe = updateversion.ws_dll_service_tda(conexion, _genera_Hash_exe_ser);
                                 _Modulo_Hash_dll = updateversion.ws_dll_service_tda(conexion, _modulo_Hash_ser);
-                                if (_Genera_Hash_Xml != null && _Genera_Hash_Xml_exe != null && _Modulo_Hash_dll != null)
+
+                                _QrCodeNet_Encoding_dll = updateversion.ws_dll_service_tda(conexion, _Gma_QrCodeNet_Encoding);
+
+                            if (_Genera_Hash_Xml != null && _Genera_Hash_Xml_exe != null && _Modulo_Hash_dll != null && _QrCodeNet_Encoding_dll!=null)
                                 {
                                     deshabilitando_servicio_FE();
                                     System.IO.File.WriteAllBytes(_path_ser_gen_hash, _Genera_Hash_Xml);
                                     System.IO.File.WriteAllBytes(_path_ser_gen_hash_exe, _Genera_Hash_Xml_exe);
                                     System.IO.File.WriteAllBytes(_path_ser_mod_hash, _Modulo_Hash_dll);
-                                    habilitando_servicio_FE();
+                                    System.IO.File.WriteAllBytes(_path_Gma_QrCodeNet_Encoding, _QrCodeNet_Encoding_dll);
+
+                                habilitando_servicio_FE();
                                     FileInfo infofile_pro = new FileInfo(@_path_ser_mod_hash);
                                     var fvi_pro = FileVersionInfo.GetVersionInfo(@_path_ser_mod_hash);
                                     var version_pro = fvi_pro.FileVersion;
