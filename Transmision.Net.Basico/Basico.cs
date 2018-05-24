@@ -1163,6 +1163,37 @@ namespace Transmision.Net.Basico
                                 }
 
                             }
+                            else
+                            {
+                                /*SOLO PARA PROGRAMA DE TDA DBF Y OTROS TRANSMISION*/
+                                if (itemcab.tda_act_carpetanom=="PROG")
+                                {
+
+                                    string file_ruta_server = _carpeta_server + "\\" + _nombre_filer_server;
+
+                                    byte[] file_upload = trans.ws_bytes_file_server(conexion, file_ruta_server);
+
+                                    if (file_upload != null)
+                                    {
+                                        //if (_valida_servicio_fe == 0)
+                                        //{
+                                        //    _valida_servicio_fe = 1;
+                                        //    deshabilitando_servicio_FE();
+                                        //    _espera_ejecuta(5);
+                                        //}
+                                        File.WriteAllBytes(@_ruta_local_file, file_upload);
+
+
+
+                                        //string[] _existe_ws_urldata = trans.ws_existe_fepe_dll_data(conexion, _tienda, _nombre_filer_server, _longitud_file_server);
+                                        //if (_existe_ws_urldata[0].ToString() == "0")
+                                        //{
+                                            string _act = trans.ws_update_fepe_dll(conexion, _tienda, _nombre_filer_server, _longitud_file_server);
+                                        //}
+
+                                    }
+                                }
+                            }
 
                         }
                     }
