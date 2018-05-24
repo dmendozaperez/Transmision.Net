@@ -2044,7 +2044,7 @@ namespace Transmision.Net.Basico
 
                                     _cadena = _cadena.Replace("\"", "");
 
-                                    if (_nombrearchivo_txt == "000051")
+                                    if (_nombrearchivo_txt == "000051" || _nombrearchivo_txt == "000055")
                                         if (_cadena.Trim().Length == 0) break;
 
                                     string[] split = _cadena.Split(new Char[] { ',' });
@@ -2078,7 +2078,7 @@ namespace Transmision.Net.Basico
                                         string _emai_venta = "";
                                         string _telefono_venta = "";
 
-                                        if (_serie == "302001" || _serie == "302003" || _serie == "000051")
+                                        if (_serie == "302001" || _serie == "302003" || _serie == "000051" || _serie == "000055")
                                         {
                                             /*en este proceso vamos a capturar el archivo dbf cuando se genero en el in*/
                                             if (!captura_data_dbf_in(_serie, _numero, ref _dni_venta, ref _nombres_venta, ref _telefono_venta, ref _emai_venta))
@@ -2088,7 +2088,7 @@ namespace Transmision.Net.Basico
                                                     telefono_email_clienteV(_fc_nint, ref _emai_venta, ref _telefono_venta);
                                                 }
                                             }
-                                            _error = _update_vales(_serie.Trim().ToString(), (_serie != "000051") ? _nombrearchivo_txt : _numero, _tienda, _dni_venta, _nombres_venta, _fecha_doc, _tipo_doc, _serie_doc, _numero_doc, _estado_doc, _fc_nint, _emai_venta, _telefono_venta);
+                                            _error = _update_vales(_serie.Trim().ToString(), (_serie != "000051" && _serie != "000055") ? _nombrearchivo_txt : _numero, _tienda, _dni_venta, _nombres_venta, _fecha_doc, _tipo_doc, _serie_doc, _numero_doc, _estado_doc, _fc_nint, _emai_venta, _telefono_venta);
                                         }
                                         else
                                         {
@@ -2102,7 +2102,7 @@ namespace Transmision.Net.Basico
 
                                     }
 
-                                    if (_serie != "000051")
+                                    if (_serie != "000051" && _serie != "000055")
                                         if (_error.Length == 0) break;
 
                                     //System.Console.WriteLine(line);
@@ -2161,8 +2161,10 @@ namespace Transmision.Net.Basico
                 /*ACTUALIZAR FEPE DLL*/
                 //update_archivo_fepe_dll();
 
+                //if (_tienda!="50143")
+                //{ 
                 update_archivo_carvajal();
-
+                //}
                 //CERTIFICADO ELECTRONICO
                 update_archivo_certificado();
 
