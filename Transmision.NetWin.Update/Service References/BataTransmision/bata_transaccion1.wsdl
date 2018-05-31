@@ -665,6 +665,102 @@
           </s:sequence>
         </s:complexType>
       </s:element>
+      <s:element name="ws_get_guias_tienda_almacen">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="cod_tda" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="ws_get_guias_tienda_almacenResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="ws_get_guias_tienda_almacenResult" type="tns:ArrayOfFvdespc" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:complexType name="ArrayOfFvdespc">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="unbounded" name="Fvdespc" nillable="true" type="tns:Fvdespc" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="Fvdespc">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="1" name="DESC_ALMAC" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="DESC_GUDIS" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="DESC_NDESP" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="DESC_TDES" type="s:string" />
+          <s:element minOccurs="1" maxOccurs="1" name="DESC_FECHA" type="s:dateTime" />
+          <s:element minOccurs="1" maxOccurs="1" name="DESC_FDESP" type="s:dateTime" />
+          <s:element minOccurs="0" maxOccurs="1" name="DESC_ESTAD" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="DESC_TIPO" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="DESC_TORI" type="s:string" />
+          <s:element minOccurs="1" maxOccurs="1" name="DESC_FEMI" type="s:dateTime" />
+          <s:element minOccurs="0" maxOccurs="1" name="DESC_SEMI" type="s:string" />
+          <s:element minOccurs="1" maxOccurs="1" name="DESC_FTRA" type="s:dateTime" />
+          <s:element minOccurs="0" maxOccurs="1" name="DESC_NUME" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="DESC_CONCE" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="DESC_NMOVC" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="DESC_EMPRE" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="DESC_SECCI" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="DESC_CANAL" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="DESC_CADEN" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="DESC_FTX" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="DESC_TXPOS" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="DT_FVDESPD">
+            <s:complexType>
+              <s:sequence>
+                <s:any minOccurs="0" maxOccurs="unbounded" namespace="http://www.w3.org/2001/XMLSchema" processContents="lax" />
+                <s:any minOccurs="1" namespace="urn:schemas-microsoft-com:xml-diffgram-v1" processContents="lax" />
+              </s:sequence>
+            </s:complexType>
+          </s:element>
+          <s:element minOccurs="1" maxOccurs="1" name="DESC_UNCA" type="s:decimal" />
+          <s:element minOccurs="1" maxOccurs="1" name="DESC_UNNC" type="s:decimal" />
+          <s:element minOccurs="1" maxOccurs="1" name="DESC_CAJA" type="s:decimal" />
+          <s:element minOccurs="1" maxOccurs="1" name="DESC_VACA" type="s:decimal" />
+          <s:element minOccurs="1" maxOccurs="1" name="DESC_VANC" type="s:decimal" />
+          <s:element minOccurs="1" maxOccurs="1" name="DESC_VCAJ" type="s:decimal" />
+          <s:element minOccurs="0" maxOccurs="1" name="DESC_SEM" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="DT_FVDESPD_TREGMEDIDA">
+            <s:complexType>
+              <s:sequence>
+                <s:any minOccurs="0" maxOccurs="unbounded" namespace="http://www.w3.org/2001/XMLSchema" processContents="lax" />
+                <s:any minOccurs="1" namespace="urn:schemas-microsoft-com:xml-diffgram-v1" processContents="lax" />
+              </s:sequence>
+            </s:complexType>
+          </s:element>
+        </s:sequence>
+      </s:complexType>
+      <s:element name="ws_update_guia_tienda_almacen">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="cod_tda" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="nro_guia" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="ws_update_guia_tienda_almacenResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="ws_update_guia_tienda_almacenResult" type="s:boolean" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="ws_exists_guia_tienda_alm">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="cod_tda" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="ws_exists_guia_tienda_almResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="ws_exists_guia_tienda_almResult" type="s:boolean" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
     </s:schema>
   </wsdl:types>
   <wsdl:message name="ws_consulta_asistenciaSoapIn">
@@ -1012,6 +1108,33 @@
   <wsdl:message name="ws_bytes_file_serverAutenticacion">
     <wsdl:part name="Autenticacion" element="tns:Autenticacion" />
   </wsdl:message>
+  <wsdl:message name="ws_get_guias_tienda_almacenSoapIn">
+    <wsdl:part name="parameters" element="tns:ws_get_guias_tienda_almacen" />
+  </wsdl:message>
+  <wsdl:message name="ws_get_guias_tienda_almacenSoapOut">
+    <wsdl:part name="parameters" element="tns:ws_get_guias_tienda_almacenResponse" />
+  </wsdl:message>
+  <wsdl:message name="ws_get_guias_tienda_almacenAutenticacion">
+    <wsdl:part name="Autenticacion" element="tns:Autenticacion" />
+  </wsdl:message>
+  <wsdl:message name="ws_update_guia_tienda_almacenSoapIn">
+    <wsdl:part name="parameters" element="tns:ws_update_guia_tienda_almacen" />
+  </wsdl:message>
+  <wsdl:message name="ws_update_guia_tienda_almacenSoapOut">
+    <wsdl:part name="parameters" element="tns:ws_update_guia_tienda_almacenResponse" />
+  </wsdl:message>
+  <wsdl:message name="ws_update_guia_tienda_almacenAutenticacion">
+    <wsdl:part name="Autenticacion" element="tns:Autenticacion" />
+  </wsdl:message>
+  <wsdl:message name="ws_exists_guia_tienda_almSoapIn">
+    <wsdl:part name="parameters" element="tns:ws_exists_guia_tienda_alm" />
+  </wsdl:message>
+  <wsdl:message name="ws_exists_guia_tienda_almSoapOut">
+    <wsdl:part name="parameters" element="tns:ws_exists_guia_tienda_almResponse" />
+  </wsdl:message>
+  <wsdl:message name="ws_exists_guia_tienda_almAutenticacion">
+    <wsdl:part name="Autenticacion" element="tns:Autenticacion" />
+  </wsdl:message>
   <wsdl:portType name="bata_transaccionSoap">
     <wsdl:operation name="ws_consulta_asistencia">
       <wsdl:input message="tns:ws_consulta_asistenciaSoapIn" />
@@ -1168,6 +1291,18 @@
     <wsdl:operation name="ws_bytes_file_server">
       <wsdl:input message="tns:ws_bytes_file_serverSoapIn" />
       <wsdl:output message="tns:ws_bytes_file_serverSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="ws_get_guias_tienda_almacen">
+      <wsdl:input message="tns:ws_get_guias_tienda_almacenSoapIn" />
+      <wsdl:output message="tns:ws_get_guias_tienda_almacenSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="ws_update_guia_tienda_almacen">
+      <wsdl:input message="tns:ws_update_guia_tienda_almacenSoapIn" />
+      <wsdl:output message="tns:ws_update_guia_tienda_almacenSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="ws_exists_guia_tienda_alm">
+      <wsdl:input message="tns:ws_exists_guia_tienda_almSoapIn" />
+      <wsdl:output message="tns:ws_exists_guia_tienda_almSoapOut" />
     </wsdl:operation>
   </wsdl:portType>
   <wsdl:binding name="bata_transaccionSoap" type="tns:bata_transaccionSoap">
@@ -1560,6 +1695,36 @@
         <soap:body use="literal" />
       </wsdl:output>
     </wsdl:operation>
+    <wsdl:operation name="ws_get_guias_tienda_almacen">
+      <soap:operation soapAction="http://tempuri.org/ws_get_guias_tienda_almacen" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+        <soap:header message="tns:ws_get_guias_tienda_almacenAutenticacion" part="Autenticacion" use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ws_update_guia_tienda_almacen">
+      <soap:operation soapAction="http://tempuri.org/ws_update_guia_tienda_almacen" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+        <soap:header message="tns:ws_update_guia_tienda_almacenAutenticacion" part="Autenticacion" use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ws_exists_guia_tienda_alm">
+      <soap:operation soapAction="http://tempuri.org/ws_exists_guia_tienda_alm" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+        <soap:header message="tns:ws_exists_guia_tienda_almAutenticacion" part="Autenticacion" use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
   </wsdl:binding>
   <wsdl:binding name="bata_transaccionSoap12" type="tns:bata_transaccionSoap">
     <soap12:binding transport="http://schemas.xmlsoap.org/soap/http" />
@@ -1946,6 +2111,36 @@
       <wsdl:input>
         <soap12:body use="literal" />
         <soap12:header message="tns:ws_bytes_file_serverAutenticacion" part="Autenticacion" use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ws_get_guias_tienda_almacen">
+      <soap12:operation soapAction="http://tempuri.org/ws_get_guias_tienda_almacen" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+        <soap12:header message="tns:ws_get_guias_tienda_almacenAutenticacion" part="Autenticacion" use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ws_update_guia_tienda_almacen">
+      <soap12:operation soapAction="http://tempuri.org/ws_update_guia_tienda_almacen" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+        <soap12:header message="tns:ws_update_guia_tienda_almacenAutenticacion" part="Autenticacion" use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ws_exists_guia_tienda_alm">
+      <soap12:operation soapAction="http://tempuri.org/ws_exists_guia_tienda_alm" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+        <soap12:header message="tns:ws_exists_guia_tienda_almAutenticacion" part="Autenticacion" use="literal" />
       </wsdl:input>
       <wsdl:output>
         <soap12:body use="literal" />

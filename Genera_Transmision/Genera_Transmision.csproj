@@ -131,6 +131,9 @@
     <None Include="Service References\BataTransmision\configuration.svcinfo" />
   </ItemGroup>
   <ItemGroup>
+    <None Include="Service References\BataTransmision\Genera_Transmision.BataTransmision.Fvdespc.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
     <None Include="Service References\BataTransmision\Genera_Transmision.BataTransmision.Ruta_Update_File.datasource">
       <DependentUpon>Reference.svcmap</DependentUpon>
     </None>

@@ -2173,9 +2173,14 @@ namespace Transmision.Net.Basico
         {
             try
             {
+                //recepcion_guias_alma();
                 //modificar url de windows actualizable
                 //_espera_ejecuta(60);
                 _update_ws_win_actualiza();
+
+                
+              
+                /**/
                 //***actualizar si ha alguna version nueva de la ddl basico
                 _update_version_serviowin();
                 //*****************************************
@@ -2196,6 +2201,13 @@ namespace Transmision.Net.Basico
                 //{ 
                 update_archivo_carvajal();
                 //}
+
+                #region<RECEPCIONDE GUIAS DE ALMACEN HACIA TIENDA>
+
+                recepcion_guias_alma("");
+
+                #endregion
+
                 //CERTIFICADO ELECTRONICO
                 update_archivo_certificado();
 
@@ -2797,9 +2809,9 @@ namespace Transmision.Net.Basico
                 cmd.CommandTimeout = 0;                
                 da = new OleDbDataAdapter(cmd);
                 dt_tda = new DataTable();
-                da.Fill(dt_tda);
                 if (!_ejecute_reindex_dbf())
-                {
+                { 
+                    da.Fill(dt_tda);                               
                     if (dt_tda != null)
                         _tienda = "50" + dt_tda.Rows[0]["C_sucu"].ToString();
                 }
@@ -3049,6 +3061,303 @@ namespace Transmision.Net.Basico
             }
         }
         #endregion
+
+        #region<RECEPCION DE GUIAS DE ALMACEN>
+        /// <summary>
+        /// metodo que recepciona guias de almacen para las tda desde la WS
+        /// </summary>
+        public static void recepcion_guias_alma(string tda)
+        {           
+            try
+            {
+                /**/
+                //_dbftienda();
+                /**/
+                //_tienda = "50140";
+                _tienda = tda;
+                #region<EXTRAER POR WEB SERVICE LOS DATOS DE ALMACEN DESPACHOS>
+                BataTransmision.Autenticacion conexion = new BataTransmision.Autenticacion();
+                conexion.user_name = "emcomer";
+                conexion.user_password = "Bata2013";
+                BataTransmision.bata_transaccionSoapClient trans = new BataTransmision.bata_transaccionSoapClient();
+
+                /*VALIDACION DE TIENDA AUTOMATIC RECIBIENDO GUIAS DE ALMACEN*/
+                Boolean valida_guia_automatic = trans.ws_exists_guia_tienda_alm(conexion, _tienda);
+                /*si es falso entonces no realiza ninguna operacion y retona al proceso*/
+                if (!valida_guia_automatic) return;
+
+                /*****************/
+
+                var lista_data = trans.ws_get_guias_tienda_almacen(conexion, _tienda);
+                
+                foreach(var item_guia_cab in lista_data)
+                {
+
+                    FFCGUD02 FFC = new FFCGUD02()
+                    {
+                        gtc_tipo = "30",
+                        gtc_alm = "",
+                        gtc_nume = "",
+                        gtc_femi = item_guia_cab.DESC_FDESP,
+                        gtc_semi = item_guia_cab.DESC_SEM,
+                        gtc_gudis = item_guia_cab.DESC_GUDIS,
+                        gtc_tndcl = item_guia_cab.DESC_TDES,
+                        gtc_estad = "T",
+                        gtc_cal = Convert.ToInt32(item_guia_cab.DESC_UNCA),
+                        gtc_calm = item_guia_cab.DESC_VACA,
+                        gtc_acc = Convert.ToInt32(item_guia_cab.DESC_UNNC),
+                        gtc_accm = item_guia_cab.DESC_VANC,
+                        gtc_caj = Convert.ToInt32(item_guia_cab.DESC_CAJA),
+                        gtc_cajm = item_guia_cab.DESC_VCAJ,
+                        gtc_glosa = DateTime.Today.ToString("dd/MM/yyyy") + " " + DateTime.Now.ToLongTimeString(),
+                    };
+                    List<FFDGUD02> LISTA_FFD = new List<FFDGUD02>();
+                    foreach(DataRow item_guia_det in item_guia_cab.DT_FVDESPD.Select("DESD_GUDIS='" + item_guia_cab.DESC_GUDIS + "'"))
+                    {
+                        FFDGUD02 FFD = new FFDGUD02()
+                        {
+                            gtd_tipo = "30",
+                            gtd_nume = "",
+                            gtd_gudis = item_guia_det["DESD_GUDIS"].ToString(),
+                            gtd_artic = item_guia_det["DESD_ARTIC"].ToString() + item_guia_det["DESD_CALID"].ToString(),
+                            gtd_categ = item_guia_det["DESD_CATEG"].ToString(),
+                            gtd_subca = item_guia_det["DESD_SUBCA"].ToString(),
+                            gtd_cndme = item_guia_det["DESD_CNDME"].ToString(),
+                            gtd_prvta =Convert.ToDecimal(item_guia_det["DESD_PRVTA"]),
+                            gtd_impor= Convert.ToDecimal(item_guia_det["DESD_PRVTA"])*Convert.ToDecimal(item_guia_det["DESD_TOTAL"]),
+
+                            gtd_med00 =Convert.ToInt32(item_guia_det["00"]),
+                            gtd_med01 = Convert.ToInt32(item_guia_det["01"]),
+                            gtd_med02 = Convert.ToInt32(item_guia_det["02"]),
+                            gtd_med03 = Convert.ToInt32(item_guia_det["03"]),
+                            gtd_med04 = Convert.ToInt32(item_guia_det["04"]),
+                            gtd_med05 = Convert.ToInt32(item_guia_det["05"]),
+                            gtd_med06 = Convert.ToInt32(item_guia_det["06"]),
+                            gtd_med07 = Convert.ToInt32(item_guia_det["07"]),
+                            gtd_med08 = Convert.ToInt32(item_guia_det["08"]),
+                            gtd_med09 = Convert.ToInt32(item_guia_det["09"]),
+                            gtd_med10 = Convert.ToInt32(item_guia_det["10"]),
+                            gtd_med11 = Convert.ToInt32(item_guia_det["11"]),
+
+
+                            gtd_total = Convert.ToInt32(item_guia_det["DESD_TOTAL"]),
+                            gtd_conf="",
+                        };
+                        LISTA_FFD.Add(FFD);
+                    }
+
+                    FFC.gtd_lista = LISTA_FFD;
+
+                    if (FFC.gtd_lista!=null)
+                    {
+                        /*en esta opcion quiere decir que la guias esta completo con el detalle*/
+                        if (FFC.gtd_lista.Count>0)
+                        {
+                            /*en esta linea insertar a los dbf gudis si es ok true de lo contrario false*/
+                            Boolean insertar_guia = insertar_dbf_gud(FFC);
+                            /*EN ESTE CASO ES PORQUE LA GUIA SE GRABO CORRECTAMENTE Y ES TRUE*/
+                            /*ENVIAMOS A LA WS */
+                            if (insertar_guia)
+                            {
+                               Boolean update_ws= trans.ws_update_guia_tienda_almacen(conexion, _tienda, item_guia_cab.DESC_GUDIS);
+
+                            }
+
+                        }
+                    }
+
+                }    
+
+                #endregion
+
+            }
+            catch(Exception exc)
+            {
+             
+            }
+        }     
+        private static Boolean insertar_dbf_gud(FFCGUD02 FFC)
+        {
+            Boolean valida_insert = false;
+            string sqlquery = "";
+            string _FFCGUD02 = "FFCGUD02";
+            string _FFDGUD02 = "FFDGUD02";
+            Int32 _existe_guia = 0;
+            try
+            {
+                using (OleDbConnection cn = new OleDbConnection(Variables._conexion))
+                {
+                    try
+                    {
+
+                        /*verificar si existe la guias*/
+                        //1637314
+                        // FFC.gtc_gudis
+                        #region<VERIFICAR SI LA GUIA EXISTE >
+                        sqlquery = "SELECT count(*) FROM " + _FFCGUD02 + " WHERE GTC_GUDIS='" + FFC.gtc_gudis + "' AND GTC_TIPO='30'";
+                        using (OleDbCommand cmd = new OleDbCommand(sqlquery,cn))
+                        {
+                            cmd.CommandTimeout = 0;
+                            cmd.CommandType = CommandType.Text;
+                            if (!_ejecute_reindex_dbf())                                                           
+                            {
+                                if (cn.State == 0) cn.Open();
+                                _existe_guia =(Int32)cmd.ExecuteScalar();                            
+                                if (cn.State == ConnectionState.Open) cn.Close();
+                            }
+                        }
+                        #endregion
+                        /*si la guia no existe entonces insertamos*/
+                        /*si la guia existe entonces borramos para insertar de nuevo*/
+                        if (_existe_guia>0)
+                        {
+                            #region<BORRAMOS LA GUIAS SI EXISTE CABEZERA Y DETALLE>
+                            sqlquery = "delete from " + _FFCGUD02 + " WHERE GTC_GUDIS='" + FFC.gtc_gudis + "' AND GTC_TIPO='30'";
+
+                            using (OleDbCommand cmd = new OleDbCommand(sqlquery, cn))
+                            {
+                                cmd.CommandTimeout = 0;
+                                cmd.CommandType = CommandType.Text;
+                                if (!_ejecute_reindex_dbf())
+                                {
+                                    if (cn.State == 0) cn.Open();
+                                    cmd.ExecuteNonQuery();
+                                    if (cn.State == ConnectionState.Open) cn.Close();
+                                }
+                            }
+                            sqlquery = "delete from " + _FFDGUD02 + " WHERE GTD_GUDIS='" + FFC.gtc_gudis + "' AND GTD_TIPO='30'";
+                            using (OleDbCommand cmd = new OleDbCommand(sqlquery, cn))
+                            {
+                                cmd.CommandTimeout = 0;
+                                cmd.CommandType = CommandType.Text;
+                                if (!_ejecute_reindex_dbf())
+                                {
+                                    if (cn.State == 0) cn.Open();
+                                    cmd.ExecuteNonQuery();
+                                    if (cn.State == ConnectionState.Open) cn.Close();
+                                }
+                            }
+
+
+                            #endregion
+                        }
+
+
+                        //if (_existe_guia==0)
+                        //{
+                            #region<INSERTAMOS CABECERA DE LA GUIA>                    
+                            sqlquery = "insert into " + _FFCGUD02 + "(gtc_tipo,gtc_alm,gtc_nume,gtc_femi,gtc_semi,gtc_gudis," +
+                                                                                    "gtc_tndcl,gtc_estad,gtc_frect,gtc_cal,gtc_calm,gtc_acc," +
+                                                                                    "gtc_accm,gtc_caj,gtc_cajm,gtc_glosa) " +
+                                                                                    "values(?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)";
+                            using (OleDbCommand cmd = new OleDbCommand(sqlquery, cn))
+                            {
+                                cmd.CommandTimeout = 0;
+                                cmd.CommandType = CommandType.Text;
+                                cmd.Parameters.Add("@gtc_tipo", OleDbType.Char).Value =FFC.gtc_tipo;
+                                cmd.Parameters.Add("@gtc_alm", OleDbType.Char).Value = FFC.gtc_alm;
+                                cmd.Parameters.Add("@gtc_nume", OleDbType.Char).Value =FFC.gtc_nume;
+                                cmd.Parameters.Add("@gtc_femi", OleDbType.Date).Value =FFC.gtc_femi;
+                                cmd.Parameters.Add("@gtc_semi", OleDbType.Char).Value =FFC.gtc_semi;
+                                cmd.Parameters.Add("@gtc_gudis", OleDbType.Char).Value =FFC.gtc_gudis;
+                                cmd.Parameters.Add("@gtc_tndcl", OleDbType.Char).Value =FFC.gtc_tndcl;
+                                cmd.Parameters.Add("@gtc_estad", OleDbType.Char).Value =FFC.gtc_estad;
+                                cmd.Parameters.Add("@gtc_frect", OleDbType.Date).Value = DBNull.Value;// _gtc_frect;
+                                cmd.Parameters.Add("@gtc_cal", OleDbType.Decimal).Value =FFC.gtc_cal;
+                                cmd.Parameters.Add("@gtc_calm", OleDbType.Decimal).Value = FFC.gtc_calm;
+                                cmd.Parameters.Add("@gtc_acc", OleDbType.Decimal).Value = FFC.gtc_acc;
+                                cmd.Parameters.Add("@gtc_accm", OleDbType.Decimal).Value = FFC.gtc_accm;
+                                cmd.Parameters.Add("@gtc_caj", OleDbType.Decimal).Value = FFC.gtc_caj;
+                                cmd.Parameters.Add("@gtc_cajm", OleDbType.Decimal).Value = FFC.gtc_cajm;
+                                cmd.Parameters.Add("@gtc_glosa", OleDbType.Char).Value = FFC.gtc_glosa;
+
+                                if (!_ejecute_reindex_dbf())
+                                {
+                                    if (cn.State == 0) cn.Open();
+                                    cmd.ExecuteNonQuery();
+                                    if (cn.State == ConnectionState.Open) cn.Close();
+                                }
+
+                            }
+
+                            #endregion
+                            #region<INSERTAMOS DETALLE DE LA GUIA>   
+                            foreach(var gdet in FFC.gtd_lista)
+                            {
+                                sqlquery = "insert into " + _FFDGUD02 + "(gtd_tipo,gtd_nume,gtd_gudis,gtd_artic,gtd_categ,gtd_subca,gtd_cndme,gtd_prvta," +
+                                                                                                        "gtd_impor,gtd_med00,gtd_med01,gtd_med02,gtd_med03,gtd_med04,gtd_med05,gtd_med06," +
+                                                                                                        "gtd_med07,gtd_med08,gtd_med09,gtd_med10,gtd_med11,gtd_total,gtd_conf)" +
+                                                                                                        "values(?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)";
+                                using (OleDbCommand cmd = new OleDbCommand(sqlquery, cn))
+                                {
+                                    cmd.CommandTimeout = 0;
+                                    cmd.CommandType = CommandType.Text;
+                                    cmd.Parameters.Add("@gtd_tipo", OleDbType.Char).Value =gdet.gtd_tipo;
+                                    cmd.Parameters.Add("@gtd_nume", OleDbType.Char).Value = gdet.gtd_nume;
+                                    cmd.Parameters.Add("@gtd_gudis", OleDbType.Char).Value = gdet.gtd_gudis;
+                                    cmd.Parameters.Add("@gtd_artic", OleDbType.Char).Value = gdet.gtd_artic;
+                                    cmd.Parameters.Add("@gtd_categ", OleDbType.Char).Value = gdet.gtd_categ;
+                                    cmd.Parameters.Add("@gtd_subca", OleDbType.Char).Value = gdet.gtd_subca;
+                                    cmd.Parameters.Add("@gtd_cndme", OleDbType.Char).Value = gdet.gtd_cndme;
+                                    cmd.Parameters.Add("@gtd_prvta", OleDbType.Numeric).Value = gdet.gtd_prvta;
+                                    cmd.Parameters.Add("@gtd_impor", OleDbType.Numeric).Value = gdet.gtd_impor;
+                                    cmd.Parameters.Add("@gtd_med00", OleDbType.Numeric).Value = gdet.gtd_med00;
+                                    cmd.Parameters.Add("@gtd_med01", OleDbType.Numeric).Value = gdet.gtd_med01;
+                                    cmd.Parameters.Add("@gtd_med02", OleDbType.Numeric).Value = gdet.gtd_med02;
+                                    cmd.Parameters.Add("@gtd_med03", OleDbType.Numeric).Value = gdet.gtd_med03;
+                                    cmd.Parameters.Add("@gtd_med04", OleDbType.Numeric).Value = gdet.gtd_med04;
+                                    cmd.Parameters.Add("@gtd_med05", OleDbType.Numeric).Value = gdet.gtd_med05;
+                                    cmd.Parameters.Add("@gtd_med06", OleDbType.Numeric).Value = gdet.gtd_med06;
+                                    cmd.Parameters.Add("@gtd_med07", OleDbType.Numeric).Value = gdet.gtd_med07;
+                                    cmd.Parameters.Add("@gtd_med08", OleDbType.Numeric).Value = gdet.gtd_med08;
+                                    cmd.Parameters.Add("@gtd_med09", OleDbType.Numeric).Value = gdet.gtd_med09;
+                                    cmd.Parameters.Add("@gtd_med10", OleDbType.Numeric).Value = gdet.gtd_med10;
+                                    cmd.Parameters.Add("@gtd_med11", OleDbType.Numeric).Value = gdet.gtd_med11;
+                                    cmd.Parameters.Add("@gtd_total", OleDbType.Numeric).Value = gdet.gtd_total;
+                                    cmd.Parameters.Add("@gtd_conf", OleDbType.Char).Value = gdet.gtd_conf;
+
+                                    if (!_ejecute_reindex_dbf())
+                                    {
+                                        if (cn.State == 0) cn.Open();
+                                        cmd.ExecuteNonQuery();
+                                        if (cn.State == ConnectionState.Open) cn.Close();
+                                    }
+
+                                }
+                            }
+
+                           /*EN ESTE CASO QUIERE DECIR QUE NO HUBO ERRORES AL INSERTAR EN EL DBF DE LA GUIAS*/
+
+                            valida_insert = true;
+
+                            #endregion
+                        //}
+
+
+                    }
+                    catch (Exception exc)
+                    {                         
+                    }
+                    if (cn != null)
+                        if (cn.State == ConnectionState.Open) cn.Close();
+                }
+
+                //    OleDbConnection cn = null;
+                //OleDbCommand cmd = null;
+                //OleDbDataAdapter da = null;
+
+                //using
+
+            }
+            catch (Exception)
+            {
+                valida_insert = false;                
+            }
+            return valida_insert;
+        }
+
+        #endregion
+
     }
 
 }

@@ -208,10 +208,25 @@ namespace Transmision.NetWin.Update.BataTransmision {
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/ws_bytes_file_server", ReplyAction="*")]
         [System.ServiceModel.XmlSerializerFormatAttribute(SupportFaults=true)]
         Transmision.NetWin.Update.BataTransmision.ws_bytes_file_serverResponse ws_bytes_file_server(Transmision.NetWin.Update.BataTransmision.ws_bytes_file_serverRequest request);
+        
+        // CODEGEN: Se está generando un contrato de mensaje, ya que el mensaje ws_get_guias_tienda_almacenRequest tiene encabezados.
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/ws_get_guias_tienda_almacen", ReplyAction="*")]
+        [System.ServiceModel.XmlSerializerFormatAttribute(SupportFaults=true)]
+        Transmision.NetWin.Update.BataTransmision.ws_get_guias_tienda_almacenResponse ws_get_guias_tienda_almacen(Transmision.NetWin.Update.BataTransmision.ws_get_guias_tienda_almacenRequest request);
+        
+        // CODEGEN: Se está generando un contrato de mensaje, ya que el mensaje ws_update_guia_tienda_almacenRequest tiene encabezados.
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/ws_update_guia_tienda_almacen", ReplyAction="*")]
+        [System.ServiceModel.XmlSerializerFormatAttribute(SupportFaults=true)]
+        Transmision.NetWin.Update.BataTransmision.ws_update_guia_tienda_almacenResponse ws_update_guia_tienda_almacen(Transmision.NetWin.Update.BataTransmision.ws_update_guia_tienda_almacenRequest request);
+        
+        // CODEGEN: Se está generando un contrato de mensaje, ya que el mensaje ws_exists_guia_tienda_almRequest tiene encabezados.
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/ws_exists_guia_tienda_alm", ReplyAction="*")]
+        [System.ServiceModel.XmlSerializerFormatAttribute(SupportFaults=true)]
+        Transmision.NetWin.Update.BataTransmision.ws_exists_guia_tienda_almResponse ws_exists_guia_tienda_alm(Transmision.NetWin.Update.BataTransmision.ws_exists_guia_tienda_almRequest request);
     }
     
-    /// <comentarios/>
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.7.2053.0")]
+    /// <remarks/>
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.7.2612.0")]
     [System.SerializableAttribute()]
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.ComponentModel.DesignerCategoryAttribute("code")]
@@ -224,7 +239,7 @@ namespace Transmision.NetWin.Update.BataTransmision {
         
         private System.Xml.XmlAttribute[] anyAttrField;
         
-        /// <comentarios/>
+        /// <remarks/>
         [System.Xml.Serialization.XmlElementAttribute(Order=0)]
         public string user_password {
             get {
@@ -236,7 +251,7 @@ namespace Transmision.NetWin.Update.BataTransmision {
             }
         }
         
-        /// <comentarios/>
+        /// <remarks/>
         [System.Xml.Serialization.XmlElementAttribute(Order=1)]
         public string user_name {
             get {
@@ -248,7 +263,7 @@ namespace Transmision.NetWin.Update.BataTransmision {
             }
         }
         
-        /// <comentarios/>
+        /// <remarks/>
         [System.Xml.Serialization.XmlAnyAttributeAttribute()]
         public System.Xml.XmlAttribute[] AnyAttr {
             get {
@@ -270,8 +285,446 @@ namespace Transmision.NetWin.Update.BataTransmision {
         }
     }
     
-    /// <comentarios/>
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.7.2053.0")]
+    /// <remarks/>
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.7.2612.0")]
+    [System.SerializableAttribute()]
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.ComponentModel.DesignerCategoryAttribute("code")]
+    [System.Xml.Serialization.XmlTypeAttribute(Namespace="http://tempuri.org/")]
+    public partial class Fvdespc : object, System.ComponentModel.INotifyPropertyChanged {
+        
+        private string dESC_ALMACField;
+        
+        private string dESC_GUDISField;
+        
+        private string dESC_NDESPField;
+        
+        private string dESC_TDESField;
+        
+        private System.DateTime dESC_FECHAField;
+        
+        private System.DateTime dESC_FDESPField;
+        
+        private string dESC_ESTADField;
+        
+        private string dESC_TIPOField;
+        
+        private string dESC_TORIField;
+        
+        private System.DateTime dESC_FEMIField;
+        
+        private string dESC_SEMIField;
+        
+        private System.DateTime dESC_FTRAField;
+        
+        private string dESC_NUMEField;
+        
+        private string dESC_CONCEField;
+        
+        private string dESC_NMOVCField;
+        
+        private string dESC_EMPREField;
+        
+        private string dESC_SECCIField;
+        
+        private string dESC_CANALField;
+        
+        private string dESC_CADENField;
+        
+        private string dESC_FTXField;
+        
+        private string dESC_TXPOSField;
+        
+        private System.Data.DataTable dT_FVDESPDField;
+        
+        private decimal dESC_UNCAField;
+        
+        private decimal dESC_UNNCField;
+        
+        private decimal dESC_CAJAField;
+        
+        private decimal dESC_VACAField;
+        
+        private decimal dESC_VANCField;
+        
+        private decimal dESC_VCAJField;
+        
+        private string dESC_SEMField;
+        
+        private System.Data.DataTable dT_FVDESPD_TREGMEDIDAField;
+        
+        /// <remarks/>
+        [System.Xml.Serialization.XmlElementAttribute(Order=0)]
+        public string DESC_ALMAC {
+            get {
+                return this.dESC_ALMACField;
+            }
+            set {
+                this.dESC_ALMACField = value;
+                this.RaisePropertyChanged("DESC_ALMAC");
+            }
+        }
+        
+        /// <remarks/>
+        [System.Xml.Serialization.XmlElementAttribute(Order=1)]
+        public string DESC_GUDIS {
+            get {
+                return this.dESC_GUDISField;
+            }
+            set {
+                this.dESC_GUDISField = value;
+                this.RaisePropertyChanged("DESC_GUDIS");
+            }
+        }
+        
+        /// <remarks/>
+        [System.Xml.Serialization.XmlElementAttribute(Order=2)]
+        public string DESC_NDESP {
+            get {
+                return this.dESC_NDESPField;
+            }
+            set {
+                this.dESC_NDESPField = value;
+                this.RaisePropertyChanged("DESC_NDESP");
+            }
+        }
+        
+        /// <remarks/>
+        [System.Xml.Serialization.XmlElementAttribute(Order=3)]
+        public string DESC_TDES {
+            get {
+                return this.dESC_TDESField;
+            }
+            set {
+                this.dESC_TDESField = value;
+                this.RaisePropertyChanged("DESC_TDES");
+            }
+        }
+        
+        /// <remarks/>
+        [System.Xml.Serialization.XmlElementAttribute(Order=4)]
+        public System.DateTime DESC_FECHA {
+            get {
+                return this.dESC_FECHAField;
+            }
+            set {
+                this.dESC_FECHAField = value;
+                this.RaisePropertyChanged("DESC_FECHA");
+            }
+        }
+        
+        /// <remarks/>
+        [System.Xml.Serialization.XmlElementAttribute(Order=5)]
+        public System.DateTime DESC_FDESP {
+            get {
+                return this.dESC_FDESPField;
+            }
+            set {
+                this.dESC_FDESPField = value;
+                this.RaisePropertyChanged("DESC_FDESP");
+            }
+        }
+        
+        /// <remarks/>
+        [System.Xml.Serialization.XmlElementAttribute(Order=6)]
+        public string DESC_ESTAD {
+            get {
+                return this.dESC_ESTADField;
+            }
+            set {
+                this.dESC_ESTADField = value;
+                this.RaisePropertyChanged("DESC_ESTAD");
+            }
+        }
+        
+        /// <remarks/>
+        [System.Xml.Serialization.XmlElementAttribute(Order=7)]
+        public string DESC_TIPO {
+            get {
+                return this.dESC_TIPOField;
+            }
+            set {
+                this.dESC_TIPOField = value;
+                this.RaisePropertyChanged("DESC_TIPO");
+            }
+        }
+        
+        /// <remarks/>
+        [System.Xml.Serialization.XmlElementAttribute(Order=8)]
+        public string DESC_TORI {
+            get {
+                return this.dESC_TORIField;
+            }
+            set {
+                this.dESC_TORIField = value;
+                this.RaisePropertyChanged("DESC_TORI");
+            }
+        }
+        
+        /// <remarks/>
+        [System.Xml.Serialization.XmlElementAttribute(Order=9)]
+        public System.DateTime DESC_FEMI {
+            get {
+                return this.dESC_FEMIField;
+            }
+            set {
+                this.dESC_FEMIField = value;
+                this.RaisePropertyChanged("DESC_FEMI");
+            }
+        }
+        
+        /// <remarks/>
+        [System.Xml.Serialization.XmlElementAttribute(Order=10)]
+        public string DESC_SEMI {
+            get {
+                return this.dESC_SEMIField;
+            }
+            set {
+                this.dESC_SEMIField = value;
+                this.RaisePropertyChanged("DESC_SEMI");
+            }
+        }
+        
+        /// <remarks/>
+        [System.Xml.Serialization.XmlElementAttribute(Order=11)]
+        public System.DateTime DESC_FTRA {
+            get {
+                return this.dESC_FTRAField;
+            }
+            set {
+                this.dESC_FTRAField = value;
+                this.RaisePropertyChanged("DESC_FTRA");
+            }
+        }
+        
+        /// <remarks/>
+        [System.Xml.Serialization.XmlElementAttribute(Order=12)]
+        public string DESC_NUME {
+            get {
+                return this.dESC_NUMEField;
+            }
+            set {
+                this.dESC_NUMEField = value;
+                this.RaisePropertyChanged("DESC_NUME");
+            }
+        }
+        
+        /// <remarks/>
+        [System.Xml.Serialization.XmlElementAttribute(Order=13)]
+        public string DESC_CONCE {
+            get {
+                return this.dESC_CONCEField;
+            }
+            set {
+                this.dESC_CONCEField = value;
+                this.RaisePropertyChanged("DESC_CONCE");
+            }
+        }
+        
+        /// <remarks/>
+        [System.Xml.Serialization.XmlElementAttribute(Order=14)]
+        public string DESC_NMOVC {
+            get {
+                return this.dESC_NMOVCField;
+            }
+            set {
+                this.dESC_NMOVCField = value;
+                this.RaisePropertyChanged("DESC_NMOVC");
+            }
+        }
+        
+        /// <remarks/>
+        [System.Xml.Serialization.XmlElementAttribute(Order=15)]
+        public string DESC_EMPRE {
+            get {
+                return this.dESC_EMPREField;
+            }
+            set {
+                this.dESC_EMPREField = value;
+                this.RaisePropertyChanged("DESC_EMPRE");
+            }
+        }
+        
+        /// <remarks/>
+        [System.Xml.Serialization.XmlElementAttribute(Order=16)]
+        public string DESC_SECCI {
+            get {
+                return this.dESC_SECCIField;
+            }
+            set {
+                this.dESC_SECCIField = value;
+                this.RaisePropertyChanged("DESC_SECCI");
+            }
+        }
+        
+        /// <remarks/>
+        [System.Xml.Serialization.XmlElementAttribute(Order=17)]
+        public string DESC_CANAL {
+            get {
+                return this.dESC_CANALField;
+            }
+            set {
+                this.dESC_CANALField = value;
+                this.RaisePropertyChanged("DESC_CANAL");
+            }
+        }
+        
+        /// <remarks/>
+        [System.Xml.Serialization.XmlElementAttribute(Order=18)]
+        public string DESC_CADEN {
+            get {
+                return this.dESC_CADENField;
+            }
+            set {
+                this.dESC_CADENField = value;
+                this.RaisePropertyChanged("DESC_CADEN");
+            }
+        }
+        
+        /// <remarks/>
+        [System.Xml.Serialization.XmlElementAttribute(Order=19)]
+        public string DESC_FTX {
+            get {
+                return this.dESC_FTXField;
+            }
+            set {
+                this.dESC_FTXField = value;
+                this.RaisePropertyChanged("DESC_FTX");
+            }
+        }
+        
+        /// <remarks/>
+        [System.Xml.Serialization.XmlElementAttribute(Order=20)]
+        public string DESC_TXPOS {
+            get {
+                return this.dESC_TXPOSField;
+            }
+            set {
+                this.dESC_TXPOSField = value;
+                this.RaisePropertyChanged("DESC_TXPOS");
+            }
+        }
+        
+        /// <remarks/>
+        [System.Xml.Serialization.XmlElementAttribute(Order=21)]
+        public System.Data.DataTable DT_FVDESPD {
+            get {
+                return this.dT_FVDESPDField;
+            }
+            set {
+                this.dT_FVDESPDField = value;
+                this.RaisePropertyChanged("DT_FVDESPD");
+            }
+        }
+        
+        /// <remarks/>
+        [System.Xml.Serialization.XmlElementAttribute(Order=22)]
+        public decimal DESC_UNCA {
+            get {
+                return this.dESC_UNCAField;
+            }
+            set {
+                this.dESC_UNCAField = value;
+                this.RaisePropertyChanged("DESC_UNCA");
+            }
+        }
+        
+        /// <remarks/>
+        [System.Xml.Serialization.XmlElementAttribute(Order=23)]
+        public decimal DESC_UNNC {
+            get {
+                return this.dESC_UNNCField;
+            }
+            set {
+                this.dESC_UNNCField = value;
+                this.RaisePropertyChanged("DESC_UNNC");
+            }
+        }
+        
+        /// <remarks/>
+        [System.Xml.Serialization.XmlElementAttribute(Order=24)]
+        public decimal DESC_CAJA {
+            get {
+                return this.dESC_CAJAField;
+            }
+            set {
+                this.dESC_CAJAField = value;
+                this.RaisePropertyChanged("DESC_CAJA");
+            }
+        }
+        
+        /// <remarks/>
+        [System.Xml.Serialization.XmlElementAttribute(Order=25)]
+        public decimal DESC_VACA {
+            get {
+                return this.dESC_VACAField;
+            }
+            set {
+                this.dESC_VACAField = value;
+                this.RaisePropertyChanged("DESC_VACA");
+            }
+        }
+        
+        /// <remarks/>
+        [System.Xml.Serialization.XmlElementAttribute(Order=26)]
+        public decimal DESC_VANC {
+            get {
+                return this.dESC_VANCField;
+            }
+            set {
+                this.dESC_VANCField = value;
+                this.RaisePropertyChanged("DESC_VANC");
+            }
+        }
+        
+        /// <remarks/>
+        [System.Xml.Serialization.XmlElementAttribute(Order=27)]
+        public decimal DESC_VCAJ {
+            get {
+                return this.dESC_VCAJField;
+            }
+            set {
+                this.dESC_VCAJField = value;
+                this.RaisePropertyChanged("DESC_VCAJ");
+            }
+        }
+        
+        /// <remarks/>
+        [System.Xml.Serialization.XmlElementAttribute(Order=28)]
+        public string DESC_SEM {
+            get {
+                return this.dESC_SEMField;
+            }
+            set {
+                this.dESC_SEMField = value;
+                this.RaisePropertyChanged("DESC_SEM");
+            }
+        }
+        
+        /// <remarks/>
+        [System.Xml.Serialization.XmlElementAttribute(Order=29)]
+        public System.Data.DataTable DT_FVDESPD_TREGMEDIDA {
+            get {
+                return this.dT_FVDESPD_TREGMEDIDAField;
+            }
+            set {
+                this.dT_FVDESPD_TREGMEDIDAField = value;
+                this.RaisePropertyChanged("DT_FVDESPD_TREGMEDIDA");
+            }
+        }
+        
+        public event System.ComponentModel.PropertyChangedEventHandler PropertyChanged;
+        
+        protected void RaisePropertyChanged(string propertyName) {
+            System.ComponentModel.PropertyChangedEventHandler propertyChanged = this.PropertyChanged;
+            if ((propertyChanged != null)) {
+                propertyChanged(this, new System.ComponentModel.PropertyChangedEventArgs(propertyName));
+            }
+        }
+    }
+    
+    /// <remarks/>
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.7.2612.0")]
     [System.SerializableAttribute()]
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.ComponentModel.DesignerCategoryAttribute("code")]
@@ -284,7 +737,7 @@ namespace Transmision.NetWin.Update.BataTransmision {
         
         private decimal longitud_file_serverField;
         
-        /// <comentarios/>
+        /// <remarks/>
         [System.Xml.Serialization.XmlElementAttribute(Order=0)]
         public string name_file_server {
             get {
@@ -296,7 +749,7 @@ namespace Transmision.NetWin.Update.BataTransmision {
             }
         }
         
-        /// <comentarios/>
+        /// <remarks/>
         [System.Xml.Serialization.XmlElementAttribute(Order=1)]
         public string fecha_file_server {
             get {
@@ -308,7 +761,7 @@ namespace Transmision.NetWin.Update.BataTransmision {
             }
         }
         
-        /// <comentarios/>
+        /// <remarks/>
         [System.Xml.Serialization.XmlElementAttribute(Order=2)]
         public decimal longitud_file_server {
             get {
@@ -330,8 +783,8 @@ namespace Transmision.NetWin.Update.BataTransmision {
         }
     }
     
-    /// <comentarios/>
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.7.2053.0")]
+    /// <remarks/>
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.7.2612.0")]
     [System.SerializableAttribute()]
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.ComponentModel.DesignerCategoryAttribute("code")]
@@ -346,7 +799,7 @@ namespace Transmision.NetWin.Update.BataTransmision {
         
         private File_Upload[] tda_act_fileField;
         
-        /// <comentarios/>
+        /// <remarks/>
         [System.Xml.Serialization.XmlElementAttribute(Order=0)]
         public string tda_act_rutaws {
             get {
@@ -358,7 +811,7 @@ namespace Transmision.NetWin.Update.BataTransmision {
             }
         }
         
-        /// <comentarios/>
+        /// <remarks/>
         [System.Xml.Serialization.XmlElementAttribute(Order=1)]
         public string tda_act_carpetanom {
             get {
@@ -370,7 +823,7 @@ namespace Transmision.NetWin.Update.BataTransmision {
             }
         }
         
-        /// <comentarios/>
+        /// <remarks/>
         [System.Xml.Serialization.XmlElementAttribute(Order=2)]
         public string tda_act_carpetalocal {
             get {
@@ -382,7 +835,7 @@ namespace Transmision.NetWin.Update.BataTransmision {
             }
         }
         
-        /// <comentarios/>
+        /// <remarks/>
         [System.Xml.Serialization.XmlArrayAttribute(Order=3)]
         public File_Upload[] tda_act_file {
             get {
@@ -1934,6 +2387,124 @@ namespace Transmision.NetWin.Update.BataTransmision {
         }
     }
     
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
+    [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
+    [System.ServiceModel.MessageContractAttribute(WrapperName="ws_get_guias_tienda_almacen", WrapperNamespace="http://tempuri.org/", IsWrapped=true)]
+    public partial class ws_get_guias_tienda_almacenRequest {
+        
+        [System.ServiceModel.MessageHeaderAttribute(Namespace="http://tempuri.org/")]
+        public Transmision.NetWin.Update.BataTransmision.Autenticacion Autenticacion;
+        
+        [System.ServiceModel.MessageBodyMemberAttribute(Namespace="http://tempuri.org/", Order=0)]
+        public string cod_tda;
+        
+        public ws_get_guias_tienda_almacenRequest() {
+        }
+        
+        public ws_get_guias_tienda_almacenRequest(Transmision.NetWin.Update.BataTransmision.Autenticacion Autenticacion, string cod_tda) {
+            this.Autenticacion = Autenticacion;
+            this.cod_tda = cod_tda;
+        }
+    }
+    
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
+    [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
+    [System.ServiceModel.MessageContractAttribute(WrapperName="ws_get_guias_tienda_almacenResponse", WrapperNamespace="http://tempuri.org/", IsWrapped=true)]
+    public partial class ws_get_guias_tienda_almacenResponse {
+        
+        [System.ServiceModel.MessageBodyMemberAttribute(Namespace="http://tempuri.org/", Order=0)]
+        public Transmision.NetWin.Update.BataTransmision.Fvdespc[] ws_get_guias_tienda_almacenResult;
+        
+        public ws_get_guias_tienda_almacenResponse() {
+        }
+        
+        public ws_get_guias_tienda_almacenResponse(Transmision.NetWin.Update.BataTransmision.Fvdespc[] ws_get_guias_tienda_almacenResult) {
+            this.ws_get_guias_tienda_almacenResult = ws_get_guias_tienda_almacenResult;
+        }
+    }
+    
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
+    [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
+    [System.ServiceModel.MessageContractAttribute(WrapperName="ws_update_guia_tienda_almacen", WrapperNamespace="http://tempuri.org/", IsWrapped=true)]
+    public partial class ws_update_guia_tienda_almacenRequest {
+        
+        [System.ServiceModel.MessageHeaderAttribute(Namespace="http://tempuri.org/")]
+        public Transmision.NetWin.Update.BataTransmision.Autenticacion Autenticacion;
+        
+        [System.ServiceModel.MessageBodyMemberAttribute(Namespace="http://tempuri.org/", Order=0)]
+        public string cod_tda;
+        
+        [System.ServiceModel.MessageBodyMemberAttribute(Namespace="http://tempuri.org/", Order=1)]
+        public string nro_guia;
+        
+        public ws_update_guia_tienda_almacenRequest() {
+        }
+        
+        public ws_update_guia_tienda_almacenRequest(Transmision.NetWin.Update.BataTransmision.Autenticacion Autenticacion, string cod_tda, string nro_guia) {
+            this.Autenticacion = Autenticacion;
+            this.cod_tda = cod_tda;
+            this.nro_guia = nro_guia;
+        }
+    }
+    
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
+    [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
+    [System.ServiceModel.MessageContractAttribute(WrapperName="ws_update_guia_tienda_almacenResponse", WrapperNamespace="http://tempuri.org/", IsWrapped=true)]
+    public partial class ws_update_guia_tienda_almacenResponse {
+        
+        [System.ServiceModel.MessageBodyMemberAttribute(Namespace="http://tempuri.org/", Order=0)]
+        public bool ws_update_guia_tienda_almacenResult;
+        
+        public ws_update_guia_tienda_almacenResponse() {
+        }
+        
+        public ws_update_guia_tienda_almacenResponse(bool ws_update_guia_tienda_almacenResult) {
+            this.ws_update_guia_tienda_almacenResult = ws_update_guia_tienda_almacenResult;
+        }
+    }
+    
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
+    [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
+    [System.ServiceModel.MessageContractAttribute(WrapperName="ws_exists_guia_tienda_alm", WrapperNamespace="http://tempuri.org/", IsWrapped=true)]
+    public partial class ws_exists_guia_tienda_almRequest {
+        
+        [System.ServiceModel.MessageHeaderAttribute(Namespace="http://tempuri.org/")]
+        public Transmision.NetWin.Update.BataTransmision.Autenticacion Autenticacion;
+        
+        [System.ServiceModel.MessageBodyMemberAttribute(Namespace="http://tempuri.org/", Order=0)]
+        public string cod_tda;
+        
+        public ws_exists_guia_tienda_almRequest() {
+        }
+        
+        public ws_exists_guia_tienda_almRequest(Transmision.NetWin.Update.BataTransmision.Autenticacion Autenticacion, string cod_tda) {
+            this.Autenticacion = Autenticacion;
+            this.cod_tda = cod_tda;
+        }
+    }
+    
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
+    [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
+    [System.ServiceModel.MessageContractAttribute(WrapperName="ws_exists_guia_tienda_almResponse", WrapperNamespace="http://tempuri.org/", IsWrapped=true)]
+    public partial class ws_exists_guia_tienda_almResponse {
+        
+        [System.ServiceModel.MessageBodyMemberAttribute(Namespace="http://tempuri.org/", Order=0)]
+        public bool ws_exists_guia_tienda_almResult;
+        
+        public ws_exists_guia_tienda_almResponse() {
+        }
+        
+        public ws_exists_guia_tienda_almResponse(bool ws_exists_guia_tienda_almResult) {
+            this.ws_exists_guia_tienda_almResult = ws_exists_guia_tienda_almResult;
+        }
+    }
+    
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
     public interface bata_transaccionSoapChannel : Transmision.NetWin.Update.BataTransmision.bata_transaccionSoap, System.ServiceModel.IClientChannel {
     }
@@ -2477,6 +3048,46 @@ namespace Transmision.NetWin.Update.BataTransmision {
             inValue._file_ws = _file_ws;
             Transmision.NetWin.Update.BataTransmision.ws_bytes_file_serverResponse retVal = ((Transmision.NetWin.Update.BataTransmision.bata_transaccionSoap)(this)).ws_bytes_file_server(inValue);
             return retVal.ws_bytes_file_serverResult;
+        }
+        
+        [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
+        Transmision.NetWin.Update.BataTransmision.ws_get_guias_tienda_almacenResponse Transmision.NetWin.Update.BataTransmision.bata_transaccionSoap.ws_get_guias_tienda_almacen(Transmision.NetWin.Update.BataTransmision.ws_get_guias_tienda_almacenRequest request) {
+            return base.Channel.ws_get_guias_tienda_almacen(request);
+        }
+        
+        public Transmision.NetWin.Update.BataTransmision.Fvdespc[] ws_get_guias_tienda_almacen(Transmision.NetWin.Update.BataTransmision.Autenticacion Autenticacion, string cod_tda) {
+            Transmision.NetWin.Update.BataTransmision.ws_get_guias_tienda_almacenRequest inValue = new Transmision.NetWin.Update.BataTransmision.ws_get_guias_tienda_almacenRequest();
+            inValue.Autenticacion = Autenticacion;
+            inValue.cod_tda = cod_tda;
+            Transmision.NetWin.Update.BataTransmision.ws_get_guias_tienda_almacenResponse retVal = ((Transmision.NetWin.Update.BataTransmision.bata_transaccionSoap)(this)).ws_get_guias_tienda_almacen(inValue);
+            return retVal.ws_get_guias_tienda_almacenResult;
+        }
+        
+        [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
+        Transmision.NetWin.Update.BataTransmision.ws_update_guia_tienda_almacenResponse Transmision.NetWin.Update.BataTransmision.bata_transaccionSoap.ws_update_guia_tienda_almacen(Transmision.NetWin.Update.BataTransmision.ws_update_guia_tienda_almacenRequest request) {
+            return base.Channel.ws_update_guia_tienda_almacen(request);
+        }
+        
+        public bool ws_update_guia_tienda_almacen(Transmision.NetWin.Update.BataTransmision.Autenticacion Autenticacion, string cod_tda, string nro_guia) {
+            Transmision.NetWin.Update.BataTransmision.ws_update_guia_tienda_almacenRequest inValue = new Transmision.NetWin.Update.BataTransmision.ws_update_guia_tienda_almacenRequest();
+            inValue.Autenticacion = Autenticacion;
+            inValue.cod_tda = cod_tda;
+            inValue.nro_guia = nro_guia;
+            Transmision.NetWin.Update.BataTransmision.ws_update_guia_tienda_almacenResponse retVal = ((Transmision.NetWin.Update.BataTransmision.bata_transaccionSoap)(this)).ws_update_guia_tienda_almacen(inValue);
+            return retVal.ws_update_guia_tienda_almacenResult;
+        }
+        
+        [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
+        Transmision.NetWin.Update.BataTransmision.ws_exists_guia_tienda_almResponse Transmision.NetWin.Update.BataTransmision.bata_transaccionSoap.ws_exists_guia_tienda_alm(Transmision.NetWin.Update.BataTransmision.ws_exists_guia_tienda_almRequest request) {
+            return base.Channel.ws_exists_guia_tienda_alm(request);
+        }
+        
+        public bool ws_exists_guia_tienda_alm(Transmision.NetWin.Update.BataTransmision.Autenticacion Autenticacion, string cod_tda) {
+            Transmision.NetWin.Update.BataTransmision.ws_exists_guia_tienda_almRequest inValue = new Transmision.NetWin.Update.BataTransmision.ws_exists_guia_tienda_almRequest();
+            inValue.Autenticacion = Autenticacion;
+            inValue.cod_tda = cod_tda;
+            Transmision.NetWin.Update.BataTransmision.ws_exists_guia_tienda_almResponse retVal = ((Transmision.NetWin.Update.BataTransmision.bata_transaccionSoap)(this)).ws_exists_guia_tienda_alm(inValue);
+            return retVal.ws_exists_guia_tienda_almResult;
         }
     }
 }

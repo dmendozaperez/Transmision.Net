@@ -93,5 +93,22 @@ namespace Transmision.NetWin
             //this.Hide();
             //this.Visible = false;
         }
+
+        private void btnrecepcion_Click(object sender, EventArgs e)
+        {
+            Cursor.Current = Cursors.WaitCursor;
+            try
+            {
+                string codtda = "50" + txttda.Text;         
+                Basico.recepcion_guias_alma(codtda);
+                MessageBox.Show("termino", "Aviso", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            }
+            catch (Exception exc)
+            {
+                MessageBox.Show(exc.Message,"Aviso", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                Cursor.Current = Cursors.Default;
+            }
+            Cursor.Current = Cursors.Default;
+        }
     }
 }
