@@ -3074,7 +3074,7 @@ namespace Transmision.Net.Basico
                 //_dbftienda();
                 /**/
                 //_tienda = "50140";
-                _tienda = tda;
+                //_tienda = tda;
                 #region<EXTRAER POR WEB SERVICE LOS DATOS DE ALMACEN DESPACHOS>
                 BataTransmision.Autenticacion conexion = new BataTransmision.Autenticacion();
                 conexion.user_name = "emcomer";
