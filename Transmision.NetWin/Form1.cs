@@ -84,7 +84,9 @@ namespace Transmision.NetWin
             Cursor.Current = Cursors.WaitCursor;
             string _error = "";
             Basico._genera_transmision(ref _error);
-            MessageBox.Show("ok==>>" + _error);
+            string cc = Basico.ejecuciontime.ToString();
+            MessageBox.Show(cc);
+            //MessageBox.Show("ok==>>" + _error);
             Cursor.Current = Cursors.Default;
         }
 

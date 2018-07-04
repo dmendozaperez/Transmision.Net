@@ -30,9 +30,9 @@
         {
             this.button1 = new System.Windows.Forms.Button();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
-            this.txttda = new System.Windows.Forms.TextBox();
-            this.label1 = new System.Windows.Forms.Label();
             this.btnrecepcion = new System.Windows.Forms.Button();
+            this.label1 = new System.Windows.Forms.Label();
+            this.txttda = new System.Windows.Forms.TextBox();
             this.groupBox1.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -44,7 +44,6 @@
             this.button1.TabIndex = 0;
             this.button1.Text = "ejecutar ws";
             this.button1.UseVisualStyleBackColor = true;
-            this.button1.Visible = false;
             this.button1.Click += new System.EventHandler(this.button1_Click);
             // 
             // groupBox1
@@ -60,12 +59,15 @@
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Recepcion de Guias";
             // 
-            // txttda
+            // btnrecepcion
             // 
-            this.txttda.Location = new System.Drawing.Point(58, 51);
-            this.txttda.Name = "txttda";
-            this.txttda.Size = new System.Drawing.Size(100, 20);
-            this.txttda.TabIndex = 0;
+            this.btnrecepcion.Location = new System.Drawing.Point(58, 102);
+            this.btnrecepcion.Name = "btnrecepcion";
+            this.btnrecepcion.Size = new System.Drawing.Size(167, 23);
+            this.btnrecepcion.TabIndex = 2;
+            this.btnrecepcion.Text = "Recepcion de Guia";
+            this.btnrecepcion.UseVisualStyleBackColor = true;
+            this.btnrecepcion.Click += new System.EventHandler(this.btnrecepcion_Click);
             // 
             // label1
             // 
@@ -76,15 +78,12 @@
             this.label1.TabIndex = 1;
             this.label1.Text = "Tienda";
             // 
-            // btnrecepcion
+            // txttda
             // 
-            this.btnrecepcion.Location = new System.Drawing.Point(58, 102);
-            this.btnrecepcion.Name = "btnrecepcion";
-            this.btnrecepcion.Size = new System.Drawing.Size(167, 23);
-            this.btnrecepcion.TabIndex = 2;
-            this.btnrecepcion.Text = "Recepcion de Guia";
-            this.btnrecepcion.UseVisualStyleBackColor = true;
-            this.btnrecepcion.Click += new System.EventHandler(this.btnrecepcion_Click);
+            this.txttda.Location = new System.Drawing.Point(58, 51);
+            this.txttda.Name = "txttda";
+            this.txttda.Size = new System.Drawing.Size(100, 20);
+            this.txttda.TabIndex = 0;
             // 
             // Form1
             // 

@@ -87,6 +87,11 @@
     <Compile Include="Install_Trans.Designer.cs">
       <DependentUpon>Install_Trans.cs</DependentUpon>
     </Compile>
+    <Compile Include="Service References\BataPos\Reference.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </Compile>
     <Compile Include="Service References\BataTransmision\Reference.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
@@ -121,9 +126,32 @@
     <WCFMetadata Include="Service References\" />
   </ItemGroup>
   <ItemGroup>
+    <WCFMetadataStorage Include="Service References\BataPos\" />
     <WCFMetadataStorage Include="Service References\BataTransmision\" />
   </ItemGroup>
   <ItemGroup>
+    <None Include="Service References\BataPos\Bata_Transaction.wsdl" />
+    <None Include="Service References\BataPos\Genera_Transmision.BataPos.Ent_Config_Service.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\BataPos\Genera_Transmision.BataPos.Ent_File.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\BataPos\Genera_Transmision.BataPos.Ent_File_Ruta.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\BataPos\Genera_Transmision.BataPos.Ent_Fvdespc.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\BataPos\Genera_Transmision.BataPos.Ent_MsgTransac.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\BataPos\Genera_Transmision.BataPos.Ent_PathDBF.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\BataPos\Genera_Transmision.BataPos.Ent_Scdddes.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
     <None Include="Service References\BataTransmision\bata_transaccion1.wsdl" />
     <None Include="Service References\BataTransmision\configuration91.svcinfo" />
   </ItemGroup>
@@ -158,6 +186,21 @@
       <ProductName>Windows Installer 4.5</ProductName>
       <Install>true</Install>
     </BootstrapperPackage>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Service References\BataPos\Bata_Transaction.disco" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Service References\BataPos\configuration91.svcinfo" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Service References\BataPos\configuration.svcinfo" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Service References\BataPos\Reference.svcmap">
+      <Generator>WCF Proxy Generator</Generator>
+      <LastGenOutput>Reference.cs</LastGenOutput>
+    </None>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

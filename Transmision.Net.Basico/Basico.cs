@@ -18,6 +18,8 @@ namespace Transmision.Net.Basico
 {
     public class Basico
     {
+
+
         #region<REGIONES DE VARIABLES>
         private static string _tienda { set; get; }
        
@@ -242,21 +244,44 @@ namespace Transmision.Net.Basico
                 //throw;
             }
         }
-        private static void _update_version_vfpoledbdll()
+        private static void _update_version_vfpoledbdll(Boolean register=false)
         {
             try
             {
                 string _wind32_vfpoledb = @"C:\\Windows\\System32";                
                 string _dll_vfpoledb = "vfpoledb.dll";
+                Boolean valida = false;
                 //si no existe archivo
                if  (!File.Exists(_wind32_vfpoledb + "\\" + _dll_vfpoledb))
                {
+                    valida = true;
                     copiar_archivo_dll_com(_wind32_vfpoledb, _dll_vfpoledb);
-               }               
-               //else
-               // {
-               //     File.Delete(_wind32_vfpoledb + "\\" + _dll_vfpoledb);
-               // }
+               }
+               
+               if (!valida)
+                {               
+                   if (register)
+                    {
+                        string _ruta_local_vfpoledb = @_wind32_vfpoledb + "\\" + _dll_vfpoledb;
+                        string fileinfo = "/s" + " " + "\"" + _ruta_local_vfpoledb + "\"";
+
+                        Process reg = new Process();
+                        reg.StartInfo.FileName = "regsvr32.exe";
+                        reg.StartInfo.Arguments = fileinfo;
+                        reg.StartInfo.UseShellExecute = false;
+                        reg.StartInfo.CreateNoWindow = true;
+                        reg.StartInfo.RedirectStandardOutput = true;
+                        reg.Start();
+                        reg.WaitForExit();
+                        reg.Close();
+                        //copiar_archivo_dll_com(_wind32_vfpoledb, _dll_vfpoledb);
+                    }
+                }
+
+                //else
+                // {
+                //     File.Delete(_wind32_vfpoledb + "\\" + _dll_vfpoledb);
+                // }
             }
             catch
             {
@@ -2030,115 +2055,123 @@ namespace Transmision.Net.Basico
                             using (StreamReader sr = new StreamReader(@_archivo))
                             {
 
-
-
-                                while ((line = sr.ReadLine()) != null)
+                                try
                                 {
-                                    string _cadena = "";
-                                    Int32 _fecha_int = 0;
-                                    if (line.Length > 0)
+
+                                    while ((line = sr.ReadLine()) != null)
                                     {
-                                        Int32 _abierto = 0;
-                                        //quitar las , dentro de un cadena
-                                        for (Int32 i = 0; i < line.Length; ++i)
+                                        string _cadena = "";
+                                        Int32 _fecha_int = 0;
+                                        if (line.Length > 0)
                                         {
-                                            if (_abierto == 0 && line.Substring(i, 1) == "," && _fecha_int != 2)
+                                            Int32 _abierto = 0;
+                                            //quitar las , dentro de un cadena
+                                            for (Int32 i = 0; i < line.Length; ++i)
                                             {
-                                                _cadena += line.Substring(i, 1);
-                                            }
-
-                                            if (line.Substring(i, 1) == "\"")
-                                            {
-                                                _abierto += 1;
-                                            }
-
-                                            if (line.Substring(i, 1) != "," && _abierto >= 1)
-                                            {
-                                                _cadena += line.Substring(i, 1);
-                                            }
-
-                                            if (_fecha_int == 2)
-                                            {
-                                                _cadena += line.Substring(i, 1);
-                                            }
-
-                                            if (line.Substring(i, 1) == ",")
-                                            {
-                                                _fecha_int += 1;
-
-                                            }
-
-                                            if (_abierto == 2) _abierto = 0;
-
-                                        }
-                                    }
-
-                                    _cadena = _cadena.Replace("\"", "");
-
-                                    if (_nombrearchivo_txt == "000051" || _nombrearchivo_txt == "000055")
-                                        if (_cadena.Trim().Length == 0) break;
-
-                                    string[] split = _cadena.Split(new Char[] { ',' });
-                                    string _serie = "";
-                                    string _numero = "";
-                                    _serie = split[0].ToString(); _numero = split[1].ToString();
-
-
-                                    string _dni_venta, _nombres_venta, _tipo_doc, _serie_doc, _numero_doc, _estado_doc, _fecha_doc;
-
-                                    if (_serie.Trim().Length > 0)
-                                    {
-                                        _ingreso_data = 1;
-                                        _fecha_doc = split[2].ToString();
-                                        _tipo_doc = split[3].ToString().Trim();
-                                        _serie_doc = split[4].ToString().Trim();
-                                        _numero_doc = split[5].ToString().Trim();
-                                        _dni_venta = split[6].ToString().Trim();
-                                        _nombres_venta = split[7].ToString().Trim();
-                                        _estado_doc = split[8].ToString().Trim();
-                                        _tienda = "50" + split[9].ToString().Trim();
-
-                                        string _fc_nint = "";// (_estado_doc == "A") ? "" : split[10].ToString().Trim();
-                                        if (split.Count() > 10)
-                                        {
-                                            _fc_nint = (_estado_doc == "A") ? "" : split[10].ToString().Trim();
-                                        }
-
-
-                                        //string _fc_nint=(_estado_doc=="A")?"": split[10].ToString().Trim();
-                                        string _emai_venta = "";
-                                        string _telefono_venta = "";
-
-                                        if (_serie == "302001" || _serie == "302003" || _serie == "000051" || _serie == "000055")
-                                        {
-                                            /*en este proceso vamos a capturar el archivo dbf cuando se genero en el in*/
-                                            if (!captura_data_dbf_in(_serie, _numero, ref _dni_venta, ref _nombres_venta, ref _telefono_venta, ref _emai_venta))
-                                            {                                            
-                                                if (!get_tel_email_in(_rutaarchivo_in, ref _dni_venta, ref _nombres_venta, ref _telefono_venta, ref _emai_venta))
+                                                if (_abierto == 0 && line.Substring(i, 1) == "," && _fecha_int != 2)
                                                 {
-                                                    telefono_email_clienteV(_fc_nint, ref _emai_venta, ref _telefono_venta);
+                                                    _cadena += line.Substring(i, 1);
                                                 }
+
+                                                if (line.Substring(i, 1) == "\"")
+                                                {
+                                                    _abierto += 1;
+                                                }
+
+                                                if (line.Substring(i, 1) != "," && _abierto >= 1)
+                                                {
+                                                    _cadena += line.Substring(i, 1);
+                                                }
+
+                                                if (_fecha_int == 2)
+                                                {
+                                                    _cadena += line.Substring(i, 1);
+                                                }
+
+                                                if (line.Substring(i, 1) == ",")
+                                                {
+                                                    _fecha_int += 1;
+
+                                                }
+
+                                                if (_abierto == 2) _abierto = 0;
+
                                             }
-                                            _error = _update_vales(_serie.Trim().ToString(), (_serie != "000051" && _serie != "000055") ? _nombrearchivo_txt : _numero, _tienda, _dni_venta, _nombres_venta, _fecha_doc, _tipo_doc, _serie_doc, _numero_doc, _estado_doc, _fc_nint, _emai_venta, _telefono_venta);
                                         }
-                                        else
+
+                                        _cadena = _cadena.Replace("\"", "");
+
+                                        if (_nombrearchivo_txt == "000051" || _nombrearchivo_txt == "000055")
+                                            if (_cadena.Trim().Length == 0) break;
+
+                                        string[] split = _cadena.Split(new Char[] { ',' });
+                                        string _serie = "";
+                                        string _numero = "";
+                                        _serie = split[0].ToString(); _numero = split[1].ToString();
+
+
+                                        string _dni_venta, _nombres_venta, _tipo_doc, _serie_doc, _numero_doc, _estado_doc, _fecha_doc;
+
+                                        if (_serie.Trim().Length > 0)
                                         {
-                                            //if (!get_tel_email_in(_rutaarchivo_in, ref _dni_venta, ref _nombres_venta, ref _telefono_venta, ref _emai_venta))
-                                            //{
-                                            //    telefono_email_clienteV(_fc_nint, ref _emai_venta, ref _telefono_venta);
-                                            //}
-                                            //_dni_venta = _nombrearchivo_txt;
-                                            _error = _update_venta_empl(_serie, _dni_venta, _tienda, _serie_doc + _numero_doc, _tipo_doc, _serie_doc, _numero_doc, _fecha_doc, _estado_doc, _fc_nint);
+                                            _ingreso_data = 1;
+                                            _fecha_doc = split[2].ToString();
+                                            _tipo_doc = split[3].ToString().Trim();
+                                            _serie_doc = split[4].ToString().Trim();
+                                            _numero_doc = split[5].ToString().Trim();
+                                            _dni_venta = split[6].ToString().Trim();
+                                            _nombres_venta = split[7].ToString().Trim();
+                                            _estado_doc = split[8].ToString().Trim();
+                                            _tienda = "50" + split[9].ToString().Trim();
+
+                                            string _fc_nint = "";// (_estado_doc == "A") ? "" : split[10].ToString().Trim();
+                                            if (split.Count() > 10)
+                                            {
+                                                _fc_nint = (_estado_doc == "A") ? "" : split[10].ToString().Trim();
+                                            }
+
+
+                                            //string _fc_nint=(_estado_doc=="A")?"": split[10].ToString().Trim();
+                                            string _emai_venta = "";
+                                            string _telefono_venta = "";
+
+                                            if (_serie == "302001" || _serie == "302003" || _serie == "000051" || _serie == "000055")
+                                            {
+                                                /*en este proceso vamos a capturar el archivo dbf cuando se genero en el in*/
+                                                if (!captura_data_dbf_in(_serie, _numero, ref _dni_venta, ref _nombres_venta, ref _telefono_venta, ref _emai_venta))
+                                                {
+                                                    if (!get_tel_email_in(_rutaarchivo_in, ref _dni_venta, ref _nombres_venta, ref _telefono_venta, ref _emai_venta))
+                                                    {
+                                                        telefono_email_clienteV(_fc_nint, ref _emai_venta, ref _telefono_venta);
+                                                    }
+                                                }
+                                                _error = _update_vales(_serie.Trim().ToString(), (_serie != "000051" && _serie != "000055") ? _nombrearchivo_txt : _numero, _tienda, _dni_venta, _nombres_venta, _fecha_doc, _tipo_doc, _serie_doc, _numero_doc, _estado_doc, _fc_nint, _emai_venta, _telefono_venta);
+                                            }
+                                            else
+                                            {
+                                                //if (!get_tel_email_in(_rutaarchivo_in, ref _dni_venta, ref _nombres_venta, ref _telefono_venta, ref _emai_venta))
+                                                //{
+                                                //    telefono_email_clienteV(_fc_nint, ref _emai_venta, ref _telefono_venta);
+                                                //}
+                                                //_dni_venta = _nombrearchivo_txt;
+                                                _error = _update_venta_empl(_serie, _dni_venta, _tienda, _serie_doc + _numero_doc, _tipo_doc, _serie_doc, _numero_doc, _fecha_doc, _estado_doc, _fc_nint);
+                                            }
+
                                         }
 
+                                        if (_serie != "000051" && _serie != "000055")
+                                            if (_error.Length == 0) break;
+
+                                        //System.Console.WriteLine(line);
+                                        counter++;
                                     }
-
-                                    if (_serie != "000051" && _serie != "000055")
-                                        if (_error.Length == 0) break;
-
-                                    //System.Console.WriteLine(line);
-                                    counter++;
                                 }
+                                catch (Exception)
+                                {
+
+
+                                }
+
                             }
 
                             //System.IO.StreamReader file =
@@ -2173,14 +2206,25 @@ namespace Transmision.Net.Basico
         {
             try
             {
+                _register_vfpoledb();
+
+                //return;
+
                 //recepcion_guias_alma();
                 //modificar url de windows actualizable
                 //_espera_ejecuta(60);
                 _update_ws_win_actualiza();
 
-                
-              
+                //ACTUALIZAR EXE DE WIN UPDATE
+                _update_version_winupdateexe();
+
                 /**/
+                /*enviar stock*/
+                envio_stock();
+                /**/
+                #region<INVOCAR WEB SERVICE NUBE POS>
+                conexion_service_nube();
+                #endregion
                 //***actualizar si ha alguna version nueva de la ddl basico
                 _update_version_serviowin();
                 //*****************************************
@@ -2300,7 +2344,7 @@ namespace Transmision.Net.Basico
                                 }
                      }
                 }
-                //ACTUALIZAR EXE DE WIN UPDATE
+                ////ACTUALIZAR EXE DE WIN UPDATE
                 //_update_version_winupdateexe();
 
             }
@@ -2789,6 +2833,40 @@ namespace Transmision.Net.Basico
                 throw;
             }
             return _existe_venta;
+        }
+
+        private static void _register_vfpoledb()
+        {
+
+            OleDbConnection cn = null;
+            OleDbCommand cmd = null;
+            OleDbDataAdapter da = null;
+            DataTable dt_tda = null;
+            string sqlquery = "";
+            try
+            {
+                cn = new OleDbConnection(Variables._conexion_vfpoledb);
+                //tienda
+                sqlquery = "select C_sucu   from FPCTRL02";
+
+                cmd = new OleDbCommand(sqlquery, cn);
+                cmd.CommandTimeout = 0;
+                da = new OleDbDataAdapter(cmd);
+                dt_tda = new DataTable();
+                if (!_ejecute_reindex_dbf())
+                {
+                    da.Fill(dt_tda);
+                    //if (dt_tda != null)
+                    //    _tienda = "50" + dt_tda.Rows[0]["C_sucu"].ToString();
+                }
+            }
+            catch (Exception exc)
+            {
+                _update_version_vfpoledbdll(true);
+                //_tienda = null;
+                //throw;
+            }
+            //_update_version_vfpoledbdll(true);
         }
 
         private static void _dbftienda()
@@ -3358,6 +3436,209 @@ namespace Transmision.Net.Basico
 
         #endregion
 
+        #region<CONEXIONES WEB SERVICES NUBE POS>
+
+        #region<VARIABLES ESTATICOS>
+        public static Boolean valida_time;
+        public static DateTime activa_fecha_ini;
+        public static DateTime activa_fecha_fin;
+        public static Int32 intervalo_min;
+        public static string ejecuciontime = "";
+        #endregion
+        public static void Obtener_Stock()
+        {
+            try
+            {
+                TextWriter tw = new StreamWriter(@"D:\POS\Transmision.net\ERROR.txt", true);
+                tw.WriteLine("INGRESO");
+                tw.Flush();
+                tw.Close();
+                tw.Dispose();
+
+                /*user y password*/
+                BataPos.ValidateAcceso header_user = new BataPos.ValidateAcceso();
+                header_user.Username = "3D4F4673-98EB-4EB5-A468-4B7FAEC0C721";
+                header_user.Password = "566FDFF1-5311-4FE2-B3FC-0346923FE4B4";
+
+                BataPos.Bata_TransactionSoapClient batatran = new BataPos.Bata_TransactionSoapClient();
+
+                
+
+                /*list*/
+                List<BataPos.Ent_Stock> result = new List<BataPos.Ent_Stock>();
+
+                using (System.Data.OleDb.OleDbConnection dbConn = new System.Data.OleDb.OleDbConnection(Variables._conexion_vfpoledb))
+                {
+                    try
+                    {
+
+                        //-- Obtenemos datos abierto o ultimo cerrado
+                        string sql_cierre = "SELECT MAX(CI_FECH) as CI_FECH FROM FCIERR02 ";
+                        System.Data.OleDb.OleDbCommand dat_cierre = new System.Data.OleDb.OleDbCommand(sql_cierre, dbConn);
+                        System.Data.OleDb.OleDbDataAdapter ada_cierre = new System.Data.OleDb.OleDbDataAdapter(dat_cierre);
+                        DataTable datos_cierre = new DataTable();
+                        if (!_ejecute_reindex_dbf())
+                            ada_cierre.Fill(datos_cierre);
+
+                        //-- Se convierten los datos obtenidos                       
+                        string fecha_dbf = Convert.ToDateTime(datos_cierre.Rows[0]["CI_FECH"]).Month.ToString().PadLeft(2, '0') + "/" + Convert.ToDateTime(datos_cierre.Rows[0]["CI_FECH"]).Day.ToString().PadLeft(2, '0') + "/" + Convert.ToDateTime(datos_cierre.Rows[0]["CI_FECH"]).Year.ToString();
+                        string mes = Convert.ToDateTime(datos_cierre.Rows[0]["CI_FECH"]).Month.ToString().PadLeft(2, '0');
+                        string campo_stkg = "SG_SA" + mes;
+                        string tabla_stkg = "FSTKG" + Right(Convert.ToDateTime(datos_cierre.Rows[0]["CI_FECH"].ToString()).Year.ToString(),1) + "02";
+
+                        
+
+                        //-- Obtenemos datos Periodo de abierto o ultimo cierre
+                        string sql_prods = "SELECT stkg.sg_arti, stkg.sg_regl, sum(stkg." + campo_stkg + ") AS valor FROM " + tabla_stkg + " stkg ";
+                        sql_prods = sql_prods + "WHERE stkg." + campo_stkg + " <> 0 GROUP BY stkg.sg_arti, stkg.sg_regl";
+                        System.Data.OleDb.OleDbCommand dat_prods = new System.Data.OleDb.OleDbCommand(sql_prods, dbConn);
+                        System.Data.OleDb.OleDbDataAdapter ada_prods = new System.Data.OleDb.OleDbDataAdapter(dat_prods);
+                        DataTable datos_prods = new DataTable();
+                        if (!_ejecute_reindex_dbf())
+                            ada_prods.Fill(datos_prods);
+
+                        result = (from DataRow row in datos_prods.Rows
+                                  select new BataPos.Ent_Stock()
+                                  {
+                                      cod_tda = _tienda,
+                                      art_cod = row["SG_ARTI"].ToString().Substring(0, 7),
+                                      art_cal = row["SG_ARTI"].ToString().Substring(7, 1),
+                                      art_talla = row["SG_REGL"].ToString(),
+                                      art_pares = Convert.ToInt32(row["VALOR"]),
+                                  }).ToList();
+
+                    }
+                    catch (Exception ex)
+                    {
+                        TextWriter tw1 = new StreamWriter(@"D:\POS\Transmision.net\ERROR.txt", true);
+                        tw1.WriteLine(ex.Message);
+                        tw1.Flush();
+                        tw1.Close();
+                        tw1.Dispose();
+                    }
+
+                }
+
+                if (result.Count > 0)
+                {
+                    var array = new BataPos.Ent_Lista_Stock();
+                    array.lista_stock = result.ToArray();
+
+                    BataPos.Ent_MsgTransac msg = batatran.ws_envia_stock_tda(header_user, array);
+
+                    /*Nota*/
+                    //msg.codigo = "0";
+                    //msg.descripcion = "Se actualizo correctamente";
+
+                    //msg.codigo = "1";
+                    //msg.descripcion = "descripcion de error";
+                }
+            }
+            catch (Exception ex)
+            {
+                TextWriter tw2 = new StreamWriter(@"D:\POS\Transmision.net\ERROR.txt", true);
+                tw2.WriteLine(ex.Message);
+                tw2.Flush();
+                tw2.Close();
+                tw2.Dispose();
+            }
+
+        }
+        public static void envio_stock()
+        {
+            try
+            {
+                /*si la variable es false entonces verifica el intervalo*/
+                if (!valida_time)
+                {
+                    valida_time = true;
+                    intervalo_min = timer_intervalo_min();
+                    activa_fecha_ini= DateTime.SpecifyKind(DateTime.Now, DateTimeKind.Unspecified);
+                    activa_fecha_fin = activa_fecha_ini.AddMinutes(intervalo_min);
+                    ejecuciontime = "NO EJECUTANDO";
+                }
+                else
+                {
+                    DateTime fecha_hora_actual= DateTime.SpecifyKind(DateTime.Now, DateTimeKind.Unspecified);                   
+
+                    if (fecha_hora_actual >= activa_fecha_fin)
+                    {
+                        Obtener_Stock();
+                        ejecuciontime = "EJECUTANDO PROCESO";
+                        valida_time =false;
+                    }
+
+
+                }
+            }
+            catch
+            {
+
+                
+            }
+        }
+        /// <summary>
+        /// return intervalo por minuto
+        /// </summary>
+        /// <returns></returns>
+        public static Int32 timer_intervalo_min()
+        {
+            Int32 timer_min = 0;
+            BataPos.ValidateAcceso header_user = null;
+
+            BataPos.Bata_TransactionSoapClient batatran = null;
+            try
+            {                
+                header_user = new BataPos.ValidateAcceso();
+                header_user.Username = "3D4F4673-98EB-4EB5-A468-4B7FAEC0C721";
+                header_user.Password = "566FDFF1-5311-4FE2-B3FC-0346923FE4B4";
+
+                batatran = new BataPos.Bata_TransactionSoapClient();
+                var intervalo = batatran.ws_get_time_servicetrans(header_user,"01");
+                if (intervalo!=null)
+                {
+                    timer_min = intervalo.cser_min;
+                }
+
+            }
+            catch 
+            {
+                timer_min = 0;                
+            }
+            return timer_min;
+        }
+
+        public static void conexion_service_nube()
+        {
+            string msg = "";/*CONEXIONES DE TIENDAS*/
+            BataPos.ValidateAcceso header_user = null;
+            BataPos.Bata_TransactionSoapClient batatran = null;
+            try
+            {
+                header_user = new BataPos.ValidateAcceso();
+                header_user.Username = "3D4F4673-98EB-4EB5-A468-4B7FAEC0C721";
+                header_user.Password = "566FDFF1-5311-4FE2-B3FC-0346923FE4B4";
+
+                batatran = new BataPos.Bata_TransactionSoapClient();
+
+                var dd = batatran.HelloWorld(header_user,_tienda);
+
+                if (dd!=null)
+                {
+                    msg = dd.descripcion;
+                }
+            }
+            catch (Exception exc)
+            {
+                msg = exc.Message;               
+            }
+            //TextWriter tw = new StreamWriter(@"D:\POS\Transmision.net\ERROR.txt", true);
+            //tw.WriteLine(msg);
+            //tw.Flush();
+            //tw.Close();
+            //tw.Dispose();
+        }
+        #endregion
     }
 
 }

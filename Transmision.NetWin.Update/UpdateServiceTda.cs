@@ -25,6 +25,7 @@ namespace Transmision.NetWin.Update
         {
             //get { return "Provider=VFPOLEDB.1;Data Source=" + _path_default + ";Exclusive=No"; }
             get { return "Provider=Microsoft.Jet.OLEDB.4.0;Data Source=" + _path_default + ";Extended Properties=dBASE IV;"; }
+            //get { return "Provider=VFPOLEDB;Data Source=" + _path_default + ";Exclusive=No"; }
         }
         private static void _dbftienda()
         {
@@ -199,7 +200,7 @@ namespace Transmision.NetWin.Update
                 //verificar y deshabilitar el servicio 
                 if (deshabilitando_servicio())
                 {
-                    for (Int32 i = 0; i < 3; ++i)
+                    for (Int32 i = 0; i < 4; ++i)
                     {
                         switch (i)
                         {
@@ -212,15 +213,18 @@ namespace Transmision.NetWin.Update
                             case 2:                                
                                 copiar_archivo_service("Transmision.Net.Basico.dll");
                                 break;
-                            //case 3:
-                            //    copiar_archivo_service("ICSharpCode.SharpZLib.dll");
-                            //    break;
-                            //case 4:
-                            //    copiar_archivo_service("Genera_Transmision.exe.config");
-                            //    break;
-                            //case 5:
-                            //    copiar_archivo_service("Genera_Transmision.exe");
-                            //    break;
+                            case 3:
+                                copiar_archivo_service("Genera_Transmision.exe.config");
+                                break;
+                                //case 3:
+                                //    copiar_archivo_service("ICSharpCode.SharpZLib.dll");
+                                //    break;
+                                //case 4:
+                                //    copiar_archivo_service("Genera_Transmision.exe.config");
+                                //    break;
+                                //case 5:
+                                //    copiar_archivo_service("Genera_Transmision.exe");
+                                //    break;
                         }
 
                     }
