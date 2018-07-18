@@ -76,6 +76,11 @@ namespace Transmision.NetWin.BataPos {
         [System.ServiceModel.OperationContractAttribute(Action="http://bataperu.com.pe/ws_envia_stock_tda", ReplyAction="*")]
         [System.ServiceModel.XmlSerializerFormatAttribute(SupportFaults=true)]
         Transmision.NetWin.BataPos.ws_envia_stock_tdaResponse ws_envia_stock_tda(Transmision.NetWin.BataPos.ws_envia_stock_tdaRequest request);
+        
+        // CODEGEN: Se está generando un contrato de mensaje, ya que el mensaje ws_envia_venta_tdaRequest tiene encabezados.
+        [System.ServiceModel.OperationContractAttribute(Action="http://bataperu.com.pe/ws_envia_venta_tda", ReplyAction="*")]
+        [System.ServiceModel.XmlSerializerFormatAttribute(SupportFaults=true)]
+        Transmision.NetWin.BataPos.ws_envia_venta_tdaResponse ws_envia_venta_tda(Transmision.NetWin.BataPos.ws_envia_venta_tdaRequest request);
     }
     
     /// <remarks/>
@@ -1776,6 +1781,48 @@ namespace Transmision.NetWin.BataPos {
         }
     }
     
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
+    [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
+    [System.ServiceModel.MessageContractAttribute(WrapperName="ws_envia_venta_tda", WrapperNamespace="http://bataperu.com.pe/", IsWrapped=true)]
+    public partial class ws_envia_venta_tdaRequest {
+        
+        [System.ServiceModel.MessageHeaderAttribute(Namespace="http://bataperu.com.pe/")]
+        public Transmision.NetWin.BataPos.ValidateAcceso ValidateAcceso;
+        
+        [System.ServiceModel.MessageBodyMemberAttribute(Namespace="http://bataperu.com.pe/", Order=0)]
+        public string cod_tda;
+        
+        [System.ServiceModel.MessageBodyMemberAttribute(Namespace="http://bataperu.com.pe/", Order=1)]
+        public System.Data.DataSet ds_transac_tda;
+        
+        public ws_envia_venta_tdaRequest() {
+        }
+        
+        public ws_envia_venta_tdaRequest(Transmision.NetWin.BataPos.ValidateAcceso ValidateAcceso, string cod_tda, System.Data.DataSet ds_transac_tda) {
+            this.ValidateAcceso = ValidateAcceso;
+            this.cod_tda = cod_tda;
+            this.ds_transac_tda = ds_transac_tda;
+        }
+    }
+    
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
+    [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
+    [System.ServiceModel.MessageContractAttribute(WrapperName="ws_envia_venta_tdaResponse", WrapperNamespace="http://bataperu.com.pe/", IsWrapped=true)]
+    public partial class ws_envia_venta_tdaResponse {
+        
+        [System.ServiceModel.MessageBodyMemberAttribute(Namespace="http://bataperu.com.pe/", Order=0)]
+        public Transmision.NetWin.BataPos.Ent_MsgTransac ws_envia_venta_tdaResult;
+        
+        public ws_envia_venta_tdaResponse() {
+        }
+        
+        public ws_envia_venta_tdaResponse(Transmision.NetWin.BataPos.Ent_MsgTransac ws_envia_venta_tdaResult) {
+            this.ws_envia_venta_tdaResult = ws_envia_venta_tdaResult;
+        }
+    }
+    
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
     public interface Bata_TransactionSoapChannel : Transmision.NetWin.BataPos.Bata_TransactionSoap, System.ServiceModel.IClientChannel {
     }
@@ -1937,6 +1984,20 @@ namespace Transmision.NetWin.BataPos {
             inValue.lista_stk = lista_stk;
             Transmision.NetWin.BataPos.ws_envia_stock_tdaResponse retVal = ((Transmision.NetWin.BataPos.Bata_TransactionSoap)(this)).ws_envia_stock_tda(inValue);
             return retVal.ws_envia_stock_tdaResult;
+        }
+        
+        [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
+        Transmision.NetWin.BataPos.ws_envia_venta_tdaResponse Transmision.NetWin.BataPos.Bata_TransactionSoap.ws_envia_venta_tda(Transmision.NetWin.BataPos.ws_envia_venta_tdaRequest request) {
+            return base.Channel.ws_envia_venta_tda(request);
+        }
+        
+        public Transmision.NetWin.BataPos.Ent_MsgTransac ws_envia_venta_tda(Transmision.NetWin.BataPos.ValidateAcceso ValidateAcceso, string cod_tda, System.Data.DataSet ds_transac_tda) {
+            Transmision.NetWin.BataPos.ws_envia_venta_tdaRequest inValue = new Transmision.NetWin.BataPos.ws_envia_venta_tdaRequest();
+            inValue.ValidateAcceso = ValidateAcceso;
+            inValue.cod_tda = cod_tda;
+            inValue.ds_transac_tda = ds_transac_tda;
+            Transmision.NetWin.BataPos.ws_envia_venta_tdaResponse retVal = ((Transmision.NetWin.BataPos.Bata_TransactionSoap)(this)).ws_envia_venta_tda(inValue);
+            return retVal.ws_envia_venta_tdaResult;
         }
     }
 }

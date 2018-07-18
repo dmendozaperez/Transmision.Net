@@ -2312,7 +2312,10 @@ namespace Transmision.Net.Basico
                                                         {
                                                             DataTable dtventa_envio = null;
                                                             _crearfolder_limpiar();
-                                                            _genera_ventas(_fecha_proceso, ref dtventa_envio);
+
+                                                            string _error_venta = "";
+                                                            
+                                                            _genera_ventas(_fecha_proceso, ref dtventa_envio,ref _error_venta);
                                                             //genera archivos y lo convierte en BYTE[]
                                                             #region<PROCDIMIENTO PARA CONVERTIR EN BYTES Y ENVIAR WEB SERVICE> 
 
@@ -2330,7 +2333,7 @@ namespace Transmision.Net.Basico
                                                                 String[] _mensaje = trans.ws_transmision_ingreso_SQL(conexion, _archivo, _name_archivo);
 
                                                                 //si la transmision es exitosa entonces vamos a modificar al campo FC_FTX de la tabla FFACTC02
-                                                                if (_mensaje[0].ToString() == "1")
+                                                                if (_mensaje[0].ToString() == "1" && _error_venta.Length==0)
                                                                 {
                                                                     //vamos a modificar el estado
                                                                     _editestadoventas(dtventa_envio);
@@ -2632,7 +2635,7 @@ namespace Transmision.Net.Basico
             return _archivo_comp;
         }
         //
-        private static void _genera_ventas(DateTime _fecha_proceso,ref DataTable dtventa_envio)
+        private static void _genera_ventas(DateTime _fecha_proceso,ref DataTable dtventa_envio,ref string error_venta)
         {
                       
             string sqlquery = "";
@@ -2736,6 +2739,7 @@ namespace Transmision.Net.Basico
 
                         }
 
+                                
 
                     }
                 }
@@ -2779,7 +2783,27 @@ namespace Transmision.Net.Basico
 
                                 tabla_FNOTAA(dt_pago_clone);
                             }
+                            else
+                            {
+                                columnsToDelete = new List<DataColumn>();
+                                foreach (DataColumn col in dt_pago_clone.Columns)
+                                {
+                                    if (Left(col.ColumnName, 2).ToUpper() == "fc".ToUpper())
+                                        columnsToDelete.Add(col);
+                                }
+
+                                foreach (DataColumn col in columnsToDelete)
+                                    dt_pago_clone.Columns.Remove(col);
+                            }
                         }
+
+                        DataSet ds_venta = new DataSet();
+                        ds_venta.Tables.Add(dt_cab_clone);
+                        ds_venta.Tables.Add(dt_det_clone);
+                        ds_venta.Tables.Add(dt_pago_clone);
+
+                        error_venta=envia_transac_ventas(ds_venta);
+
 
                     }
                 }
@@ -3638,6 +3662,36 @@ namespace Transmision.Net.Basico
             //tw.Close();
             //tw.Dispose();
         }
+
+        #region<ENVIAR VENTAS>
+        public static String envia_transac_ventas(DataSet ds_venta)
+        {
+            string _error = "";
+            try
+            {
+                /*user y password*/
+                BataPos.ValidateAcceso header_user = new BataPos.ValidateAcceso();
+                header_user.Username = "3D4F4673-98EB-4EB5-A468-4B7FAEC0C721";
+                header_user.Password = "566FDFF1-5311-4FE2-B3FC-0346923FE4B4";
+
+                BataPos.Bata_TransactionSoapClient batatran = new BataPos.Bata_TransactionSoapClient();
+
+                BataPos.Ent_MsgTransac  result = batatran.ws_envia_venta_tda(header_user, _tienda, ds_venta);
+
+                if (result.codigo!="0")                
+                    _error = result.descripcion;                
+
+            }
+            catch (Exception exc)
+            {
+
+                _error = exc.Message;
+            }
+            return _error;
+        } 
+        #endregion
+
+
         #endregion
     }
 

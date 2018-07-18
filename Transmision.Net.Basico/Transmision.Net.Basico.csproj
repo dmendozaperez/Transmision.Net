@@ -129,9 +129,6 @@
     </None>
   </ItemGroup>
   <ItemGroup>
-    <None Include="Service References\BataPos\Bata_Transaction.disco" />
-  </ItemGroup>
-  <ItemGroup>
     <None Include="Service References\BataPos\configuration91.svcinfo" />
   </ItemGroup>
   <ItemGroup>
@@ -142,6 +139,9 @@
       <Generator>WCF Proxy Generator</Generator>
       <LastGenOutput>Reference.cs</LastGenOutput>
     </None>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Service References\BataPos\Bata_Transaction.disco" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
