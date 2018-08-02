@@ -616,6 +616,26 @@
           </s:sequence>
         </s:complexType>
       </s:element>
+      <s:element name="ws_valida_tda_ecu">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="cod_tda" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="ws_valida_tda_ecuResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="ws_valida_tda_ecuResult" type="tns:Resultado_Tda_Ecu" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:complexType name="Resultado_Tda_Ecu">
+        <s:sequence>
+          <s:element minOccurs="1" maxOccurs="1" name="existe" type="s:boolean" />
+          <s:element minOccurs="0" maxOccurs="1" name="descripcion" type="s:string" />
+        </s:sequence>
+      </s:complexType>
       <s:element name="ws_get_file_upload">
         <s:complexType />
       </s:element>
@@ -1090,6 +1110,15 @@
   <wsdl:message name="ws_update_venta_emplSoapOut">
     <wsdl:part name="parameters" element="tns:ws_update_venta_emplResponse" />
   </wsdl:message>
+  <wsdl:message name="ws_valida_tda_ecuSoapIn">
+    <wsdl:part name="parameters" element="tns:ws_valida_tda_ecu" />
+  </wsdl:message>
+  <wsdl:message name="ws_valida_tda_ecuSoapOut">
+    <wsdl:part name="parameters" element="tns:ws_valida_tda_ecuResponse" />
+  </wsdl:message>
+  <wsdl:message name="ws_valida_tda_ecuAutenticacion">
+    <wsdl:part name="Autenticacion" element="tns:Autenticacion" />
+  </wsdl:message>
   <wsdl:message name="ws_get_file_uploadSoapIn">
     <wsdl:part name="parameters" element="tns:ws_get_file_upload" />
   </wsdl:message>
@@ -1283,6 +1312,10 @@
     <wsdl:operation name="ws_update_venta_empl">
       <wsdl:input message="tns:ws_update_venta_emplSoapIn" />
       <wsdl:output message="tns:ws_update_venta_emplSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="ws_valida_tda_ecu">
+      <wsdl:input message="tns:ws_valida_tda_ecuSoapIn" />
+      <wsdl:output message="tns:ws_valida_tda_ecuSoapOut" />
     </wsdl:operation>
     <wsdl:operation name="ws_get_file_upload">
       <wsdl:input message="tns:ws_get_file_uploadSoapIn" />
@@ -1670,6 +1703,16 @@
       <soap:operation soapAction="http://tempuri.org/ws_update_venta_empl" style="document" />
       <wsdl:input>
         <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ws_valida_tda_ecu">
+      <soap:operation soapAction="http://tempuri.org/ws_valida_tda_ecu" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+        <soap:header message="tns:ws_valida_tda_ecuAutenticacion" part="Autenticacion" use="literal" />
       </wsdl:input>
       <wsdl:output>
         <soap:body use="literal" />
@@ -2091,6 +2134,16 @@
       <soap12:operation soapAction="http://tempuri.org/ws_update_venta_empl" style="document" />
       <wsdl:input>
         <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ws_valida_tda_ecu">
+      <soap12:operation soapAction="http://tempuri.org/ws_valida_tda_ecu" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+        <soap12:header message="tns:ws_valida_tda_ecuAutenticacion" part="Autenticacion" use="literal" />
       </wsdl:input>
       <wsdl:output>
         <soap12:body use="literal" />

@@ -107,6 +107,9 @@
     <None Include="Service References\BataTransmision\Transmision.Net.Basico.BataTransmision.Fvdespc.datasource">
       <DependentUpon>Reference.svcmap</DependentUpon>
     </None>
+    <None Include="Service References\BataTransmision\Transmision.Net.Basico.BataTransmision.Resultado_Tda_Ecu.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
     <None Include="Service References\BataTransmision\Transmision.Net.Basico.BataTransmision.Ruta_Update_File.datasource">
       <DependentUpon>Reference.svcmap</DependentUpon>
     </None>

@@ -79,7 +79,9 @@
     <EmbeddedResource Include="UpdateServiceTda.resx">
       <DependentUpon>UpdateServiceTda.cs</DependentUpon>
     </EmbeddedResource>
-    <None Include="app.config" />
+    <None Include="app.config">
+      <SubType>Designer</SubType>
+    </None>
     <None Include="Properties\DataSources\System.Data.DataSet.datasource" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
@@ -115,6 +117,9 @@
     <None Include="Service References\BataTransmision\Transmision.NetWin.Update.BataTransmision.Fvdespc.datasource">
       <DependentUpon>Reference.svcmap</DependentUpon>
     </None>
+    <None Include="Service References\BataTransmision\Transmision.NetWin.Update.BataTransmision.Resultado_Tda_Ecu.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
     <None Include="Service References\BataTransmision\Transmision.NetWin.Update.BataTransmision.Ruta_Update_File.datasource">
       <DependentUpon>Reference.svcmap</DependentUpon>
     </None>
@@ -140,9 +145,6 @@
     </None>
   </ItemGroup>
   <ItemGroup>
-    <None Include="Service References\BataPos\Bata_Transaction.disco" />
-  </ItemGroup>
-  <ItemGroup>
     <None Include="Service References\BataPos\configuration91.svcinfo" />
   </ItemGroup>
   <ItemGroup>
@@ -153,6 +155,9 @@
       <Generator>WCF Proxy Generator</Generator>
       <LastGenOutput>Reference.cs</LastGenOutput>
     </None>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Service References\BataPos\Bata_Transaction.disco" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

@@ -199,6 +199,11 @@ namespace Genera_Transmision.BataTransmision {
         [System.ServiceModel.XmlSerializerFormatAttribute(SupportFaults=true)]
         string ws_update_venta_empl(string _Tip_Id_Ven, string _Nro_Dni_Ven, string _Cod_Tda_Ven, string _Nro_Doc_Ven, string _Tip_Doc_Ven, string _Ser_Doc_Ven, string _Num_Doc_Ven, string _Fec_Doc_Ven, string _Est_Doc_Ven, string _Fc_Nin_Ven);
         
+        // CODEGEN: Se está generando un contrato de mensaje, ya que el mensaje ws_valida_tda_ecuRequest tiene encabezados.
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/ws_valida_tda_ecu", ReplyAction="*")]
+        [System.ServiceModel.XmlSerializerFormatAttribute(SupportFaults=true)]
+        Genera_Transmision.BataTransmision.ws_valida_tda_ecuResponse ws_valida_tda_ecu(Genera_Transmision.BataTransmision.ws_valida_tda_ecuRequest request);
+        
         // CODEGEN: Se está generando un contrato de mensaje, ya que el mensaje ws_get_file_uploadRequest tiene encabezados.
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/ws_get_file_upload", ReplyAction="*")]
         [System.ServiceModel.XmlSerializerFormatAttribute(SupportFaults=true)]
@@ -844,6 +849,52 @@ namespace Genera_Transmision.BataTransmision {
             set {
                 this.tda_act_fileField = value;
                 this.RaisePropertyChanged("tda_act_file");
+            }
+        }
+        
+        public event System.ComponentModel.PropertyChangedEventHandler PropertyChanged;
+        
+        protected void RaisePropertyChanged(string propertyName) {
+            System.ComponentModel.PropertyChangedEventHandler propertyChanged = this.PropertyChanged;
+            if ((propertyChanged != null)) {
+                propertyChanged(this, new System.ComponentModel.PropertyChangedEventArgs(propertyName));
+            }
+        }
+    }
+    
+    /// <remarks/>
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.7.2612.0")]
+    [System.SerializableAttribute()]
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.ComponentModel.DesignerCategoryAttribute("code")]
+    [System.Xml.Serialization.XmlTypeAttribute(Namespace="http://tempuri.org/")]
+    public partial class Resultado_Tda_Ecu : object, System.ComponentModel.INotifyPropertyChanged {
+        
+        private bool existeField;
+        
+        private string descripcionField;
+        
+        /// <remarks/>
+        [System.Xml.Serialization.XmlElementAttribute(Order=0)]
+        public bool existe {
+            get {
+                return this.existeField;
+            }
+            set {
+                this.existeField = value;
+                this.RaisePropertyChanged("existe");
+            }
+        }
+        
+        /// <remarks/>
+        [System.Xml.Serialization.XmlElementAttribute(Order=1)]
+        public string descripcion {
+            get {
+                return this.descripcionField;
+            }
+            set {
+                this.descripcionField = value;
+                this.RaisePropertyChanged("descripcion");
             }
         }
         
@@ -2317,6 +2368,44 @@ namespace Genera_Transmision.BataTransmision {
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
     [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
+    [System.ServiceModel.MessageContractAttribute(WrapperName="ws_valida_tda_ecu", WrapperNamespace="http://tempuri.org/", IsWrapped=true)]
+    public partial class ws_valida_tda_ecuRequest {
+        
+        [System.ServiceModel.MessageHeaderAttribute(Namespace="http://tempuri.org/")]
+        public Genera_Transmision.BataTransmision.Autenticacion Autenticacion;
+        
+        [System.ServiceModel.MessageBodyMemberAttribute(Namespace="http://tempuri.org/", Order=0)]
+        public string cod_tda;
+        
+        public ws_valida_tda_ecuRequest() {
+        }
+        
+        public ws_valida_tda_ecuRequest(Genera_Transmision.BataTransmision.Autenticacion Autenticacion, string cod_tda) {
+            this.Autenticacion = Autenticacion;
+            this.cod_tda = cod_tda;
+        }
+    }
+    
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
+    [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
+    [System.ServiceModel.MessageContractAttribute(WrapperName="ws_valida_tda_ecuResponse", WrapperNamespace="http://tempuri.org/", IsWrapped=true)]
+    public partial class ws_valida_tda_ecuResponse {
+        
+        [System.ServiceModel.MessageBodyMemberAttribute(Namespace="http://tempuri.org/", Order=0)]
+        public Genera_Transmision.BataTransmision.Resultado_Tda_Ecu ws_valida_tda_ecuResult;
+        
+        public ws_valida_tda_ecuResponse() {
+        }
+        
+        public ws_valida_tda_ecuResponse(Genera_Transmision.BataTransmision.Resultado_Tda_Ecu ws_valida_tda_ecuResult) {
+            this.ws_valida_tda_ecuResult = ws_valida_tda_ecuResult;
+        }
+    }
+    
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
+    [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
     [System.ServiceModel.MessageContractAttribute(WrapperName="ws_get_file_upload", WrapperNamespace="http://tempuri.org/", IsWrapped=true)]
     public partial class ws_get_file_uploadRequest {
         
@@ -3023,6 +3112,19 @@ namespace Genera_Transmision.BataTransmision {
         
         public string ws_update_venta_empl(string _Tip_Id_Ven, string _Nro_Dni_Ven, string _Cod_Tda_Ven, string _Nro_Doc_Ven, string _Tip_Doc_Ven, string _Ser_Doc_Ven, string _Num_Doc_Ven, string _Fec_Doc_Ven, string _Est_Doc_Ven, string _Fc_Nin_Ven) {
             return base.Channel.ws_update_venta_empl(_Tip_Id_Ven, _Nro_Dni_Ven, _Cod_Tda_Ven, _Nro_Doc_Ven, _Tip_Doc_Ven, _Ser_Doc_Ven, _Num_Doc_Ven, _Fec_Doc_Ven, _Est_Doc_Ven, _Fc_Nin_Ven);
+        }
+        
+        [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
+        Genera_Transmision.BataTransmision.ws_valida_tda_ecuResponse Genera_Transmision.BataTransmision.bata_transaccionSoap.ws_valida_tda_ecu(Genera_Transmision.BataTransmision.ws_valida_tda_ecuRequest request) {
+            return base.Channel.ws_valida_tda_ecu(request);
+        }
+        
+        public Genera_Transmision.BataTransmision.Resultado_Tda_Ecu ws_valida_tda_ecu(Genera_Transmision.BataTransmision.Autenticacion Autenticacion, string cod_tda) {
+            Genera_Transmision.BataTransmision.ws_valida_tda_ecuRequest inValue = new Genera_Transmision.BataTransmision.ws_valida_tda_ecuRequest();
+            inValue.Autenticacion = Autenticacion;
+            inValue.cod_tda = cod_tda;
+            Genera_Transmision.BataTransmision.ws_valida_tda_ecuResponse retVal = ((Genera_Transmision.BataTransmision.bata_transaccionSoap)(this)).ws_valida_tda_ecu(inValue);
+            return retVal.ws_valida_tda_ecuResult;
         }
         
         [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]

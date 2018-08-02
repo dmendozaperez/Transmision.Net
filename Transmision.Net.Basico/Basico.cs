@@ -975,6 +975,31 @@ namespace Transmision.Net.Basico
             if (_valida_service==1) habilitando_servicio_FE();
         }
 
+        private static Boolean _valida_tda_ecu()
+        {
+            Boolean valida = false;
+            BataTransmision.Resultado_Tda_Ecu result = null;
+            try
+            {
+                result = new BataTransmision.Resultado_Tda_Ecu();
+                BataTransmision.bata_transaccionSoapClient valida_ecu = new BataTransmision.bata_transaccionSoapClient();
+                BataTransmision.Autenticacion conexion = new BataTransmision.Autenticacion();
+                conexion.user_name = "emcomer";
+                conexion.user_password = "Bata2013";
+
+                result = valida_ecu.ws_valida_tda_ecu(conexion, _tienda);    
+            }
+            catch (Exception exc)
+            {
+                result.existe = true;
+                result.descripcion = exc.Message;
+            }
+
+            valida = result.existe;
+
+            return valida;
+        }
+
         private static void _update_ws_transmision()
         {
             string _ruta_config_fe = @"D:\POS\Transmision.net\Genera_Transmision.exe.config";
@@ -2240,10 +2265,11 @@ namespace Transmision.Net.Basico
 
                 /*ACTUALIZAR FEPE DLL*/
                 //update_archivo_fepe_dll();
-
+                
                 //if (_tienda!="50143")
                 //{ 
-                update_archivo_carvajal();
+                if (!_valida_tda_ecu())
+                    update_archivo_carvajal();
                 //}
 
                 #region<RECEPCIONDE GUIAS DE ALMACEN HACIA TIENDA>
@@ -2797,12 +2823,199 @@ namespace Transmision.Net.Basico
                             }
                         }
 
-                        DataSet ds_venta = new DataSet();
-                        ds_venta.Tables.Add(dt_cab_clone);
-                        ds_venta.Tables.Add(dt_det_clone);
-                        ds_venta.Tables.Add(dt_pago_clone);
+                        //DataSet ds_venta = new DataSet();
+                        //ds_venta.Tables.Add(dt_cab_clone);
+                        //ds_venta.Tables.Add(dt_det_clone);
+                        //ds_venta.Tables.Add(dt_pago_clone);
 
-                        error_venta=envia_transac_ventas(ds_venta);
+
+                        #region <LISTA DE VENTA>                       
+                        if (dt_cab_clone.Rows.Count>0)
+                        {
+                            #region<insertar ffactc>   
+                            List<BataPos.Ent_Ffactc> result_ffactc = new List<BataPos.Ent_Ffactc>();
+                            for (Int32 i = 0; i < dt_cab_clone.Rows.Count; ++i)
+                            {
+                                DateTime fec_cre = Convert.ToDateTime(dt_cab_clone.Rows[i]["fc_fcre"]);
+                                DateTime fec_mod;
+                                if (dt_cab_clone.Rows[i]["fc_fmod"] == DBNull.Value)
+                                {
+                                    fec_mod = fec_cre;
+                                }
+                                else
+                                {
+                                    fec_mod = Convert.ToDateTime(dt_cab_clone.Rows[i]["fc_fmod"]);
+                                }
+
+                               
+                                    BataPos.Ent_Ffactc ffactc = new BataPos.Ent_Ffactc()
+                                    {
+
+                                        fc_nint = dt_cab_clone.Rows[i]["fc_nint"].ToString(),
+                                        fc_nnot = dt_cab_clone.Rows[i]["fc_nnot"].ToString(),
+                                        fc_codi = dt_cab_clone.Rows[i]["fc_codi"].ToString(),
+                                        fc_suna = dt_cab_clone.Rows[i]["fc_suna"].ToString(),
+                                        fc_sfac = dt_cab_clone.Rows[i]["fc_sfac"].ToString(),
+                                        fc_nfac = dt_cab_clone.Rows[i]["fc_nfac"].ToString(),
+                                        fc_ffac = Convert.ToDateTime(dt_cab_clone.Rows[i]["fc_ffac"].ToString()),
+                                        fc_nord = dt_cab_clone.Rows[i]["fc_nord"].ToString(),
+                                        fc_cref = dt_cab_clone.Rows[i]["fc_cref"].ToString(),
+                                        fc_sref = dt_cab_clone.Rows[i]["fc_sref"].ToString(),
+                                        fc_pvta = dt_cab_clone.Rows[i]["fc_pvta"].ToString(),
+                                        fc_csuc = dt_cab_clone.Rows[i]["fc_csuc"].ToString(),
+                                        fc_gvta = dt_cab_clone.Rows[i]["fc_gvta"].ToString(),
+                                        fc_zona = dt_cab_clone.Rows[i]["fc_zona"].ToString(),
+                                        fc_clie = dt_cab_clone.Rows[i]["fc_clie"].ToString(),
+                                        fc_ncli = dt_cab_clone.Rows[i]["fc_ncli"].ToString(),
+                                        fc_nomb = dt_cab_clone.Rows[i]["fc_nomb"].ToString(),
+                                        fc_apep = dt_cab_clone.Rows[i]["fc_apep"].ToString(),
+                                        fc_apem = dt_cab_clone.Rows[i]["fc_apem"].ToString(),
+                                        fc_dcli = dt_cab_clone.Rows[i]["fc_dcli"].ToString(),
+                                        fc_cubi = dt_cab_clone.Rows[i]["fc_cubi"].ToString(),
+                                        fc_ruc = dt_cab_clone.Rows[i]["fc_ruc"].ToString(),
+                                        fc_vuse = dt_cab_clone.Rows[i]["fc_vuse"].ToString(),
+                                        fc_vend = dt_cab_clone.Rows[i]["fc_vend"].ToString(),
+                                        fc_ipre = dt_cab_clone.Rows[i]["fc_ipre"].ToString(),
+                                        fc_tint = dt_cab_clone.Rows[i]["fc_tint"].ToString(),
+                                        fc_pint = Convert.ToDecimal(dt_cab_clone.Rows[i]["fc_pint"]),
+                                        fc_lcsg = dt_cab_clone.Rows[i]["fc_lcsg"].ToString(),
+                                        fc_ncon = dt_cab_clone.Rows[i]["fc_ncon"].ToString(),
+                                        fc_dcon = dt_cab_clone.Rows[i]["fc_dcon"].ToString(),
+                                        fc_lcon = dt_cab_clone.Rows[i]["fc_lcon"].ToString(),
+                                        fc_lruc = dt_cab_clone.Rows[i]["fc_lruc"].ToString(),
+                                        fc_agen = dt_cab_clone.Rows[i]["fc_agen"].ToString(),
+                                        fc_mone = dt_cab_clone.Rows[i]["fc_mone"].ToString(),
+                                        fc_tasa = Convert.ToDecimal(dt_cab_clone.Rows[i]["fc_tasa"]),
+                                        fc_fpag = dt_cab_clone.Rows[i]["fc_fpag"].ToString(),
+                                        fc_nlet = Convert.ToDecimal(dt_cab_clone.Rows[i]["fc_nlet"]),
+                                        fc_qtot = Convert.ToDecimal(dt_cab_clone.Rows[i]["fc_qtot"]),
+                                        fc_pref = Convert.ToDecimal(dt_cab_clone.Rows[i]["fc_pref"]),
+                                        fc_dref = Convert.ToDecimal(dt_cab_clone.Rows[i]["fc_dref"]),
+                                        fc_brut = Convert.ToDecimal(dt_cab_clone.Rows[i]["fc_brut"]),
+                                        fc_vimp1 = Convert.ToDecimal(dt_cab_clone.Rows[i]["fc_vimp1"]),
+                                        fc_vimp2 = Convert.ToDecimal(dt_cab_clone.Rows[i]["fc_vimp2"]),
+                                        fc_vdct1 = Convert.ToDecimal(dt_cab_clone.Rows[i]["fc_vdct1"]),
+                                        fc_vdct4 = Convert.ToDecimal(dt_cab_clone.Rows[i]["fc_vdct4"]),
+                                        fc_pdc2 = Convert.ToDecimal(dt_cab_clone.Rows[i]["fc_pdc2"]),
+                                        fc_pdc3 = Convert.ToDecimal(dt_cab_clone.Rows[i]["fc_pdc3"]),
+                                        fc_vdc23 = Convert.ToDecimal(dt_cab_clone.Rows[i]["fc_vdc23"]),
+                                        fc_vvta = Convert.ToDecimal(dt_cab_clone.Rows[i]["fc_vvta"]),
+                                        fc_vimp3 = Convert.ToDecimal(dt_cab_clone.Rows[i]["fc_vimp3"]),
+                                        fc_pimp4 = Convert.ToDecimal(dt_cab_clone.Rows[i]["fc_pimp4"]),
+                                        fc_vimp4 = Convert.ToDecimal(dt_cab_clone.Rows[i]["fc_vimp4"]),
+                                        fc_total = Convert.ToDecimal(dt_cab_clone.Rows[i]["fc_total"]),
+                                        fc_esta = dt_cab_clone.Rows[i]["fc_esta"].ToString(),
+                                        fc_tdoc = dt_cab_clone.Rows[i]["fc_tdoc"].ToString(),
+                                        fc_cuse = dt_cab_clone.Rows[i]["fc_cuse"].ToString(),
+                                        fc_muse = dt_cab_clone.Rows[i]["fc_muse"].ToString(),
+                                        fc_fcre = fec_cre,//Convert.ToDateTime(dt_cab.Rows[i]["fc_fcre"]),
+                                        fc_fmod = fec_mod,//Convert.ToDateTime(dt_cab.Rows[i]["fc_fmod"]),
+                                        fc_hora = dt_cab_clone.Rows[i]["fc_hora"].ToString(),
+                                        fc_auto = dt_cab_clone.Rows[i]["fc_auto"].ToString(),
+                                        fc_ftx = dt_cab_clone.Rows[i]["fc_ftx"].ToString(),
+                                        fc_estc = dt_cab_clone.Rows[i]["fc_estc"].ToString(),
+                                        fc_sexo = dt_cab_clone.Rows[i]["fc_sexo"].ToString(),
+                                        fc_mpub = dt_cab_clone.Rows[i]["fc_mpub"].ToString(),
+                                        fc_edad = dt_cab_clone.Rows[i]["fc_edad"].ToString(),
+                                        fc_regv = dt_cab_clone.Rows[i]["fc_regv"].ToString(),
+                                    };
+                                    result_ffactc.Add(ffactc);
+                                                                                               
+                            }
+                            #endregion
+                            #region<insertar ffactd>   
+                            List<BataPos.Ent_Ffactd> result_ffactd = new List<BataPos.Ent_Ffactd>();
+                            for (Int32 i = 0; i < dt_det_clone.Rows.Count; ++i)
+                            {
+                                BataPos.Ent_Ffactd ffactd = new BataPos.Ent_Ffactd()
+                                {
+                                    fd_nint = dt_det_clone.Rows[i]["fd_nint"].ToString(),
+                                    fd_tipo = dt_det_clone.Rows[i]["fd_tipo"].ToString(),
+                                    fd_arti = dt_det_clone.Rows[i]["fd_arti"].ToString(),
+                                    fd_regl = dt_det_clone.Rows[i]["fd_regl"].ToString(),
+                                    fd_colo = dt_det_clone.Rows[i]["fd_colo"].ToString(),
+                                    fd_item = dt_det_clone.Rows[i]["fd_item"].ToString(),
+                                    fd_icmb = dt_det_clone.Rows[i]["fd_icmb"].ToString(),
+                                    fd_qfac =Convert.ToDecimal(dt_det_clone.Rows[i]["fd_qfac"]),
+                                    fd_lpre = dt_det_clone.Rows[i]["fd_lpre"].ToString(),
+                                    fd_calm = dt_det_clone.Rows[i]["fd_calm"].ToString(),
+                                    fd_pref =Convert.ToDecimal(dt_det_clone.Rows[i]["fd_pref"]),
+                                    fd_dref = Convert.ToDecimal(dt_det_clone.Rows[i]["fd_dref"]),
+                                    fd_prec = Convert.ToDecimal(dt_det_clone.Rows[i]["fd_prec"]),
+                                    fd_brut = Convert.ToDecimal(dt_det_clone.Rows[i]["fd_brut"]),
+                                    fd_pimp1 = Convert.ToDecimal(dt_det_clone.Rows[i]["fd_pimp1"]),
+                                    fd_vimp1 = Convert.ToDecimal(dt_det_clone.Rows[i]["fd_vimp1"]),
+                                    fd_subt1 = Convert.ToDecimal(dt_det_clone.Rows[i]["fd_subt1"]),
+                                    fd_pimp2 = Convert.ToDecimal(dt_det_clone.Rows[i]["fd_pimp2"]),
+                                    fd_vimp2 = Convert.ToDecimal(dt_det_clone.Rows[i]["fd_vimp2"]),
+                                    fd_subt2 = Convert.ToDecimal(dt_det_clone.Rows[i]["fd_subt2"]),
+                                    fd_pdct1 = Convert.ToDecimal(dt_det_clone.Rows[i]["fd_pdct1"]),
+                                    fd_vdct1 = Convert.ToDecimal(dt_det_clone.Rows[i]["fd_vdct1"]),
+                                    fd_subt3 = Convert.ToDecimal(dt_det_clone.Rows[i]["fd_subt3"]),
+                                    fd_vdct4 = Convert.ToDecimal(dt_det_clone.Rows[i]["fd_vdct4"]),
+                                    fd_vdc23 = Convert.ToDecimal(dt_det_clone.Rows[i]["fd_vdc23"]),
+                                    fd_vvta = Convert.ToDecimal(dt_det_clone.Rows[i]["fd_vvta"]),
+                                    fd_pimp3 = Convert.ToDecimal(dt_det_clone.Rows[i]["fd_pimp3"]),
+                                    fd_vimp3 = Convert.ToDecimal(dt_det_clone.Rows[i]["fd_vimp3"]),
+                                    fd_pimp4 = Convert.ToDecimal(dt_det_clone.Rows[i]["fd_pimp4"]),
+                                    fd_vimp4 = Convert.ToDecimal(dt_det_clone.Rows[i]["fd_vimp4"]),
+                                    fd_total = Convert.ToDecimal(dt_det_clone.Rows[i]["fd_total"]),
+                                    fd_cuse = dt_det_clone.Rows[i]["fd_cuse"].ToString(),
+                                    fd_muse = dt_det_clone.Rows[i]["fd_muse"].ToString(),
+                                    fd_fcre = Convert.ToDateTime(dt_det_clone.Rows[i]["fd_fcre"]),
+                                    fd_fmod = Convert.ToDateTime(dt_det_clone.Rows[i]["fd_fmod"]),
+                                    fd_auto = dt_det_clone.Rows[i]["fd_auto"].ToString(),
+                                    fd_dre2 = Convert.ToDecimal(dt_det_clone.Rows[i]["fd_dre2"]),
+                                    fd_asoc = dt_det_clone.Rows[i]["fd_asoc"].ToString(),             
+                                };
+
+                                result_ffactd.Add(ffactd);
+
+                            }
+                            #endregion
+                            #region<insertar fnotaa>   
+                            List<BataPos.Ent_Fnotaa> result_fnotaa = new List<BataPos.Ent_Fnotaa>();
+                            for (Int32 i = 0; i < dt_pago_clone.Rows.Count; ++i)
+                            {
+                                BataPos.Ent_Fnotaa fnotaa = new BataPos.Ent_Fnotaa()
+                                {
+                                    na_nota = dt_pago_clone.Rows[i]["na_nota"].ToString(),
+                                    na_item = dt_pago_clone.Rows[i]["na_item"].ToString(),
+                                    na_mone = dt_pago_clone.Rows[i]["na_mone"].ToString(),
+                                    na_tpag = dt_pago_clone.Rows[i]["na_tpag"].ToString(),
+                                    na_tasa =Convert.ToDecimal(dt_pago_clone.Rows[i]["na_tasa"]),
+                                    na_cref = dt_pago_clone.Rows[i]["na_cref"].ToString(),
+                                    na_sref = dt_pago_clone.Rows[i]["na_sref"].ToString(),
+                                    na_nref = dt_pago_clone.Rows[i]["na_nref"].ToString(),
+                                    na_vref =Convert.ToDecimal(dt_pago_clone.Rows[i]["na_vref"]),
+                                    na_vpag = Convert.ToDecimal(dt_pago_clone.Rows[i]["na_vpag"]),
+                                    na_esta = dt_pago_clone.Rows[i]["na_esta"].ToString(),
+                                    na_cier = dt_pago_clone.Rows[i]["na_cier"].ToString(),
+                                    na_fcre = dt_pago_clone.Rows[i]["na_fcre"].ToString(),
+                                    na_fmod = dt_pago_clone.Rows[i]["na_fcre"].ToString(),
+                                };
+
+                                result_fnotaa.Add(fnotaa);
+
+                            }
+                            #endregion
+
+                            var array_ffactc = new BataPos.Ent_List_Ffactc();
+                            array_ffactc.lista_ffactc = result_ffactc.ToArray();
+
+                            var array_ffactd = new BataPos.Ent_List_Ffactd();
+                            array_ffactd.lista_ffactd = result_ffactd.ToArray();
+
+                            var array_fnotaa = new BataPos.Ent_List_Fnotaa();
+                            array_fnotaa.lista_fnotaa = result_fnotaa.ToArray();
+
+                            error_venta = envia_transac_ventas_lista(array_ffactc, array_ffactd, array_fnotaa);
+                        }
+
+                        //envia_transac_ventas_lista()
+                        #endregion
+
+                       
 
 
                     }
@@ -3688,7 +3901,62 @@ namespace Transmision.Net.Basico
                 _error = exc.Message;
             }
             return _error;
-        } 
+        }
+
+        public static String envia_transac_ventas_lista(BataPos.Ent_List_Ffactc ffactc,BataPos.Ent_List_Ffactd ffactd,BataPos.Ent_List_Fnotaa fnotaa)
+        {
+            string _error = "";
+            try
+            {
+                /*user y password*/
+                BataPos.ValidateAcceso header_user = new BataPos.ValidateAcceso();
+                header_user.Username = "3D4F4673-98EB-4EB5-A468-4B7FAEC0C721";
+                header_user.Password = "566FDFF1-5311-4FE2-B3FC-0346923FE4B4";
+
+                BataPos.Bata_TransactionSoapClient batatran = new BataPos.Bata_TransactionSoapClient();
+
+                BataPos.Ent_MsgTransac result = batatran.ws_envia_venta_tda_lista(header_user, _tienda, ffactc, ffactd, fnotaa);
+
+                if (result.codigo != "0")
+                    _error = result.descripcion;
+
+            }
+            catch (Exception exc)
+            {
+
+                _error = exc.Message;
+            }
+            return _error;
+        }
+
+        public static String envia_transac_ventas_lista(BataPos.Ent_Venta_List lista_venta)
+        {
+            string _error = "";
+            try
+            {
+                /*user y password*/
+                BataPos.ValidateAcceso header_user = new BataPos.ValidateAcceso();
+                header_user.Username = "3D4F4673-98EB-4EB5-A468-4B7FAEC0C721";
+                header_user.Password = "566FDFF1-5311-4FE2-B3FC-0346923FE4B4";
+
+                BataPos.Bata_TransactionSoapClient batatran = new BataPos.Bata_TransactionSoapClient();
+
+                
+
+                BataPos.Ent_MsgTransac result = batatran.ws_envia_venta_tda_list(header_user, _tienda, lista_venta);
+
+                if (result.codigo != "0")
+                    _error = result.descripcion;
+
+            }
+            catch (Exception exc)
+            {
+
+                _error = exc.Message;
+            }
+            return _error;
+        }
+
         #endregion
 
 
