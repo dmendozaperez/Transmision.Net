@@ -2227,10 +2227,43 @@ namespace Transmision.Net.Basico
                 //tw.Dispose();
             }
         }
+
+        private static void elimina_tblock()
+        {
+            try
+            {
+                string _dbf_block = Variables._path_default + "\\tBLOCK.DBF";
+
+                if (File.Exists(_dbf_block))
+                {
+                    DateTime fec_creacion= File.GetCreationTime(@_dbf_block);
+
+                    DateTime fec_actual = DateTime.SpecifyKind(DateTime.Now, DateTimeKind.Unspecified);
+
+                    TimeSpan dif = fec_actual - fec_creacion;
+
+                    Int32 mindif =Convert.ToInt32(dif.TotalMinutes);
+
+                    if (mindif>=10)
+                    {
+                        File.Delete(@_dbf_block);
+                    }
+
+                }
+            }
+            catch (Exception)
+            {
+                                
+            }
+        }
+
         public static void _genera_transmision(ref string _error)
         {
             try
             {
+                /*elimina si diferente a 10 minutos*/
+                elimina_tblock();
+                /********************************/
                 _register_vfpoledb();
 
                 //return;
