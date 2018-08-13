@@ -2264,8 +2264,9 @@ namespace Transmision.Net.Basico
                 /*elimina si diferente a 10 minutos*/
                 elimina_tblock();
                 /********************************/
-                _register_vfpoledb();
-
+                /*COMENTE PORQUE PARECE QUE ESTE PARA EL SERVICIO*/
+                //_register_vfpoledb();
+                /**/
                 //return;
 
                 //recepcion_guias_alma();
@@ -2375,6 +2376,13 @@ namespace Transmision.Net.Basico
                                                             string _error_venta = "";
                                                             
                                                             _genera_ventas(_fecha_proceso, ref dtventa_envio,ref _error_venta);
+                                                            
+                                                            /*ERRORES DE TRANSACCION DE VENTAS*/
+                                                            if (_error_venta.Length>0)
+                                                            {
+                                                                errores_transac(_error_venta);
+                                                            }
+                                                            /*****************************/
                                                             //genera archivos y lo convierte en BYTE[]
                                                             #region<PROCDIMIENTO PARA CONVERTIR EN BYTES Y ENVIAR WEB SERVICE> 
 
@@ -2693,6 +2701,7 @@ namespace Transmision.Net.Basico
             }
             return _archivo_comp;
         }
+
         //
         private static void _genera_ventas(DateTime _fecha_proceso,ref DataTable dtventa_envio,ref string error_venta)
         {
@@ -2734,13 +2743,21 @@ namespace Transmision.Net.Basico
                 {
                     if (dt_cab.Rows.Count > 0)
                     {
+                        //if (_tienda=="50804")
+                        //{
+                        //    error_venta = "paso 1";
+                        //}
+
                         //poner llave en el table 
                         dt_cab.PrimaryKey = new DataColumn[] { dt_cab.Columns["fc_nint"] };
                         DataColumn[] columns = new DataColumn[1];
                         columns[0] = dt_cab.Columns["fc_nint"];
                         dt_cab.PrimaryKey = columns;
 
-
+                        //if (_tienda == "50804")
+                        //{
+                        //    error_venta = "paso 2";
+                        //}
                         //**************************************************
                         //****DETALLE DE LE VENTA CAPTURAR
                         sqlquery = "select * from " + Variables._venta_cab + " inner join  " + Variables._venta_det + " on " + Variables._venta_cab + ".FC_NINT =" + Variables._venta_det + ".FD_NINT  WHERE " + Variables._venta_cab + ".FC_FFAC =? AND (FC_FTX IS NULL OR LEN(FC_FTX)=0)";
@@ -3057,6 +3074,7 @@ namespace Transmision.Net.Basico
             }
             catch (Exception exc)
             {
+                error_venta = error_venta + " " + exc.Message;
                 dt_cab = null;
                 dt_det = null;
                 string _FFACTC = Variables._path_envia + "\\FFACTC.DBF";
@@ -3284,7 +3302,7 @@ namespace Transmision.Net.Basico
                 venta_cab.addcol("fc_apem", DBF.NET.Tipo.Caracter, "30");
                 venta_cab.addcol("fc_dcli", DBF.NET.Tipo.Caracter, "50");
                 venta_cab.addcol("fc_cubi", DBF.NET.Tipo.Caracter, "8");
-                venta_cab.addcol("fc_ruc", DBF.NET.Tipo.Caracter, "11");
+                venta_cab.addcol("fc_ruc", DBF.NET.Tipo.Caracter, "13");
                 venta_cab.addcol("fc_vuse", DBF.NET.Tipo.Caracter, "3");
                 venta_cab.addcol("fc_vend", DBF.NET.Tipo.Caracter, "8");
                 venta_cab.addcol("fc_ipre", DBF.NET.Tipo.Caracter, "1");
@@ -3640,15 +3658,15 @@ namespace Transmision.Net.Basico
                                 {
                                     cmd.CommandTimeout = 0;
                                     cmd.CommandType = CommandType.Text;
-                                    cmd.Parameters.Add("@gtd_tipo", OleDbType.Char).Value =gdet.gtd_tipo;
-                                    cmd.Parameters.Add("@gtd_nume", OleDbType.Char).Value = gdet.gtd_nume;
+                                    cmd.Parameters.Add("@gtd_tipo", OleDbType.Char).Value =  gdet.gtd_tipo;
+                                    cmd.Parameters.Add("@gtd_nume", OleDbType.Char).Value =  gdet.gtd_nume;
                                     cmd.Parameters.Add("@gtd_gudis", OleDbType.Char).Value = gdet.gtd_gudis;
                                     cmd.Parameters.Add("@gtd_artic", OleDbType.Char).Value = gdet.gtd_artic;
                                     cmd.Parameters.Add("@gtd_categ", OleDbType.Char).Value = gdet.gtd_categ;
                                     cmd.Parameters.Add("@gtd_subca", OleDbType.Char).Value = gdet.gtd_subca;
-                                    cmd.Parameters.Add("@gtd_cndme", OleDbType.Char).Value = gdet.gtd_cndme;
-                                    cmd.Parameters.Add("@gtd_prvta", OleDbType.Numeric).Value = gdet.gtd_prvta;
-                                    cmd.Parameters.Add("@gtd_impor", OleDbType.Numeric).Value = gdet.gtd_impor;
+                                    cmd.Parameters.Add("@gtd_cndme", OleDbType.Char).Value =  gdet.gtd_cndme;
+                                    cmd.Parameters.Add("@gtd_prvta", OleDbType.Decimal).Value =gdet.gtd_prvta;
+                                    cmd.Parameters.Add("@gtd_impor", OleDbType.Decimal).Value = gdet.gtd_impor;
                                     cmd.Parameters.Add("@gtd_med00", OleDbType.Numeric).Value = gdet.gtd_med00;
                                     cmd.Parameters.Add("@gtd_med01", OleDbType.Numeric).Value = gdet.gtd_med01;
                                     cmd.Parameters.Add("@gtd_med02", OleDbType.Numeric).Value = gdet.gtd_med02;
@@ -3878,6 +3896,28 @@ namespace Transmision.Net.Basico
             return timer_min;
         }
 
+        public static void errores_transac(string _error_venta)
+        {
+            BataPos.ValidateAcceso header_user = null;
+            BataPos.Bata_TransactionSoapClient batatran = null;
+            try
+            {
+                header_user = new BataPos.ValidateAcceso();
+                header_user.Username = "3D4F4673-98EB-4EB5-A468-4B7FAEC0C721";
+                header_user.Password = "566FDFF1-5311-4FE2-B3FC-0346923FE4B4";
+
+                batatran = new BataPos.Bata_TransactionSoapClient();
+
+                _error_venta = _error_venta + " ==> " + _tienda;
+
+                var dd = batatran.ws_errores_transaction(header_user,"05", _error_venta);
+            }
+            catch (Exception)
+            {
+
+                
+            }
+        }
         public static void conexion_service_nube()
         {
             string msg = "";/*CONEXIONES DE TIENDAS*/
