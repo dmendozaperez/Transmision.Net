@@ -414,7 +414,8 @@ namespace Transmision.Net.Basico
                                            "v_almd,v_tane,v_anex,v_tdoc,v_suna,v_sdoc,v_ndoc,v_fdoc,v_tref,v_sref,v_nref,v_tipo," +
                                            "v_arti,v_regl,v_colo,v_cant,v_pres,v_pred,v_vvts,v_vvtd,v_auto,v_ptot,v_impr,v_cuse," +
                                            "v_muse,v_fcre,v_fmod,v_ftrx,v_ctra,v_memo,v_motr,v_par1,v_par2,v_par3,v_lle1,v_lle2," +
-                                           "v_lle3,v_tipe,v_ruc2,v_rzo2,'' as v_hstd FROM " + _FMC + " WHERE EMPTY(v_tane) and (v_cfor!='01' and v_cfor!='03' and v_cfor!='NB' and v_cfor!='NC' and v_cfor!='ND' and v_cfor!='NF' and v_cfor!='TI') " + ((_fecha_plan.Length==0)?"": " and DTOS(V_ffor)>='" + _fecha_proceso_mov.ToString("yyyyMMdd") + "' and (v_cfor!='01' and v_cfor!='03' and v_cfor!='NB' and v_cfor!='NC' and v_cfor!='ND' and v_cfor!='NF' and v_cfor!='TI') "); //and (v_cfor='32' or v_cfor='31' )";
+                                           "v_lle3,v_tipe,v_ruc2,v_rzo2,'' as v_hstd FROM " + _FMC + " WHERE EMPTY(v_tane) and (v_cfor='32') " + ((_fecha_plan.Length == 0) ? "" : " and DTOS(V_ffor)>='" + _fecha_proceso_mov.ToString("yyyyMMdd") + "' and (v_cfor='32') "); //and (v_cfor='32' or v_cfor='31' )";
+                                //"v_lle3,v_tipe,v_ruc2,v_rzo2,'' as v_hstd FROM " + _FMC + " WHERE EMPTY(v_tane) and (v_cfor!='01' and v_cfor!='03' and v_cfor!='NB' and v_cfor!='NC' and v_cfor!='ND' and v_cfor!='NF' and v_cfor!='TI') " + ((_fecha_plan.Length==0)?"": " and DTOS(V_ffor)>='" + _fecha_proceso_mov.ToString("yyyyMMdd") + "' and (v_cfor!='01' and v_cfor!='03' and v_cfor!='NB' and v_cfor!='NC' and v_cfor!='ND' and v_cfor!='NF' and v_cfor!='TI') "); //and (v_cfor='32' or v_cfor='31' )";
                             }
                             cmd = new OleDbCommand(sqlquery, cn);
                             cmd.CommandTimeout = 0;                            
@@ -433,8 +434,18 @@ namespace Transmision.Net.Basico
                                 }
                                 else
                                 {
-                                    sqlquery = "SELECT * FROM " + _FMC + " INNER JOIN " + _FMD +
-                                       " ON v_tfor=i_tfor AND v_cfor=i_cfor  AND v_sfor=i_sfor  AND v_nfor=i_nfor  WHERE EMPTY(v_tane)" + ((_fecha_plan.Length == 0) ? "" : " and DTOS(V_ffor)>='" + _fecha_proceso_mov.ToString("yyyyMMdd") + "' and (v_cfor!='01' and v_cfor!='03' and v_cfor!='NB' and v_cfor!='NC' and v_cfor!='ND' and v_cfor!='NF' and v_cfor!='TI')"); //and (v_cfor='32' or v_cfor='31' )";
+                                    //sqlquery = "SELECT * FROM " + _FMC + " INNER JOIN " + _FMD +
+                                    //     " ON v_tfor=i_tfor AND v_cfor=i_cfor  AND v_sfor=i_sfor  AND v_nfor=i_nfor  WHERE EMPTY(v_tane)" ;
+
+                                    sqlquery = "SELECT v_tfor,v_proc,v_cfor,v_sfor,v_nfor,v_ffor,v_mone,v_tasa,v_almo," +
+                                           "v_almd,v_tane,v_anex,v_tdoc,v_suna,v_sdoc,v_ndoc,v_fdoc,v_tref,v_sref,v_nref,v_tipo," +
+                                           "v_arti,v_regl,v_colo,v_cant,v_pres,v_pred,v_vvts,v_vvtd,v_auto,v_ptot,v_impr,v_cuse," +
+                                           "v_muse,v_fcre,v_fmod,v_ftrx,v_ctra,v_memo,v_motr,v_par1,v_par2,v_par3,v_lle1,v_lle2," +
+                                           "v_lle3,v_tipe,v_ruc2,v_rzo2,'' as v_hstd,i_tfor,i_proc,i_cfor,i_sfor,i_nfor,i_arti,i_arti,i_regl,i_canm,i_plis FROM " + _FMC + " INNER JOIN " + _FMD +
+                                         " ON v_tfor=i_tfor AND v_cfor=i_cfor  AND v_sfor=i_sfor  AND v_nfor=i_nfor  WHERE EMPTY(v_tane)" + ((_fecha_plan.Length == 0) ? "" : " and DTOS(V_ffor)>='" + _fecha_proceso_mov.ToString("yyyyMMdd") + "' and (v_cfor!='01' and v_cfor='32')");
+
+                                    //and (v_cfor='32' or v_cfor='31' )";
+                                    //" ON v_tfor=i_tfor AND v_cfor=i_cfor  AND v_sfor=i_sfor  AND v_nfor=i_nfor  WHERE EMPTY(v_tane)" + ((_fecha_plan.Length == 0) ? "" : " and DTOS(V_ffor)>='" + _fecha_proceso_mov.ToString("yyyyMMdd") + "' and (v_cfor!='01' and v_cfor!='03' and v_cfor!='NB' and v_cfor!='NC' and v_cfor!='ND' and v_cfor!='NF' and v_cfor!='TI')"); //and (v_cfor='32' or v_cfor='31' )";
                                 }
 
                                 cmd = new OleDbCommand(sqlquery, cn);
@@ -499,14 +510,14 @@ namespace Transmision.Net.Basico
                                     {
                                         if (dt_fmc_clone.Rows.Count>0 && dt_fmd_clone.Rows.Count>0)
                                         {
-                                            BataTransmision.bata_transaccionSoapClient trans = new BataTransmision.bata_transaccionSoapClient();
-                                            BataTransmision.Autenticacion conexion = new BataTransmision.Autenticacion();
-                                            conexion.user_name = "emcomer";
-                                            conexion.user_password = "Bata2013";
+                                            //BataTransmision.bata_transaccionSoapClient trans = new BataTransmision.bata_transaccionSoapClient();
+                                            //BataTransmision.Autenticacion conexion = new BataTransmision.Autenticacion();
+                                            //conexion.user_name = "emcomer";
+                                            //conexion.user_password = "Bata2013";
 
                                            // if (_tienda == "50140")
                                            // { 
-                                                trans.InnerChannel.OperationTimeout = TimeSpan.FromMinutes(10);
+                                                /*trans.InnerChannel.OperationTimeout = TimeSpan.FromMinutes(10)*/;
                                            // }
 
 
@@ -522,9 +533,79 @@ namespace Transmision.Net.Basico
 
                                             }
 
-                                            
 
-                                            String _valida = trans.ws_genera_mov(conexion,"T", _tienda,dt_fmc_clone,dt_fmd_clone);
+                                            #region<ENVIO DE GUIAS DE TRASPASO DE TIENDAS>
+                                         
+
+                                            List<BataPos.Ent_Fvdespc> lista_Fvdespc = new List<BataPos.Ent_Fvdespc>();
+                                            Int32 valor = 0;
+
+                                           foreach(DataRow fila_cab in dt_fmc_clone.Rows)
+                                           {
+                                                valor += 1;
+                                                string v_tfor = fila_cab["v_tfor"].ToString();
+                                                string v_proc = fila_cab["v_proc"].ToString();
+                                                string v_cfor = fila_cab["v_cfor"].ToString();
+                                                string v_sfor = fila_cab["v_sfor"].ToString();
+                                                string v_nfor = fila_cab["v_nfor"].ToString();
+
+                                                BataPos.Ent_Fvdespc Fvdespc = new BataPos.Ent_Fvdespc()
+                                                {
+                                                    DESC_ALMAC = "50" + Basico.Left(fila_cab["v_almo"].ToString(),3),
+                                                    DESC_GUDIS = fila_cab["v_nfor"].ToString(),
+                                                    DESC_NDESP = fila_cab["v_sfor"].ToString() + fila_cab["v_nfor"].ToString(),
+                                                    DESC_TDES = "50" + Basico.Left(fila_cab["v_almd"].ToString().Trim(), 3),
+                                                    DESC_FECHA =Convert.ToDateTime(fila_cab["v_fdoc"]),
+                                                    DESC_FDESP = Convert.ToDateTime(fila_cab["v_fdoc"]),
+                                                    DESC_FEMI = Convert.ToDateTime(fila_cab["v_fdoc"]),
+                                                    DESC_FTRA= Convert.ToDateTime(fila_cab["v_fdoc"]),
+                                                    DESC_NUME = fila_cab["v_nfor"].ToString(),
+                                                };
+
+                                                List<BataPos.Ent_Fvdespd> lista_Fvdespd = new List<BataPos.Ent_Fvdespd>();
+                                                foreach (DataRow fila_det in dt_fmd_clone.Select("i_tfor='" + v_tfor + "' and i_proc='" + v_proc + "' and i_cfor='" + v_cfor + 
+                                                                                                "' and i_sfor='" + v_sfor + "' and i_nfor='" + v_nfor + "'"))
+                                                {
+                                                    BataPos.Ent_Fvdespd Fvdespd = new BataPos.Ent_Fvdespd()
+                                                    {
+                                                        DESD_GUDIS=fila_det["i_nfor"].ToString(),
+                                                        DESD_NDESP= fila_det["i_sfor"].ToString() + fila_det["i_nfor"].ToString(),
+                                                        DESD_ALMAC = "50" + Basico.Left(fila_cab["v_almo"].ToString(), 3),
+                                                        DESD_ARTIC = Basico.Left(fila_det["i_arti"].ToString().Trim(),7),
+                                                        DESD_CALID = Basico.Right(fila_det["i_arti"].ToString().Trim(), 1),
+                                                        DESD_TALLA = fila_det["i_regl"].ToString().Trim(),
+                                                        DESD_PARES =Convert.ToInt32(fila_det["i_canm"]),
+                                                        DESD_PRVTA=Convert.ToDecimal(fila_det["i_plis"]),
+                                                    };
+                                                    lista_Fvdespd.Add(Fvdespd);
+                                                }
+                                                Fvdespc.FVDESPD = lista_Fvdespd.ToArray();
+                                                lista_Fvdespc.Add(Fvdespc);
+                                                //if (valor==4) break;
+                                           }
+                                            String _valida = "";
+                                           if (lista_Fvdespc!=null)
+                                            {
+                                                #region<ENVIO X WEB SERVICE AL POS>
+                                                BataPos.ValidateAcceso header_user = new BataPos.ValidateAcceso();
+                                                header_user.Username = "3D4F4673-98EB-4EB5-A468-4B7FAEC0C721";
+                                                header_user.Password = "566FDFF1-5311-4FE2-B3FC-0346923FE4B4";
+
+                                                BataPos.Bata_TransactionSoapClient batatran = new BataPos.Bata_TransactionSoapClient();
+
+                                                BataPos.Ent_MsgTransac msg_ws= batatran.ws_envio_traspaso_tda(header_user, _tienda, lista_Fvdespc.ToArray());
+
+                                                _valida = msg_ws.codigo == "0" ? "" : msg_ws.descripcion;
+
+
+                                                #endregion
+                                            }
+
+
+                                            #endregion
+
+
+                                          /*  String _valida = ;*/ //trans.ws_genera_mov(conexion,"T", _tienda,dt_fmc_clone,dt_fmd_clone);
 
                                             //***ESTE CODIGO ES PARA VALIDAR EN EL DBF Y HACER UN UPDATE A LA TABLA DE FMC
                                             if (_valida.Length==0)
@@ -2261,6 +2342,11 @@ namespace Transmision.Net.Basico
         {
             try
             {
+                _tienda = "50148";
+                _envia_transaccion_mov();
+                //_dbftienda();
+                //_envia_transaccion_mov();
+
                 /*elimina si diferente a 10 minutos*/
                 elimina_tblock();
                 /********************************/
@@ -2339,7 +2425,7 @@ namespace Transmision.Net.Basico
 
                     #region<ENVIO DE STOCK DE PLANILLLA Y MOVIMIENTO>
                     //_clear_mov_dbf();
-                    // _envia_transaccion_mov();
+                     _envia_transaccion_mov();
                     #endregion
                     /*ENVIA PAQ DE TRASMISION EN TX*/
                     envia_paq_tx();
@@ -2430,13 +2516,22 @@ namespace Transmision.Net.Basico
         {
             Boolean _activo = false;
             try
-            {                
-                BataTransmision.bata_transaccionSoapClient trans = new BataTransmision.bata_transaccionSoapClient();
-                BataTransmision.Autenticacion conexion = new BataTransmision.Autenticacion();
-                conexion.user_name = "emcomer";
-                conexion.user_password = "Bata2013";
+            {
 
-                _activo =trans.ws_tienda_inv(conexion, _tienda);
+                BataPos.ValidateAcceso header_user = new BataPos.ValidateAcceso();
+                header_user.Username = "3D4F4673-98EB-4EB5-A468-4B7FAEC0C721";
+                header_user.Password = "566FDFF1-5311-4FE2-B3FC-0346923FE4B4";
+
+                BataPos.Bata_TransactionSoapClient batatran = new BataPos.Bata_TransactionSoapClient();
+
+                _activo = batatran.ws_valida_traspaso_tda(header_user, _tienda);
+
+                //BataTransmision.bata_transaccionSoapClient trans = new BataTransmision.bata_transaccionSoapClient();
+                //BataTransmision.Autenticacion conexion = new BataTransmision.Autenticacion();
+                //conexion.user_name = "emcomer";
+                //conexion.user_password = "Bata2013";
+
+                //_activo =trans.ws_tienda_inv(conexion, _tienda);
             }
             catch
             {
@@ -2527,7 +2622,7 @@ namespace Transmision.Net.Basico
                     string _ingreso_inv = "";
                     string _error = "";
                     //ACA VAMOS A ENVIAR E INVENTARIO DE PLANILLA
-                    _envia_inventario_planilla(ref _fecha_planilla,ref _ingreso_inv,ref _error);
+                   // _envia_inventario_planilla(ref _fecha_planilla,ref _ingreso_inv,ref _error);
 
                     if (_fecha_planilla.Length > 0)
                     {
@@ -2563,17 +2658,17 @@ namespace Transmision.Net.Basico
                         _enviar_movimiento(ref _error);
                     }
 
-                    if (_error.Length>0)
-                    {
+                    //if (_error.Length>0)
+                    //{
 
-                        BataTransmision.bata_transaccionSoapClient trans = new BataTransmision.bata_transaccionSoapClient();
-                        BataTransmision.Autenticacion conexion = new BataTransmision.Autenticacion();
-                        conexion.user_name = "emcomer";
-                        conexion.user_password = "Bata2013";
+                    //    BataTransmision.bata_transaccionSoapClient trans = new BataTransmision.bata_transaccionSoapClient();
+                    //    BataTransmision.Autenticacion conexion = new BataTransmision.Autenticacion();
+                    //    conexion.user_name = "emcomer";
+                    //    conexion.user_password = "Bata2013";
 
-                        string _envia = trans.ws_error_mov_transac(conexion, _tienda, _error);
+                    //    string _envia = trans.ws_error_mov_transac(conexion, _tienda, _error);
 
-                    }
+                    //}
                 }
 
             }
@@ -2916,11 +3011,11 @@ namespace Transmision.Net.Basico
                                         fc_gvta = dt_cab_clone.Rows[i]["fc_gvta"].ToString(),
                                         fc_zona = dt_cab_clone.Rows[i]["fc_zona"].ToString(),
                                         fc_clie = dt_cab_clone.Rows[i]["fc_clie"].ToString(),
-                                        fc_ncli = dt_cab_clone.Rows[i]["fc_ncli"].ToString(),
-                                        fc_nomb = dt_cab_clone.Rows[i]["fc_nomb"].ToString(),
-                                        fc_apep = dt_cab_clone.Rows[i]["fc_apep"].ToString(),
-                                        fc_apem = dt_cab_clone.Rows[i]["fc_apem"].ToString(),
-                                        fc_dcli = dt_cab_clone.Rows[i]["fc_dcli"].ToString(),
+                                        fc_ncli = formatear_caracteres(dt_cab_clone.Rows[i]["fc_ncli"].ToString()),
+                                        fc_nomb = formatear_caracteres(dt_cab_clone.Rows[i]["fc_nomb"].ToString()),
+                                        fc_apep = formatear_caracteres(dt_cab_clone.Rows[i]["fc_apep"].ToString()),
+                                        fc_apem = formatear_caracteres(dt_cab_clone.Rows[i]["fc_apem"].ToString()),
+                                        fc_dcli = formatear_caracteres(dt_cab_clone.Rows[i]["fc_dcli"].ToString()),
                                         fc_cubi = dt_cab_clone.Rows[i]["fc_cubi"].ToString(),
                                         fc_ruc = dt_cab_clone.Rows[i]["fc_ruc"].ToString(),
                                         fc_vuse = dt_cab_clone.Rows[i]["fc_vuse"].ToString(),
@@ -2999,7 +3094,7 @@ namespace Transmision.Net.Basico
                                     fd_pimp2 = Convert.ToDecimal(dt_det_clone.Rows[i]["fd_pimp2"]),
                                     fd_vimp2 = Convert.ToDecimal(dt_det_clone.Rows[i]["fd_vimp2"]),
                                     fd_subt2 = Convert.ToDecimal(dt_det_clone.Rows[i]["fd_subt2"]),
-                                    fd_pdct1 = Convert.ToDecimal(dt_det_clone.Rows[i]["fd_pdct1"]),
+                                    fd_pdct1 = Convert.ToDecimal((dt_det_clone.Rows[i]["fd_pdct1"]==DBNull.Value)?0: dt_det_clone.Rows[i]["fd_pdct1"]),
                                     fd_vdct1 = Convert.ToDecimal(dt_det_clone.Rows[i]["fd_vdct1"]),
                                     fd_subt3 = Convert.ToDecimal(dt_det_clone.Rows[i]["fd_subt3"]),
                                     fd_vdct4 = Convert.ToDecimal(dt_det_clone.Rows[i]["fd_vdct4"]),
@@ -3087,6 +3182,20 @@ namespace Transmision.Net.Basico
             }
             if (cn!=null)            
             if (cn.State == ConnectionState.Open) cn.Close();            
+        }
+        private static string formatear_caracteres(string strIn)
+        {
+            // Replace invalid characters with empty strings.
+            try
+            {
+                return System.Text.RegularExpressions.Regex.Replace(strIn, @"[^\w\.@-]", "");
+            }
+            // If we timeout when replacing invalid characters, 
+            // we should return Empty.
+            catch 
+            {
+                return String.Empty;
+            }
         }
 
         private static Boolean _verifica_venta_existe()
@@ -3458,12 +3567,16 @@ namespace Transmision.Net.Basico
                 
                 foreach(var item_guia_cab in lista_data)
                 {
-
+                    string con_tda = Left(item_guia_cab.DESC_ALMAC, 2) == "50" ? "31" : "30";
+                    string alm_tda= Left(item_guia_cab.DESC_ALMAC, 2) == "50" ? item_guia_cab.DESC_ALMAC : "";
+                    string gtc_nume= Left(item_guia_cab.DESC_ALMAC, 2) == "50" ? item_guia_cab.DESC_NDESP : "";
                     FFCGUD02 FFC = new FFCGUD02()
                     {
-                        gtc_tipo = "30",
-                        gtc_alm = "",
-                        gtc_nume = "",
+
+
+                        gtc_tipo = con_tda,
+                        gtc_alm = alm_tda,//item_guia_cab.DESC_ALMAC "",
+                        gtc_nume = gtc_nume,
                         gtc_femi = item_guia_cab.DESC_FDESP,
                         gtc_semi = item_guia_cab.DESC_SEM,
                         gtc_gudis = item_guia_cab.DESC_GUDIS,
@@ -3482,8 +3595,8 @@ namespace Transmision.Net.Basico
                     {
                         FFDGUD02 FFD = new FFDGUD02()
                         {
-                            gtd_tipo = "30",
-                            gtd_nume = "",
+                            gtd_tipo = con_tda,
+                            gtd_nume = gtc_nume,
                             gtd_gudis = item_guia_det["DESD_GUDIS"].ToString(),
                             gtd_artic = item_guia_det["DESD_ARTIC"].ToString() + item_guia_det["DESD_CALID"].ToString(),
                             gtd_categ = item_guia_det["DESD_CATEG"].ToString(),
@@ -3555,12 +3668,12 @@ namespace Transmision.Net.Basico
                 {
                     try
                     {
-
+                        string con_tda = Left(FFC.gtc_alm, 2) == "50" ? "31" : "30";
                         /*verificar si existe la guias*/
                         //1637314
                         // FFC.gtc_gudis
                         #region<VERIFICAR SI LA GUIA EXISTE >
-                        sqlquery = "SELECT count(*) FROM " + _FFCGUD02 + " WHERE GTC_GUDIS='" + FFC.gtc_gudis + "' AND GTC_TIPO='30'";
+                        sqlquery = "SELECT count(*) FROM " + _FFCGUD02 + " WHERE GTC_GUDIS='" + FFC.gtc_gudis + "' AND GTC_TIPO='" + con_tda + "'";
                         using (OleDbCommand cmd = new OleDbCommand(sqlquery,cn))
                         {
                             cmd.CommandTimeout = 0;
@@ -3578,7 +3691,7 @@ namespace Transmision.Net.Basico
                         if (_existe_guia>0)
                         {
                             #region<BORRAMOS LA GUIAS SI EXISTE CABEZERA Y DETALLE>
-                            sqlquery = "delete from " + _FFCGUD02 + " WHERE GTC_GUDIS='" + FFC.gtc_gudis + "' AND GTC_TIPO='30'";
+                            sqlquery = "delete from " + _FFCGUD02 + " WHERE GTC_GUDIS='" + FFC.gtc_gudis + "' AND GTC_TIPO='" + con_tda + "'";
 
                             using (OleDbCommand cmd = new OleDbCommand(sqlquery, cn))
                             {
@@ -3591,7 +3704,9 @@ namespace Transmision.Net.Basico
                                     if (cn.State == ConnectionState.Open) cn.Close();
                                 }
                             }
-                            sqlquery = "delete from " + _FFDGUD02 + " WHERE GTD_GUDIS='" + FFC.gtc_gudis + "' AND GTD_TIPO='30'";
+
+
+                            sqlquery = "delete from " + _FFDGUD02 + " WHERE GTD_GUDIS='" + FFC.gtc_gudis + "' AND GTD_TIPO='" + con_tda + "'";
                             using (OleDbCommand cmd = new OleDbCommand(sqlquery, cn))
                             {
                                 cmd.CommandTimeout = 0;
@@ -3630,11 +3745,11 @@ namespace Transmision.Net.Basico
                                 cmd.Parameters.Add("@gtc_estad", OleDbType.Char).Value =FFC.gtc_estad;
                                 cmd.Parameters.Add("@gtc_frect", OleDbType.Date).Value = DBNull.Value;// _gtc_frect;
                                 cmd.Parameters.Add("@gtc_cal", OleDbType.Decimal).Value =FFC.gtc_cal;
-                                cmd.Parameters.Add("@gtc_calm", OleDbType.Decimal).Value = FFC.gtc_calm;
+                                cmd.Parameters.Add("@gtc_calm", OleDbType.Double).Value = FFC.gtc_calm;
                                 cmd.Parameters.Add("@gtc_acc", OleDbType.Decimal).Value = FFC.gtc_acc;
-                                cmd.Parameters.Add("@gtc_accm", OleDbType.Decimal).Value = FFC.gtc_accm;
+                                cmd.Parameters.Add("@gtc_accm", OleDbType.Double).Value = FFC.gtc_accm;
                                 cmd.Parameters.Add("@gtc_caj", OleDbType.Decimal).Value = FFC.gtc_caj;
-                                cmd.Parameters.Add("@gtc_cajm", OleDbType.Decimal).Value = FFC.gtc_cajm;
+                                cmd.Parameters.Add("@gtc_cajm", OleDbType.Double).Value = FFC.gtc_cajm;
                                 cmd.Parameters.Add("@gtc_glosa", OleDbType.Char).Value = FFC.gtc_glosa;
 
                                 if (!_ejecute_reindex_dbf())
@@ -3665,8 +3780,8 @@ namespace Transmision.Net.Basico
                                     cmd.Parameters.Add("@gtd_categ", OleDbType.Char).Value = gdet.gtd_categ;
                                     cmd.Parameters.Add("@gtd_subca", OleDbType.Char).Value = gdet.gtd_subca;
                                     cmd.Parameters.Add("@gtd_cndme", OleDbType.Char).Value =  gdet.gtd_cndme;
-                                    cmd.Parameters.Add("@gtd_prvta", OleDbType.Decimal).Value =gdet.gtd_prvta;
-                                    cmd.Parameters.Add("@gtd_impor", OleDbType.Decimal).Value = gdet.gtd_impor;
+                                    cmd.Parameters.Add("@gtd_prvta", OleDbType.Double).Value =gdet.gtd_prvta;
+                                    cmd.Parameters.Add("@gtd_impor", OleDbType.Double).Value = gdet.gtd_impor;
                                     cmd.Parameters.Add("@gtd_med00", OleDbType.Numeric).Value = gdet.gtd_med00;
                                     cmd.Parameters.Add("@gtd_med01", OleDbType.Numeric).Value = gdet.gtd_med01;
                                     cmd.Parameters.Add("@gtd_med02", OleDbType.Numeric).Value = gdet.gtd_med02;

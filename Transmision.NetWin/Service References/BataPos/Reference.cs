@@ -91,10 +91,35 @@ namespace Transmision.NetWin.BataPos {
         [System.ServiceModel.OperationContractAttribute(Action="http://bataperu.com.pe/ws_envia_venta_tda_lista", ReplyAction="*")]
         [System.ServiceModel.XmlSerializerFormatAttribute(SupportFaults=true)]
         Transmision.NetWin.BataPos.ws_envia_venta_tda_listaResponse ws_envia_venta_tda_lista(Transmision.NetWin.BataPos.ws_envia_venta_tda_listaRequest request);
+        
+        // CODEGEN: Se está generando un contrato de mensaje, ya que el mensaje ws_transmision_ingreso_nubeRequest tiene encabezados.
+        [System.ServiceModel.OperationContractAttribute(Action="http://bataperu.com.pe/ws_transmision_ingreso_nube", ReplyAction="*")]
+        [System.ServiceModel.XmlSerializerFormatAttribute(SupportFaults=true)]
+        Transmision.NetWin.BataPos.ws_transmision_ingreso_nubeResponse ws_transmision_ingreso_nube(Transmision.NetWin.BataPos.ws_transmision_ingreso_nubeRequest request);
+        
+        // CODEGEN: Se está generando un contrato de mensaje, ya que el mensaje ws_envia_Scactco_listRequest tiene encabezados.
+        [System.ServiceModel.OperationContractAttribute(Action="http://bataperu.com.pe/ws_envia_Scactco_list", ReplyAction="*")]
+        [System.ServiceModel.XmlSerializerFormatAttribute(SupportFaults=true)]
+        Transmision.NetWin.BataPos.ws_envia_Scactco_listResponse ws_envia_Scactco_list(Transmision.NetWin.BataPos.ws_envia_Scactco_listRequest request);
+        
+        // CODEGEN: Se está generando un contrato de mensaje, ya que el mensaje ws_envia_scdrembRequest tiene encabezados.
+        [System.ServiceModel.OperationContractAttribute(Action="http://bataperu.com.pe/ws_envia_scdremb", ReplyAction="*")]
+        [System.ServiceModel.XmlSerializerFormatAttribute(SupportFaults=true)]
+        Transmision.NetWin.BataPos.ws_envia_scdrembResponse ws_envia_scdremb(Transmision.NetWin.BataPos.ws_envia_scdrembRequest request);
+        
+        // CODEGEN: Se está generando un contrato de mensaje, ya que el mensaje ws_valida_traspaso_tdaRequest tiene encabezados.
+        [System.ServiceModel.OperationContractAttribute(Action="http://bataperu.com.pe/ws_valida_traspaso_tda", ReplyAction="*")]
+        [System.ServiceModel.XmlSerializerFormatAttribute(SupportFaults=true)]
+        Transmision.NetWin.BataPos.ws_valida_traspaso_tdaResponse ws_valida_traspaso_tda(Transmision.NetWin.BataPos.ws_valida_traspaso_tdaRequest request);
+        
+        // CODEGEN: Se está generando un contrato de mensaje, ya que el mensaje ws_envio_traspaso_tdaRequest tiene encabezados.
+        [System.ServiceModel.OperationContractAttribute(Action="http://bataperu.com.pe/ws_envio_traspaso_tda", ReplyAction="*")]
+        [System.ServiceModel.XmlSerializerFormatAttribute(SupportFaults=true)]
+        Transmision.NetWin.BataPos.ws_envio_traspaso_tdaResponse ws_envio_traspaso_tda(Transmision.NetWin.BataPos.ws_envio_traspaso_tdaRequest request);
     }
     
     /// <remarks/>
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.7.2612.0")]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.7.3056.0")]
     [System.SerializableAttribute()]
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.ComponentModel.DesignerCategoryAttribute("code")]
@@ -154,7 +179,849 @@ namespace Transmision.NetWin.BataPos {
     }
     
     /// <remarks/>
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.7.2612.0")]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.7.3056.0")]
+    [System.SerializableAttribute()]
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.ComponentModel.DesignerCategoryAttribute("code")]
+    [System.Xml.Serialization.XmlTypeAttribute(Namespace="http://bataperu.com.pe/")]
+    public partial class Ent_Scdremb : object, System.ComponentModel.INotifyPropertyChanged {
+        
+        private string remb_guiacField;
+        
+        private string remb_articField;
+        
+        private string remb_calidField;
+        
+        private string remb_medidField;
+        
+        private string remb_corraField;
+        
+        private decimal remb_cantiField;
+        
+        private string remb_almacField;
+        
+        private string remb_cpackField;
+        
+        private string remb_condmField;
+        
+        private string remb_rmedField;
+        
+        private string remb_u_medField;
+        
+        private string remb_categField;
+        
+        private string remb_subcaField;
+        
+        private string remb_claseField;
+        
+        private decimal remb_prvtaField;
+        
+        private decimal remb_costoField;
+        
+        private string remb_talprField;
+        
+        private string remb_plaocField;
+        
+        private string remb_fembaField;
+        
+        private string remb_hembaField;
+        
+        private string remb_empreField;
+        
+        private string remb_secciField;
+        
+        private string remb_userField;
+        
+        private string remb_aassdField;
+        
+        private string remb_flagField;
+        
+        private decimal remb_secueField;
+        
+        private string remb_estadField;
+        
+        private string remb_logField;
+        
+        private string remb_ftxField;
+        
+        /// <remarks/>
+        [System.Xml.Serialization.XmlElementAttribute(Order=0)]
+        public string remb_guiac {
+            get {
+                return this.remb_guiacField;
+            }
+            set {
+                this.remb_guiacField = value;
+                this.RaisePropertyChanged("remb_guiac");
+            }
+        }
+        
+        /// <remarks/>
+        [System.Xml.Serialization.XmlElementAttribute(Order=1)]
+        public string remb_artic {
+            get {
+                return this.remb_articField;
+            }
+            set {
+                this.remb_articField = value;
+                this.RaisePropertyChanged("remb_artic");
+            }
+        }
+        
+        /// <remarks/>
+        [System.Xml.Serialization.XmlElementAttribute(Order=2)]
+        public string remb_calid {
+            get {
+                return this.remb_calidField;
+            }
+            set {
+                this.remb_calidField = value;
+                this.RaisePropertyChanged("remb_calid");
+            }
+        }
+        
+        /// <remarks/>
+        [System.Xml.Serialization.XmlElementAttribute(Order=3)]
+        public string remb_medid {
+            get {
+                return this.remb_medidField;
+            }
+            set {
+                this.remb_medidField = value;
+                this.RaisePropertyChanged("remb_medid");
+            }
+        }
+        
+        /// <remarks/>
+        [System.Xml.Serialization.XmlElementAttribute(Order=4)]
+        public string remb_corra {
+            get {
+                return this.remb_corraField;
+            }
+            set {
+                this.remb_corraField = value;
+                this.RaisePropertyChanged("remb_corra");
+            }
+        }
+        
+        /// <remarks/>
+        [System.Xml.Serialization.XmlElementAttribute(Order=5)]
+        public decimal remb_canti {
+            get {
+                return this.remb_cantiField;
+            }
+            set {
+                this.remb_cantiField = value;
+                this.RaisePropertyChanged("remb_canti");
+            }
+        }
+        
+        /// <remarks/>
+        [System.Xml.Serialization.XmlElementAttribute(Order=6)]
+        public string remb_almac {
+            get {
+                return this.remb_almacField;
+            }
+            set {
+                this.remb_almacField = value;
+                this.RaisePropertyChanged("remb_almac");
+            }
+        }
+        
+        /// <remarks/>
+        [System.Xml.Serialization.XmlElementAttribute(Order=7)]
+        public string remb_cpack {
+            get {
+                return this.remb_cpackField;
+            }
+            set {
+                this.remb_cpackField = value;
+                this.RaisePropertyChanged("remb_cpack");
+            }
+        }
+        
+        /// <remarks/>
+        [System.Xml.Serialization.XmlElementAttribute(Order=8)]
+        public string remb_condm {
+            get {
+                return this.remb_condmField;
+            }
+            set {
+                this.remb_condmField = value;
+                this.RaisePropertyChanged("remb_condm");
+            }
+        }
+        
+        /// <remarks/>
+        [System.Xml.Serialization.XmlElementAttribute(Order=9)]
+        public string remb_rmed {
+            get {
+                return this.remb_rmedField;
+            }
+            set {
+                this.remb_rmedField = value;
+                this.RaisePropertyChanged("remb_rmed");
+            }
+        }
+        
+        /// <remarks/>
+        [System.Xml.Serialization.XmlElementAttribute(Order=10)]
+        public string remb_u_med {
+            get {
+                return this.remb_u_medField;
+            }
+            set {
+                this.remb_u_medField = value;
+                this.RaisePropertyChanged("remb_u_med");
+            }
+        }
+        
+        /// <remarks/>
+        [System.Xml.Serialization.XmlElementAttribute(Order=11)]
+        public string remb_categ {
+            get {
+                return this.remb_categField;
+            }
+            set {
+                this.remb_categField = value;
+                this.RaisePropertyChanged("remb_categ");
+            }
+        }
+        
+        /// <remarks/>
+        [System.Xml.Serialization.XmlElementAttribute(Order=12)]
+        public string remb_subca {
+            get {
+                return this.remb_subcaField;
+            }
+            set {
+                this.remb_subcaField = value;
+                this.RaisePropertyChanged("remb_subca");
+            }
+        }
+        
+        /// <remarks/>
+        [System.Xml.Serialization.XmlElementAttribute(Order=13)]
+        public string remb_clase {
+            get {
+                return this.remb_claseField;
+            }
+            set {
+                this.remb_claseField = value;
+                this.RaisePropertyChanged("remb_clase");
+            }
+        }
+        
+        /// <remarks/>
+        [System.Xml.Serialization.XmlElementAttribute(Order=14)]
+        public decimal remb_prvta {
+            get {
+                return this.remb_prvtaField;
+            }
+            set {
+                this.remb_prvtaField = value;
+                this.RaisePropertyChanged("remb_prvta");
+            }
+        }
+        
+        /// <remarks/>
+        [System.Xml.Serialization.XmlElementAttribute(Order=15)]
+        public decimal remb_costo {
+            get {
+                return this.remb_costoField;
+            }
+            set {
+                this.remb_costoField = value;
+                this.RaisePropertyChanged("remb_costo");
+            }
+        }
+        
+        /// <remarks/>
+        [System.Xml.Serialization.XmlElementAttribute(Order=16)]
+        public string remb_talpr {
+            get {
+                return this.remb_talprField;
+            }
+            set {
+                this.remb_talprField = value;
+                this.RaisePropertyChanged("remb_talpr");
+            }
+        }
+        
+        /// <remarks/>
+        [System.Xml.Serialization.XmlElementAttribute(Order=17)]
+        public string remb_plaoc {
+            get {
+                return this.remb_plaocField;
+            }
+            set {
+                this.remb_plaocField = value;
+                this.RaisePropertyChanged("remb_plaoc");
+            }
+        }
+        
+        /// <remarks/>
+        [System.Xml.Serialization.XmlElementAttribute(Order=18)]
+        public string remb_femba {
+            get {
+                return this.remb_fembaField;
+            }
+            set {
+                this.remb_fembaField = value;
+                this.RaisePropertyChanged("remb_femba");
+            }
+        }
+        
+        /// <remarks/>
+        [System.Xml.Serialization.XmlElementAttribute(Order=19)]
+        public string remb_hemba {
+            get {
+                return this.remb_hembaField;
+            }
+            set {
+                this.remb_hembaField = value;
+                this.RaisePropertyChanged("remb_hemba");
+            }
+        }
+        
+        /// <remarks/>
+        [System.Xml.Serialization.XmlElementAttribute(Order=20)]
+        public string remb_empre {
+            get {
+                return this.remb_empreField;
+            }
+            set {
+                this.remb_empreField = value;
+                this.RaisePropertyChanged("remb_empre");
+            }
+        }
+        
+        /// <remarks/>
+        [System.Xml.Serialization.XmlElementAttribute(Order=21)]
+        public string remb_secci {
+            get {
+                return this.remb_secciField;
+            }
+            set {
+                this.remb_secciField = value;
+                this.RaisePropertyChanged("remb_secci");
+            }
+        }
+        
+        /// <remarks/>
+        [System.Xml.Serialization.XmlElementAttribute(Order=22)]
+        public string remb_user {
+            get {
+                return this.remb_userField;
+            }
+            set {
+                this.remb_userField = value;
+                this.RaisePropertyChanged("remb_user");
+            }
+        }
+        
+        /// <remarks/>
+        [System.Xml.Serialization.XmlElementAttribute(Order=23)]
+        public string remb_aassd {
+            get {
+                return this.remb_aassdField;
+            }
+            set {
+                this.remb_aassdField = value;
+                this.RaisePropertyChanged("remb_aassd");
+            }
+        }
+        
+        /// <remarks/>
+        [System.Xml.Serialization.XmlElementAttribute(Order=24)]
+        public string remb_flag {
+            get {
+                return this.remb_flagField;
+            }
+            set {
+                this.remb_flagField = value;
+                this.RaisePropertyChanged("remb_flag");
+            }
+        }
+        
+        /// <remarks/>
+        [System.Xml.Serialization.XmlElementAttribute(Order=25)]
+        public decimal remb_secue {
+            get {
+                return this.remb_secueField;
+            }
+            set {
+                this.remb_secueField = value;
+                this.RaisePropertyChanged("remb_secue");
+            }
+        }
+        
+        /// <remarks/>
+        [System.Xml.Serialization.XmlElementAttribute(Order=26)]
+        public string remb_estad {
+            get {
+                return this.remb_estadField;
+            }
+            set {
+                this.remb_estadField = value;
+                this.RaisePropertyChanged("remb_estad");
+            }
+        }
+        
+        /// <remarks/>
+        [System.Xml.Serialization.XmlElementAttribute(Order=27)]
+        public string remb_log {
+            get {
+                return this.remb_logField;
+            }
+            set {
+                this.remb_logField = value;
+                this.RaisePropertyChanged("remb_log");
+            }
+        }
+        
+        /// <remarks/>
+        [System.Xml.Serialization.XmlElementAttribute(Order=28)]
+        public string remb_ftx {
+            get {
+                return this.remb_ftxField;
+            }
+            set {
+                this.remb_ftxField = value;
+                this.RaisePropertyChanged("remb_ftx");
+            }
+        }
+        
+        public event System.ComponentModel.PropertyChangedEventHandler PropertyChanged;
+        
+        protected void RaisePropertyChanged(string propertyName) {
+            System.ComponentModel.PropertyChangedEventHandler propertyChanged = this.PropertyChanged;
+            if ((propertyChanged != null)) {
+                propertyChanged(this, new System.ComponentModel.PropertyChangedEventArgs(propertyName));
+            }
+        }
+    }
+    
+    /// <remarks/>
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.7.3056.0")]
+    [System.SerializableAttribute()]
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.ComponentModel.DesignerCategoryAttribute("code")]
+    [System.Xml.Serialization.XmlTypeAttribute(Namespace="http://bataperu.com.pe/")]
+    public partial class Ent_List_Scdrem : object, System.ComponentModel.INotifyPropertyChanged {
+        
+        private Ent_Scdremb[] lista_scdrembField;
+        
+        /// <remarks/>
+        [System.Xml.Serialization.XmlArrayAttribute(Order=0)]
+        public Ent_Scdremb[] lista_scdremb {
+            get {
+                return this.lista_scdrembField;
+            }
+            set {
+                this.lista_scdrembField = value;
+                this.RaisePropertyChanged("lista_scdremb");
+            }
+        }
+        
+        public event System.ComponentModel.PropertyChangedEventHandler PropertyChanged;
+        
+        protected void RaisePropertyChanged(string propertyName) {
+            System.ComponentModel.PropertyChangedEventHandler propertyChanged = this.PropertyChanged;
+            if ((propertyChanged != null)) {
+                propertyChanged(this, new System.ComponentModel.PropertyChangedEventArgs(propertyName));
+            }
+        }
+    }
+    
+    /// <remarks/>
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.7.3056.0")]
+    [System.SerializableAttribute()]
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.ComponentModel.DesignerCategoryAttribute("code")]
+    [System.Xml.Serialization.XmlTypeAttribute(Namespace="http://bataperu.com.pe/")]
+    public partial class Ent_Scactco : object, System.ComponentModel.INotifyPropertyChanged {
+        
+        private string ctco_talprField;
+        
+        private string ctco_plaocField;
+        
+        private string ctco_articField;
+        
+        private string ctco_calidField;
+        
+        private string ctco_plprField;
+        
+        private string ctco_imprField;
+        
+        private string ctco_med00Field;
+        
+        private string ctco_med01Field;
+        
+        private string ctco_med02Field;
+        
+        private string ctco_med03Field;
+        
+        private string ctco_med04Field;
+        
+        private string ctco_med05Field;
+        
+        private string ctco_med06Field;
+        
+        private string ctco_med07Field;
+        
+        private string ctco_med08Field;
+        
+        private string ctco_med09Field;
+        
+        private string ctco_med10Field;
+        
+        private string ctco_med11Field;
+        
+        private string ctco_origeField;
+        
+        private System.DateTime ctco_fechaField;
+        
+        private string ctco_usernField;
+        
+        private string ctco_empreField;
+        
+        private string ctco_ftxField;
+        
+        private string ctco_txposField;
+        
+        /// <remarks/>
+        [System.Xml.Serialization.XmlElementAttribute(Order=0)]
+        public string ctco_talpr {
+            get {
+                return this.ctco_talprField;
+            }
+            set {
+                this.ctco_talprField = value;
+                this.RaisePropertyChanged("ctco_talpr");
+            }
+        }
+        
+        /// <remarks/>
+        [System.Xml.Serialization.XmlElementAttribute(Order=1)]
+        public string ctco_plaoc {
+            get {
+                return this.ctco_plaocField;
+            }
+            set {
+                this.ctco_plaocField = value;
+                this.RaisePropertyChanged("ctco_plaoc");
+            }
+        }
+        
+        /// <remarks/>
+        [System.Xml.Serialization.XmlElementAttribute(Order=2)]
+        public string ctco_artic {
+            get {
+                return this.ctco_articField;
+            }
+            set {
+                this.ctco_articField = value;
+                this.RaisePropertyChanged("ctco_artic");
+            }
+        }
+        
+        /// <remarks/>
+        [System.Xml.Serialization.XmlElementAttribute(Order=3)]
+        public string ctco_calid {
+            get {
+                return this.ctco_calidField;
+            }
+            set {
+                this.ctco_calidField = value;
+                this.RaisePropertyChanged("ctco_calid");
+            }
+        }
+        
+        /// <remarks/>
+        [System.Xml.Serialization.XmlElementAttribute(Order=4)]
+        public string ctco_plpr {
+            get {
+                return this.ctco_plprField;
+            }
+            set {
+                this.ctco_plprField = value;
+                this.RaisePropertyChanged("ctco_plpr");
+            }
+        }
+        
+        /// <remarks/>
+        [System.Xml.Serialization.XmlElementAttribute(Order=5)]
+        public string ctco_impr {
+            get {
+                return this.ctco_imprField;
+            }
+            set {
+                this.ctco_imprField = value;
+                this.RaisePropertyChanged("ctco_impr");
+            }
+        }
+        
+        /// <remarks/>
+        [System.Xml.Serialization.XmlElementAttribute(Order=6)]
+        public string ctco_med00 {
+            get {
+                return this.ctco_med00Field;
+            }
+            set {
+                this.ctco_med00Field = value;
+                this.RaisePropertyChanged("ctco_med00");
+            }
+        }
+        
+        /// <remarks/>
+        [System.Xml.Serialization.XmlElementAttribute(Order=7)]
+        public string ctco_med01 {
+            get {
+                return this.ctco_med01Field;
+            }
+            set {
+                this.ctco_med01Field = value;
+                this.RaisePropertyChanged("ctco_med01");
+            }
+        }
+        
+        /// <remarks/>
+        [System.Xml.Serialization.XmlElementAttribute(Order=8)]
+        public string ctco_med02 {
+            get {
+                return this.ctco_med02Field;
+            }
+            set {
+                this.ctco_med02Field = value;
+                this.RaisePropertyChanged("ctco_med02");
+            }
+        }
+        
+        /// <remarks/>
+        [System.Xml.Serialization.XmlElementAttribute(Order=9)]
+        public string ctco_med03 {
+            get {
+                return this.ctco_med03Field;
+            }
+            set {
+                this.ctco_med03Field = value;
+                this.RaisePropertyChanged("ctco_med03");
+            }
+        }
+        
+        /// <remarks/>
+        [System.Xml.Serialization.XmlElementAttribute(Order=10)]
+        public string ctco_med04 {
+            get {
+                return this.ctco_med04Field;
+            }
+            set {
+                this.ctco_med04Field = value;
+                this.RaisePropertyChanged("ctco_med04");
+            }
+        }
+        
+        /// <remarks/>
+        [System.Xml.Serialization.XmlElementAttribute(Order=11)]
+        public string ctco_med05 {
+            get {
+                return this.ctco_med05Field;
+            }
+            set {
+                this.ctco_med05Field = value;
+                this.RaisePropertyChanged("ctco_med05");
+            }
+        }
+        
+        /// <remarks/>
+        [System.Xml.Serialization.XmlElementAttribute(Order=12)]
+        public string ctco_med06 {
+            get {
+                return this.ctco_med06Field;
+            }
+            set {
+                this.ctco_med06Field = value;
+                this.RaisePropertyChanged("ctco_med06");
+            }
+        }
+        
+        /// <remarks/>
+        [System.Xml.Serialization.XmlElementAttribute(Order=13)]
+        public string ctco_med07 {
+            get {
+                return this.ctco_med07Field;
+            }
+            set {
+                this.ctco_med07Field = value;
+                this.RaisePropertyChanged("ctco_med07");
+            }
+        }
+        
+        /// <remarks/>
+        [System.Xml.Serialization.XmlElementAttribute(Order=14)]
+        public string ctco_med08 {
+            get {
+                return this.ctco_med08Field;
+            }
+            set {
+                this.ctco_med08Field = value;
+                this.RaisePropertyChanged("ctco_med08");
+            }
+        }
+        
+        /// <remarks/>
+        [System.Xml.Serialization.XmlElementAttribute(Order=15)]
+        public string ctco_med09 {
+            get {
+                return this.ctco_med09Field;
+            }
+            set {
+                this.ctco_med09Field = value;
+                this.RaisePropertyChanged("ctco_med09");
+            }
+        }
+        
+        /// <remarks/>
+        [System.Xml.Serialization.XmlElementAttribute(Order=16)]
+        public string ctco_med10 {
+            get {
+                return this.ctco_med10Field;
+            }
+            set {
+                this.ctco_med10Field = value;
+                this.RaisePropertyChanged("ctco_med10");
+            }
+        }
+        
+        /// <remarks/>
+        [System.Xml.Serialization.XmlElementAttribute(Order=17)]
+        public string ctco_med11 {
+            get {
+                return this.ctco_med11Field;
+            }
+            set {
+                this.ctco_med11Field = value;
+                this.RaisePropertyChanged("ctco_med11");
+            }
+        }
+        
+        /// <remarks/>
+        [System.Xml.Serialization.XmlElementAttribute(Order=18)]
+        public string ctco_orige {
+            get {
+                return this.ctco_origeField;
+            }
+            set {
+                this.ctco_origeField = value;
+                this.RaisePropertyChanged("ctco_orige");
+            }
+        }
+        
+        /// <remarks/>
+        [System.Xml.Serialization.XmlElementAttribute(Order=19)]
+        public System.DateTime ctco_fecha {
+            get {
+                return this.ctco_fechaField;
+            }
+            set {
+                this.ctco_fechaField = value;
+                this.RaisePropertyChanged("ctco_fecha");
+            }
+        }
+        
+        /// <remarks/>
+        [System.Xml.Serialization.XmlElementAttribute(Order=20)]
+        public string ctco_usern {
+            get {
+                return this.ctco_usernField;
+            }
+            set {
+                this.ctco_usernField = value;
+                this.RaisePropertyChanged("ctco_usern");
+            }
+        }
+        
+        /// <remarks/>
+        [System.Xml.Serialization.XmlElementAttribute(Order=21)]
+        public string ctco_empre {
+            get {
+                return this.ctco_empreField;
+            }
+            set {
+                this.ctco_empreField = value;
+                this.RaisePropertyChanged("ctco_empre");
+            }
+        }
+        
+        /// <remarks/>
+        [System.Xml.Serialization.XmlElementAttribute(Order=22)]
+        public string ctco_ftx {
+            get {
+                return this.ctco_ftxField;
+            }
+            set {
+                this.ctco_ftxField = value;
+                this.RaisePropertyChanged("ctco_ftx");
+            }
+        }
+        
+        /// <remarks/>
+        [System.Xml.Serialization.XmlElementAttribute(Order=23)]
+        public string ctco_txpos {
+            get {
+                return this.ctco_txposField;
+            }
+            set {
+                this.ctco_txposField = value;
+                this.RaisePropertyChanged("ctco_txpos");
+            }
+        }
+        
+        public event System.ComponentModel.PropertyChangedEventHandler PropertyChanged;
+        
+        protected void RaisePropertyChanged(string propertyName) {
+            System.ComponentModel.PropertyChangedEventHandler propertyChanged = this.PropertyChanged;
+            if ((propertyChanged != null)) {
+                propertyChanged(this, new System.ComponentModel.PropertyChangedEventArgs(propertyName));
+            }
+        }
+    }
+    
+    /// <remarks/>
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.7.3056.0")]
+    [System.SerializableAttribute()]
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.ComponentModel.DesignerCategoryAttribute("code")]
+    [System.Xml.Serialization.XmlTypeAttribute(Namespace="http://bataperu.com.pe/")]
+    public partial class Ent_List_Scactco : object, System.ComponentModel.INotifyPropertyChanged {
+        
+        private Ent_Scactco[] lista_scactcoField;
+        
+        /// <remarks/>
+        [System.Xml.Serialization.XmlArrayAttribute(Order=0)]
+        public Ent_Scactco[] lista_scactco {
+            get {
+                return this.lista_scactcoField;
+            }
+            set {
+                this.lista_scactcoField = value;
+                this.RaisePropertyChanged("lista_scactco");
+            }
+        }
+        
+        public event System.ComponentModel.PropertyChangedEventHandler PropertyChanged;
+        
+        protected void RaisePropertyChanged(string propertyName) {
+            System.ComponentModel.PropertyChangedEventHandler propertyChanged = this.PropertyChanged;
+            if ((propertyChanged != null)) {
+                propertyChanged(this, new System.ComponentModel.PropertyChangedEventArgs(propertyName));
+            }
+        }
+    }
+    
+    /// <remarks/>
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.7.3056.0")]
     [System.SerializableAttribute()]
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.ComponentModel.DesignerCategoryAttribute("code")]
@@ -368,7 +1235,7 @@ namespace Transmision.NetWin.BataPos {
     }
     
     /// <remarks/>
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.7.2612.0")]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.7.3056.0")]
     [System.SerializableAttribute()]
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.ComponentModel.DesignerCategoryAttribute("code")]
@@ -400,7 +1267,7 @@ namespace Transmision.NetWin.BataPos {
     }
     
     /// <remarks/>
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.7.2612.0")]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.7.3056.0")]
     [System.SerializableAttribute()]
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.ComponentModel.DesignerCategoryAttribute("code")]
@@ -950,7 +1817,7 @@ namespace Transmision.NetWin.BataPos {
     }
     
     /// <remarks/>
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.7.2612.0")]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.7.3056.0")]
     [System.SerializableAttribute()]
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.ComponentModel.DesignerCategoryAttribute("code")]
@@ -982,7 +1849,7 @@ namespace Transmision.NetWin.BataPos {
     }
     
     /// <remarks/>
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.7.2612.0")]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.7.3056.0")]
     [System.SerializableAttribute()]
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.ComponentModel.DesignerCategoryAttribute("code")]
@@ -1952,7 +2819,7 @@ namespace Transmision.NetWin.BataPos {
     }
     
     /// <remarks/>
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.7.2612.0")]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.7.3056.0")]
     [System.SerializableAttribute()]
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.ComponentModel.DesignerCategoryAttribute("code")]
@@ -1984,7 +2851,7 @@ namespace Transmision.NetWin.BataPos {
     }
     
     /// <remarks/>
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.7.2612.0")]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.7.3056.0")]
     [System.SerializableAttribute()]
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.ComponentModel.DesignerCategoryAttribute("code")]
@@ -2100,7 +2967,7 @@ namespace Transmision.NetWin.BataPos {
     }
     
     /// <remarks/>
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.7.2612.0")]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.7.3056.0")]
     [System.SerializableAttribute()]
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.ComponentModel.DesignerCategoryAttribute("code")]
@@ -2132,7 +2999,7 @@ namespace Transmision.NetWin.BataPos {
     }
     
     /// <remarks/>
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.7.2612.0")]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.7.3056.0")]
     [System.SerializableAttribute()]
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.ComponentModel.DesignerCategoryAttribute("code")]
@@ -2220,7 +3087,7 @@ namespace Transmision.NetWin.BataPos {
     }
     
     /// <remarks/>
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.7.2612.0")]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.7.3056.0")]
     [System.SerializableAttribute()]
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.ComponentModel.DesignerCategoryAttribute("code")]
@@ -2252,7 +3119,7 @@ namespace Transmision.NetWin.BataPos {
     }
     
     /// <remarks/>
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.7.2612.0")]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.7.3056.0")]
     [System.SerializableAttribute()]
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.ComponentModel.DesignerCategoryAttribute("code")]
@@ -2284,7 +3151,7 @@ namespace Transmision.NetWin.BataPos {
     }
     
     /// <remarks/>
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.7.2612.0")]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.7.3056.0")]
     [System.SerializableAttribute()]
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.ComponentModel.DesignerCategoryAttribute("code")]
@@ -2330,7 +3197,7 @@ namespace Transmision.NetWin.BataPos {
     }
     
     /// <remarks/>
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.7.2612.0")]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.7.3056.0")]
     [System.SerializableAttribute()]
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.ComponentModel.DesignerCategoryAttribute("code")]
@@ -2362,7 +3229,7 @@ namespace Transmision.NetWin.BataPos {
     }
     
     /// <remarks/>
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.7.2612.0")]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.7.3056.0")]
     [System.SerializableAttribute()]
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.ComponentModel.DesignerCategoryAttribute("code")]
@@ -2394,7 +3261,7 @@ namespace Transmision.NetWin.BataPos {
     }
     
     /// <remarks/>
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.7.2612.0")]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.7.3056.0")]
     [System.SerializableAttribute()]
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.ComponentModel.DesignerCategoryAttribute("code")]
@@ -2440,7 +3307,7 @@ namespace Transmision.NetWin.BataPos {
     }
     
     /// <remarks/>
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.7.2612.0")]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.7.3056.0")]
     [System.SerializableAttribute()]
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.ComponentModel.DesignerCategoryAttribute("code")]
@@ -2948,7 +3815,137 @@ namespace Transmision.NetWin.BataPos {
     }
     
     /// <remarks/>
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.7.2612.0")]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.7.3056.0")]
+    [System.SerializableAttribute()]
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.ComponentModel.DesignerCategoryAttribute("code")]
+    [System.Xml.Serialization.XmlTypeAttribute(Namespace="http://bataperu.com.pe/")]
+    public partial class Ent_Fvdespd : object, System.ComponentModel.INotifyPropertyChanged {
+        
+        private string dESD_GUDISField;
+        
+        private string dESD_NDESPField;
+        
+        private string dESD_ALMACField;
+        
+        private string dESD_ARTICField;
+        
+        private string dESD_CALIDField;
+        
+        private string dESD_TALLAField;
+        
+        private int dESD_PARESField;
+        
+        private decimal dESD_PRVTAField;
+        
+        /// <remarks/>
+        [System.Xml.Serialization.XmlElementAttribute(Order=0)]
+        public string DESD_GUDIS {
+            get {
+                return this.dESD_GUDISField;
+            }
+            set {
+                this.dESD_GUDISField = value;
+                this.RaisePropertyChanged("DESD_GUDIS");
+            }
+        }
+        
+        /// <remarks/>
+        [System.Xml.Serialization.XmlElementAttribute(Order=1)]
+        public string DESD_NDESP {
+            get {
+                return this.dESD_NDESPField;
+            }
+            set {
+                this.dESD_NDESPField = value;
+                this.RaisePropertyChanged("DESD_NDESP");
+            }
+        }
+        
+        /// <remarks/>
+        [System.Xml.Serialization.XmlElementAttribute(Order=2)]
+        public string DESD_ALMAC {
+            get {
+                return this.dESD_ALMACField;
+            }
+            set {
+                this.dESD_ALMACField = value;
+                this.RaisePropertyChanged("DESD_ALMAC");
+            }
+        }
+        
+        /// <remarks/>
+        [System.Xml.Serialization.XmlElementAttribute(Order=3)]
+        public string DESD_ARTIC {
+            get {
+                return this.dESD_ARTICField;
+            }
+            set {
+                this.dESD_ARTICField = value;
+                this.RaisePropertyChanged("DESD_ARTIC");
+            }
+        }
+        
+        /// <remarks/>
+        [System.Xml.Serialization.XmlElementAttribute(Order=4)]
+        public string DESD_CALID {
+            get {
+                return this.dESD_CALIDField;
+            }
+            set {
+                this.dESD_CALIDField = value;
+                this.RaisePropertyChanged("DESD_CALID");
+            }
+        }
+        
+        /// <remarks/>
+        [System.Xml.Serialization.XmlElementAttribute(Order=5)]
+        public string DESD_TALLA {
+            get {
+                return this.dESD_TALLAField;
+            }
+            set {
+                this.dESD_TALLAField = value;
+                this.RaisePropertyChanged("DESD_TALLA");
+            }
+        }
+        
+        /// <remarks/>
+        [System.Xml.Serialization.XmlElementAttribute(Order=6)]
+        public int DESD_PARES {
+            get {
+                return this.dESD_PARESField;
+            }
+            set {
+                this.dESD_PARESField = value;
+                this.RaisePropertyChanged("DESD_PARES");
+            }
+        }
+        
+        /// <remarks/>
+        [System.Xml.Serialization.XmlElementAttribute(Order=7)]
+        public decimal DESD_PRVTA {
+            get {
+                return this.dESD_PRVTAField;
+            }
+            set {
+                this.dESD_PRVTAField = value;
+                this.RaisePropertyChanged("DESD_PRVTA");
+            }
+        }
+        
+        public event System.ComponentModel.PropertyChangedEventHandler PropertyChanged;
+        
+        protected void RaisePropertyChanged(string propertyName) {
+            System.ComponentModel.PropertyChangedEventHandler propertyChanged = this.PropertyChanged;
+            if ((propertyChanged != null)) {
+                propertyChanged(this, new System.ComponentModel.PropertyChangedEventArgs(propertyName));
+            }
+        }
+    }
+    
+    /// <remarks/>
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.7.3056.0")]
     [System.SerializableAttribute()]
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.ComponentModel.DesignerCategoryAttribute("code")]
@@ -3010,6 +4007,8 @@ namespace Transmision.NetWin.BataPos {
         private decimal dESC_VANCField;
         
         private decimal dESC_VCAJField;
+        
+        private Ent_Fvdespd[] fVDESPDField;
         
         private System.Data.DataTable dT_FVDESPD_TREGMEDIDAField;
         
@@ -3350,7 +4349,19 @@ namespace Transmision.NetWin.BataPos {
         }
         
         /// <remarks/>
-        [System.Xml.Serialization.XmlElementAttribute(Order=28)]
+        [System.Xml.Serialization.XmlArrayAttribute(Order=28)]
+        public Ent_Fvdespd[] FVDESPD {
+            get {
+                return this.fVDESPDField;
+            }
+            set {
+                this.fVDESPDField = value;
+                this.RaisePropertyChanged("FVDESPD");
+            }
+        }
+        
+        /// <remarks/>
+        [System.Xml.Serialization.XmlElementAttribute(Order=29)]
         public System.Data.DataTable DT_FVDESPD_TREGMEDIDA {
             get {
                 return this.dT_FVDESPD_TREGMEDIDAField;
@@ -3372,7 +4383,7 @@ namespace Transmision.NetWin.BataPos {
     }
     
     /// <remarks/>
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.7.2612.0")]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.7.3056.0")]
     [System.SerializableAttribute()]
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.ComponentModel.DesignerCategoryAttribute("code")]
@@ -3903,6 +4914,205 @@ namespace Transmision.NetWin.BataPos {
         }
     }
     
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
+    [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
+    [System.ServiceModel.MessageContractAttribute(WrapperName="ws_transmision_ingreso_nube", WrapperNamespace="http://bataperu.com.pe/", IsWrapped=true)]
+    public partial class ws_transmision_ingreso_nubeRequest {
+        
+        [System.ServiceModel.MessageHeaderAttribute(Namespace="http://bataperu.com.pe/")]
+        public Transmision.NetWin.BataPos.ValidateAcceso ValidateAcceso;
+        
+        [System.ServiceModel.MessageBodyMemberAttribute(Namespace="http://bataperu.com.pe/", Order=0)]
+        [System.Xml.Serialization.XmlElementAttribute(DataType="base64Binary")]
+        public byte[] _archivo_zip;
+        
+        [System.ServiceModel.MessageBodyMemberAttribute(Namespace="http://bataperu.com.pe/", Order=1)]
+        public string _name;
+        
+        public ws_transmision_ingreso_nubeRequest() {
+        }
+        
+        public ws_transmision_ingreso_nubeRequest(Transmision.NetWin.BataPos.ValidateAcceso ValidateAcceso, byte[] _archivo_zip, string _name) {
+            this.ValidateAcceso = ValidateAcceso;
+            this._archivo_zip = _archivo_zip;
+            this._name = _name;
+        }
+    }
+    
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
+    [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
+    [System.ServiceModel.MessageContractAttribute(WrapperName="ws_transmision_ingreso_nubeResponse", WrapperNamespace="http://bataperu.com.pe/", IsWrapped=true)]
+    public partial class ws_transmision_ingreso_nubeResponse {
+        
+        [System.ServiceModel.MessageBodyMemberAttribute(Namespace="http://bataperu.com.pe/", Order=0)]
+        public string[] ws_transmision_ingreso_nubeResult;
+        
+        public ws_transmision_ingreso_nubeResponse() {
+        }
+        
+        public ws_transmision_ingreso_nubeResponse(string[] ws_transmision_ingreso_nubeResult) {
+            this.ws_transmision_ingreso_nubeResult = ws_transmision_ingreso_nubeResult;
+        }
+    }
+    
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
+    [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
+    [System.ServiceModel.MessageContractAttribute(WrapperName="ws_envia_Scactco_list", WrapperNamespace="http://bataperu.com.pe/", IsWrapped=true)]
+    public partial class ws_envia_Scactco_listRequest {
+        
+        [System.ServiceModel.MessageHeaderAttribute(Namespace="http://bataperu.com.pe/")]
+        public Transmision.NetWin.BataPos.ValidateAcceso ValidateAcceso;
+        
+        [System.ServiceModel.MessageBodyMemberAttribute(Namespace="http://bataperu.com.pe/", Order=0)]
+        public Transmision.NetWin.BataPos.Ent_List_Scactco listscactco;
+        
+        public ws_envia_Scactco_listRequest() {
+        }
+        
+        public ws_envia_Scactco_listRequest(Transmision.NetWin.BataPos.ValidateAcceso ValidateAcceso, Transmision.NetWin.BataPos.Ent_List_Scactco listscactco) {
+            this.ValidateAcceso = ValidateAcceso;
+            this.listscactco = listscactco;
+        }
+    }
+    
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
+    [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
+    [System.ServiceModel.MessageContractAttribute(WrapperName="ws_envia_Scactco_listResponse", WrapperNamespace="http://bataperu.com.pe/", IsWrapped=true)]
+    public partial class ws_envia_Scactco_listResponse {
+        
+        [System.ServiceModel.MessageBodyMemberAttribute(Namespace="http://bataperu.com.pe/", Order=0)]
+        public Transmision.NetWin.BataPos.Ent_MsgTransac ws_envia_Scactco_listResult;
+        
+        public ws_envia_Scactco_listResponse() {
+        }
+        
+        public ws_envia_Scactco_listResponse(Transmision.NetWin.BataPos.Ent_MsgTransac ws_envia_Scactco_listResult) {
+            this.ws_envia_Scactco_listResult = ws_envia_Scactco_listResult;
+        }
+    }
+    
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
+    [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
+    [System.ServiceModel.MessageContractAttribute(WrapperName="ws_envia_scdremb", WrapperNamespace="http://bataperu.com.pe/", IsWrapped=true)]
+    public partial class ws_envia_scdrembRequest {
+        
+        [System.ServiceModel.MessageHeaderAttribute(Namespace="http://bataperu.com.pe/")]
+        public Transmision.NetWin.BataPos.ValidateAcceso ValidateAcceso;
+        
+        [System.ServiceModel.MessageBodyMemberAttribute(Namespace="http://bataperu.com.pe/", Order=0)]
+        public Transmision.NetWin.BataPos.Ent_List_Scdrem list_scdrem;
+        
+        public ws_envia_scdrembRequest() {
+        }
+        
+        public ws_envia_scdrembRequest(Transmision.NetWin.BataPos.ValidateAcceso ValidateAcceso, Transmision.NetWin.BataPos.Ent_List_Scdrem list_scdrem) {
+            this.ValidateAcceso = ValidateAcceso;
+            this.list_scdrem = list_scdrem;
+        }
+    }
+    
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
+    [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
+    [System.ServiceModel.MessageContractAttribute(WrapperName="ws_envia_scdrembResponse", WrapperNamespace="http://bataperu.com.pe/", IsWrapped=true)]
+    public partial class ws_envia_scdrembResponse {
+        
+        [System.ServiceModel.MessageBodyMemberAttribute(Namespace="http://bataperu.com.pe/", Order=0)]
+        public Transmision.NetWin.BataPos.Ent_MsgTransac ws_envia_scdrembResult;
+        
+        public ws_envia_scdrembResponse() {
+        }
+        
+        public ws_envia_scdrembResponse(Transmision.NetWin.BataPos.Ent_MsgTransac ws_envia_scdrembResult) {
+            this.ws_envia_scdrembResult = ws_envia_scdrembResult;
+        }
+    }
+    
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
+    [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
+    [System.ServiceModel.MessageContractAttribute(WrapperName="ws_valida_traspaso_tda", WrapperNamespace="http://bataperu.com.pe/", IsWrapped=true)]
+    public partial class ws_valida_traspaso_tdaRequest {
+        
+        [System.ServiceModel.MessageHeaderAttribute(Namespace="http://bataperu.com.pe/")]
+        public Transmision.NetWin.BataPos.ValidateAcceso ValidateAcceso;
+        
+        [System.ServiceModel.MessageBodyMemberAttribute(Namespace="http://bataperu.com.pe/", Order=0)]
+        public string cod_tda;
+        
+        public ws_valida_traspaso_tdaRequest() {
+        }
+        
+        public ws_valida_traspaso_tdaRequest(Transmision.NetWin.BataPos.ValidateAcceso ValidateAcceso, string cod_tda) {
+            this.ValidateAcceso = ValidateAcceso;
+            this.cod_tda = cod_tda;
+        }
+    }
+    
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
+    [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
+    [System.ServiceModel.MessageContractAttribute(WrapperName="ws_valida_traspaso_tdaResponse", WrapperNamespace="http://bataperu.com.pe/", IsWrapped=true)]
+    public partial class ws_valida_traspaso_tdaResponse {
+        
+        [System.ServiceModel.MessageBodyMemberAttribute(Namespace="http://bataperu.com.pe/", Order=0)]
+        public bool ws_valida_traspaso_tdaResult;
+        
+        public ws_valida_traspaso_tdaResponse() {
+        }
+        
+        public ws_valida_traspaso_tdaResponse(bool ws_valida_traspaso_tdaResult) {
+            this.ws_valida_traspaso_tdaResult = ws_valida_traspaso_tdaResult;
+        }
+    }
+    
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
+    [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
+    [System.ServiceModel.MessageContractAttribute(WrapperName="ws_envio_traspaso_tda", WrapperNamespace="http://bataperu.com.pe/", IsWrapped=true)]
+    public partial class ws_envio_traspaso_tdaRequest {
+        
+        [System.ServiceModel.MessageHeaderAttribute(Namespace="http://bataperu.com.pe/")]
+        public Transmision.NetWin.BataPos.ValidateAcceso ValidateAcceso;
+        
+        [System.ServiceModel.MessageBodyMemberAttribute(Namespace="http://bataperu.com.pe/", Order=0)]
+        public string cod_tda;
+        
+        [System.ServiceModel.MessageBodyMemberAttribute(Namespace="http://bataperu.com.pe/", Order=1)]
+        public Transmision.NetWin.BataPos.Ent_Fvdespc[] despacho;
+        
+        public ws_envio_traspaso_tdaRequest() {
+        }
+        
+        public ws_envio_traspaso_tdaRequest(Transmision.NetWin.BataPos.ValidateAcceso ValidateAcceso, string cod_tda, Transmision.NetWin.BataPos.Ent_Fvdespc[] despacho) {
+            this.ValidateAcceso = ValidateAcceso;
+            this.cod_tda = cod_tda;
+            this.despacho = despacho;
+        }
+    }
+    
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
+    [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
+    [System.ServiceModel.MessageContractAttribute(WrapperName="ws_envio_traspaso_tdaResponse", WrapperNamespace="http://bataperu.com.pe/", IsWrapped=true)]
+    public partial class ws_envio_traspaso_tdaResponse {
+        
+        [System.ServiceModel.MessageBodyMemberAttribute(Namespace="http://bataperu.com.pe/", Order=0)]
+        public Transmision.NetWin.BataPos.Ent_MsgTransac ws_envio_traspaso_tdaResult;
+        
+        public ws_envio_traspaso_tdaResponse() {
+        }
+        
+        public ws_envio_traspaso_tdaResponse(Transmision.NetWin.BataPos.Ent_MsgTransac ws_envio_traspaso_tdaResult) {
+            this.ws_envio_traspaso_tdaResult = ws_envio_traspaso_tdaResult;
+        }
+    }
+    
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
     public interface Bata_TransactionSoapChannel : Transmision.NetWin.BataPos.Bata_TransactionSoap, System.ServiceModel.IClientChannel {
     }
@@ -4108,6 +5318,73 @@ namespace Transmision.NetWin.BataPos {
             inValue.fnotaa = fnotaa;
             Transmision.NetWin.BataPos.ws_envia_venta_tda_listaResponse retVal = ((Transmision.NetWin.BataPos.Bata_TransactionSoap)(this)).ws_envia_venta_tda_lista(inValue);
             return retVal.ws_envia_venta_tda_listaResult;
+        }
+        
+        [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
+        Transmision.NetWin.BataPos.ws_transmision_ingreso_nubeResponse Transmision.NetWin.BataPos.Bata_TransactionSoap.ws_transmision_ingreso_nube(Transmision.NetWin.BataPos.ws_transmision_ingreso_nubeRequest request) {
+            return base.Channel.ws_transmision_ingreso_nube(request);
+        }
+        
+        public string[] ws_transmision_ingreso_nube(Transmision.NetWin.BataPos.ValidateAcceso ValidateAcceso, byte[] _archivo_zip, string _name) {
+            Transmision.NetWin.BataPos.ws_transmision_ingreso_nubeRequest inValue = new Transmision.NetWin.BataPos.ws_transmision_ingreso_nubeRequest();
+            inValue.ValidateAcceso = ValidateAcceso;
+            inValue._archivo_zip = _archivo_zip;
+            inValue._name = _name;
+            Transmision.NetWin.BataPos.ws_transmision_ingreso_nubeResponse retVal = ((Transmision.NetWin.BataPos.Bata_TransactionSoap)(this)).ws_transmision_ingreso_nube(inValue);
+            return retVal.ws_transmision_ingreso_nubeResult;
+        }
+        
+        [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
+        Transmision.NetWin.BataPos.ws_envia_Scactco_listResponse Transmision.NetWin.BataPos.Bata_TransactionSoap.ws_envia_Scactco_list(Transmision.NetWin.BataPos.ws_envia_Scactco_listRequest request) {
+            return base.Channel.ws_envia_Scactco_list(request);
+        }
+        
+        public Transmision.NetWin.BataPos.Ent_MsgTransac ws_envia_Scactco_list(Transmision.NetWin.BataPos.ValidateAcceso ValidateAcceso, Transmision.NetWin.BataPos.Ent_List_Scactco listscactco) {
+            Transmision.NetWin.BataPos.ws_envia_Scactco_listRequest inValue = new Transmision.NetWin.BataPos.ws_envia_Scactco_listRequest();
+            inValue.ValidateAcceso = ValidateAcceso;
+            inValue.listscactco = listscactco;
+            Transmision.NetWin.BataPos.ws_envia_Scactco_listResponse retVal = ((Transmision.NetWin.BataPos.Bata_TransactionSoap)(this)).ws_envia_Scactco_list(inValue);
+            return retVal.ws_envia_Scactco_listResult;
+        }
+        
+        [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
+        Transmision.NetWin.BataPos.ws_envia_scdrembResponse Transmision.NetWin.BataPos.Bata_TransactionSoap.ws_envia_scdremb(Transmision.NetWin.BataPos.ws_envia_scdrembRequest request) {
+            return base.Channel.ws_envia_scdremb(request);
+        }
+        
+        public Transmision.NetWin.BataPos.Ent_MsgTransac ws_envia_scdremb(Transmision.NetWin.BataPos.ValidateAcceso ValidateAcceso, Transmision.NetWin.BataPos.Ent_List_Scdrem list_scdrem) {
+            Transmision.NetWin.BataPos.ws_envia_scdrembRequest inValue = new Transmision.NetWin.BataPos.ws_envia_scdrembRequest();
+            inValue.ValidateAcceso = ValidateAcceso;
+            inValue.list_scdrem = list_scdrem;
+            Transmision.NetWin.BataPos.ws_envia_scdrembResponse retVal = ((Transmision.NetWin.BataPos.Bata_TransactionSoap)(this)).ws_envia_scdremb(inValue);
+            return retVal.ws_envia_scdrembResult;
+        }
+        
+        [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
+        Transmision.NetWin.BataPos.ws_valida_traspaso_tdaResponse Transmision.NetWin.BataPos.Bata_TransactionSoap.ws_valida_traspaso_tda(Transmision.NetWin.BataPos.ws_valida_traspaso_tdaRequest request) {
+            return base.Channel.ws_valida_traspaso_tda(request);
+        }
+        
+        public bool ws_valida_traspaso_tda(Transmision.NetWin.BataPos.ValidateAcceso ValidateAcceso, string cod_tda) {
+            Transmision.NetWin.BataPos.ws_valida_traspaso_tdaRequest inValue = new Transmision.NetWin.BataPos.ws_valida_traspaso_tdaRequest();
+            inValue.ValidateAcceso = ValidateAcceso;
+            inValue.cod_tda = cod_tda;
+            Transmision.NetWin.BataPos.ws_valida_traspaso_tdaResponse retVal = ((Transmision.NetWin.BataPos.Bata_TransactionSoap)(this)).ws_valida_traspaso_tda(inValue);
+            return retVal.ws_valida_traspaso_tdaResult;
+        }
+        
+        [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
+        Transmision.NetWin.BataPos.ws_envio_traspaso_tdaResponse Transmision.NetWin.BataPos.Bata_TransactionSoap.ws_envio_traspaso_tda(Transmision.NetWin.BataPos.ws_envio_traspaso_tdaRequest request) {
+            return base.Channel.ws_envio_traspaso_tda(request);
+        }
+        
+        public Transmision.NetWin.BataPos.Ent_MsgTransac ws_envio_traspaso_tda(Transmision.NetWin.BataPos.ValidateAcceso ValidateAcceso, string cod_tda, Transmision.NetWin.BataPos.Ent_Fvdespc[] despacho) {
+            Transmision.NetWin.BataPos.ws_envio_traspaso_tdaRequest inValue = new Transmision.NetWin.BataPos.ws_envio_traspaso_tdaRequest();
+            inValue.ValidateAcceso = ValidateAcceso;
+            inValue.cod_tda = cod_tda;
+            inValue.despacho = despacho;
+            Transmision.NetWin.BataPos.ws_envio_traspaso_tdaResponse retVal = ((Transmision.NetWin.BataPos.Bata_TransactionSoap)(this)).ws_envio_traspaso_tda(inValue);
+            return retVal.ws_envio_traspaso_tdaResult;
         }
     }
 }
