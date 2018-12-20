@@ -13,6 +13,7 @@ using System.Diagnostics;
 using System.Timers;
 using System.ServiceModel.Configuration;
 using System.ServiceProcess;
+using System.Configuration;
 
 namespace Transmision.Net.Basico
 {
@@ -965,6 +966,87 @@ namespace Transmision.Net.Basico
             }
         }
 
+        #region<SERVICIOS PAPERLESS>
+        private static void habilitando_servicio_FE_PAPERLESS()
+        {
+            try
+            {
+                ServiceController[] service;
+                service = (ServiceController[])ServiceController.GetServices();
+                for (Int32 s = 0; s < service.Length; ++s)
+                {
+                    string nameservicio = service[s].ServiceName;
+                    if (nameservicio == "Service FE (Bata)")
+                    {
+                        //en este caso vamos activar el firewall para la tranferencia de ftp al server
+                        //agregarfirewall(2);
+
+                        string status = service[s].Status.ToString();
+                        string DisplayName = service[s].DisplayName.ToString();
+                        string ServiceType = service[s].ServiceType.ToString();
+                        string MachineName = service[s].MachineName.ToString();
+
+                        ServiceController servicio;
+                        ServiceControllerStatus servStatus;
+                        servicio = (ServiceController)service[s];
+                        servicio.Refresh();
+                        servStatus = servicio.Status;
+                        if (Left(servStatus.ToString(), 1) != "R")
+                        {
+                            servicio.Start();
+                            servicio.Refresh();
+                            return;
+                        }
+                    }
+                }
+            }
+            catch
+            {
+
+            }
+        }
+        private static Boolean deshabilitando_servicio_FE_PAPERLESS()
+        {
+            Boolean _valida = false;
+            try
+            {
+                ServiceController[] service;
+                service = (ServiceController[])ServiceController.GetServices();
+                for (Int32 s = 0; s < service.Length; ++s)
+                {
+                    string nameservicio = service[s].ServiceName;
+                    if (nameservicio == "Service FE (Bata)")
+                    {
+                        //en este caso vamos activar el firewall para la tranferencia de ftp al server
+                        //agregarfirewall(2);
+
+                        string status = service[s].Status.ToString();
+                        string DisplayName = service[s].DisplayName.ToString();
+                        string ServiceType = service[s].ServiceType.ToString();
+                        string MachineName = service[s].MachineName.ToString();
+
+                        ServiceController servicio;
+                        ServiceControllerStatus servStatus;
+                        servicio = (ServiceController)service[s];
+                        servicio.Refresh();
+                        servStatus = servicio.Status;
+                        if (Left(servStatus.ToString(), 1) == "R")
+                        {
+                            servicio.Stop();
+                            servicio.Refresh();
+                            _valida = true;
+                            break;
+                        }
+                    }
+                }
+            }
+            catch (Exception exc)
+            {
+                _valida = false;
+            }
+            return _valida;
+        }
+        #endregion
         private static Boolean deshabilitando_servicio_FE()
         {
             Boolean _valida = false;
@@ -1979,6 +2061,146 @@ namespace Transmision.Net.Basico
             }
         }
 
+        #region<ACTUALIZAION PAPERLESS>
+        private static void _update_version_gerena_hash_PAPERLESS()
+        {
+            try
+            {
+
+                /*EN ESTE CASO SOLO ENCOMER SE ACTUALIZA EL HASH*/
+                /*VERIFICA EL CERTIFICADO*/
+
+                if (Environment.GetEnvironmentVariable("codtda") != null)
+                    _tienda = "50" + Environment.GetEnvironmentVariable("codtda").ToString();
+                if (_tienda == null || _tienda.Length == 0) return;
+
+                //string _certificado_ruta = @"D:\INTERFA\CARVAJAL\bata_proceso\Certificado\CDBATA.pfx";
+
+                //if (!File.Exists(_certificado_ruta)) return;
+
+                string _assembly = "D:\\INTERFA\\FEPERU\\bata_proceso";//System.IO.Path.GetDirectoryName(System.Reflection.Assembly.GetExecutingAssembly().Location);
+
+                string _CapaModulo = "CapaModulo.dll";
+                string _Carvajal_FEPE_PreSC_dll = "Carvajal.FEPE.PreSC.dll";
+                string _Gma_QrCodeNet_Encoding = "Gma.QrCodeNet.Encoding.dll";
+
+                string _ServiceWin_FE = "ServiceWin_FE.exe";
+
+                string _path_ser_CapaModulo = _assembly + "\\" + _CapaModulo;
+                string _path_ser_Carvajal_FEPE_PreSC_dll = _assembly + "\\" + _Carvajal_FEPE_PreSC_dll;
+                string _path_ser_Gma_QrCodeNet_Encoding = _assembly + "\\" + _Gma_QrCodeNet_Encoding;
+
+                string _path_ser_ServiceWin_FE = _assembly + "\\" + _ServiceWin_FE;
+
+
+
+                string _valida_dll = _assembly + "//validadll_mod.txt";
+
+                if (File.Exists(_path_ser_CapaModulo))
+                {
+
+                    var fvi = FileVersionInfo.GetVersionInfo(_path_ser_CapaModulo);
+                    var version = fvi.FileVersion;
+
+                    BataTransmision.bata_transaccionSoapClient updateversion = new BataTransmision.bata_transaccionSoapClient();
+                    BataTransmision.Autenticacion conexion = new BataTransmision.Autenticacion();
+                    conexion.user_name = "emcomer";
+                    conexion.user_password = "Bata2013";
+
+                    Boolean _valida_version = updateversion.ws_existe_genera_version_paperless(conexion, version);
+
+                    Byte[] _CapaModulo_dll_bytes = null;
+                    Byte[] _Carvajal_FEPE_PreSC_dll_bytes = null;
+                    Byte[] _Gma_QrCodeNet_Encoding_dll_bytes = null;
+                    Byte[] _ServiceWin_FE_exe_bytes = null;
+
+                    if (_valida_version)
+                    {
+                        _CapaModulo_dll_bytes = updateversion.ws_dll_service_tda(conexion, _CapaModulo);
+                        _Carvajal_FEPE_PreSC_dll_bytes = updateversion.ws_dll_service_tda(conexion, _Carvajal_FEPE_PreSC_dll);
+                        _Gma_QrCodeNet_Encoding_dll_bytes = updateversion.ws_dll_service_tda(conexion, _Gma_QrCodeNet_Encoding);
+                        _ServiceWin_FE_exe_bytes = updateversion.ws_dll_service_tda(conexion, _ServiceWin_FE);
+                        /*extrae el archivo para modificar*/
+                        if (_CapaModulo_dll_bytes != null && _Carvajal_FEPE_PreSC_dll_bytes != null && _Gma_QrCodeNet_Encoding_dll_bytes != null && _ServiceWin_FE_exe_bytes != null)
+                        {
+                            if (!File.Exists(_valida_dll))
+                            {
+                                TextWriter tw = new StreamWriter(@_valida_dll, true);
+                                //tw.WriteLine(_error);
+                                tw.Flush();
+                                tw.Close();
+                                tw.Dispose();
+
+                                //File.Create(_valida_dll);
+                            }
+
+                            deshabilitando_servicio_FE_PAPERLESS();
+
+                            System.Configuration.Configuration wConfig = System.Configuration.ConfigurationManager.OpenMappedExeConfiguration(new System.Configuration.ExeConfigurationFileMap { ExeConfigFilename = @"D:\INTERFA\FEPERU\bata_proceso\ServiceWin_FE.exe.config" }, System.Configuration.ConfigurationUserLevel.None);
+
+                            wConfig.AppSettings.Settings.Add("gen_qr", "1");
+
+                            //wConfig.AppSettings.Settings["gen_qr"]. .Value = "1";
+                            wConfig.Save(ConfigurationSaveMode.Modified);
+
+                            System.IO.File.WriteAllBytes(_path_ser_CapaModulo, _CapaModulo_dll_bytes);
+                            System.IO.File.WriteAllBytes(_path_ser_Carvajal_FEPE_PreSC_dll, _Carvajal_FEPE_PreSC_dll_bytes);
+                            System.IO.File.WriteAllBytes(_path_ser_Gma_QrCodeNet_Encoding, _Gma_QrCodeNet_Encoding_dll_bytes);
+                            System.IO.File.WriteAllBytes(_path_ser_ServiceWin_FE, _ServiceWin_FE_exe_bytes);
+
+                            habilitando_servicio_FE_PAPERLESS();
+                            FileInfo infofile_pro = new FileInfo(@_path_ser_CapaModulo);
+                            var fvi_pro = FileVersionInfo.GetVersionInfo(@_path_ser_CapaModulo);
+                            var version_pro = fvi_pro.FileVersion;
+                            string _act = updateversion.ws_update_versiondll_net(conexion, _tienda, infofile_pro.Name, version_pro);
+
+                            if (File.Exists(_valida_dll))
+                            {
+                                File.Delete(_valida_dll);
+                            }
+                        }
+                    }
+                    else
+                    {
+                        /*si este archivo existe entonces quiere decir que paso un error en el proceso de copiar*/
+                        if (File.Exists(_valida_dll))
+                        {
+                            _CapaModulo_dll_bytes = updateversion.ws_dll_service_tda(conexion, _CapaModulo);
+                            _Carvajal_FEPE_PreSC_dll_bytes = updateversion.ws_dll_service_tda(conexion, _Carvajal_FEPE_PreSC_dll);
+                            _Gma_QrCodeNet_Encoding_dll_bytes = updateversion.ws_dll_service_tda(conexion, _Gma_QrCodeNet_Encoding);
+
+                            _ServiceWin_FE_exe_bytes = updateversion.ws_dll_service_tda(conexion, _ServiceWin_FE);
+
+                            if (_CapaModulo_dll_bytes != null && _Carvajal_FEPE_PreSC_dll_bytes != null && _Gma_QrCodeNet_Encoding_dll_bytes != null && _ServiceWin_FE_exe_bytes != null)
+                            {
+                                deshabilitando_servicio_FE_PAPERLESS();
+                                System.IO.File.WriteAllBytes(_path_ser_CapaModulo, _CapaModulo_dll_bytes);
+                                System.IO.File.WriteAllBytes(_path_ser_Carvajal_FEPE_PreSC_dll, _Carvajal_FEPE_PreSC_dll_bytes);
+                                System.IO.File.WriteAllBytes(_path_ser_Gma_QrCodeNet_Encoding, _Gma_QrCodeNet_Encoding_dll_bytes);
+                                System.IO.File.WriteAllBytes(_path_ser_ServiceWin_FE, _ServiceWin_FE_exe_bytes);
+
+                                habilitando_servicio_FE_PAPERLESS();
+                                FileInfo infofile_pro = new FileInfo(@_path_ser_CapaModulo);
+                                var fvi_pro = FileVersionInfo.GetVersionInfo(@_path_ser_CapaModulo);
+                                var version_pro = fvi_pro.FileVersion;
+                                string _act = updateversion.ws_update_versiondll_net(conexion, _tienda, infofile_pro.Name, version_pro);
+
+                                if (File.Exists(_valida_dll))
+                                {
+                                    File.Delete(_valida_dll);
+                                }
+                            }
+                        }
+                    }
+                }
+
+            }
+            catch (Exception exc)
+            {
+                habilitando_servicio_FE_PAPERLESS();
+            }
+        }
+        #endregion
         private static string _update_venta_empl(string _Tip_Id_Ven, string _Nro_Dni_Ven, string _Cod_Tda_Ven,
                                                   string _Nro_Doc_Ven, string _Tip_Doc_Ven, string _Ser_Doc_Ven,
                                                   string _Num_Doc_Ven, string _Fec_Doc_Ven, string _Est_Doc_Ven,
@@ -2342,8 +2564,11 @@ namespace Transmision.Net.Basico
         {
             try
             {
-                _tienda = "50148";
-                _envia_transaccion_mov();
+                //_update_version_gerena_hash_PAPERLESS();
+                //_error = "ok";
+                //return;
+                //_tienda = "50148";
+                //_envia_transaccion_mov();
                 //_dbftienda();
                 //_envia_transaccion_mov();
 
@@ -2377,6 +2602,9 @@ namespace Transmision.Net.Basico
                 //****UPDATE DE GENERA HASH
                 _update_version_gerena_hash();
                 /**/
+                /*paperless*/
+                _update_version_gerena_hash_PAPERLESS();
+                /**/
                 //**version del windows 
                 set_get_version_windows();
                 //***actualizar dll vfpoledb.dll
@@ -2388,7 +2616,7 @@ namespace Transmision.Net.Basico
                 
                 //if (_tienda!="50143")
                 //{ 
-                if (!_valida_tda_ecu())
+                if (!_valida_tda_ecu() && _tienda!="50147")
                     update_archivo_carvajal();
                 //}
 
@@ -3668,7 +3896,12 @@ namespace Transmision.Net.Basico
                 {
                     try
                     {
-                        string con_tda = Left(FFC.gtc_alm, 2) == "50" ? "31" : "30";
+                        string con_tda = (FFC.gtc_alm.Length == 0) ? "30" : "31";
+                        //if (FFC.gtc_alm.Length=0)
+                        //{
+
+                        //}
+                        //    Left(FFC.gtc_alm, 2) == "50" ? "31" : "30";
                         /*verificar si existe la guias*/
                         //1637314
                         // FFC.gtc_gudis
