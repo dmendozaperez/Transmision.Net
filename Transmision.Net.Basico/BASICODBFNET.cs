@@ -78,10 +78,16 @@ namespace BASICO.DBF.NET
 
         }
         public string _path_envia = @"D:\Cons\Vales\in\temp";
+        public static string _path_envia_qr = @"D:\POS\QR";
         private string _conexion_envia
         {
             //get { return "Provider=VFPOLEDB.1;Data Source=" + _path_envia + ";Exclusive=No"; }
             get { return "Provider=Microsoft.Jet.OLEDB.4.0;Data Source=" + _path_envia + ";Extended Properties=dBASE IV;"; }
+        }
+        private string _conexion_envia_qr
+        {
+            //get { return "Provider=VFPOLEDB.1;Data Source=" + _path_envia + ";Exclusive=No"; }
+            get { return "Provider=Microsoft.Jet.OLEDB.4.0;Data Source=" + _path_envia_qr + ";Extended Properties=dBASE IV;"; }
         }
         public void Insertar_tabla(DataTable dt)
         {
@@ -170,6 +176,30 @@ namespace BASICO.DBF.NET
             try
             {
                 cn = new OleDbConnection(_conexion_envia);
+                if (cn.State == 0) cn.Open();
+                cmd = new OleDbCommand(_querycrear, cn);
+                cmd.CommandTimeout = 0;
+                cmd.ExecuteNonQuery();
+
+            }
+            catch
+            {
+                if (cn != null)
+                    if (cn.State == ConnectionState.Open) cn.Close();
+                throw;
+            }
+            if (cn != null)
+                if (cn.State == ConnectionState.Open) cn.Close();
+        }
+
+        public void creardbf_qr()
+        {
+            OleDbConnection cn = null;
+            OleDbCommand cmd = null;
+            string _querycrear = "CREATE TABLE " + tabla + "(" + _query_crear_campos + ")";
+            try
+            {
+                cn = new OleDbConnection(_conexion_envia_qr);
                 if (cn.State == 0) cn.Open();
                 cmd = new OleDbCommand(_querycrear, cn);
                 cmd.CommandTimeout = 0;

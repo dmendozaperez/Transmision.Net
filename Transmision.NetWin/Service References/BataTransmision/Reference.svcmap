@@ -21,7 +21,7 @@
     <MetadataSource Address="http://www.bgr.pe/web_site_tienda/bata_transaccion.asmx?WSDL" Protocol="http" SourceId="1" />
   </MetadataSources>
   <Metadata>
-    <MetadataFile FileName="bata_transaccion1.wsdl" MetadataType="Wsdl" ID="c3ecb8d8-00bf-4204-ae13-d780ee59fed6" SourceId="1" SourceUrl="http://www.bgr.pe/web_site_tienda/bata_transaccion.asmx?WSDL" />
+    <MetadataFile FileName="bata_transaccion.wsdl" MetadataType="Wsdl" ID="b74fb81d-267e-48e9-84a4-e8693395776a" SourceId="1" SourceUrl="http://www.bgr.pe/web_site_tienda/bata_transaccion.asmx?WSDL" />
   </Metadata>
   <Extensions>
     <ExtensionFile FileName="configuration91.svcinfo" Name="configuration91.svcinfo" />

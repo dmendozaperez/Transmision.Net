@@ -90,6 +90,12 @@
       <DesignTimeSharedInput>True</DesignTimeSharedInput>
     </Compile>
     <None Include="Service References\BataPos\Bata_Transaction.wsdl" />
+    <None Include="Service References\BataPos\Transmision.NetWin.BataPos.Ent_Alma_Ecu.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\BataPos\Transmision.NetWin.BataPos.Ent_CarpetaUpload_Xstore.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
     <None Include="Service References\BataPos\Transmision.NetWin.BataPos.Ent_Config_Service.datasource">
       <DependentUpon>Reference.svcmap</DependentUpon>
     </None>
@@ -111,13 +117,23 @@
     <None Include="Service References\BataPos\Transmision.NetWin.BataPos.Ent_Scdddes.datasource">
       <DependentUpon>Reference.svcmap</DependentUpon>
     </None>
+    <None Include="Service References\BataTransmision\bata_transaccion.wsdl" />
     <None Include="Service References\BataTransmision\Transmision.NetWin.BataTransmision.Fvdespc.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\BataTransmision\Transmision.NetWin.BataTransmision.Impresion_QR.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\BataTransmision\Transmision.NetWin.BataTransmision.Paq_Get.datasource">
       <DependentUpon>Reference.svcmap</DependentUpon>
     </None>
     <None Include="Service References\BataTransmision\Transmision.NetWin.BataTransmision.Resultado_Tda_Ecu.datasource">
       <DependentUpon>Reference.svcmap</DependentUpon>
     </None>
     <None Include="Service References\BataTransmision\Transmision.NetWin.BataTransmision.Ruta_Update_File.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\BataTransmision\Transmision.NetWin.BataTransmision.Xml_Get.datasource">
       <DependentUpon>Reference.svcmap</DependentUpon>
     </None>
   </ItemGroup>
@@ -135,7 +151,6 @@
     <WCFMetadataStorage Include="Service References\BataTransmision\" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="Service References\BataTransmision\bata_transaccion1.wsdl" />
     <None Include="Service References\BataTransmision\configuration91.svcinfo" />
   </ItemGroup>
   <ItemGroup>

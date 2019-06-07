@@ -37,6 +37,16 @@ namespace Transmision.NetWin.BataPos {
         [System.ServiceModel.XmlSerializerFormatAttribute(SupportFaults=true)]
         Transmision.NetWin.BataPos.Ent_File list_file();
         
+        // CODEGEN: Se está generando un contrato de mensaje, ya que el mensaje ws_lista_alma_EcuRequest tiene encabezados.
+        [System.ServiceModel.OperationContractAttribute(Action="http://bataperu.com.pe/ws_lista_alma_Ecu", ReplyAction="*")]
+        [System.ServiceModel.XmlSerializerFormatAttribute(SupportFaults=true)]
+        Transmision.NetWin.BataPos.ws_lista_alma_EcuResponse ws_lista_alma_Ecu(Transmision.NetWin.BataPos.ws_lista_alma_EcuRequest request);
+        
+        // CODEGEN: Se está generando un contrato de mensaje, ya que el mensaje ws_get_xstore_carpeta_uploadRequest tiene encabezados.
+        [System.ServiceModel.OperationContractAttribute(Action="http://bataperu.com.pe/ws_get_xstore_carpeta_upload", ReplyAction="*")]
+        [System.ServiceModel.XmlSerializerFormatAttribute(SupportFaults=true)]
+        Transmision.NetWin.BataPos.ws_get_xstore_carpeta_uploadResponse ws_get_xstore_carpeta_upload(Transmision.NetWin.BataPos.ws_get_xstore_carpeta_uploadRequest request);
+        
         // CODEGEN: Se está generando un contrato de mensaje, ya que el mensaje ws_update_transaction_guiasRequest tiene encabezados.
         [System.ServiceModel.OperationContractAttribute(Action="http://bataperu.com.pe/ws_update_transaction_guias", ReplyAction="*")]
         [System.ServiceModel.XmlSerializerFormatAttribute(SupportFaults=true)]
@@ -3266,11 +3276,203 @@ namespace Transmision.NetWin.BataPos {
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.ComponentModel.DesignerCategoryAttribute("code")]
     [System.Xml.Serialization.XmlTypeAttribute(Namespace="http://bataperu.com.pe/")]
+    public partial class Ent_CarpetaUpload_Xstore : object, System.ComponentModel.INotifyPropertyChanged {
+        
+        private string paisField;
+        
+        private string entornoField;
+        
+        private string opcionField;
+        
+        private string rut_uploadField;
+        
+        private string ftp_serverField;
+        
+        private string ftp_userField;
+        
+        private string ftp_passField;
+        
+        private int ftp_portField;
+        
+        private string ftp_folderField;
+        
+        private string ftp_sendField;
+        
+        /// <remarks/>
+        [System.Xml.Serialization.XmlElementAttribute(Order=0)]
+        public string pais {
+            get {
+                return this.paisField;
+            }
+            set {
+                this.paisField = value;
+                this.RaisePropertyChanged("pais");
+            }
+        }
+        
+        /// <remarks/>
+        [System.Xml.Serialization.XmlElementAttribute(Order=1)]
+        public string entorno {
+            get {
+                return this.entornoField;
+            }
+            set {
+                this.entornoField = value;
+                this.RaisePropertyChanged("entorno");
+            }
+        }
+        
+        /// <remarks/>
+        [System.Xml.Serialization.XmlElementAttribute(Order=2)]
+        public string opcion {
+            get {
+                return this.opcionField;
+            }
+            set {
+                this.opcionField = value;
+                this.RaisePropertyChanged("opcion");
+            }
+        }
+        
+        /// <remarks/>
+        [System.Xml.Serialization.XmlElementAttribute(Order=3)]
+        public string rut_upload {
+            get {
+                return this.rut_uploadField;
+            }
+            set {
+                this.rut_uploadField = value;
+                this.RaisePropertyChanged("rut_upload");
+            }
+        }
+        
+        /// <remarks/>
+        [System.Xml.Serialization.XmlElementAttribute(Order=4)]
+        public string ftp_server {
+            get {
+                return this.ftp_serverField;
+            }
+            set {
+                this.ftp_serverField = value;
+                this.RaisePropertyChanged("ftp_server");
+            }
+        }
+        
+        /// <remarks/>
+        [System.Xml.Serialization.XmlElementAttribute(Order=5)]
+        public string ftp_user {
+            get {
+                return this.ftp_userField;
+            }
+            set {
+                this.ftp_userField = value;
+                this.RaisePropertyChanged("ftp_user");
+            }
+        }
+        
+        /// <remarks/>
+        [System.Xml.Serialization.XmlElementAttribute(Order=6)]
+        public string ftp_pass {
+            get {
+                return this.ftp_passField;
+            }
+            set {
+                this.ftp_passField = value;
+                this.RaisePropertyChanged("ftp_pass");
+            }
+        }
+        
+        /// <remarks/>
+        [System.Xml.Serialization.XmlElementAttribute(Order=7)]
+        public int ftp_port {
+            get {
+                return this.ftp_portField;
+            }
+            set {
+                this.ftp_portField = value;
+                this.RaisePropertyChanged("ftp_port");
+            }
+        }
+        
+        /// <remarks/>
+        [System.Xml.Serialization.XmlElementAttribute(Order=8)]
+        public string ftp_folder {
+            get {
+                return this.ftp_folderField;
+            }
+            set {
+                this.ftp_folderField = value;
+                this.RaisePropertyChanged("ftp_folder");
+            }
+        }
+        
+        /// <remarks/>
+        [System.Xml.Serialization.XmlElementAttribute(Order=9)]
+        public string ftp_send {
+            get {
+                return this.ftp_sendField;
+            }
+            set {
+                this.ftp_sendField = value;
+                this.RaisePropertyChanged("ftp_send");
+            }
+        }
+        
+        public event System.ComponentModel.PropertyChangedEventHandler PropertyChanged;
+        
+        protected void RaisePropertyChanged(string propertyName) {
+            System.ComponentModel.PropertyChangedEventHandler propertyChanged = this.PropertyChanged;
+            if ((propertyChanged != null)) {
+                propertyChanged(this, new System.ComponentModel.PropertyChangedEventArgs(propertyName));
+            }
+        }
+    }
+    
+    /// <remarks/>
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.7.3056.0")]
+    [System.SerializableAttribute()]
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.ComponentModel.DesignerCategoryAttribute("code")]
+    [System.Xml.Serialization.XmlTypeAttribute(Namespace="http://bataperu.com.pe/")]
+    public partial class Ent_Alma_Ecu : object, System.ComponentModel.INotifyPropertyChanged {
+        
+        private string alma_ecuField;
+        
+        /// <remarks/>
+        [System.Xml.Serialization.XmlElementAttribute(Order=0)]
+        public string alma_ecu {
+            get {
+                return this.alma_ecuField;
+            }
+            set {
+                this.alma_ecuField = value;
+                this.RaisePropertyChanged("alma_ecu");
+            }
+        }
+        
+        public event System.ComponentModel.PropertyChangedEventHandler PropertyChanged;
+        
+        protected void RaisePropertyChanged(string propertyName) {
+            System.ComponentModel.PropertyChangedEventHandler propertyChanged = this.PropertyChanged;
+            if ((propertyChanged != null)) {
+                propertyChanged(this, new System.ComponentModel.PropertyChangedEventArgs(propertyName));
+            }
+        }
+    }
+    
+    /// <remarks/>
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.7.3056.0")]
+    [System.SerializableAttribute()]
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.ComponentModel.DesignerCategoryAttribute("code")]
+    [System.Xml.Serialization.XmlTypeAttribute(Namespace="http://bataperu.com.pe/")]
     public partial class Ent_PathDBF : object, System.ComponentModel.INotifyPropertyChanged {
         
         private string rutloc_namedbfField;
         
         private string rutloc_locationField;
+        
+        private string rutloc_location_ecuField;
         
         /// <remarks/>
         [System.Xml.Serialization.XmlElementAttribute(Order=0)]
@@ -3293,6 +3495,18 @@ namespace Transmision.NetWin.BataPos {
             set {
                 this.rutloc_locationField = value;
                 this.RaisePropertyChanged("rutloc_location");
+            }
+        }
+        
+        /// <remarks/>
+        [System.Xml.Serialization.XmlElementAttribute(Order=2)]
+        public string rutloc_location_ecu {
+            get {
+                return this.rutloc_location_ecuField;
+            }
+            set {
+                this.rutloc_location_ecuField = value;
+                this.RaisePropertyChanged("rutloc_location_ecu");
             }
         }
         
@@ -4469,6 +4683,74 @@ namespace Transmision.NetWin.BataPos {
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
     [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
+    [System.ServiceModel.MessageContractAttribute(WrapperName="ws_lista_alma_Ecu", WrapperNamespace="http://bataperu.com.pe/", IsWrapped=true)]
+    public partial class ws_lista_alma_EcuRequest {
+        
+        [System.ServiceModel.MessageHeaderAttribute(Namespace="http://bataperu.com.pe/")]
+        public Transmision.NetWin.BataPos.ValidateAcceso ValidateAcceso;
+        
+        public ws_lista_alma_EcuRequest() {
+        }
+        
+        public ws_lista_alma_EcuRequest(Transmision.NetWin.BataPos.ValidateAcceso ValidateAcceso) {
+            this.ValidateAcceso = ValidateAcceso;
+        }
+    }
+    
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
+    [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
+    [System.ServiceModel.MessageContractAttribute(WrapperName="ws_lista_alma_EcuResponse", WrapperNamespace="http://bataperu.com.pe/", IsWrapped=true)]
+    public partial class ws_lista_alma_EcuResponse {
+        
+        [System.ServiceModel.MessageBodyMemberAttribute(Namespace="http://bataperu.com.pe/", Order=0)]
+        public Transmision.NetWin.BataPos.Ent_Alma_Ecu[] ws_lista_alma_EcuResult;
+        
+        public ws_lista_alma_EcuResponse() {
+        }
+        
+        public ws_lista_alma_EcuResponse(Transmision.NetWin.BataPos.Ent_Alma_Ecu[] ws_lista_alma_EcuResult) {
+            this.ws_lista_alma_EcuResult = ws_lista_alma_EcuResult;
+        }
+    }
+    
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
+    [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
+    [System.ServiceModel.MessageContractAttribute(WrapperName="ws_get_xstore_carpeta_upload", WrapperNamespace="http://bataperu.com.pe/", IsWrapped=true)]
+    public partial class ws_get_xstore_carpeta_uploadRequest {
+        
+        [System.ServiceModel.MessageHeaderAttribute(Namespace="http://bataperu.com.pe/")]
+        public Transmision.NetWin.BataPos.ValidateAcceso ValidateAcceso;
+        
+        public ws_get_xstore_carpeta_uploadRequest() {
+        }
+        
+        public ws_get_xstore_carpeta_uploadRequest(Transmision.NetWin.BataPos.ValidateAcceso ValidateAcceso) {
+            this.ValidateAcceso = ValidateAcceso;
+        }
+    }
+    
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
+    [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
+    [System.ServiceModel.MessageContractAttribute(WrapperName="ws_get_xstore_carpeta_uploadResponse", WrapperNamespace="http://bataperu.com.pe/", IsWrapped=true)]
+    public partial class ws_get_xstore_carpeta_uploadResponse {
+        
+        [System.ServiceModel.MessageBodyMemberAttribute(Namespace="http://bataperu.com.pe/", Order=0)]
+        public Transmision.NetWin.BataPos.Ent_CarpetaUpload_Xstore[] ws_get_xstore_carpeta_uploadResult;
+        
+        public ws_get_xstore_carpeta_uploadResponse() {
+        }
+        
+        public ws_get_xstore_carpeta_uploadResponse(Transmision.NetWin.BataPos.Ent_CarpetaUpload_Xstore[] ws_get_xstore_carpeta_uploadResult) {
+            this.ws_get_xstore_carpeta_uploadResult = ws_get_xstore_carpeta_uploadResult;
+        }
+    }
+    
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
+    [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
     [System.ServiceModel.MessageContractAttribute(WrapperName="ws_update_transaction_guias", WrapperNamespace="http://bataperu.com.pe/", IsWrapped=true)]
     public partial class ws_update_transaction_guiasRequest {
         
@@ -5167,6 +5449,30 @@ namespace Transmision.NetWin.BataPos {
         
         public Transmision.NetWin.BataPos.Ent_File list_file() {
             return base.Channel.list_file();
+        }
+        
+        [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
+        Transmision.NetWin.BataPos.ws_lista_alma_EcuResponse Transmision.NetWin.BataPos.Bata_TransactionSoap.ws_lista_alma_Ecu(Transmision.NetWin.BataPos.ws_lista_alma_EcuRequest request) {
+            return base.Channel.ws_lista_alma_Ecu(request);
+        }
+        
+        public Transmision.NetWin.BataPos.Ent_Alma_Ecu[] ws_lista_alma_Ecu(Transmision.NetWin.BataPos.ValidateAcceso ValidateAcceso) {
+            Transmision.NetWin.BataPos.ws_lista_alma_EcuRequest inValue = new Transmision.NetWin.BataPos.ws_lista_alma_EcuRequest();
+            inValue.ValidateAcceso = ValidateAcceso;
+            Transmision.NetWin.BataPos.ws_lista_alma_EcuResponse retVal = ((Transmision.NetWin.BataPos.Bata_TransactionSoap)(this)).ws_lista_alma_Ecu(inValue);
+            return retVal.ws_lista_alma_EcuResult;
+        }
+        
+        [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
+        Transmision.NetWin.BataPos.ws_get_xstore_carpeta_uploadResponse Transmision.NetWin.BataPos.Bata_TransactionSoap.ws_get_xstore_carpeta_upload(Transmision.NetWin.BataPos.ws_get_xstore_carpeta_uploadRequest request) {
+            return base.Channel.ws_get_xstore_carpeta_upload(request);
+        }
+        
+        public Transmision.NetWin.BataPos.Ent_CarpetaUpload_Xstore[] ws_get_xstore_carpeta_upload(Transmision.NetWin.BataPos.ValidateAcceso ValidateAcceso) {
+            Transmision.NetWin.BataPos.ws_get_xstore_carpeta_uploadRequest inValue = new Transmision.NetWin.BataPos.ws_get_xstore_carpeta_uploadRequest();
+            inValue.ValidateAcceso = ValidateAcceso;
+            Transmision.NetWin.BataPos.ws_get_xstore_carpeta_uploadResponse retVal = ((Transmision.NetWin.BataPos.Bata_TransactionSoap)(this)).ws_get_xstore_carpeta_upload(inValue);
+            return retVal.ws_get_xstore_carpeta_uploadResult;
         }
         
         [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]

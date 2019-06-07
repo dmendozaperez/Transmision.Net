@@ -83,6 +83,12 @@
     <None Include="app.config" />
     <None Include="Properties\DataSources\System.Data.DataSet.datasource" />
     <None Include="Service References\BataPos\Bata_Transaction.wsdl" />
+    <None Include="Service References\BataPos\Transmision.Net.Basico.BataPos.Ent_Alma_Ecu.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\BataPos\Transmision.Net.Basico.BataPos.Ent_CarpetaUpload_Xstore.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
     <None Include="Service References\BataPos\Transmision.Net.Basico.BataPos.Ent_Config_Service.datasource">
       <DependentUpon>Reference.svcmap</DependentUpon>
     </None>
@@ -104,7 +110,11 @@
     <None Include="Service References\BataPos\Transmision.Net.Basico.BataPos.Ent_Scdddes.datasource">
       <DependentUpon>Reference.svcmap</DependentUpon>
     </None>
+    <None Include="Service References\BataTransmision\bata_transaccion.wsdl" />
     <None Include="Service References\BataTransmision\Transmision.Net.Basico.BataTransmision.Fvdespc.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\BataTransmision\Transmision.Net.Basico.BataTransmision.Impresion_QR.datasource">
       <DependentUpon>Reference.svcmap</DependentUpon>
     </None>
     <None Include="Service References\BataTransmision\Transmision.Net.Basico.BataTransmision.Paq_Get.datasource">
@@ -125,7 +135,6 @@
     <WCFMetadataStorage Include="Service References\BataTransmision\" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="Service References\BataTransmision\bata_transaccion1.wsdl" />
     <None Include="Service References\BataTransmision\configuration91.svcinfo" />
   </ItemGroup>
   <ItemGroup>

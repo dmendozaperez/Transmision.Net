@@ -23,6 +23,8 @@ namespace Genera_Transmision
             InitializeComponent();
             tmservicio = new Timer(5000);
             tmservicio.Elapsed += new ElapsedEventHandler(tmpServicio_Elapsed);
+
+
         }
         void tmpServicio_Elapsed(object sender, ElapsedEventArgs e)
         {

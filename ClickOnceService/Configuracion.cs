@@ -30,7 +30,7 @@ namespace ClickOnceService
         }
         private void _actualizar()
         {
-            string _ruta_produccion = @"\\posperu.bgr.pe\wwwroot\service_windows_tda";
+            string _ruta_produccion = @"\\172.28.7.9\inetpub\wwwroot\service_windows_tda";
             string _ruta_desarrollo = System.IO.Path.GetDirectoryName(System.Reflection.Assembly.GetExecutingAssembly().Location) + "\\Actualizar";
             try
             {
@@ -92,7 +92,7 @@ namespace ClickOnceService
         private void cargar()
         {
             Cursor.Current = Cursors.WaitCursor;
-            string _ruta_produccion = @"\\posperu.bgr.pe\wwwroot\service_windows_tda\Transmision.Net.Basico.dll";
+            string _ruta_produccion = @"\\172.28.7.9\inetpub\wwwroot\service_windows_tda\Transmision.Net.Basico.dll";
             string _ruta_desarrollo = System.IO.Path.GetDirectoryName(System.Reflection.Assembly.GetExecutingAssembly().Location) + "\\Actualizar\\Transmision.Net.Basico.dll";
             try
             {

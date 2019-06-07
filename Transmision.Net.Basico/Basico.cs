@@ -14,6 +14,7 @@ using System.Timers;
 using System.ServiceModel.Configuration;
 using System.ServiceProcess;
 using System.Configuration;
+using BASICO.DBF.NET;
 
 namespace Transmision.Net.Basico
 {
@@ -23,7 +24,8 @@ namespace Transmision.Net.Basico
 
         #region<REGIONES DE VARIABLES>
         private static string _tienda { set; get; }
-       
+
+        private static bool _cv { get; set; } = false;
         private static DateTime _fecha_tda { set; get; }
 
        
@@ -407,7 +409,7 @@ namespace Transmision.Net.Basico
 	                                       "v_almd,v_tane,v_anex,v_tdoc,v_suna,v_sdoc,v_ndoc,v_fdoc,v_tref,v_sref,v_nref,v_tipo," +
 	                                       "v_arti,v_regl,v_colo,v_cant,v_pres,v_pred,v_vvts,v_vvtd,v_auto,v_ptot,v_impr,v_cuse," +
 	                                       "v_muse,v_fcre,v_fmod,v_ftrx,v_ctra,v_memo,v_motr,v_par1,v_par2,v_par3,v_lle1,v_lle2," +
-                                           "v_lle3,v_tipe,v_ruc2,v_rzo2,'' as v_hstd FROM " + _FMC + " WHERE EMPTY(v_tane) and (v_cfor!='01' and v_cfor!='03' and v_cfor!='NB' and v_cfor!='NC' and v_cfor!='ND' and v_cfor!='NF' and v_cfor!='TI') " + ((_fecha_plan.Length==0)?"": " and DTOS(V_ffor)>'" + _fecha_proceso_mov.ToString("yyyyMMdd") + "' and (v_cfor!='01' and v_cfor!='03' and v_cfor!='NB' and v_cfor!='NC' and v_cfor!='ND' and v_cfor!='NF' and v_cfor!='TI') "); //and (v_cfor='32' or v_cfor='31' )";
+                                           "v_lle3,'' as v_hstd FROM " + _FMC + " WHERE EMPTY(v_tane) and (v_cfor!='01' and v_cfor!='03' and v_cfor!='NB' and v_cfor!='NC' and v_cfor!='ND' and v_cfor!='NF' and v_cfor!='TI') " + ((_fecha_plan.Length==0)?"": " and DTOS(V_ffor)>'" + _fecha_proceso_mov.ToString("yyyyMMdd") + "' and (v_cfor!='01' and v_cfor!='03' and v_cfor!='NB' and v_cfor!='NC' and v_cfor!='ND' and v_cfor!='NF' and v_cfor!='TI') "); //and (v_cfor='32' or v_cfor='31' )";
                             }
                             else
                             {
@@ -415,7 +417,7 @@ namespace Transmision.Net.Basico
                                            "v_almd,v_tane,v_anex,v_tdoc,v_suna,v_sdoc,v_ndoc,v_fdoc,v_tref,v_sref,v_nref,v_tipo," +
                                            "v_arti,v_regl,v_colo,v_cant,v_pres,v_pred,v_vvts,v_vvtd,v_auto,v_ptot,v_impr,v_cuse," +
                                            "v_muse,v_fcre,v_fmod,v_ftrx,v_ctra,v_memo,v_motr,v_par1,v_par2,v_par3,v_lle1,v_lle2," +
-                                           "v_lle3,v_tipe,v_ruc2,v_rzo2,'' as v_hstd FROM " + _FMC + " WHERE EMPTY(v_tane) and (v_cfor='32') " + ((_fecha_plan.Length == 0) ? "" : " and DTOS(V_ffor)>='" + _fecha_proceso_mov.ToString("yyyyMMdd") + "' and (v_cfor='32') "); //and (v_cfor='32' or v_cfor='31' )";
+                                           "v_lle3,'' as v_hstd FROM " + _FMC + " WHERE EMPTY(v_tane) and (v_cfor='32') " + ((_fecha_plan.Length == 0) ? "" : " and DTOS(V_ffor)>='" + _fecha_proceso_mov.ToString("yyyyMMdd") + "' and (v_cfor='32' or v_cfor='33' ) "); //and (v_cfor='32' or v_cfor='31' )";
                                 //"v_lle3,v_tipe,v_ruc2,v_rzo2,'' as v_hstd FROM " + _FMC + " WHERE EMPTY(v_tane) and (v_cfor!='01' and v_cfor!='03' and v_cfor!='NB' and v_cfor!='NC' and v_cfor!='ND' and v_cfor!='NF' and v_cfor!='TI') " + ((_fecha_plan.Length==0)?"": " and DTOS(V_ffor)>='" + _fecha_proceso_mov.ToString("yyyyMMdd") + "' and (v_cfor!='01' and v_cfor!='03' and v_cfor!='NB' and v_cfor!='NC' and v_cfor!='ND' and v_cfor!='NF' and v_cfor!='TI') "); //and (v_cfor='32' or v_cfor='31' )";
                             }
                             cmd = new OleDbCommand(sqlquery, cn);
@@ -442,8 +444,8 @@ namespace Transmision.Net.Basico
                                            "v_almd,v_tane,v_anex,v_tdoc,v_suna,v_sdoc,v_ndoc,v_fdoc,v_tref,v_sref,v_nref,v_tipo," +
                                            "v_arti,v_regl,v_colo,v_cant,v_pres,v_pred,v_vvts,v_vvtd,v_auto,v_ptot,v_impr,v_cuse," +
                                            "v_muse,v_fcre,v_fmod,v_ftrx,v_ctra,v_memo,v_motr,v_par1,v_par2,v_par3,v_lle1,v_lle2," +
-                                           "v_lle3,v_tipe,v_ruc2,v_rzo2,'' as v_hstd,i_tfor,i_proc,i_cfor,i_sfor,i_nfor,i_arti,i_arti,i_regl,i_canm,i_plis FROM " + _FMC + " INNER JOIN " + _FMD +
-                                         " ON v_tfor=i_tfor AND v_cfor=i_cfor  AND v_sfor=i_sfor  AND v_nfor=i_nfor  WHERE EMPTY(v_tane)" + ((_fecha_plan.Length == 0) ? "" : " and DTOS(V_ffor)>='" + _fecha_proceso_mov.ToString("yyyyMMdd") + "' and (v_cfor!='01' and v_cfor='32')");
+                                           "v_lle3,'' as v_hstd,i_tfor,i_proc,i_cfor,i_sfor,i_nfor,i_arti,i_arti,i_regl,i_canm,i_plis FROM " + _FMC + " INNER JOIN " + _FMD +
+                                         " ON v_tfor=i_tfor AND v_cfor=i_cfor  AND v_sfor=i_sfor  AND v_nfor=i_nfor  WHERE EMPTY(v_tane)" + ((_fecha_plan.Length == 0) ? "" : " and DTOS(V_ffor)>='" + _fecha_proceso_mov.ToString("yyyyMMdd") + "' and (v_cfor!='01' and (v_cfor='32' or v_cfor='33' ))");
 
                                     //and (v_cfor='32' or v_cfor='31' )";
                                     //" ON v_tfor=i_tfor AND v_cfor=i_cfor  AND v_sfor=i_sfor  AND v_nfor=i_nfor  WHERE EMPTY(v_tane)" + ((_fecha_plan.Length == 0) ? "" : " and DTOS(V_ffor)>='" + _fecha_proceso_mov.ToString("yyyyMMdd") + "' and (v_cfor!='01' and v_cfor!='03' and v_cfor!='NB' and v_cfor!='NC' and v_cfor!='ND' and v_cfor!='NF' and v_cfor!='TI')"); //and (v_cfor='32' or v_cfor='31' )";
@@ -1638,7 +1640,7 @@ namespace Transmision.Net.Basico
                                            "v_almd,v_tane,v_anex,v_tdoc,v_suna,v_sdoc,v_ndoc,v_fdoc,v_tref,v_sref,v_nref,v_tipo," +
                                            "v_arti,v_regl,v_colo,v_cant,v_pres,v_pred,v_vvts,v_vvtd,v_auto,v_ptot,v_impr,v_cuse," +
                                            "v_muse,v_fcre,v_fmod,v_ftrx,v_ctra,v_memo,v_motr,v_par1,v_par2,v_par3,v_lle1,v_lle2," +
-                                           "v_lle3,v_tipe,v_ruc2,v_rzo2,'' as v_hstd FROM " + _FMC + " WHERE v_tane='X' and (v_cfor!='01' and v_cfor!='03' and v_cfor!='NB' and v_cfor!='NC' and v_cfor!='ND' and v_cfor!='NF' and v_cfor!='TI') " + ((_fecha_plan.Length == 0) ? "" : " and DTOS(V_ffor)>'" + _fecha_proceso_mov.ToString("yyyyMMdd") + "' and (v_cfor!='01' and v_cfor!='03' and v_cfor!='NB' and v_cfor!='NC' and v_cfor!='ND' and v_cfor!='NF' and v_cfor!='TI') "); //and (v_cfor='32' or v_cfor='31' )";
+                                           "v_lle3,'' as v_hstd FROM " + _FMC + " WHERE v_tane='X' and (v_cfor!='01' and v_cfor!='03' and v_cfor!='NB' and v_cfor!='NC' and v_cfor!='ND' and v_cfor!='NF' and v_cfor!='TI') " + ((_fecha_plan.Length == 0) ? "" : " and DTOS(V_ffor)>'" + _fecha_proceso_mov.ToString("yyyyMMdd") + "' and (v_cfor!='01' and v_cfor!='03' and v_cfor!='NB' and v_cfor!='NC' and v_cfor!='ND' and v_cfor!='NF' and v_cfor!='TI') "); //and (v_cfor='32' or v_cfor='31' )";
                             }
                             else
                             {
@@ -1646,7 +1648,7 @@ namespace Transmision.Net.Basico
                                            "v_almd,v_tane,v_anex,v_tdoc,v_suna,v_sdoc,v_ndoc,v_fdoc,v_tref,v_sref,v_nref,v_tipo," +
                                            "v_arti,v_regl,v_colo,v_cant,v_pres,v_pred,v_vvts,v_vvtd,v_auto,v_ptot,v_impr,v_cuse," +
                                            "v_muse,v_fcre,v_fmod,v_ftrx,v_ctra,v_memo,v_motr,v_par1,v_par2,v_par3,v_lle1,v_lle2," +
-                                           "v_lle3,v_tipe,v_ruc2,v_rzo2,'' as v_hstd FROM " + _FMC + " WHERE v_tane='X' and (v_cfor!='01' and v_cfor!='03' and v_cfor!='NB' and v_cfor!='NC' and v_cfor!='ND' and v_cfor!='NF' and v_cfor!='TI') " + ((_fecha_plan.Length == 0) ? "" : " and DTOS(V_ffor)>='" + _fecha_proceso_mov.ToString("yyyyMMdd") + "' and (v_cfor!='01' and v_cfor!='03' and v_cfor!='NB' and v_cfor!='NC' and v_cfor!='ND' and v_cfor!='NF' and v_cfor!='TI') "); //and (v_cfor='32' or v_cfor='31' )";
+                                           "v_lle3,'' as v_hstd FROM " + _FMC + " WHERE v_tane='X' and (v_cfor!='01' and v_cfor!='03' and v_cfor!='NB' and v_cfor!='NC' and v_cfor!='ND' and v_cfor!='NF' and v_cfor!='TI') " + ((_fecha_plan.Length == 0) ? "" : " and DTOS(V_ffor)>='" + _fecha_proceso_mov.ToString("yyyyMMdd") + "' and (v_cfor!='01' and v_cfor!='03' and v_cfor!='NB' and v_cfor!='NC' and v_cfor!='ND' and v_cfor!='NF' and v_cfor!='TI') "); //and (v_cfor='32' or v_cfor='31' )";
                             }
                             cmd = new OleDbCommand(sqlquery, cn);
                             cmd.CommandTimeout = 0;
@@ -2352,6 +2354,140 @@ namespace Transmision.Net.Basico
             return _valida;
         }
 
+
+        private static void UPDATE_IMPRESION_QR_DBF()
+        {
+            string path_qr = @"D:\POS\QR";
+            string nom_tabla = "IMPQR";
+            string file_ruta = path_qr + "\\" + nom_tabla + ".DBF";
+            try
+            {
+                if (_tienda == null)
+                {
+                    if (Environment.GetEnvironmentVariable("codtda") != null)
+                        _tienda = "50" + Environment.GetEnvironmentVariable("codtda").ToString();
+                }
+                if (_tienda!=null && _tienda.Length>0)
+                {
+                    //CREA LA CARPETA POR DEFECTO PARA EL QR
+                    if (!Directory.Exists(@path_qr)) Directory.CreateDirectory(@path_qr);
+                    /***ahora verificamos si existe la tabla***/
+                    /*si no existe entonces lo creamos el dbf*/
+                    if (!File.Exists(@file_ruta)) tabla_IMPQR(nom_tabla);
+
+
+                    /*extraemos de la web service los datos para actualizar el dbf*/
+                    BataTransmision.bata_transaccionSoapClient updateqr = new BataTransmision.bata_transaccionSoapClient();
+                    BataTransmision.Autenticacion conexion = new BataTransmision.Autenticacion();
+                    conexion.user_name = "emcomer";
+                    conexion.user_password = "Bata2013";
+
+                    var opcion_qr = updateqr.ws_tienda_impresion_qr(conexion, _tienda);
+
+                    if (opcion_qr!=null)
+                    {
+                        if (opcion_qr.err_qr.Length==0)
+                        {
+                            dbf_qr_update(_tienda, opcion_qr.imp_qr);
+                        }
+                    }
+
+                }
+
+                //}
+
+            }
+            catch 
+            {
+
+                
+            }
+        }
+        private static void dbf_qr_update(string cod_tda,string valor)
+        {            
+            string sqlquery = "";
+            string _IMPQR = "IMPQR";
+            string path_qr = @"D:\POS\QR\";
+            string conexion_qr = "Provider=Microsoft.Jet.OLEDB.4.0;Data Source=" + path_qr + ";Extended Properties=dBASE IV;";
+            Int32 _existe_tda = 0;  
+            try
+            {
+                using (OleDbConnection cn = new OleDbConnection(conexion_qr))
+                {
+                    try
+                    {                        
+                        #region<VERIFICAR SI LA TIENDA EXISTE >
+                        sqlquery = "SELECT count(*) FROM " + _IMPQR + " WHERE CODTDA='" + cod_tda + "'";
+                        using (OleDbCommand cmd = new OleDbCommand(sqlquery, cn))
+                        {
+                            cmd.CommandTimeout = 0;
+                            cmd.CommandType = CommandType.Text;                           
+                             if (cn.State == 0) cn.Open();
+                            _existe_tda = (Int32)cmd.ExecuteScalar();
+                             if (cn.State == ConnectionState.Open) cn.Close();
+                            
+                        }
+                        #endregion
+                       /*en este caso si existe modificamos su estado de impresion*/
+                        if (_existe_tda > 0)
+                        {
+                            #region<UPDATE DE QR VARIABLE DE IMPRESION>
+                            sqlquery = "UPDATE " + _IMPQR + " SET ACTIVO='" + valor + "' WHERE CODTDA='" + cod_tda + "'";
+
+                            using (OleDbCommand cmd = new OleDbCommand(sqlquery, cn))
+                            {
+                                cmd.CommandTimeout = 0;
+                                cmd.CommandType = CommandType.Text;                               
+                                if (cn.State == 0) cn.Open();
+                                cmd.ExecuteNonQuery();
+                                if (cn.State == ConnectionState.Open) cn.Close();                                
+                            }
+                           
+                            #endregion
+                        }
+                        else
+                        {
+                            #region<INSERT DE QR VARIABLE DE IMPRESION>                    
+                            sqlquery = "insert into " + _IMPQR + "(CODTDA,ACTIVO) " +
+                                       "values(?,?)";
+                            using (OleDbCommand cmd = new OleDbCommand(sqlquery, cn))
+                            {
+                                cmd.CommandTimeout = 0;
+                                cmd.CommandType = CommandType.Text;
+                                cmd.Parameters.Add("@CODTDA", OleDbType.Char).Value = cod_tda;
+                                cmd.Parameters.Add("@ACTIVO", OleDbType.Char).Value = valor;
+                                                              
+                                if (cn.State == 0) cn.Open();
+                                cmd.ExecuteNonQuery();
+                                if (cn.State == ConnectionState.Open) cn.Close();
+                               
+
+                            }
+
+                            #endregion
+                        }
+
+
+
+
+
+                    }
+                    catch (Exception exc)
+                    {
+                    }
+                    if (cn != null)
+                        if (cn.State == ConnectionState.Open) cn.Close();
+                }
+             
+
+            }
+            catch (Exception)
+            {
+               
+            }
+            
+        }
+
         private static void actualizar_vale()
         {
             try
@@ -2564,10 +2700,11 @@ namespace Transmision.Net.Basico
         {
             try
             {
+              
                 //_update_version_gerena_hash_PAPERLESS();
                 //_error = "ok";
                 //return;
-                //_tienda = "50148";
+               // _tienda = "50850";
                 //_envia_transaccion_mov();
                 //_dbftienda();
                 //_envia_transaccion_mov();
@@ -2602,9 +2739,13 @@ namespace Transmision.Net.Basico
                 //****UPDATE DE GENERA HASH
                 _update_version_gerena_hash();
                 /**/
+
                 /*paperless*/
                 _update_version_gerena_hash_PAPERLESS();
                 /**/
+                /*METODO DE GENERACION DE CODIGO QR*/
+                UPDATE_IMPRESION_QR_DBF();
+                /***************************/
                 //**version del windows 
                 set_get_version_windows();
                 //***actualizar dll vfpoledb.dll
@@ -2616,7 +2757,7 @@ namespace Transmision.Net.Basico
                 
                 //if (_tienda!="50143")
                 //{ 
-                if (!_valida_tda_ecu() && _tienda!="50147")
+                if (!_valida_tda_ecu())
                     update_archivo_carvajal();
                 //}
 
@@ -2644,6 +2785,11 @@ namespace Transmision.Net.Basico
                 if (!_ejecute_reindex_dbf())
                 {
                     _dbftienda();
+
+                    /*sostic 05-2019*/
+                    /*Metodo que verifica si existe la columna 'cv' en la tabla fpalma02 para establecer el valor si la tienda funcionará con el canal de ventas*/
+                    _set_tiendas_disponibles_cv();
+                    /*sostic 05-2019*/
 
                     /*ACTUAIZAR LA DLL DEL FOX*/
                     _update_version_vfpoledbdll();
@@ -2738,7 +2884,43 @@ namespace Transmision.Net.Basico
                 //sis necesitas poner un mensaje debes de poner throw para que te capture
             }
         }
+        /*sostic 05-2019*/
+        private static void _set_tiendas_disponibles_cv()
+        {
+            DBF.NET.DBFNET venta_det = new DBF.NET.DBFNET();
+            bool existe = false;
+            try
+            {
+               
+                existe = venta_det.verificarColumnaDBF("cv", "fpalma02");
+                if (existe)
+                {
+                    //venta_det.agregarColumnaDBF("cv", "fpalma02");
 
+                    venta_det.updateColumnaDBF("update fpalma02 set cv = 0");
+                    BataPos.Bata_TransactionSoapClient batapos = new BataPos.Bata_TransactionSoapClient();
+                    DataTable dtResult = batapos.ws_consultar_tiendas_disponibles_cv(_tienda).Tables[0];
+                    if (dtResult.Columns[0].ColumnName != "codigo")
+                    {
+                        foreach (DataRow row in dtResult.Rows)
+                        {
+                            if (_tienda == row["cod_entid"].ToString())
+                            {
+                                _cv = true;
+                            }
+                            venta_det.updateColumnaDBF("update fpalma02 set cv = 1 where a_codi = '" + row["cod_entid"].ToString().Substring(2) + "0'");
+                        }
+                    }
+                }
+            }
+            catch (Exception)
+            {
+
+               
+            }
+          
+        }
+        /*sostic 05-2019*/
         #region<ENVIO DE TRANSACCION DE MOVIMIENTOS>
         private static Boolean _tda_inv_activo()
         {
@@ -3025,6 +3207,23 @@ namespace Transmision.Net.Basico
             return _archivo_comp;
         }
 
+        private static void tabla_IMPQR(string _nom_tabla)
+        {
+            try
+            {
+                BASICO_DBFNET  venta_cab = new BASICO_DBFNET();
+                venta_cab.tabla = _nom_tabla;// "IMPQR";
+                venta_cab.addcol("codtda", BASICO_TIPO.Caracter, "5");
+                venta_cab.addcol("activo", BASICO_TIPO.Caracter, "1");
+
+                venta_cab.creardbf_qr();
+            }
+            catch
+            {
+                throw;
+            }
+        }
+
         //
         private static void _genera_ventas(DateTime _fecha_proceso,ref DataTable dtventa_envio,ref string error_venta)
         {
@@ -3291,6 +3490,16 @@ namespace Transmision.Net.Basico
                                         fc_mpub = dt_cab_clone.Rows[i]["fc_mpub"].ToString(),
                                         fc_edad = dt_cab_clone.Rows[i]["fc_edad"].ToString(),
                                         fc_regv = dt_cab_clone.Rows[i]["fc_regv"].ToString(),
+
+                                        #region<Campos para el canal de ventas>
+                                        /*sostic 05-2019*/
+                                        fc_idtda_b = (_cv ? dt_cab_clone.Rows[i]["fc_idtda_b"].ToString() : ""),
+                                        fc_id_est = (_cv ? dt_cab_clone.Rows[i]["fc_id_est"].ToString() : ""),
+                                        fc_id_tcv = (_cv ? dt_cab_clone.Rows[i]["fc_id_tcv"].ToString() : ""),
+                                        fc_refere = (_cv ? dt_cab_clone.Rows[i]["fc_refere"].ToString() : ""),
+                                        fc_ubi = (_cv ? dt_cab_clone.Rows[i]["fc_ubi"].ToString() : "")
+                                        /*sostic 05-2019*/
+                                        #endregion
                                     };
                                     result_ffactc.Add(ffactc);
                                                                                                
@@ -3690,6 +3899,20 @@ namespace Transmision.Net.Basico
                 venta_cab.addcol("fc_mpub", DBF.NET.Tipo.Caracter, "2");
                 venta_cab.addcol("fc_edad", DBF.NET.Tipo.Caracter, "2");
                 venta_cab.addcol("fc_regv", DBF.NET.Tipo.Caracter, "25");
+
+                #region<Campos para el canal de ventas>
+                /*sostic 05/2019*/
+                if (_cv)
+                {
+                    venta_cab.addcol("fc_idtda_b", DBF.NET.Tipo.Caracter, "5");
+                    venta_cab.addcol("fc_id_est", DBF.NET.Tipo.Caracter, "3");
+                    venta_cab.addcol("fc_id_tcv", DBF.NET.Tipo.Caracter, "3");
+                    venta_cab.addcol("fc_refere", DBF.NET.Tipo.Caracter, "254");
+                    venta_cab.addcol("fc_ubi", DBF.NET.Tipo.Caracter, "6");
+                }
+                /*sostic 05/2019*/
+                #endregion
+
                 venta_cab.creardbf();
                 venta_cab.Insertar_tabla(dt);
             }

@@ -168,6 +168,7 @@
         <s:sequence>
           <s:element minOccurs="0" maxOccurs="1" name="rutloc_namedbf" type="s:string" />
           <s:element minOccurs="0" maxOccurs="1" name="rutloc_location" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="rutloc_location_ecu" type="s:string" />
         </s:sequence>
       </s:complexType>
       <s:element name="list_file">
@@ -183,6 +184,55 @@
       <s:complexType name="Ent_File">
         <s:sequence>
           <s:element minOccurs="0" maxOccurs="1" name="file_name" type="s:string" />
+        </s:sequence>
+      </s:complexType>
+      <s:element name="ws_lista_alma_Ecu">
+        <s:complexType />
+      </s:element>
+      <s:element name="ws_lista_alma_EcuResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="ws_lista_alma_EcuResult" type="tns:ArrayOfEnt_Alma_Ecu" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:complexType name="ArrayOfEnt_Alma_Ecu">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="unbounded" name="Ent_Alma_Ecu" nillable="true" type="tns:Ent_Alma_Ecu" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="Ent_Alma_Ecu">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="1" name="alma_ecu" type="s:string" />
+        </s:sequence>
+      </s:complexType>
+      <s:element name="ws_get_xstore_carpeta_upload">
+        <s:complexType />
+      </s:element>
+      <s:element name="ws_get_xstore_carpeta_uploadResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="ws_get_xstore_carpeta_uploadResult" type="tns:ArrayOfEnt_CarpetaUpload_Xstore" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:complexType name="ArrayOfEnt_CarpetaUpload_Xstore">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="unbounded" name="Ent_CarpetaUpload_Xstore" nillable="true" type="tns:Ent_CarpetaUpload_Xstore" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="Ent_CarpetaUpload_Xstore">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="1" name="pais" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="entorno" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="opcion" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="rut_upload" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="ftp_server" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="ftp_user" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="ftp_pass" type="s:string" />
+          <s:element minOccurs="1" maxOccurs="1" name="ftp_port" type="s:int" />
+          <s:element minOccurs="0" maxOccurs="1" name="ftp_folder" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="ftp_send" type="s:string" />
         </s:sequence>
       </s:complexType>
       <s:element name="ws_update_transaction_guias">
@@ -774,6 +824,24 @@
   <wsdl:message name="list_fileSoapOut">
     <wsdl:part name="parameters" element="tns:list_fileResponse" />
   </wsdl:message>
+  <wsdl:message name="ws_lista_alma_EcuSoapIn">
+    <wsdl:part name="parameters" element="tns:ws_lista_alma_Ecu" />
+  </wsdl:message>
+  <wsdl:message name="ws_lista_alma_EcuSoapOut">
+    <wsdl:part name="parameters" element="tns:ws_lista_alma_EcuResponse" />
+  </wsdl:message>
+  <wsdl:message name="ws_lista_alma_EcuValidateAcceso">
+    <wsdl:part name="ValidateAcceso" element="tns:ValidateAcceso" />
+  </wsdl:message>
+  <wsdl:message name="ws_get_xstore_carpeta_uploadSoapIn">
+    <wsdl:part name="parameters" element="tns:ws_get_xstore_carpeta_upload" />
+  </wsdl:message>
+  <wsdl:message name="ws_get_xstore_carpeta_uploadSoapOut">
+    <wsdl:part name="parameters" element="tns:ws_get_xstore_carpeta_uploadResponse" />
+  </wsdl:message>
+  <wsdl:message name="ws_get_xstore_carpeta_uploadValidateAcceso">
+    <wsdl:part name="ValidateAcceso" element="tns:ValidateAcceso" />
+  </wsdl:message>
   <wsdl:message name="ws_update_transaction_guiasSoapIn">
     <wsdl:part name="parameters" element="tns:ws_update_transaction_guias" />
   </wsdl:message>
@@ -940,6 +1008,16 @@
       <wsdl:input message="tns:list_fileSoapIn" />
       <wsdl:output message="tns:list_fileSoapOut" />
     </wsdl:operation>
+    <wsdl:operation name="ws_lista_alma_Ecu">
+      <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">Lista de almacenes de Ecuador</wsdl:documentation>
+      <wsdl:input message="tns:ws_lista_alma_EcuSoapIn" />
+      <wsdl:output message="tns:ws_lista_alma_EcuSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="ws_get_xstore_carpeta_upload">
+      <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">Lista de carpeta Xstore Upload</wsdl:documentation>
+      <wsdl:input message="tns:ws_get_xstore_carpeta_uploadSoapIn" />
+      <wsdl:output message="tns:ws_get_xstore_carpeta_uploadSoapOut" />
+    </wsdl:operation>
     <wsdl:operation name="ws_update_transaction_guias">
       <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">Update de transaccion de guias</wsdl:documentation>
       <wsdl:input message="tns:ws_update_transaction_guiasSoapIn" />
@@ -1064,6 +1142,26 @@
       <soap:operation soapAction="http://bataperu.com.pe/list_file" style="document" />
       <wsdl:input>
         <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ws_lista_alma_Ecu">
+      <soap:operation soapAction="http://bataperu.com.pe/ws_lista_alma_Ecu" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+        <soap:header message="tns:ws_lista_alma_EcuValidateAcceso" part="ValidateAcceso" use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ws_get_xstore_carpeta_upload">
+      <soap:operation soapAction="http://bataperu.com.pe/ws_get_xstore_carpeta_upload" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+        <soap:header message="tns:ws_get_xstore_carpeta_uploadValidateAcceso" part="ValidateAcceso" use="literal" />
       </wsdl:input>
       <wsdl:output>
         <soap:body use="literal" />
@@ -1273,6 +1371,26 @@
       <soap12:operation soapAction="http://bataperu.com.pe/list_file" style="document" />
       <wsdl:input>
         <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ws_lista_alma_Ecu">
+      <soap12:operation soapAction="http://bataperu.com.pe/ws_lista_alma_Ecu" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+        <soap12:header message="tns:ws_lista_alma_EcuValidateAcceso" part="ValidateAcceso" use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ws_get_xstore_carpeta_upload">
+      <soap12:operation soapAction="http://bataperu.com.pe/ws_get_xstore_carpeta_upload" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+        <soap12:header message="tns:ws_get_xstore_carpeta_uploadValidateAcceso" part="ValidateAcceso" use="literal" />
       </wsdl:input>
       <wsdl:output>
         <soap12:body use="literal" />

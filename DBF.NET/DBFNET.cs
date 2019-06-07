@@ -133,5 +133,80 @@ namespace DBF.NET
             if (cn != null)
                 if (cn.State == ConnectionState.Open) cn.Close();
         }
+        /*sostic 05-2019*/
+        public void agregarColumnaDBF(string columna, string dbf)
+        {
+            OleDbConnection cn = null;
+            OleDbCommand cmd = null;
+            string _query = "alter table " + dbf + " add " + columna + " numeric(1)";  // "if exists ( select * from INFORMATION_SCHEMA.columns where COLUMN_NAME = 'xstore' AND TABLE_NAME = 'FPALMA02' ) begin select 1 end else begin select 0 end";
+                                                                                       //string _querycrear = "update fpalma02 set xstore = 'x' "; // "alter table FPALMA02 add xstore char(1)";
+            try
+            {
+                cn = new OleDbConnection(Variables._conexion);
+                if (cn.State == 0) cn.Open();
+                cmd = new OleDbCommand(_query, cn);
+                cmd.CommandTimeout = 0;
+                cmd.ExecuteNonQuery(); //Convert.ToInt32( cmd.ExecuteScalar()); 
+            }
+            catch (Exception ex)
+            {
+                if (cn != null)
+                    if (cn.State == ConnectionState.Open) cn.Close();
+                throw;
+            }
+            if (cn != null)
+                if (cn.State == ConnectionState.Open) cn.Close();
+        }
+        /*sostic 06/2019*/
+        public void updateColumnaDBF(string query)
+        {
+            OleDbConnection cn = null;
+            OleDbCommand cmd = null;
+            string _query = query;  // "if exists ( select * from INFORMATION_SCHEMA.columns where COLUMN_NAME = 'xstore' AND TABLE_NAME = 'FPALMA02' ) begin select 1 end else begin select 0 end";
+                                    //string _querycrear = "update fpalma02 set xstore = 'x' "; // "alter table FPALMA02 add xstore char(1)";
+            try
+            {
+                cn = new OleDbConnection(Variables._conexion_vfpoledb);
+                if (cn.State == 0) cn.Open();
+                cmd = new OleDbCommand(_query, cn);
+                cmd.CommandTimeout = 0;
+                cmd.ExecuteNonQuery(); //Convert.ToInt32( cmd.ExecuteScalar()); 
+            }
+            catch (Exception ex)
+            {
+                if (cn != null)
+                    if (cn.State == ConnectionState.Open) cn.Close();
+                throw;
+            }
+            if (cn != null)
+                if (cn.State == ConnectionState.Open) cn.Close();
+        }
+        /*sostic 06/2019*/
+        public bool verificarColumnaDBF(string columna, string dbf)
+        {
+            OleDbConnection cn = null;
+            OleDbCommand cmd = null;
+            bool _rt = false;
+            string _queryVerificar = "select " + columna + " from " + dbf + "";
+            try
+            {
+                cn = new OleDbConnection(Variables._conexion);
+                if (cn.State == 0) cn.Open();
+                cmd = new OleDbCommand(_queryVerificar, cn);
+                cmd.CommandTimeout = 0;
+                cmd.ExecuteNonQuery(); //Convert.ToInt32( cmd.ExecuteScalar());  
+                _rt = true;
+            }
+            catch (Exception ex)
+            {
+                if (cn != null)
+                    if (cn.State == ConnectionState.Open) cn.Close();
+                _rt = false;
+            }
+            if (cn != null)
+                if (cn.State == ConnectionState.Open) cn.Close();
+            return _rt;
+        }
+        /*sostic 05-2019*/
     }
 }
