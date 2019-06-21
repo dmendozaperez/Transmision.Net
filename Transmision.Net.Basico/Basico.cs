@@ -444,7 +444,7 @@ namespace Transmision.Net.Basico
                                            "v_almd,v_tane,v_anex,v_tdoc,v_suna,v_sdoc,v_ndoc,v_fdoc,v_tref,v_sref,v_nref,v_tipo," +
                                            "v_arti,v_regl,v_colo,v_cant,v_pres,v_pred,v_vvts,v_vvtd,v_auto,v_ptot,v_impr,v_cuse," +
                                            "v_muse,v_fcre,v_fmod,v_ftrx,v_ctra,v_memo,v_motr,v_par1,v_par2,v_par3,v_lle1,v_lle2," +
-                                           "v_lle3,'' as v_hstd,i_tfor,i_proc,i_cfor,i_sfor,i_nfor,i_arti,i_arti,i_regl,i_canm,i_plis FROM " + _FMC + " INNER JOIN " + _FMD +
+                                           "v_lle3,'' as v_hstd,i_tfor,i_proc,i_cfor,i_sfor,i_nfor,i_arti,i_arti,i_regl,i_canm,i_pred FROM " + _FMC + " INNER JOIN " + _FMD +
                                          " ON v_tfor=i_tfor AND v_cfor=i_cfor  AND v_sfor=i_sfor  AND v_nfor=i_nfor  WHERE EMPTY(v_tane)" + ((_fecha_plan.Length == 0) ? "" : " and DTOS(V_ffor)>='" + _fecha_proceso_mov.ToString("yyyyMMdd") + "' and (v_cfor!='01' and (v_cfor='32' or v_cfor='33' ))");
 
                                     //and (v_cfor='32' or v_cfor='31' )";
@@ -578,7 +578,7 @@ namespace Transmision.Net.Basico
                                                         DESD_CALID = Basico.Right(fila_det["i_arti"].ToString().Trim(), 1),
                                                         DESD_TALLA = fila_det["i_regl"].ToString().Trim(),
                                                         DESD_PARES =Convert.ToInt32(fila_det["i_canm"]),
-                                                        DESD_PRVTA=Convert.ToDecimal(fila_det["i_plis"]),
+                                                        DESD_PRVTA=Convert.ToDecimal(fila_det["i_pred"]),
                                                     };
                                                     lista_Fvdespd.Add(Fvdespd);
                                                 }
@@ -4605,6 +4605,494 @@ namespace Transmision.Net.Basico
 
 
         #endregion
+
+        #region<Servicios canal de ventas>
+        public static void _consultar_stock_otra_tda(ref string _error)
+        {
+            string directorio = @"D:\CONS\CANAL\"; //directorio donde se encunetra el archivo para consultar el stock
+            if (Directory.Exists(directorio))
+            {
+                string texto = "";
+                try
+                {
+                    string[] file = Directory.GetFiles(@"" + directorio);
+                    if (file.Length > 0)
+                    {
+                        foreach (var item in file)
+                        {
+                            //string nombre_archivo = Path.GetFileName(item);
+                            texto = File.ReadAllText(item);
+                            if (texto.IndexOf("|") > 0) /*si el archivo tiene pipes(|) quiere decir que es de consulta */
+                            {
+                                string[] valores = texto.Split(Convert.ToChar("|"));
+                                string cod_art = valores[0].Substring(0, valores[0].Length - 1);
+                                string calidad = valores[0].Substring(valores[0].Length - 1);
+                                string talla = valores[1];
+                                int cantidad = Convert.ToInt32(valores[2]);
+                                string cod_tda_b = valores[4];
+                                BataPos.Bata_TransactionSoapClient batatran = new BataPos.Bata_TransactionSoapClient();
+                                string[] _result = batatran.ws_consulta_stock_otra_tda(cod_tda_b, cod_art, calidad, talla, cantidad, cod_tda_b);  //consulto el stock                           
+                                StreamWriter rpta = new StreamWriter(directorio + @"\RPTA\rpta.txt"); // escribo la respuesta en un txt
+                                rpta.WriteLine(_result[0] != "0" ? "0" : _result[1]);
+                                rpta.Close();
+                                //log.Add(texto + " ==> " + _result[1].ToString());
+                                File.Delete(item); //borro el archivo de consulta                            
+                            }
+                        }
+                    }
+                }
+                catch (Exception ex)
+                {
+                    StreamWriter rpta = new StreamWriter(directorio + @"\RPTA\rpta.txt"); // escribo la respuesta en un txt
+                    rpta.WriteLine("0");
+                    rpta.Close();
+                    _error = ex.ToString();
+                }
+            }
+        }
+
+        public static void _enviar_guias_cv(ref string _error)
+        {
+            string directorio = @"D:\CONS\CANAL\GUIAS\"; //directorio donde se encunetra el archivo para consultar el stock
+            if (Directory.Exists(directorio))
+            {
+                string cabecera = "";
+                string detalle = "";
+                string cod_tda = "";
+                int max_intentos = 8;// Convert.ToInt32(ConfigurationManager.AppSettings["max_intentos"].ToString());
+                int sleep = 2; // Convert.ToInt32(ConfigurationManager.AppSettings["sleep"].ToString());
+                try
+                {
+                    string[] file = Directory.GetFiles(@"" + directorio);
+                    DataTable dtDetalles = new DataTable();//datatable donde se llenaran los detalles
+                    DataTable dtCabecera = new DataTable();//datatable donde se llenaran la cabecera
+                    if (file.Length == 2) // si hay dos archivos (cabecera y detalle) los procesará 
+                    {
+                        foreach (var item in file)
+                        {
+                            if (Path.GetFileName(item) == "TGUIAC.TXT") /*procesa la cabecera*/
+                            {
+                                cabecera = File.ReadAllText(item).Trim();
+                                string[] valores = cabecera.Split(Convert.ToChar("|"));
+                                #region columna cabecera
+                                dtCabecera.Columns.Add("V_TFOR");/*0*/
+                                dtCabecera.Columns.Add("V_PROC");/*1*/
+                                dtCabecera.Columns.Add("V_CFOR");/*2*/
+                                dtCabecera.Columns.Add("V_SFOR");/*3*/
+                                dtCabecera.Columns.Add("V_NFOR");/*4*/
+                                dtCabecera.Columns.Add("V_FFOR", typeof(DateTime));/*5*/
+                                dtCabecera.Columns.Add("V_MONE");/*6*/
+                                dtCabecera.Columns.Add("V_TA");  /*7*/
+                                dtCabecera.Columns.Add("V_ALMO");/*8*/
+                                dtCabecera.Columns.Add("V_ALMD");/*9*/
+                                dtCabecera.Columns.Add("V_TANE");/*10*/
+                                dtCabecera.Columns.Add("V_ANEX");/*11*/
+                                dtCabecera.Columns.Add("V_TDOC");/*12*/
+                                dtCabecera.Columns.Add("V_SUNA");/*13*/
+                                dtCabecera.Columns.Add("V_SDOC");/*14*/
+                                dtCabecera.Columns.Add("V_NDOC");/*15*/
+                                dtCabecera.Columns.Add("V_FDOC", typeof(DateTime));/*16*/
+                                dtCabecera.Columns.Add("V_TREF");/*17*/
+                                dtCabecera.Columns.Add("V_SREF");/*18*/
+                                dtCabecera.Columns.Add("V_NREF");/*19*/
+                                dtCabecera.Columns.Add("V_TIPO");/*20*/
+                                dtCabecera.Columns.Add("V_ARTI");/*21*/
+                                dtCabecera.Columns.Add("V_REGL");/*22*/
+                                dtCabecera.Columns.Add("V_COLO");/*23*/
+                                dtCabecera.Columns.Add("V_CANT");/*24*/
+                                dtCabecera.Columns.Add("V_PRES");/*25*/
+                                dtCabecera.Columns.Add("V_PRED");/*26*/
+                                dtCabecera.Columns.Add("V_VVTS");/*27*/
+                                dtCabecera.Columns.Add("V_VVTD");/*28*/
+                                dtCabecera.Columns.Add("V_AUTO");/*29*/
+                                dtCabecera.Columns.Add("V_PTOT");/*30*/
+                                dtCabecera.Columns.Add("V_IMPR");/*31*/
+                                dtCabecera.Columns.Add("V_CUSE");/*32*/
+                                dtCabecera.Columns.Add("V_MUSE");/*33*/
+                                dtCabecera.Columns.Add("V_FCRE", typeof(DateTime));/*34*/
+                                dtCabecera.Columns.Add("V_FMOD", typeof(DateTime));/*35*/
+                                dtCabecera.Columns.Add("V_FTRX", typeof(DateTime));/*36*/
+                                dtCabecera.Columns.Add("V_CTRA");/*37*/
+                                dtCabecera.Columns.Add("V_MEMO");/*38*/
+                                dtCabecera.Columns.Add("V_MOTR");/*39*/
+                                dtCabecera.Columns.Add("V_PAR1");/*40*/
+                                dtCabecera.Columns.Add("V_PAR2");/*41*/
+                                dtCabecera.Columns.Add("V_PAR3");/*42*/
+                                dtCabecera.Columns.Add("V_LLE1");/*43*/
+                                dtCabecera.Columns.Add("V_LLE2");/*44*/
+                                dtCabecera.Columns.Add("V_LLE3");/*45*/
+                                dtCabecera.Columns.Add("V_TIPE");/*46*/
+                                dtCabecera.Columns.Add("V_RUC2");/*47*/
+                                dtCabecera.Columns.Add("V_RZO2");/*48*/
+                                dtCabecera.Columns.Add("V_FEC_PROC", typeof(DateTime));/*49*/
+                                #endregion
+                                cod_tda = "50" + valores[8].ToString().Substring(0, 3);
+                                #region agregar cabecera
+                                dtCabecera.Rows.Add(valores[0],
+                                                    valores[1],
+                                                    valores[2],
+                                                    valores[3],
+                                                    valores[4],
+                                                    valores[5],
+                                                    valores[6],
+                                                    valores[7],
+                                                    valores[8],
+                                                    valores[9],
+                                                    valores[10],
+                                                    valores[11],
+                                                    valores[12],
+                                                    valores[13],
+                                                    valores[14],
+                                                    valores[15],
+                                                    valores[16],
+                                                    valores[17],
+                                                    valores[18],
+                                                    valores[19],
+                                                    valores[20],
+                                                    valores[21],
+                                                    valores[22],
+                                                    valores[23],
+                                                    valores[24],
+                                                    valores[25],
+                                                    valores[26],
+                                                    valores[27],
+                                                    valores[28],
+                                                    valores[29],
+                                                    valores[30],
+                                                    valores[31],
+                                                    valores[32],
+                                                    valores[33],
+                                                    valores[34],
+                                                    valores[35],
+                                                    valores[36],
+                                                    valores[37],
+                                                    valores[38],
+                                                    valores[39],
+                                                    valores[40],
+                                                    valores[41],
+                                                    valores[42],
+                                                    valores[43],
+                                                    valores[44],
+                                                    valores[45],
+                                                    valores[46],
+                                                    valores[47],
+                                                    valores[48],
+                                                    DateTime.Today.ToShortDateString()
+                                    );
+                                #endregion
+                                //File.Move(item, directorio + @"\BACKUP\" + DateTime.Now.ToString("ddmmyyyyhhmmss") + "-" + Path.GetFileName(item));/*mueve la cabecera a un directorio de respaldo renombrado con la fecha*/                            
+                            }
+                            if (Path.GetFileName(item) == "TGUIAD.TXT")/*procesa los detalles*/
+                            {
+                                #region columna detalle
+                                dtDetalles.Columns.Add("I_TFOR");  /*0*/
+                                dtDetalles.Columns.Add("I_PROC");  /*1*/
+                                dtDetalles.Columns.Add("I_CFOR");  /*2*/
+                                dtDetalles.Columns.Add("I_SFOR");  /*3*/
+                                dtDetalles.Columns.Add("I_NFOR");  /*4*/
+                                dtDetalles.Columns.Add("I_TIPO");  /*5*/
+                                dtDetalles.Columns.Add("I_ARTI");  /*6*/
+                                dtDetalles.Columns.Add("I_REGL");  /*7*/
+                                dtDetalles.Columns.Add("I_COLO");  /*8*/
+                                dtDetalles.Columns.Add("I_ITEM");  /*9*/
+                                dtDetalles.Columns.Add("I_UNIC");  /*10*/
+                                dtDetalles.Columns.Add("I_EQU1");  /*11*/
+                                dtDetalles.Columns.Add("I_UNIM");  /*12*/
+                                dtDetalles.Columns.Add("I_CANC");  /*13*/
+                                dtDetalles.Columns.Add("I_CANM");  /*14*/
+                                dtDetalles.Columns.Add("I_PRES");  /*15*/
+                                dtDetalles.Columns.Add("I_PRED");  /*16*/
+                                dtDetalles.Columns.Add("I_VVTS");  /*17*/
+                                dtDetalles.Columns.Add("I_VVTD");  /*18*/
+                                dtDetalles.Columns.Add("I_PLIS");  /*19*/
+                                dtDetalles.Columns.Add("I_PTOT");  /*20*/
+                                dtDetalles.Columns.Add("I_IMPRE"); /*21*/
+                                dtDetalles.Columns.Add("I_CUSE");  /*22*/
+                                dtDetalles.Columns.Add("I_MUSE");  /*23*/
+                                dtDetalles.Columns.Add("I_FCRE", typeof(DateTime));  /*24*/
+                                dtDetalles.Columns.Add("I_FMOD", typeof(DateTime));  /*25*/
+                                dtDetalles.Columns.Add("I_DREF");  /*26*/
+                                #endregion
+                                using (StreamReader guiad = new StreamReader(item))
+                                {
+                                    while (!guiad.EndOfStream)
+                                    {
+                                        detalle = guiad.ReadLine().Trim();
+                                        string[] valores = detalle.Split(Convert.ToChar("|"));
+                                        #region agregar detalle
+                                        dtDetalles.Rows.Add(
+                                            valores[0],
+                                            valores[1],
+                                            valores[2],
+                                            valores[3],
+                                            valores[4],
+                                            valores[5],
+                                            valores[6],
+                                            valores[7],
+                                            valores[8],
+                                            valores[9],
+                                            valores[10],
+                                            valores[11],
+                                            valores[12],
+                                            valores[13],
+                                            valores[14],
+                                            valores[15],
+                                            valores[16],
+                                            valores[17],
+                                            valores[18],
+                                            valores[19],
+                                            valores[20],
+                                            valores[21],
+                                            valores[22],
+                                            valores[23],
+                                            valores[24],
+                                            valores[25],
+                                            valores[26]);
+                                        #endregion
+                                    }
+                                }
+                                //File.Move(item, directorio + @"\BACKUP\" + DateTime.Now.ToString("ddmmyyyyhhmmss") + "-" + Path.GetFileName(item));/*mueve el detalle a un directorio de respaldo renombrado con la fecha*/                            
+                            }
+                        }
+                        DataSet ds = new DataSet();/*dataset para el webmehtod*/
+                                                   /*agrego los datatables al dataset*/
+                        ds.Tables.Add(dtCabecera);
+                        ds.Tables.Add(dtDetalles);
+                        BataPos.Bata_TransactionSoapClient batatran = new BataPos.Bata_TransactionSoapClient();
+                        string[] _result = batatran.ws_insertar_guia_cvt(cod_tda, ds);
+                        /* Espero la respuesta de correlativo de la otra tienda */
+                        if (_result[0] == "0")
+                        {
+                            moverArchivos(directorio);
+                            int c_rpta = 0;
+                            bool procesado = false;
+                            while (procesado == false && c_rpta <= max_intentos)
+                            {
+                                DataSet dsGA = new DataSet();
+                                DataTable dtGA = new DataTable();
+                                dsGA = batatran.ws_consultar_guias_actualizadas(cod_tda, Convert.ToInt32(_result[1]));
+                                dtGA = dsGA.Tables[0];
+                                if (dtGA.Rows.Count > 0)
+                                {
+                                    if (dtGA.Columns[0].ColumnName != "codigo")
+                                    {
+                                        string directorio_rpta = @"D:\pos\aviso\"; // ConfigurationManager.AppSettings["dir_guia_rpta"].ToString();
+                                        procesado = true;
+                                        StreamWriter rpta = new StreamWriter(directorio_rpta + @"\RPTA\rpta.txt");
+                                        rpta.WriteLine(dtGA.Rows[0]["V_SFOR"].ToString() + "-" + dtGA.Rows[0]["V_NFOR"].ToString());
+                                        rpta.Close();
+                                    }
+                                    else
+                                    {
+                                        procesado = false;
+                                        c_rpta++;
+                                        _espera_ejecuta(sleep);
+                                        //Thread.Sleep(sleep);
+                                    }
+                                }
+                                else
+                                {
+                                    procesado = false;
+                                    c_rpta++;
+                                    _espera_ejecuta(sleep);
+                                    //Thread.Sleep(sleep);
+                                }
+                            }
+                            if (c_rpta >= max_intentos)
+                            {
+                                /*marcar el registro en la tabla guia temporal para el canal de venta*/
+                                string[] msg = batatran.ws_actualizar_guia(cod_tda, "x", "x", Convert.ToInt32(_result[1]));
+                            }
+                        }
+                    }
+                }
+                catch (Exception ex)
+                {
+                    _error = ex.ToString();
+                }
+            }
+        }
+
+        public static void _estado_recepcionar(ref string _error)
+        {
+            //tmservicio.Stop();
+            string directorio = @"D:\pos\aviso\RECEPCION\"; //ConfigurationManager.AppSettings["dir_estado_recepcionar"].ToString(); //directorio donde se encunetra el archivo para consultar el stock
+            if (Directory.Exists(directorio))
+            {
+                string texto = "";
+                try
+                {
+                    string[] file = Directory.GetFiles(@"" + directorio);
+                    if (file.Length > 0)
+                    {
+
+                        foreach (var item in file)
+                        {
+                            //string nombre_archivo = Path.GetFileName(item);
+                            texto = File.ReadAllText(item);
+                            if (texto.IndexOf("|") > 0) /*si el archivo tiene pipes(|) quiere decir que es de consulta */
+                            {
+                                string[] valores = texto.Split(Convert.ToChar("|"));
+                                string cod_tda = valores[0].Trim();
+                                string cod_entid = valores[1].Trim();
+                                string fc_nint = valores[2].Trim();
+                                string id_estado = valores[3].ToString();
+                                int cod_usuario = 0;
+                                string descripcion = valores[5].Trim();
+                                string vendedor = valores[6].Trim();
+                                string serieNumero = valores[7].Trim();
+
+                                BataPos.Bata_TransactionSoapClient batatran = new BataPos.Bata_TransactionSoapClient();
+                                string[] _result = batatran.ws_insertar_historial_estado_cv(cod_tda, cod_entid, fc_nint, id_estado, cod_usuario.ToString(), descripcion, vendedor, serieNumero);  //consulto el stock                           
+                                if (_result[0] == "0")
+                                {
+                                    //log.Add(texto + " ==> " + _result[1].ToString() + "/*****/" + _result[0].ToString());
+                                    File.Delete(item); //borro el archivo de consulta
+                                }
+                                else
+                                {
+                                    _error = ("ERROR ====> " + texto + " ==> " + _result[1].ToString() + "/*****/" + _result[0].ToString());
+                                }
+
+                            }
+                        }
+                    }
+                }
+                catch (Exception ex)
+                {
+                    _error = ex.ToString();
+                }
+            }
+        }
+
+        public static void _recepcionar_guias(ref string _error)
+        {
+            _dbftienda();
+            string cod_tda = _tienda;
+            if (cod_tda == "")
+            {
+
+                //string cod_tda = ConfigurationManager.AppSettings["cod_tda"].ToString();
+                try
+                {
+                    DataSet ds = new DataSet();
+                    BataPos.Bata_TransactionSoapClient batatran = new BataPos.Bata_TransactionSoapClient();
+                    ds = batatran.ws_consultar_guias(cod_tda);
+                    DataTable dt_cabecera = new DataTable();
+                    DataTable dt_detalle = new DataTable();
+                    dt_cabecera = ds.Tables[0];
+
+                    if (dt_cabecera.Rows.Count > 0)
+                    {
+                        if (dt_cabecera.Columns[0].ColumnName.Equals("codigo"))
+                        {
+                            _error = ("Error en consultar guias para tienda" + dt_cabecera.Rows[0][0].ToString() + "|" + dt_cabecera.Rows[0][1].ToString());
+
+                        }
+                        else
+                        {
+                            //log.Add("Se encontraron guias pendientes. " + dt_cabecera.Rows[0]["V_ALMO"].ToString() + " ID: " + "|" + dt_cabecera.Rows[0]["V_ID"].ToString());
+                            dt_detalle = ds.Tables[1];
+                            DataTable corr = dt_correlativo();
+                            int num = Convert.ToInt32(corr.Rows[0][4].ToString());
+                            num = num + 1;
+                            corr.Rows[0][4] = num.ToString().PadLeft(8, Convert.ToChar("0"));
+                            //log.Add("Se capturó el correlativo en la tienda. " + corr.Rows[0][3].ToString() + "-" + corr.Rows[0][4].ToString());
+                            dt_cabecera.Rows[0]["V_SFOR"] = corr.Rows[0][3];
+                            dt_cabecera.Rows[0]["V_NFOR"] = corr.Rows[0][4];
+                            for (int i = 0; i < dt_detalle.Rows.Count; i++)
+                            {
+                                dt_detalle.Rows[i]["I_SFOR"] = corr.Rows[0][3];
+                                dt_detalle.Rows[i]["I_NFOR"] = corr.Rows[0][4];
+                            }
+                            string txtGuiaCabecera = "";
+                            txtGuiaCabecera = String.Join("|", dt_cabecera.Rows[0].ItemArray);
+                            string txtGuiaDetalle = "";
+                            for (int i = 0; i < dt_detalle.Rows.Count; i++)
+                            {
+                                txtGuiaDetalle += String.Join("|", dt_detalle.Rows[i].ItemArray) + Environment.NewLine;
+                            }
+                            string dir_salida = @"D:\pos\aviso\salida\"; //ConfigurationManager.AppSettings["dir_salida"].ToString();//dir_salida
+                            using (StreamWriter file_cabecera = new StreamWriter(dir_salida + @"\TGUIAC.TXT"))
+                            {
+                                file_cabecera.WriteLine(txtGuiaCabecera);
+                                file_cabecera.Close();
+                            }
+                            using (StreamWriter file_detalle = new StreamWriter(dir_salida + @"\TGUIAD.TXT"))
+                            {
+                                file_detalle.WriteLine(txtGuiaDetalle);
+                                file_detalle.Close();
+                            }
+                            //log.Add("Se generaron los archivos cabecera y detalle de las guias en el directorio de salida.");
+
+                            string[] msg = batatran.ws_actualizar_guia(cod_tda, corr.Rows[0][3].ToString(), corr.Rows[0][4].ToString(), Convert.ToInt32(dt_cabecera.Rows[0]["V_ID"]));
+                            if (!msg[0].ToString().Equals("0"))
+                            {
+                                _error = msg[1];
+                            }
+                        }
+                    }
+                }
+                catch (Exception ex)
+                {
+                    _error = ex.ToString();
+                }
+            }
+
+        }
+
+        #region<complementos canal de ventas>
+        private static void moverArchivos(string directorio)
+        {
+            string[] files = Directory.GetFiles(@"" + directorio);
+            if (files.Length > 0)
+            {
+                if (!Directory.Exists(directorio + @"\BACKUP"))
+                    Directory.CreateDirectory(directorio + @"\BACKUP");
+                foreach (var item in files)
+                {
+                    File.Move(item, directorio + @"\BACKUP\" + DateTime.Now.ToString("ddmmyyyyhhmmss") + "-" + Path.GetFileName(item));
+                }
+            }
+        }
+        private static DataTable dt_correlativo()
+        {
+            OleDbConnection cn = null;
+            OleDbCommand cmd = null;
+            OleDbDataAdapter da = null;
+            string sqlquery = "";
+            DataTable _dt = null;
+            string _path_default = Variables._path_default; // @"\\192.168.1.241\POS";
+            string conexion = Variables._conexion; //  "Provider = Microsoft.Jet.OLEDB.4.0; Data Source = " + _path_default + "; Extended Properties = dBASE IV; ";// ConfigurationManager.AppSettings["conexion"].ToString();
+            try
+            {
+                cn = new OleDbConnection(conexion);
+                //tienda
+                // cn.Open();
+                sqlquery = "select * from FSNUME02 WHERE N_CSER=?";
+                cmd = new OleDbCommand(sqlquery, cn);
+                cmd.CommandTimeout = 0;
+                cmd.Parameters.Add("text", OleDbType.VarChar).Value = "03";
+                da = new OleDbDataAdapter(cmd);
+                _dt = new DataTable();
+                da.Fill(_dt);
+
+            }
+            catch (Exception ex)
+            {
+                _dt = null;
+                //log.Add("Error al capturar el correlativo" + ex.ToString());
+                throw;
+            }
+            return _dt;
+        }
+
+
+
+        #endregion
+
+        #endregion
+
     }
 
 }

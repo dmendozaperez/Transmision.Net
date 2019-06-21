@@ -167,7 +167,7 @@ namespace Transmision.NetWin.Update
                     }
                 }
             }
-            catch
+            catch(Exception exc)
             {
                 _valida = false;
             }
@@ -200,7 +200,7 @@ namespace Transmision.NetWin.Update
                 //verificar y deshabilitar el servicio 
                 if (deshabilitando_servicio())
                 {
-                    for (Int32 i = 0; i < 4; ++i)
+                    for (Int32 i = 0; i < 5; ++i)
                     {
                         switch (i)
                         {
@@ -215,6 +215,9 @@ namespace Transmision.NetWin.Update
                                 break;
                             case 3:
                                 copiar_archivo_service("Genera_Transmision.exe.config");
+                                break;
+                            case 4:
+                                copiar_archivo_service("Genera_Transmision.exe");
                                 break;
                                 //case 3:
                                 //    copiar_archivo_service("ICSharpCode.SharpZLib.dll");
