@@ -1381,7 +1381,7 @@ namespace Transmision.Net.Basico
                             else
                             {
                                 /*SOLO PARA PROGRAMA DE TDA DBF Y OTROS TRANSMISION*/
-                                if (itemcab.tda_act_carpetanom=="PROG")
+                                if (itemcab.tda_act_carpetanom=="PROG" || itemcab.tda_act_carpetanom == "POS")
                                 {
 
                                     string file_ruta_server = _carpeta_server + "\\" + _nombre_filer_server;
