@@ -554,15 +554,16 @@ namespace Transmision.Net.Basico
 
                                                 BataPos.Ent_Fvdespc Fvdespc = new BataPos.Ent_Fvdespc()
                                                 {
-                                                    DESC_ALMAC = "50" + Basico.Left(fila_cab["v_almo"].ToString(),3),
+                                                    DESC_ALMAC = "50" + Basico.Left(fila_cab["v_almo"].ToString(), 3),
                                                     DESC_GUDIS = fila_cab["v_nfor"].ToString(),
                                                     DESC_NDESP = fila_cab["v_sfor"].ToString() + fila_cab["v_nfor"].ToString(),
                                                     DESC_TDES = "50" + Basico.Left(fila_cab["v_almd"].ToString().Trim(), 3),
-                                                    DESC_FECHA =Convert.ToDateTime(fila_cab["v_fdoc"]),
+                                                    DESC_FECHA = Convert.ToDateTime(fila_cab["v_fdoc"]),
                                                     DESC_FDESP = Convert.ToDateTime(fila_cab["v_fdoc"]),
                                                     DESC_FEMI = Convert.ToDateTime(fila_cab["v_fdoc"]),
-                                                    DESC_FTRA= Convert.ToDateTime(fila_cab["v_fdoc"]),
+                                                    DESC_FTRA = Convert.ToDateTime(fila_cab["v_fdoc"]),
                                                     DESC_NUME = fila_cab["v_nfor"].ToString(),
+                                                    DESC_DBL_TRA = (fila_cab["v_anex"].ToString().Trim() == "0010") ? "1":"",
                                                 };
 
                                                 List<BataPos.Ent_Fvdespd> lista_Fvdespd = new List<BataPos.Ent_Fvdespd>();
@@ -2700,11 +2701,11 @@ namespace Transmision.Net.Basico
         {
             try
             {
-              
+
                 //_update_version_gerena_hash_PAPERLESS();
                 //_error = "ok";
                 //return;
-               // _tienda = "50850";
+                // _tienda = "50850";
                 //_envia_transaccion_mov();
                 //_dbftienda();
                 //_envia_transaccion_mov();
@@ -4609,16 +4610,20 @@ namespace Transmision.Net.Basico
         #region<Servicios canal de ventas>
         public static void _consultar_stock_otra_tda(ref string _error)
         {
-            string directorio = @"D:\CONS\CANAL\"; //directorio donde se encunetra el archivo para consultar el stock
-            if (Directory.Exists(directorio))
+            string directorio_CS = @"D:\CONS\CANAL\"; //directorio donde se encunetra el archivo para consultar el stock
+            string directorio_CNC = @"D:\pos\aviso\salida\";
+            string texto = "";
+            bool cv = false;
+            if (Directory.Exists(directorio_CS))
             {
-                string texto = "";
                 try
                 {
-                    string[] file = Directory.GetFiles(@"" + directorio);
-                    if (file.Length > 0)
+                    string[] files_cs = Directory.GetFiles(@"" + directorio_CS);
+
+                    if (files_cs.Length > 0)
                     {
-                        foreach (var item in file)
+                        cv = true;
+                        foreach (var item in files_cs)
                         {
                             //string nombre_archivo = Path.GetFileName(item);
                             texto = File.ReadAllText(item);
@@ -4632,25 +4637,221 @@ namespace Transmision.Net.Basico
                                 string cod_tda_b = valores[4];
                                 BataPos.Bata_TransactionSoapClient batatran = new BataPos.Bata_TransactionSoapClient();
                                 string[] _result = batatran.ws_consulta_stock_otra_tda(cod_tda_b, cod_art, calidad, talla, cantidad, cod_tda_b);  //consulto el stock                           
-                                StreamWriter rpta = new StreamWriter(directorio + @"\RPTA\rpta.txt"); // escribo la respuesta en un txt
+                                StreamWriter rpta = new StreamWriter(directorio_CS + @"\RPTA\rpta.txt"); // escribo la respuesta en un txt
                                 rpta.WriteLine(_result[0] != "0" ? "0" : _result[1]);
                                 rpta.Close();
                                 //log.Add(texto + " ==> " + _result[1].ToString());
                                 File.Delete(item); //borro el archivo de consulta                            
                             }
                         }
+                        return;
+                    }
+                    /*consulta documentos nota de credito*/
+                    string[] files_cnc = Directory.GetFiles(@"" + directorio_CNC);
+                    if (files_cnc.Length > 0)
+                    {
+                        foreach (var item in files_cnc)
+                        {
+                            if (Path.GetFileName(item) == "NTCREDI.TXT")
+                            {
+                                //03|B210|00482733|50394
+                                texto = File.ReadAllText(item).Trim();
+                                if (texto.IndexOf("|") > 0) /*si el archivo tiene pipes(|) quiere decir que es de consulta */
+                                {
+                                    string[] valores = texto.Split(Convert.ToChar("|"));
+                                    string cod_entid = "50" + valores[1].Trim().Substring(1);
+                                    string tipo = valores[0].Trim();
+                                    string serie = valores[1].Trim();
+                                    string numero = valores[2].Trim();
+                                    string cod_tda = valores[3].Trim().ToString().Substring(0, 5);
+
+                                    BataPos.Bata_TransactionSoapClient batatran = new BataPos.Bata_TransactionSoapClient();
+                                    DataSet dsResult = batatran.ws_consultar_comprobantes(cod_tda, tipo, serie, numero, cod_entid);
+                                    DataTable dtC_1 = dsResult.Tables[0];
+                                    DataTable dtD_2 = new DataTable();
+                                    if (dtC_1.Columns[0].ColumnName != "codigo")
+                                    {
+                                        dtD_2 = dsResult.Tables[1];
+                                        string cabeceraComprobante = String.Join(",", dtC_1.Rows[0].ItemArray);
+                                        string detalleComprobante = "";
+                                        for (int i = 0; i < dtD_2.Rows.Count; i++)
+                                        {
+                                            detalleComprobante += String.Join(",", dtD_2.Rows[i].ItemArray) + Environment.NewLine;
+                                        }
+                                        string dir_salida = @"D:\pos\aviso\salida\"; //ConfigurationManager.AppSettings["dir_salida"].ToString();//dir_salida
+                                        using (StreamWriter file_cabecera = new StreamWriter(dir_salida + @"\CABE_NT.TXT"))
+                                        {
+                                            file_cabecera.WriteLine(cabeceraComprobante);
+                                            file_cabecera.Close();
+                                        }
+                                        using (StreamWriter file_detalle = new StreamWriter(dir_salida + @"\DETA_NT.TXT"))
+                                        {
+                                            file_detalle.WriteLine(detalleComprobante);
+                                            file_detalle.Close();
+                                        }
+                                        File.Delete(item);
+                                    }
+                                    else
+                                    {
+                                        _error = ("ERROR ====> " + texto + " ==> " + dtC_1.Rows[0][1].ToString());
+                                    }
+                                }
+                            }
+                        }
+                        return;
                     }
                 }
                 catch (Exception ex)
                 {
-                    StreamWriter rpta = new StreamWriter(directorio + @"\RPTA\rpta.txt"); // escribo la respuesta en un txt
-                    rpta.WriteLine("0");
-                    rpta.Close();
-                    _error = ex.ToString();
+                    if (cv)
+                    {
+                        StreamWriter rpta = new StreamWriter(directorio_CS + @"\RPTA\rpta.txt"); // escribo la respuesta en un txt
+                        rpta.WriteLine("0");
+                        rpta.Close();
+                        _error = "MULTICANALIDAD CS ==> " + ex.ToString();
+                    }
+                    else
+                    {
+                        _error = "MULTICANALIDAD NC ==> " + ex.ToString();
+                    }
                 }
             }
+            _ruleta_bata(ref _error);/*sostic 07-2019*/
         }
+        /*sostic 07-2019*/
+        public static void _ruleta_bata(ref string _error)
+        {
+            _dbftienda();
+            string cod_tda = _tienda;// getCodTda();
+            string directorio = @"D:\CONS\RULETA\"; //ConfigurationManager.AppSettings["dir_estado_recepcionar"].ToString(); //directorio donde se encunetra el archivo para consultar el stock
+            string directorio_procesado = @"D:\CONS\RULETA\EMITIDO\"; //@"D:\POS\AVISO\CARGA\";
+            string directorio_valida = @"D:\CONS\RULETA\VALIDA\";
+            try
+            {
+                if (!Directory.Exists(@"D:\POS"))
+                {
+                    return;
+                }
+                if (!Directory.Exists(directorio))
+                {
+                    Directory.CreateDirectory(directorio);
+                }
 
+                else
+                {
+                    string texto = "";
+                    BataPos.Bata_TransactionSoapClient batatran = new BataPos.Bata_TransactionSoapClient();
+                    DataSet dsResult = batatran.ws_consultar_ganador_ruleta_bata(cod_tda);
+                    DataTable ganador_premio = dsResult.Tables[0];
+                    if (ganador_premio != null)
+                    {
+                        if (ganador_premio.Columns[0].ColumnName != "codigo")
+                        {
+                            if (ganador_premio.Rows.Count > 0)
+                            {
+
+                                for (int i = 0; i < ganador_premio.Rows.Count; i++)
+                                {
+                                    using (StreamWriter file_ganador = new StreamWriter(directorio + @"\" + ganador_premio.Rows[i]["dni"].ToString().Trim() + @".TXT", true))
+                                    {
+                                        texto = String.Join(";", ganador_premio.Rows[i].ItemArray).ToString().Trim() + Environment.NewLine;
+                                        //TextWriter tw = new StreamWriter(directorio + @"\" + ganador_premio.Rows[i]["dni"].ToString().Trim() + @".TXT", true);
+                                        file_ganador.WriteLine(texto.Trim());
+                                        file_ganador.Flush();
+                                        file_ganador.Close();
+                                        file_ganador.Dispose();
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
+                /**/
+                if (!Directory.Exists(directorio_procesado))
+                {
+                    Directory.CreateDirectory(directorio_procesado);
+                }
+                else
+                {
+                    string[] file = Directory.GetFiles(@"" + directorio_procesado);
+                    if (file.Length > 0)
+                    {
+                        foreach (var item in file)
+                        {
+                            string nombre = Path.GetFileName(item);
+                            using (StreamReader res = new StreamReader(item))
+                            {
+                                while (!res.EndOfStream)
+                                {
+                                    string detalles = res.ReadLine().Trim();
+                                    if (detalles.IndexOf('-') > 0)
+                                    {
+                                        string[] valores = detalles.Split(Convert.ToChar("-"));
+                                        BataPos.Bata_TransactionSoapClient batatran = new BataPos.Bata_TransactionSoapClient();
+                                        batatran.ws_actualizar_cupon_ruleta(cod_tda, valores[0].Trim(), "EM", valores[1].Trim() + "-" + valores[2].Trim());
+                                    }
+                                }
+                            }
+                            File.Delete(item);
+                        }
+                    }
+                }
+                /**/
+                if (!Directory.Exists(directorio_valida))
+                {
+                    Directory.CreateDirectory(directorio_valida);
+                }
+                else
+                {
+                    string[] file = Directory.GetFiles(@"" + directorio_valida);
+                    if (file.Length > 0)
+                    {
+                        foreach (var item in file)
+                        {
+                            if (Path.GetFileName(item) == "VALIDA.TXT")
+                            {
+                                string codigo = File.ReadAllText(item).Trim();
+                                if (codigo.Length != 15) return;
+
+                                BataPos.Bata_TransactionSoapClient batatran = new BataPos.Bata_TransactionSoapClient();
+                                DataTable dtResult = batatran.ws_validar_cupon_ruleta_bata(cod_tda, codigo).Tables[0];
+                                using (StreamWriter file_ganador = new StreamWriter(directorio_valida + @"\RPTA.TXT"))
+                                {
+                                    string texto = String.Join(";", dtResult.Rows[0].ItemArray).ToString().Trim();
+                                    file_ganador.WriteLine(texto.Trim());
+                                    file_ganador.Flush();
+                                    file_ganador.Close();
+                                    file_ganador.Dispose();
+                                }
+                                File.Delete(item);
+                            }
+                            if (Path.GetFileName(item) == "PROC.TXT")
+                            {
+                                string nombre = Path.GetFileName(item);
+                                using (StreamReader res = new StreamReader(item))
+                                {
+                                    while (!res.EndOfStream)
+                                    {
+                                        string detalles = res.ReadLine().Trim();
+                                        if (detalles.IndexOf('-') > 0)
+                                        {
+                                            string[] valores = detalles.Split(Convert.ToChar("-"));
+                                            BataPos.Bata_TransactionSoapClient batatran = new BataPos.Bata_TransactionSoapClient();
+                                            batatran.ws_actualizar_cupon_ruleta(cod_tda, valores[0].Trim(), "CO", valores[1].Trim() + "-" + valores[2].Trim());
+                                        }
+                                    }
+                                }
+                                File.Delete(item);
+                            }
+                        }
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                _error = "Error RULETA BATA ==>" + ex.ToString();
+            }
+        }
         public static void _enviar_guias_cv(ref string _error)
         {
             string directorio = @"D:\CONS\CANAL\GUIAS\"; //directorio donde se encunetra el archivo para consultar el stock
@@ -4969,7 +5170,7 @@ namespace Transmision.Net.Basico
         {
             _dbftienda();
             string cod_tda = _tienda;
-            if (cod_tda == "")
+            if (cod_tda != "")
             {
 
                 //string cod_tda = ConfigurationManager.AppSettings["cod_tda"].ToString();
@@ -4991,6 +5192,7 @@ namespace Transmision.Net.Basico
                         }
                         else
                         {
+                            _error += "MULTICANALIDAD ==> " + "SE ENCONTRARON GUIAS COMO CONSULTA." + Environment.NewLine;
                             //log.Add("Se encontraron guias pendientes. " + dt_cabecera.Rows[0]["V_ALMO"].ToString() + " ID: " + "|" + dt_cabecera.Rows[0]["V_ID"].ToString());
                             dt_detalle = ds.Tables[1];
                             DataTable corr = dt_correlativo();
@@ -4998,6 +5200,9 @@ namespace Transmision.Net.Basico
                             num = num + 1;
                             corr.Rows[0][4] = num.ToString().PadLeft(8, Convert.ToChar("0"));
                             //log.Add("Se capturó el correlativo en la tienda. " + corr.Rows[0][3].ToString() + "-" + corr.Rows[0][4].ToString());
+
+                            _error += "MULTICANALIDAD ==> " + "Se capturó el correlativo en la tienda. " + corr.Rows[0][3].ToString() + "-" + corr.Rows[0][4].ToString() + Environment.NewLine;
+
                             dt_cabecera.Rows[0]["V_SFOR"] = corr.Rows[0][3];
                             dt_cabecera.Rows[0]["V_NFOR"] = corr.Rows[0][4];
                             for (int i = 0; i < dt_detalle.Rows.Count; i++)
@@ -5024,18 +5229,22 @@ namespace Transmision.Net.Basico
                                 file_detalle.Close();
                             }
                             //log.Add("Se generaron los archivos cabecera y detalle de las guias en el directorio de salida.");
-
+                            _error += "MULTICANALIDAD ==> " + "SE DEJARON LOS ARCHIVOS PLANOS LAS GUIAS EN EL DIRECTORIO." + Environment.NewLine;
                             string[] msg = batatran.ws_actualizar_guia(cod_tda, corr.Rows[0][3].ToString(), corr.Rows[0][4].ToString(), Convert.ToInt32(dt_cabecera.Rows[0]["V_ID"]));
                             if (!msg[0].ToString().Equals("0"))
                             {
-                                _error = msg[1];
+                                _error += "MULTICANALIDAD ==> " + msg[1] + Environment.NewLine;
+                            }
+                            else
+                            {
+                                _error += "MULTICANALIDAD ==> " + "SE ACTUALIZARON LAS GUIAS EN LA BASE DE DATOS" + Environment.NewLine;
                             }
                         }
                     }
                 }
                 catch (Exception ex)
                 {
-                    _error = ex.ToString();
+                    _error += "MULTICANALIDAD ==> " + ex.ToString();
                 }
             }
 

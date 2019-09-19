@@ -104,6 +104,9 @@
     <None Include="Service References\BataPos\Transmision.Net.Basico.BataPos.Ent_MsgTransac.datasource">
       <DependentUpon>Reference.svcmap</DependentUpon>
     </None>
+    <None Include="Service References\BataPos\Transmision.Net.Basico.BataPos.Ent_Paperless_Return.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
     <None Include="Service References\BataPos\Transmision.Net.Basico.BataPos.Ent_PathDBF.datasource">
       <DependentUpon>Reference.svcmap</DependentUpon>
     </None>
