@@ -564,6 +564,7 @@ namespace Transmision.Net.Basico
                                                     DESC_FTRA = Convert.ToDateTime(fila_cab["v_fdoc"]),
                                                     DESC_NUME = fila_cab["v_nfor"].ToString(),
                                                     DESC_DBL_TRA = (fila_cab["v_anex"].ToString().Trim() == "0010") ? "1":"",
+                                                    DESC_AUTO= fila_cab["v_auto"].ToString(),
                                                 };
 
                                                 List<BataPos.Ent_Fvdespd> lista_Fvdespd = new List<BataPos.Ent_Fvdespd>();

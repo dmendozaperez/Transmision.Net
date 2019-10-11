@@ -146,6 +146,11 @@ namespace Genera_Transmision.BataTransmision {
         [System.ServiceModel.XmlSerializerFormatAttribute(SupportFaults=true)]
         Genera_Transmision.BataTransmision.ws_existe_genera_hash_versionResponse ws_existe_genera_hash_version(Genera_Transmision.BataTransmision.ws_existe_genera_hash_versionRequest request);
         
+        // CODEGEN: Se está generando un contrato de mensaje, ya que el mensaje ws_existe_genera_version_paperlessRequest tiene encabezados.
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/ws_existe_genera_version_paperless", ReplyAction="*")]
+        [System.ServiceModel.XmlSerializerFormatAttribute(SupportFaults=true)]
+        Genera_Transmision.BataTransmision.ws_existe_genera_version_paperlessResponse ws_existe_genera_version_paperless(Genera_Transmision.BataTransmision.ws_existe_genera_version_paperlessRequest request);
+        
         // CODEGEN: Se está generando un contrato de mensaje, ya que el mensaje ws_existe_serviciowin_versionRequest tiene encabezados.
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/ws_existe_serviciowin_version", ReplyAction="*")]
         [System.ServiceModel.XmlSerializerFormatAttribute(SupportFaults=true)]
@@ -228,10 +233,40 @@ namespace Genera_Transmision.BataTransmision {
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/ws_exists_guia_tienda_alm", ReplyAction="*")]
         [System.ServiceModel.XmlSerializerFormatAttribute(SupportFaults=true)]
         Genera_Transmision.BataTransmision.ws_exists_guia_tienda_almResponse ws_exists_guia_tienda_alm(Genera_Transmision.BataTransmision.ws_exists_guia_tienda_almRequest request);
+        
+        // CODEGEN: Se está generando un contrato de mensaje, ya que el mensaje ws_delete_xml_wsRequest tiene encabezados.
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/ws_delete_xml_ws", ReplyAction="*")]
+        [System.ServiceModel.XmlSerializerFormatAttribute(SupportFaults=true)]
+        Genera_Transmision.BataTransmision.ws_delete_xml_wsResponse ws_delete_xml_ws(Genera_Transmision.BataTransmision.ws_delete_xml_wsRequest request);
+        
+        // CODEGEN: Se está generando un contrato de mensaje, ya que el mensaje ws_get_filexml_ws_bytesRequest tiene encabezados.
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/ws_get_filexml_ws_bytes", ReplyAction="*")]
+        [System.ServiceModel.XmlSerializerFormatAttribute(SupportFaults=true)]
+        Genera_Transmision.BataTransmision.ws_get_filexml_ws_bytesResponse ws_get_filexml_ws_bytes(Genera_Transmision.BataTransmision.ws_get_filexml_ws_bytesRequest request);
+        
+        // CODEGEN: Se está generando un contrato de mensaje, ya que el mensaje ws_send_filepaq_ws_txRequest tiene encabezados.
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/ws_send_filepaq_ws_tx", ReplyAction="*")]
+        [System.ServiceModel.XmlSerializerFormatAttribute(SupportFaults=true)]
+        Genera_Transmision.BataTransmision.ws_send_filepaq_ws_txResponse ws_send_filepaq_ws_tx(Genera_Transmision.BataTransmision.ws_send_filepaq_ws_txRequest request);
+        
+        // CODEGEN: Se está generando un contrato de mensaje, ya que el mensaje ws_get_filepaq_ws_bytesRequest tiene encabezados.
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/ws_get_filepaq_ws_bytes", ReplyAction="*")]
+        [System.ServiceModel.XmlSerializerFormatAttribute(SupportFaults=true)]
+        Genera_Transmision.BataTransmision.ws_get_filepaq_ws_bytesResponse ws_get_filepaq_ws_bytes(Genera_Transmision.BataTransmision.ws_get_filepaq_ws_bytesRequest request);
+        
+        // CODEGEN: Se está generando un contrato de mensaje, ya que el mensaje ws_delete_paq_wsRequest tiene encabezados.
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/ws_delete_paq_ws", ReplyAction="*")]
+        [System.ServiceModel.XmlSerializerFormatAttribute(SupportFaults=true)]
+        Genera_Transmision.BataTransmision.ws_delete_paq_wsResponse ws_delete_paq_ws(Genera_Transmision.BataTransmision.ws_delete_paq_wsRequest request);
+        
+        // CODEGEN: Se está generando un contrato de mensaje, ya que el mensaje ws_tienda_impresion_qrRequest tiene encabezados.
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/ws_tienda_impresion_qr", ReplyAction="*")]
+        [System.ServiceModel.XmlSerializerFormatAttribute(SupportFaults=true)]
+        Genera_Transmision.BataTransmision.ws_tienda_impresion_qrResponse ws_tienda_impresion_qr(Genera_Transmision.BataTransmision.ws_tienda_impresion_qrRequest request);
     }
     
     /// <remarks/>
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.7.2612.0")]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.8.3752.0")]
     [System.SerializableAttribute()]
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.ComponentModel.DesignerCategoryAttribute("code")]
@@ -291,7 +326,187 @@ namespace Genera_Transmision.BataTransmision {
     }
     
     /// <remarks/>
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.7.2612.0")]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.8.3752.0")]
+    [System.SerializableAttribute()]
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.ComponentModel.DesignerCategoryAttribute("code")]
+    [System.Xml.Serialization.XmlTypeAttribute(Namespace="http://tempuri.org/")]
+    public partial class Impresion_QR : object, System.ComponentModel.INotifyPropertyChanged {
+        
+        private string cod_tdaField;
+        
+        private string imp_qrField;
+        
+        private string err_qrField;
+        
+        /// <remarks/>
+        [System.Xml.Serialization.XmlElementAttribute(Order=0)]
+        public string cod_tda {
+            get {
+                return this.cod_tdaField;
+            }
+            set {
+                this.cod_tdaField = value;
+                this.RaisePropertyChanged("cod_tda");
+            }
+        }
+        
+        /// <remarks/>
+        [System.Xml.Serialization.XmlElementAttribute(Order=1)]
+        public string imp_qr {
+            get {
+                return this.imp_qrField;
+            }
+            set {
+                this.imp_qrField = value;
+                this.RaisePropertyChanged("imp_qr");
+            }
+        }
+        
+        /// <remarks/>
+        [System.Xml.Serialization.XmlElementAttribute(Order=2)]
+        public string err_qr {
+            get {
+                return this.err_qrField;
+            }
+            set {
+                this.err_qrField = value;
+                this.RaisePropertyChanged("err_qr");
+            }
+        }
+        
+        public event System.ComponentModel.PropertyChangedEventHandler PropertyChanged;
+        
+        protected void RaisePropertyChanged(string propertyName) {
+            System.ComponentModel.PropertyChangedEventHandler propertyChanged = this.PropertyChanged;
+            if ((propertyChanged != null)) {
+                propertyChanged(this, new System.ComponentModel.PropertyChangedEventArgs(propertyName));
+            }
+        }
+    }
+    
+    /// <remarks/>
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.8.3752.0")]
+    [System.SerializableAttribute()]
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.ComponentModel.DesignerCategoryAttribute("code")]
+    [System.Xml.Serialization.XmlTypeAttribute(Namespace="http://tempuri.org/")]
+    public partial class Paq_Get : object, System.ComponentModel.INotifyPropertyChanged {
+        
+        private string files_origenField;
+        
+        private string file_destinoField;
+        
+        private byte[] file_bytesField;
+        
+        /// <remarks/>
+        [System.Xml.Serialization.XmlElementAttribute(Order=0)]
+        public string files_origen {
+            get {
+                return this.files_origenField;
+            }
+            set {
+                this.files_origenField = value;
+                this.RaisePropertyChanged("files_origen");
+            }
+        }
+        
+        /// <remarks/>
+        [System.Xml.Serialization.XmlElementAttribute(Order=1)]
+        public string file_destino {
+            get {
+                return this.file_destinoField;
+            }
+            set {
+                this.file_destinoField = value;
+                this.RaisePropertyChanged("file_destino");
+            }
+        }
+        
+        /// <remarks/>
+        [System.Xml.Serialization.XmlElementAttribute(DataType="base64Binary", Order=2)]
+        public byte[] file_bytes {
+            get {
+                return this.file_bytesField;
+            }
+            set {
+                this.file_bytesField = value;
+                this.RaisePropertyChanged("file_bytes");
+            }
+        }
+        
+        public event System.ComponentModel.PropertyChangedEventHandler PropertyChanged;
+        
+        protected void RaisePropertyChanged(string propertyName) {
+            System.ComponentModel.PropertyChangedEventHandler propertyChanged = this.PropertyChanged;
+            if ((propertyChanged != null)) {
+                propertyChanged(this, new System.ComponentModel.PropertyChangedEventArgs(propertyName));
+            }
+        }
+    }
+    
+    /// <remarks/>
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.8.3752.0")]
+    [System.SerializableAttribute()]
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.ComponentModel.DesignerCategoryAttribute("code")]
+    [System.Xml.Serialization.XmlTypeAttribute(Namespace="http://tempuri.org/")]
+    public partial class Xml_Get : object, System.ComponentModel.INotifyPropertyChanged {
+        
+        private string files_origenField;
+        
+        private string file_destinoField;
+        
+        private byte[] file_bytesField;
+        
+        /// <remarks/>
+        [System.Xml.Serialization.XmlElementAttribute(Order=0)]
+        public string files_origen {
+            get {
+                return this.files_origenField;
+            }
+            set {
+                this.files_origenField = value;
+                this.RaisePropertyChanged("files_origen");
+            }
+        }
+        
+        /// <remarks/>
+        [System.Xml.Serialization.XmlElementAttribute(Order=1)]
+        public string file_destino {
+            get {
+                return this.file_destinoField;
+            }
+            set {
+                this.file_destinoField = value;
+                this.RaisePropertyChanged("file_destino");
+            }
+        }
+        
+        /// <remarks/>
+        [System.Xml.Serialization.XmlElementAttribute(DataType="base64Binary", Order=2)]
+        public byte[] file_bytes {
+            get {
+                return this.file_bytesField;
+            }
+            set {
+                this.file_bytesField = value;
+                this.RaisePropertyChanged("file_bytes");
+            }
+        }
+        
+        public event System.ComponentModel.PropertyChangedEventHandler PropertyChanged;
+        
+        protected void RaisePropertyChanged(string propertyName) {
+            System.ComponentModel.PropertyChangedEventHandler propertyChanged = this.PropertyChanged;
+            if ((propertyChanged != null)) {
+                propertyChanged(this, new System.ComponentModel.PropertyChangedEventArgs(propertyName));
+            }
+        }
+    }
+    
+    /// <remarks/>
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.8.3752.0")]
     [System.SerializableAttribute()]
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.ComponentModel.DesignerCategoryAttribute("code")]
@@ -729,7 +944,7 @@ namespace Genera_Transmision.BataTransmision {
     }
     
     /// <remarks/>
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.7.2612.0")]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.8.3752.0")]
     [System.SerializableAttribute()]
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.ComponentModel.DesignerCategoryAttribute("code")]
@@ -789,7 +1004,7 @@ namespace Genera_Transmision.BataTransmision {
     }
     
     /// <remarks/>
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.7.2612.0")]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.8.3752.0")]
     [System.SerializableAttribute()]
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.ComponentModel.DesignerCategoryAttribute("code")]
@@ -863,7 +1078,7 @@ namespace Genera_Transmision.BataTransmision {
     }
     
     /// <remarks/>
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.7.2612.0")]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.8.3752.0")]
     [System.SerializableAttribute()]
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.ComponentModel.DesignerCategoryAttribute("code")]
@@ -2001,6 +2216,44 @@ namespace Genera_Transmision.BataTransmision {
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
     [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
+    [System.ServiceModel.MessageContractAttribute(WrapperName="ws_existe_genera_version_paperless", WrapperNamespace="http://tempuri.org/", IsWrapped=true)]
+    public partial class ws_existe_genera_version_paperlessRequest {
+        
+        [System.ServiceModel.MessageHeaderAttribute(Namespace="http://tempuri.org/")]
+        public Genera_Transmision.BataTransmision.Autenticacion Autenticacion;
+        
+        [System.ServiceModel.MessageBodyMemberAttribute(Namespace="http://tempuri.org/", Order=0)]
+        public string _version;
+        
+        public ws_existe_genera_version_paperlessRequest() {
+        }
+        
+        public ws_existe_genera_version_paperlessRequest(Genera_Transmision.BataTransmision.Autenticacion Autenticacion, string _version) {
+            this.Autenticacion = Autenticacion;
+            this._version = _version;
+        }
+    }
+    
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
+    [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
+    [System.ServiceModel.MessageContractAttribute(WrapperName="ws_existe_genera_version_paperlessResponse", WrapperNamespace="http://tempuri.org/", IsWrapped=true)]
+    public partial class ws_existe_genera_version_paperlessResponse {
+        
+        [System.ServiceModel.MessageBodyMemberAttribute(Namespace="http://tempuri.org/", Order=0)]
+        public bool ws_existe_genera_version_paperlessResult;
+        
+        public ws_existe_genera_version_paperlessResponse() {
+        }
+        
+        public ws_existe_genera_version_paperlessResponse(bool ws_existe_genera_version_paperlessResult) {
+            this.ws_existe_genera_version_paperlessResult = ws_existe_genera_version_paperlessResult;
+        }
+    }
+    
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
+    [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
     [System.ServiceModel.MessageContractAttribute(WrapperName="ws_existe_serviciowin_version", WrapperNamespace="http://tempuri.org/", IsWrapped=true)]
     public partial class ws_existe_serviciowin_versionRequest {
         
@@ -2594,6 +2847,228 @@ namespace Genera_Transmision.BataTransmision {
         }
     }
     
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
+    [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
+    [System.ServiceModel.MessageContractAttribute(WrapperName="ws_delete_xml_ws", WrapperNamespace="http://tempuri.org/", IsWrapped=true)]
+    public partial class ws_delete_xml_wsRequest {
+        
+        [System.ServiceModel.MessageHeaderAttribute(Namespace="http://tempuri.org/")]
+        public Genera_Transmision.BataTransmision.Autenticacion Autenticacion;
+        
+        [System.ServiceModel.MessageBodyMemberAttribute(Namespace="http://tempuri.org/", Order=0)]
+        public string ruta_delete;
+        
+        public ws_delete_xml_wsRequest() {
+        }
+        
+        public ws_delete_xml_wsRequest(Genera_Transmision.BataTransmision.Autenticacion Autenticacion, string ruta_delete) {
+            this.Autenticacion = Autenticacion;
+            this.ruta_delete = ruta_delete;
+        }
+    }
+    
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
+    [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
+    [System.ServiceModel.MessageContractAttribute(WrapperName="ws_delete_xml_wsResponse", WrapperNamespace="http://tempuri.org/", IsWrapped=true)]
+    public partial class ws_delete_xml_wsResponse {
+        
+        [System.ServiceModel.MessageBodyMemberAttribute(Namespace="http://tempuri.org/", Order=0)]
+        public string ws_delete_xml_wsResult;
+        
+        public ws_delete_xml_wsResponse() {
+        }
+        
+        public ws_delete_xml_wsResponse(string ws_delete_xml_wsResult) {
+            this.ws_delete_xml_wsResult = ws_delete_xml_wsResult;
+        }
+    }
+    
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
+    [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
+    [System.ServiceModel.MessageContractAttribute(WrapperName="ws_get_filexml_ws_bytes", WrapperNamespace="http://tempuri.org/", IsWrapped=true)]
+    public partial class ws_get_filexml_ws_bytesRequest {
+        
+        [System.ServiceModel.MessageHeaderAttribute(Namespace="http://tempuri.org/")]
+        public Genera_Transmision.BataTransmision.Autenticacion Autenticacion;
+        
+        public ws_get_filexml_ws_bytesRequest() {
+        }
+        
+        public ws_get_filexml_ws_bytesRequest(Genera_Transmision.BataTransmision.Autenticacion Autenticacion) {
+            this.Autenticacion = Autenticacion;
+        }
+    }
+    
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
+    [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
+    [System.ServiceModel.MessageContractAttribute(WrapperName="ws_get_filexml_ws_bytesResponse", WrapperNamespace="http://tempuri.org/", IsWrapped=true)]
+    public partial class ws_get_filexml_ws_bytesResponse {
+        
+        [System.ServiceModel.MessageBodyMemberAttribute(Namespace="http://tempuri.org/", Order=0)]
+        public Genera_Transmision.BataTransmision.Xml_Get[] ws_get_filexml_ws_bytesResult;
+        
+        public ws_get_filexml_ws_bytesResponse() {
+        }
+        
+        public ws_get_filexml_ws_bytesResponse(Genera_Transmision.BataTransmision.Xml_Get[] ws_get_filexml_ws_bytesResult) {
+            this.ws_get_filexml_ws_bytesResult = ws_get_filexml_ws_bytesResult;
+        }
+    }
+    
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
+    [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
+    [System.ServiceModel.MessageContractAttribute(WrapperName="ws_send_filepaq_ws_tx", WrapperNamespace="http://tempuri.org/", IsWrapped=true)]
+    public partial class ws_send_filepaq_ws_txRequest {
+        
+        [System.ServiceModel.MessageHeaderAttribute(Namespace="http://tempuri.org/")]
+        public Genera_Transmision.BataTransmision.Autenticacion Autenticacion;
+        
+        [System.ServiceModel.MessageBodyMemberAttribute(Namespace="http://tempuri.org/", Order=0)]
+        [System.Xml.Serialization.XmlElementAttribute(DataType="base64Binary")]
+        public byte[] file;
+        
+        [System.ServiceModel.MessageBodyMemberAttribute(Namespace="http://tempuri.org/", Order=1)]
+        public string carpeta;
+        
+        [System.ServiceModel.MessageBodyMemberAttribute(Namespace="http://tempuri.org/", Order=2)]
+        public string _nom_file;
+        
+        public ws_send_filepaq_ws_txRequest() {
+        }
+        
+        public ws_send_filepaq_ws_txRequest(Genera_Transmision.BataTransmision.Autenticacion Autenticacion, byte[] file, string carpeta, string _nom_file) {
+            this.Autenticacion = Autenticacion;
+            this.file = file;
+            this.carpeta = carpeta;
+            this._nom_file = _nom_file;
+        }
+    }
+    
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
+    [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
+    [System.ServiceModel.MessageContractAttribute(WrapperName="ws_send_filepaq_ws_txResponse", WrapperNamespace="http://tempuri.org/", IsWrapped=true)]
+    public partial class ws_send_filepaq_ws_txResponse {
+        
+        [System.ServiceModel.MessageBodyMemberAttribute(Namespace="http://tempuri.org/", Order=0)]
+        public bool ws_send_filepaq_ws_txResult;
+        
+        public ws_send_filepaq_ws_txResponse() {
+        }
+        
+        public ws_send_filepaq_ws_txResponse(bool ws_send_filepaq_ws_txResult) {
+            this.ws_send_filepaq_ws_txResult = ws_send_filepaq_ws_txResult;
+        }
+    }
+    
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
+    [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
+    [System.ServiceModel.MessageContractAttribute(WrapperName="ws_get_filepaq_ws_bytes", WrapperNamespace="http://tempuri.org/", IsWrapped=true)]
+    public partial class ws_get_filepaq_ws_bytesRequest {
+        
+        [System.ServiceModel.MessageHeaderAttribute(Namespace="http://tempuri.org/")]
+        public Genera_Transmision.BataTransmision.Autenticacion Autenticacion;
+        
+        public ws_get_filepaq_ws_bytesRequest() {
+        }
+        
+        public ws_get_filepaq_ws_bytesRequest(Genera_Transmision.BataTransmision.Autenticacion Autenticacion) {
+            this.Autenticacion = Autenticacion;
+        }
+    }
+    
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
+    [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
+    [System.ServiceModel.MessageContractAttribute(WrapperName="ws_get_filepaq_ws_bytesResponse", WrapperNamespace="http://tempuri.org/", IsWrapped=true)]
+    public partial class ws_get_filepaq_ws_bytesResponse {
+        
+        [System.ServiceModel.MessageBodyMemberAttribute(Namespace="http://tempuri.org/", Order=0)]
+        public Genera_Transmision.BataTransmision.Paq_Get[] ws_get_filepaq_ws_bytesResult;
+        
+        public ws_get_filepaq_ws_bytesResponse() {
+        }
+        
+        public ws_get_filepaq_ws_bytesResponse(Genera_Transmision.BataTransmision.Paq_Get[] ws_get_filepaq_ws_bytesResult) {
+            this.ws_get_filepaq_ws_bytesResult = ws_get_filepaq_ws_bytesResult;
+        }
+    }
+    
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
+    [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
+    [System.ServiceModel.MessageContractAttribute(WrapperName="ws_delete_paq_ws", WrapperNamespace="http://tempuri.org/", IsWrapped=true)]
+    public partial class ws_delete_paq_wsRequest {
+        
+        [System.ServiceModel.MessageHeaderAttribute(Namespace="http://tempuri.org/")]
+        public Genera_Transmision.BataTransmision.Autenticacion Autenticacion;
+        
+        [System.ServiceModel.MessageBodyMemberAttribute(Namespace="http://tempuri.org/", Order=0)]
+        public string ruta_delete;
+        
+        public ws_delete_paq_wsRequest() {
+        }
+        
+        public ws_delete_paq_wsRequest(Genera_Transmision.BataTransmision.Autenticacion Autenticacion, string ruta_delete) {
+            this.Autenticacion = Autenticacion;
+            this.ruta_delete = ruta_delete;
+        }
+    }
+    
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
+    [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
+    [System.ServiceModel.MessageContractAttribute(WrapperName="ws_delete_paq_wsResponse", WrapperNamespace="http://tempuri.org/", IsWrapped=true)]
+    public partial class ws_delete_paq_wsResponse {
+        
+        public ws_delete_paq_wsResponse() {
+        }
+    }
+    
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
+    [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
+    [System.ServiceModel.MessageContractAttribute(WrapperName="ws_tienda_impresion_qr", WrapperNamespace="http://tempuri.org/", IsWrapped=true)]
+    public partial class ws_tienda_impresion_qrRequest {
+        
+        [System.ServiceModel.MessageHeaderAttribute(Namespace="http://tempuri.org/")]
+        public Genera_Transmision.BataTransmision.Autenticacion Autenticacion;
+        
+        [System.ServiceModel.MessageBodyMemberAttribute(Namespace="http://tempuri.org/", Order=0)]
+        public string _cod_tda;
+        
+        public ws_tienda_impresion_qrRequest() {
+        }
+        
+        public ws_tienda_impresion_qrRequest(Genera_Transmision.BataTransmision.Autenticacion Autenticacion, string _cod_tda) {
+            this.Autenticacion = Autenticacion;
+            this._cod_tda = _cod_tda;
+        }
+    }
+    
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
+    [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
+    [System.ServiceModel.MessageContractAttribute(WrapperName="ws_tienda_impresion_qrResponse", WrapperNamespace="http://tempuri.org/", IsWrapped=true)]
+    public partial class ws_tienda_impresion_qrResponse {
+        
+        [System.ServiceModel.MessageBodyMemberAttribute(Namespace="http://tempuri.org/", Order=0)]
+        public Genera_Transmision.BataTransmision.Impresion_QR ws_tienda_impresion_qrResult;
+        
+        public ws_tienda_impresion_qrResponse() {
+        }
+        
+        public ws_tienda_impresion_qrResponse(Genera_Transmision.BataTransmision.Impresion_QR ws_tienda_impresion_qrResult) {
+            this.ws_tienda_impresion_qrResult = ws_tienda_impresion_qrResult;
+        }
+    }
+    
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
     public interface bata_transaccionSoapChannel : Genera_Transmision.BataTransmision.bata_transaccionSoap, System.ServiceModel.IClientChannel {
     }
@@ -2984,6 +3459,19 @@ namespace Genera_Transmision.BataTransmision {
         }
         
         [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
+        Genera_Transmision.BataTransmision.ws_existe_genera_version_paperlessResponse Genera_Transmision.BataTransmision.bata_transaccionSoap.ws_existe_genera_version_paperless(Genera_Transmision.BataTransmision.ws_existe_genera_version_paperlessRequest request) {
+            return base.Channel.ws_existe_genera_version_paperless(request);
+        }
+        
+        public bool ws_existe_genera_version_paperless(Genera_Transmision.BataTransmision.Autenticacion Autenticacion, string _version) {
+            Genera_Transmision.BataTransmision.ws_existe_genera_version_paperlessRequest inValue = new Genera_Transmision.BataTransmision.ws_existe_genera_version_paperlessRequest();
+            inValue.Autenticacion = Autenticacion;
+            inValue._version = _version;
+            Genera_Transmision.BataTransmision.ws_existe_genera_version_paperlessResponse retVal = ((Genera_Transmision.BataTransmision.bata_transaccionSoap)(this)).ws_existe_genera_version_paperless(inValue);
+            return retVal.ws_existe_genera_version_paperlessResult;
+        }
+        
+        [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
         Genera_Transmision.BataTransmision.ws_existe_serviciowin_versionResponse Genera_Transmision.BataTransmision.bata_transaccionSoap.ws_existe_serviciowin_version(Genera_Transmision.BataTransmision.ws_existe_serviciowin_versionRequest request) {
             return base.Channel.ws_existe_serviciowin_version(request);
         }
@@ -3190,6 +3678,83 @@ namespace Genera_Transmision.BataTransmision {
             inValue.cod_tda = cod_tda;
             Genera_Transmision.BataTransmision.ws_exists_guia_tienda_almResponse retVal = ((Genera_Transmision.BataTransmision.bata_transaccionSoap)(this)).ws_exists_guia_tienda_alm(inValue);
             return retVal.ws_exists_guia_tienda_almResult;
+        }
+        
+        [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
+        Genera_Transmision.BataTransmision.ws_delete_xml_wsResponse Genera_Transmision.BataTransmision.bata_transaccionSoap.ws_delete_xml_ws(Genera_Transmision.BataTransmision.ws_delete_xml_wsRequest request) {
+            return base.Channel.ws_delete_xml_ws(request);
+        }
+        
+        public string ws_delete_xml_ws(Genera_Transmision.BataTransmision.Autenticacion Autenticacion, string ruta_delete) {
+            Genera_Transmision.BataTransmision.ws_delete_xml_wsRequest inValue = new Genera_Transmision.BataTransmision.ws_delete_xml_wsRequest();
+            inValue.Autenticacion = Autenticacion;
+            inValue.ruta_delete = ruta_delete;
+            Genera_Transmision.BataTransmision.ws_delete_xml_wsResponse retVal = ((Genera_Transmision.BataTransmision.bata_transaccionSoap)(this)).ws_delete_xml_ws(inValue);
+            return retVal.ws_delete_xml_wsResult;
+        }
+        
+        [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
+        Genera_Transmision.BataTransmision.ws_get_filexml_ws_bytesResponse Genera_Transmision.BataTransmision.bata_transaccionSoap.ws_get_filexml_ws_bytes(Genera_Transmision.BataTransmision.ws_get_filexml_ws_bytesRequest request) {
+            return base.Channel.ws_get_filexml_ws_bytes(request);
+        }
+        
+        public Genera_Transmision.BataTransmision.Xml_Get[] ws_get_filexml_ws_bytes(Genera_Transmision.BataTransmision.Autenticacion Autenticacion) {
+            Genera_Transmision.BataTransmision.ws_get_filexml_ws_bytesRequest inValue = new Genera_Transmision.BataTransmision.ws_get_filexml_ws_bytesRequest();
+            inValue.Autenticacion = Autenticacion;
+            Genera_Transmision.BataTransmision.ws_get_filexml_ws_bytesResponse retVal = ((Genera_Transmision.BataTransmision.bata_transaccionSoap)(this)).ws_get_filexml_ws_bytes(inValue);
+            return retVal.ws_get_filexml_ws_bytesResult;
+        }
+        
+        [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
+        Genera_Transmision.BataTransmision.ws_send_filepaq_ws_txResponse Genera_Transmision.BataTransmision.bata_transaccionSoap.ws_send_filepaq_ws_tx(Genera_Transmision.BataTransmision.ws_send_filepaq_ws_txRequest request) {
+            return base.Channel.ws_send_filepaq_ws_tx(request);
+        }
+        
+        public bool ws_send_filepaq_ws_tx(Genera_Transmision.BataTransmision.Autenticacion Autenticacion, byte[] file, string carpeta, string _nom_file) {
+            Genera_Transmision.BataTransmision.ws_send_filepaq_ws_txRequest inValue = new Genera_Transmision.BataTransmision.ws_send_filepaq_ws_txRequest();
+            inValue.Autenticacion = Autenticacion;
+            inValue.file = file;
+            inValue.carpeta = carpeta;
+            inValue._nom_file = _nom_file;
+            Genera_Transmision.BataTransmision.ws_send_filepaq_ws_txResponse retVal = ((Genera_Transmision.BataTransmision.bata_transaccionSoap)(this)).ws_send_filepaq_ws_tx(inValue);
+            return retVal.ws_send_filepaq_ws_txResult;
+        }
+        
+        [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
+        Genera_Transmision.BataTransmision.ws_get_filepaq_ws_bytesResponse Genera_Transmision.BataTransmision.bata_transaccionSoap.ws_get_filepaq_ws_bytes(Genera_Transmision.BataTransmision.ws_get_filepaq_ws_bytesRequest request) {
+            return base.Channel.ws_get_filepaq_ws_bytes(request);
+        }
+        
+        public Genera_Transmision.BataTransmision.Paq_Get[] ws_get_filepaq_ws_bytes(Genera_Transmision.BataTransmision.Autenticacion Autenticacion) {
+            Genera_Transmision.BataTransmision.ws_get_filepaq_ws_bytesRequest inValue = new Genera_Transmision.BataTransmision.ws_get_filepaq_ws_bytesRequest();
+            inValue.Autenticacion = Autenticacion;
+            Genera_Transmision.BataTransmision.ws_get_filepaq_ws_bytesResponse retVal = ((Genera_Transmision.BataTransmision.bata_transaccionSoap)(this)).ws_get_filepaq_ws_bytes(inValue);
+            return retVal.ws_get_filepaq_ws_bytesResult;
+        }
+        
+        [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
+        Genera_Transmision.BataTransmision.ws_delete_paq_wsResponse Genera_Transmision.BataTransmision.bata_transaccionSoap.ws_delete_paq_ws(Genera_Transmision.BataTransmision.ws_delete_paq_wsRequest request) {
+            return base.Channel.ws_delete_paq_ws(request);
+        }
+        
+        public void ws_delete_paq_ws(Genera_Transmision.BataTransmision.Autenticacion Autenticacion, string ruta_delete) {
+            Genera_Transmision.BataTransmision.ws_delete_paq_wsRequest inValue = new Genera_Transmision.BataTransmision.ws_delete_paq_wsRequest();
+            inValue.Autenticacion = Autenticacion;
+            inValue.ruta_delete = ruta_delete;
+            Genera_Transmision.BataTransmision.ws_delete_paq_wsResponse retVal = ((Genera_Transmision.BataTransmision.bata_transaccionSoap)(this)).ws_delete_paq_ws(inValue);
+        }
+        
+        [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
+        Genera_Transmision.BataTransmision.ws_tienda_impresion_qrResponse Genera_Transmision.BataTransmision.bata_transaccionSoap.ws_tienda_impresion_qr(Genera_Transmision.BataTransmision.ws_tienda_impresion_qrRequest request) {
+            return base.Channel.ws_tienda_impresion_qr(request);
+        }
+        
+        public Genera_Transmision.BataTransmision.Impresion_QR ws_tienda_impresion_qr(Genera_Transmision.BataTransmision.Autenticacion Autenticacion, string _cod_tda) {
+            Genera_Transmision.BataTransmision.ws_tienda_impresion_qrRequest inValue = new Genera_Transmision.BataTransmision.ws_tienda_impresion_qrRequest();
+            inValue.Autenticacion = Autenticacion;
+            inValue._cod_tda = _cod_tda;
+            Genera_Transmision.BataTransmision.ws_tienda_impresion_qrResponse retVal = ((Genera_Transmision.BataTransmision.bata_transaccionSoap)(this)).ws_tienda_impresion_qr(inValue);
+            return retVal.ws_tienda_impresion_qrResult;
         }
     }
 }

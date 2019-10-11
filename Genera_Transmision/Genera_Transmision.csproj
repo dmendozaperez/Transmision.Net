@@ -162,10 +162,19 @@
     <None Include="Service References\BataTransmision\Genera_Transmision.BataTransmision.Fvdespc.datasource">
       <DependentUpon>Reference.svcmap</DependentUpon>
     </None>
+    <None Include="Service References\BataTransmision\Genera_Transmision.BataTransmision.Impresion_QR.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\BataTransmision\Genera_Transmision.BataTransmision.Paq_Get.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
     <None Include="Service References\BataTransmision\Genera_Transmision.BataTransmision.Resultado_Tda_Ecu.datasource">
       <DependentUpon>Reference.svcmap</DependentUpon>
     </None>
     <None Include="Service References\BataTransmision\Genera_Transmision.BataTransmision.Ruta_Update_File.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\BataTransmision\Genera_Transmision.BataTransmision.Xml_Get.datasource">
       <DependentUpon>Reference.svcmap</DependentUpon>
     </None>
     <None Include="Service References\BataTransmision\Reference.svcmap">

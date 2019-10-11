@@ -4802,6 +4802,8 @@ namespace Transmision.Net.Basico.BataPos {
         
         private string dESC_DBL_TRAField;
         
+        private string dESC_AUTOField;
+        
         private Ent_Fvdespd[] fVDESPDField;
         
         private System.Data.DataTable dT_FVDESPD_TREGMEDIDAField;
@@ -5155,7 +5157,19 @@ namespace Transmision.Net.Basico.BataPos {
         }
         
         /// <remarks/>
-        [System.Xml.Serialization.XmlArrayAttribute(Order=29)]
+        [System.Xml.Serialization.XmlElementAttribute(Order=29)]
+        public string DESC_AUTO {
+            get {
+                return this.dESC_AUTOField;
+            }
+            set {
+                this.dESC_AUTOField = value;
+                this.RaisePropertyChanged("DESC_AUTO");
+            }
+        }
+        
+        /// <remarks/>
+        [System.Xml.Serialization.XmlArrayAttribute(Order=30)]
         public Ent_Fvdespd[] FVDESPD {
             get {
                 return this.fVDESPDField;
@@ -5167,7 +5181,7 @@ namespace Transmision.Net.Basico.BataPos {
         }
         
         /// <remarks/>
-        [System.Xml.Serialization.XmlElementAttribute(Order=30)]
+        [System.Xml.Serialization.XmlElementAttribute(Order=31)]
         public System.Data.DataTable DT_FVDESPD_TREGMEDIDA {
             get {
                 return this.dT_FVDESPD_TREGMEDIDAField;
