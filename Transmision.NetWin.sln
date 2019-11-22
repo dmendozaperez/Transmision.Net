@@ -31,6 +31,13 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Transmision.Net.Basico.Orac
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Transmision.NetWin.Oracle", "Transmision.NetWin.Oracle\Transmision.NetWin.Oracle.csproj", "{0AF0455C-EF96-4876-8D33-13A1A2DE317A}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Genera_Transmision_Oracle", "Genera_Transmision_Oracle\Genera_Transmision_Oracle.csproj", "{803662A7-4AB0-4C19-99C5-84A1BF0E83FC}"
+EndProject
+Project("{6141683F-8A12-4E36-9623-2EB02B2C2303}") = "Instalador_Oracle", "Instalador_Oracle\Instalador_Oracle.isproj", "{C0DEE35D-3919-4059-AE69-669827D401AC}"
+	ProjectSection(ProjectDependencies) = postProject
+		{803662A7-4AB0-4C19-99C5-84A1BF0E83FC} = {803662A7-4AB0-4C19-99C5-84A1BF0E83FC}
+	EndProjectSection
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		CD_ROM|Any CPU = CD_ROM|Any CPU
@@ -160,6 +167,26 @@ Global
 		{0AF0455C-EF96-4876-8D33-13A1A2DE317A}.Release|Any CPU.Build.0 = Release|Any CPU
 		{0AF0455C-EF96-4876-8D33-13A1A2DE317A}.SingleImage|Any CPU.ActiveCfg = Release|Any CPU
 		{0AF0455C-EF96-4876-8D33-13A1A2DE317A}.SingleImage|Any CPU.Build.0 = Release|Any CPU
+		{803662A7-4AB0-4C19-99C5-84A1BF0E83FC}.CD_ROM|Any CPU.ActiveCfg = Release|Any CPU
+		{803662A7-4AB0-4C19-99C5-84A1BF0E83FC}.CD_ROM|Any CPU.Build.0 = Release|Any CPU
+		{803662A7-4AB0-4C19-99C5-84A1BF0E83FC}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{803662A7-4AB0-4C19-99C5-84A1BF0E83FC}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{803662A7-4AB0-4C19-99C5-84A1BF0E83FC}.DVD-5|Any CPU.ActiveCfg = Debug|Any CPU
+		{803662A7-4AB0-4C19-99C5-84A1BF0E83FC}.DVD-5|Any CPU.Build.0 = Debug|Any CPU
+		{803662A7-4AB0-4C19-99C5-84A1BF0E83FC}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{803662A7-4AB0-4C19-99C5-84A1BF0E83FC}.Release|Any CPU.Build.0 = Release|Any CPU
+		{803662A7-4AB0-4C19-99C5-84A1BF0E83FC}.SingleImage|Any CPU.ActiveCfg = Release|Any CPU
+		{803662A7-4AB0-4C19-99C5-84A1BF0E83FC}.SingleImage|Any CPU.Build.0 = Release|Any CPU
+		{C0DEE35D-3919-4059-AE69-669827D401AC}.CD_ROM|Any CPU.ActiveCfg = CD_ROM
+		{C0DEE35D-3919-4059-AE69-669827D401AC}.CD_ROM|Any CPU.Build.0 = CD_ROM
+		{C0DEE35D-3919-4059-AE69-669827D401AC}.Debug|Any CPU.ActiveCfg = DVD-5
+		{C0DEE35D-3919-4059-AE69-669827D401AC}.Debug|Any CPU.Build.0 = DVD-5
+		{C0DEE35D-3919-4059-AE69-669827D401AC}.DVD-5|Any CPU.ActiveCfg = DVD-5
+		{C0DEE35D-3919-4059-AE69-669827D401AC}.DVD-5|Any CPU.Build.0 = DVD-5
+		{C0DEE35D-3919-4059-AE69-669827D401AC}.Release|Any CPU.ActiveCfg = SingleImage
+		{C0DEE35D-3919-4059-AE69-669827D401AC}.Release|Any CPU.Build.0 = SingleImage
+		{C0DEE35D-3919-4059-AE69-669827D401AC}.SingleImage|Any CPU.ActiveCfg = SingleImage
+		{C0DEE35D-3919-4059-AE69-669827D401AC}.SingleImage|Any CPU.Build.0 = SingleImage
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

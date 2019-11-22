@@ -7,12 +7,19 @@ using System.Data.Common;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using Transmision.Net.Basico.Oracle.BataTransaction;
 using Transmision.Net.Basico.Oracle.CapaEntidad;
 
 namespace Transmision.Net.Basico.Oracle.CapaDato
 {
     public class Dat_Ora_Data
     {
+        #region<METODO ESTATICOS PARA EL PROCESOS DE XSTORE>
+        /// <summary>
+        /// metodo para extraer los datos de la venta del xstore 
+        /// </summary>
+        /// <param name="fecha"></param>
+        /// <returns>data de venta</returns>
         public DataTable get_documento_TRN_TRANS(DateTime fecha)
         {
             DataTable dtdoc = null;
@@ -33,6 +40,10 @@ namespace Transmision.Net.Basico.Oracle.CapaDato
             }
             return dtdoc;
         }
+        /// <summary>
+        /// si existe la tabla que se va a crear en el xstore DTV
+        /// </summary>
+        /// <returns> TIPO FALSE O TRUE</returns>
         public Boolean existe_tabla()
         {
             Boolean existe = false;
@@ -48,12 +59,16 @@ namespace Transmision.Net.Basico.Oracle.CapaDato
                     existe = Convert.ToInt32(dt_existe.Rows[0]["existe"]) == 1 ? true:false;
                 }
             }
-            catch 
+            catch (Exception exc)
             {
                                                 
             }
             return existe;
         }
+        /// <summary>
+        /// CREAR TABLA TEMPORAL PARA EL ORACLE
+        /// </summary>
+        /// <returns></returns>
         public string crear_table()
         {
             string error = "";
@@ -75,7 +90,11 @@ namespace Transmision.Net.Basico.Oracle.CapaDato
             }
             return error;
         }
-
+        /// <summary>
+        /// INSERTAR LA TABLA TEMPORAL DEL TRN_TRANS VENTA
+        /// </summary>
+        /// <param name="param"></param>
+        /// <returns></returns>
         public Boolean inserta_tabla_temp(Ent_Bat_Tk_Return param)
         {
             Boolean insert = false;
@@ -96,7 +115,11 @@ namespace Transmision.Net.Basico.Oracle.CapaDato
             }
             return insert;
         }
-
+        /// <summary>
+        /// SI EXISTE EN LA TABLA TEMPORAL LOS PARAMETROS DE VENTA
+        /// </summary>
+        /// <param name="param"></param>
+        /// <returns></returns>
         public Boolean existe_tabla_temp(Ent_Bat_Tk_Return param)
         {
             Boolean existe = false;
@@ -119,14 +142,17 @@ namespace Transmision.Net.Basico.Oracle.CapaDato
             }
             return existe;
         }
-
+        /// <summary>
+        /// REALIZAR UN FLAG EN TRN_TRANS PARA YA NO ENVIAR AL TEMPORAL
+        /// </summary>
+        /// <param name="param"></param>
         public void update_documento_TRN_TRANS(Ent_Bat_Tk_Return param)
         {            
             //string sqlquery = "select rtl_loc_id,business_date,wkstn_id,trans_seq,TOTAL,fiscal_number from trn_trans where trans_typcode='RETAIL_SALE' AND trans_statcode='COMPLETE' AND TOTAL>0 AND RECORD_STATE IS NULL and business_date>='" + fecha + "'";
             string sqlquery = "update trn_trans set RECORD_STATE='X' where trans_typcode='RETAIL_SALE' AND trans_statcode='COMPLETE' AND TOTAL>0 AND RECORD_STATE IS NULL AND rtl_loc_id=" + param.RTL_LOC_ID + " AND wkstn_id=" + param.WKSTN_ID + " AND trans_seq=" + param.TRANS_SEQ + " AND fiscal_number='" + param.FISCAL_NUMBER + "'";
             try
             {
-                object results = new object[1];
+                //object results = new object[1];
                 Database db = new OracleDatabase(Ent_Acceso_BD.conn());
 
                 DbCommand dbCommandWrapper = db.GetSqlStringCommand(sqlquery);
@@ -139,11 +165,14 @@ namespace Transmision.Net.Basico.Oracle.CapaDato
                 
             }            
         }
-
+        /// <summary>
+        /// SELECCCIONAR EL TEMPORAL ORACLE
+        /// </summary>
+        /// <returns></returns>
         public DataTable select_tmp_ora()
         {
-            DataTable dt = null;
-            string sqlquery = "SELECT RTL_LOC_ID,BUSINESS_DATE,WKSTN_ID,TRANS_SEQ,TOTAL,FISCAL_NUMBER FROM " + Ent_Acceso_BD.nom_tabla + " WHERE SEND_SERVER IS NULL";
+            DataTable dtdoc = null;
+            string sqlquery = "SELECT RTL_LOC_ID,BUSINESS_DATE,WKSTN_ID,TRANS_SEQ,TOTAL,FISCAL_NUMBER FROM " + Ent_Acceso_BD.nom_tabla + " WHERE SEND_SERVER IS NULL AND SUBSTR(FISCAL_NUMBER,0,1) IN ('B','F')";
             try
             {
                 object results = new object[1];
@@ -155,10 +184,57 @@ namespace Transmision.Net.Basico.Oracle.CapaDato
             }
             catch 
             {
-                dt = null;                
+                dtdoc = null;                
             }
-            return dt;
+            return dtdoc;
         }
+        public void update_tmp_ora(string BARRA, Int32 RTL_LOC_ID, Int32 WKSTN_ID, Int32 TRANS_SEQ,string FISCAL_NUMBER)
+        {
+            //string sqlquery = "SELECT RTL_LOC_ID,BUSINESS_DATE,WKSTN_ID,TRANS_SEQ,TOTAL,FISCAL_NUMBER FROM " + Ent_Acceso_BD.nom_tabla + " WHERE SEND_SERVER IS NULL AND SUBSTR(FISCAL_NUMBER,0,1) IN ('B','F')";
+            string sqlquery = "UPDATE " + Ent_Acceso_BD.nom_tabla + " SET BARRA='" + BARRA + "',SEND_SERVER='X' WHERE SEND_SERVER IS NULL AND "  +
+                " RTL_LOC_ID="+ RTL_LOC_ID + " AND WKSTN_ID=" + WKSTN_ID + " AND TRANS_SEQ=" + TRANS_SEQ + " AND FISCAL_NUMBER='" + FISCAL_NUMBER + "'";
+            try
+            {
+                Database db = new OracleDatabase(Ent_Acceso_BD.conn());
+
+                DbCommand dbCommandWrapper = db.GetSqlStringCommand(sqlquery);
+
+                db.ExecuteNonQuery(dbCommandWrapper);
+            }
+            catch (Exception exc)
+            {
+
+                
+            }
+        }
+
+        /// <summary>
+        /// ENVIO DE WEB SERVICE PARA VERIFICAR SI EXISTE CUPON PARA LA VENTA
+        /// </summary>
+        /// <param name="param"></param>
+        /// <returns></returns>
+        public Ent_Tk_Return ws_envio_param(Ent_Tk_Set_Parametro param)
+        {
+            Ent_Tk_Return re = null;
+            try
+            {
+                re = new Ent_Tk_Return();
+                ValidateAcceso header_user = new ValidateAcceso();
+                header_user.Username = "3D4F4673-98EB-4EB5-A468-4B7FAEC0C721";
+                header_user.Password = "566FDFF1-5311-4FE2-B3FC-0346923FE4B4";
+                Bata_TransactionSoapClient batatran = new Bata_TransactionSoapClient();
+                re = batatran.ws_genera_cupon_return(header_user, param);
+
+            }
+            catch (Exception exc)
+            {
+                re.estado_error = exc.Message;
+            }
+            return re;
+        }
+
+
+        #endregion
 
     }
 }

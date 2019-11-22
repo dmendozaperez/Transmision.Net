@@ -41,6 +41,7 @@
             this.label1 = new System.Windows.Forms.Label();
             this.btnconectar = new System.Windows.Forms.Button();
             this.btnenvio_ws = new System.Windows.Forms.Button();
+            this.btnprueba_servicio = new System.Windows.Forms.Button();
             this.groupBox1.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -157,7 +158,7 @@
             // btnconectar
             // 
             this.btnconectar.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnconectar.Location = new System.Drawing.Point(370, 38);
+            this.btnconectar.Location = new System.Drawing.Point(370, 9);
             this.btnconectar.Name = "btnconectar";
             this.btnconectar.Size = new System.Drawing.Size(251, 48);
             this.btnconectar.TabIndex = 1;
@@ -168,19 +169,31 @@
             // btnenvio_ws
             // 
             this.btnenvio_ws.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Bold);
-            this.btnenvio_ws.Location = new System.Drawing.Point(370, 103);
+            this.btnenvio_ws.Location = new System.Drawing.Point(370, 74);
             this.btnenvio_ws.Name = "btnenvio_ws";
-            this.btnenvio_ws.Size = new System.Drawing.Size(250, 50);
+            this.btnenvio_ws.Size = new System.Drawing.Size(250, 44);
             this.btnenvio_ws.TabIndex = 2;
             this.btnenvio_ws.Text = "Transacciones Envio WEB SERVICE";
             this.btnenvio_ws.UseVisualStyleBackColor = true;
             this.btnenvio_ws.Click += new System.EventHandler(this.btnenvio_ws_Click);
+            // 
+            // btnprueba_servicio
+            // 
+            this.btnprueba_servicio.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Bold);
+            this.btnprueba_servicio.Location = new System.Drawing.Point(369, 134);
+            this.btnprueba_servicio.Name = "btnprueba_servicio";
+            this.btnprueba_servicio.Size = new System.Drawing.Size(248, 42);
+            this.btnprueba_servicio.TabIndex = 3;
+            this.btnprueba_servicio.Text = "PRUEBA SERVICIO CONFIG";
+            this.btnprueba_servicio.UseVisualStyleBackColor = true;
+            this.btnprueba_servicio.Click += new System.EventHandler(this.btnprueba_servicio_Click);
             // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(632, 193);
+            this.Controls.Add(this.btnprueba_servicio);
             this.Controls.Add(this.btnenvio_ws);
             this.Controls.Add(this.btnconectar);
             this.Controls.Add(this.groupBox1);
@@ -209,6 +222,7 @@
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Button btnconectar;
         private System.Windows.Forms.Button btnenvio_ws;
+        private System.Windows.Forms.Button btnprueba_servicio;
     }
 }
 
