@@ -1,8 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
-<ReferenceGroup xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" ID="73c3cb4b-d5bb-4838-a335-08c7c05d68be" xmlns="urn:schemas-microsoft-com:xml-wcfservicemap">
+<ReferenceGroup xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" ID="e0696e74-1047-4e4a-9a89-16c189372d91" xmlns="urn:schemas-microsoft-com:xml-wcfservicemap">
   <ClientOptions>
     <GenerateAsynchronousMethods>false</GenerateAsynchronousMethods>
-    <GenerateTaskBasedAsynchronousMethod>true</GenerateTaskBasedAsynchronousMethod>
     <EnableDataBinding>true</EnableDataBinding>
     <ExcludedTypes />
     <ImportXmlTypes>false</ImportXmlTypes>
@@ -22,8 +21,8 @@
     <MetadataSource Address="http://bataweb-test.bgr.pe/Ws_BataPOS/Bata_Transaction.ASMX" Protocol="http" SourceId="1" />
   </MetadataSources>
   <Metadata>
-    <MetadataFile FileName="Bata_Transaction.disco" MetadataType="Disco" ID="e012fb80-6730-428b-b402-5c8102211584" SourceId="1" SourceUrl="http://bataweb-test.bgr.pe/Ws_BataPOS/Bata_Transaction.ASMX?disco" />
-    <MetadataFile FileName="Bata_Transaction.wsdl" MetadataType="Wsdl" ID="d701c248-878e-4178-bdf5-4a38102e7f64" SourceId="1" SourceUrl="http://bataweb-test.bgr.pe/Ws_BataPOS/Bata_Transaction.ASMX?wsdl" />
+    <MetadataFile FileName="Bata_Transaction.disco" MetadataType="Disco" ID="f565a11d-f356-46b6-80fe-c46b05512928" SourceId="1" SourceUrl="http://bataweb-test.bgr.pe/Ws_BataPOS/Bata_Transaction.ASMX?disco" />
+    <MetadataFile FileName="Bata_Transaction.wsdl" MetadataType="Wsdl" ID="a9aca3a8-2f07-419d-81cd-7f43b11336e9" SourceId="1" SourceUrl="http://bataweb-test.bgr.pe/Ws_BataPOS/Bata_Transaction.ASMX?wsdl" />
   </Metadata>
   <Extensions>
     <ExtensionFile FileName="configuration91.svcinfo" Name="configuration91.svcinfo" />

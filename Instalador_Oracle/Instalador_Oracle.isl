@@ -225,7 +225,6 @@
 	<table name="AppSearch">
 		<col key="yes" def="s72">Property</col>
 		<col key="yes" def="s72">Signature_</col>
-		<row><td>DOTNETVERSION45FULL</td><td>DotNet45Full</td></row>
 	</table>
 
 	<table name="BBControl">
@@ -341,6 +340,7 @@
 		<col def="S0">ISDotNetInstallerArgsUninstall</col>
 		<col def="S0">ISDotNetInstallerArgsRollback</col>
 		<row><td>Genera_Transmision_Oracle.Resultado_principal</td><td>{C8766726-3115-4330-A59B-72FF1078D931}</td><td>INSTALLDIR</td><td>2</td><td/><td>genera_transmision_oracle.re</td><td>17</td><td/><td/><td/><td>/LogFile=</td><td>/LogFile=</td><td>/LogFile=</td><td>/LogFile=</td></row>
+		<row><td>Genera_Transmision_Oracle.Resultado_principal1</td><td>{0E46DBBF-0EB4-4E13-9194-3F58CC67883E}</td><td>INSTALLDIR</td><td>2</td><td/><td>genera_transmision_oracle.re</td><td>17</td><td/><td/><td/><td>/LogFile=</td><td>/LogFile=</td><td>/LogFile=</td><td>/LogFile=</td></row>
 	</table>
 
 	<table name="Condition">
@@ -1050,6 +1050,7 @@
 		<col key="yes" def="s72">Directory_</col>
 		<col key="yes" def="s72">Component_</col>
 		<row><td>INSTALLDIR</td><td>Genera_Transmision_Oracle.Resultado_principal</td></row>
+		<row><td>INSTALLDIR</td><td>Genera_Transmision_Oracle.Resultado_principal1</td></row>
 	</table>
 
 	<table name="CustomAction">
@@ -1865,6 +1866,7 @@
 		<col key="yes" def="s38">Feature_</col>
 		<col key="yes" def="s72">Component_</col>
 		<row><td>AlwaysInstall</td><td>Genera_Transmision_Oracle.Resultado_principal</td></row>
+		<row><td>AlwaysInstall</td><td>Genera_Transmision_Oracle.Resultado_principal1</td></row>
 	</table>
 
 	<table name="File">
@@ -1879,7 +1881,7 @@
 		<col def="S255">ISBuildSourcePath</col>
 		<col def="I4">ISAttributes</col>
 		<col def="S72">ISComponentSubFolder_</col>
-		<row><td>genera_transmision_oracle.re</td><td>Genera_Transmision_Oracle.Resultado_principal</td><td>Genera_Transmision_Oracle.Resultado principal</td><td>0</td><td/><td/><td/><td>1</td><td>&lt;Genera_Transmision_Oracle&gt;|Built</td><td>3</td><td/></row>
+		<row><td>genera_transmision_oracle.re</td><td>Genera_Transmision_Oracle.Resultado_principal1</td><td>Genera_Transmision_Oracle.Resultado principal</td><td>0</td><td/><td/><td>0</td><td>1</td><td>&lt;Genera_Transmision_Oracle&gt;|Built</td><td>3</td><td/></row>
 	</table>
 
 	<table name="FileSFPCatalog">
@@ -2022,6 +2024,7 @@
 		<col def="S0">HTTPLocation</col>
 		<col def="S0">Miscellaneous</col>
 		<row><td>Genera_Transmision_Oracle.Resultado_principal</td><td/><td/><td>_A6A9AE5D_DF8A_45FF_8C0E_E07689E3CB07_FILTER</td><td/><td/><td/><td/></row>
+		<row><td>Genera_Transmision_Oracle.Resultado_principal1</td><td/><td/><td>_2B81C13B_3973_4C64_9657_AD914FE6DE77_FILTER</td><td/><td/><td/><td/></row>
 	</table>
 
 	<table name="ISCustomActionReference">
@@ -2614,6 +2617,8 @@
 		<row><td>COMPANY_NAME</td><td>1034</td><td>Bata Peru</td><td>0</td><td/><td>-1247302582</td></row>
 		<row><td>DN_AlwaysInstall</td><td>1034</td><td>Instalar siempre</td><td>0</td><td/><td>-1247339574</td></row>
 		<row><td>IDPROP_EXPRESS_LAUNCH_CONDITION_COLOR</td><td>1034</td><td>La configuración de colores de su sistema no es adecuada para ejecutar [ProductName].</td><td>0</td><td/><td>-1247339574</td></row>
+		<row><td>IDPROP_EXPRESS_LAUNCH_CONDITION_DOTNETVERSION40FULL</td><td>1033</td><td>Microsoft .NET Framework 4.0 Full package or greater needs to be installed for this installation to continue.</td><td>0</td><td/><td>-1247331536</td></row>
+		<row><td>IDPROP_EXPRESS_LAUNCH_CONDITION_DOTNETVERSION40FULL</td><td>1034</td><td>Microsoft .NET Framework 4.0 Full package or greater needs to be installed for this installation to continue.</td><td>0</td><td/><td>-1247331536</td></row>
 		<row><td>IDPROP_EXPRESS_LAUNCH_CONDITION_DOTNETVERSION45FULL</td><td>1033</td><td>Microsoft .NET Framework 4.5 Full package or greater needs to be installed for this installation to continue.</td><td>0</td><td/><td>-1247294454</td></row>
 		<row><td>IDPROP_EXPRESS_LAUNCH_CONDITION_DOTNETVERSION45FULL</td><td>1034</td><td>Microsoft .NET Framework 4.5 Full package or greater needs to be installed for this installation to continue.</td><td>0</td><td/><td>-1247294454</td></row>
 		<row><td>IDPROP_EXPRESS_LAUNCH_CONDITION_OS</td><td>1034</td><td>El sistema operativo no es adecuado para ejecutar [ProductName].</td><td>0</td><td/><td>-1247339574</td></row>
@@ -3971,7 +3976,7 @@ UwBpAG4AZwBsAGUASQBtAGEAZwBlAAEARQB4AHAAcgBlAHMAcwA=
 		<row><td>ISTheme</td><td>InstallShield Blue.theme</td></row>
 		<row><td>ISUSLock</td><td>{9F15BD62-0821-4E18-87C7-FDDAB7DC6736}</td></row>
 		<row><td>ISUSSignature</td><td>{2A0FD775-DB02-437B-844A-4B902BD2039F}</td></row>
-		<row><td>ISVisitedViews</td><td>viewAssistant,viewProject,viewServices,viewISToday</td></row>
+		<row><td>ISVisitedViews</td><td>viewAssistant,viewProject,viewServices,viewISToday,viewUpgradePaths,viewUpdateService,viewAppFiles,viewObjects,viewSystemSearch,viewRelease,viewCustomActions,viewUI</td></row>
 		<row><td>Limited</td><td>1</td></row>
 		<row><td>LockPermissionMode</td><td>1</td></row>
 		<row><td>MsiExecCmdLineOptions</td><td/></row>
@@ -4029,7 +4034,6 @@ UwBpAG4AZwBsAGUASQBtAGEAZwBlAAEARQB4AHAAcgBlAHMAcwA=
 	<table name="LaunchCondition">
 		<col key="yes" def="s255">Condition</col>
 		<col def="l255">Description</col>
-		<row><td>DOTNETVERSION45FULL&gt;="#1"</td><td>##IDPROP_EXPRESS_LAUNCH_CONDITION_DOTNETVERSION45FULL##</td></row>
 	</table>
 
 	<table name="ListBox">
@@ -4360,7 +4364,7 @@ UwBpAG4AZwBsAGUASQBtAGEAZwBlAAEARQB4AHAAcgBlAHMAcwA=
 		<row><td>RestartManagerOption</td><td>CloseRestart</td><td/></row>
 		<row><td>SERIALNUMBER</td><td/><td/></row>
 		<row><td>SERIALNUMVALSUCCESSRETVAL</td><td>1</td><td/></row>
-		<row><td>SecureCustomProperties</td><td>ISFOUNDNEWERPRODUCTVERSION;USERNAME;COMPANYNAME;ISX_SERIALNUM;SUPPORTDIR;DOTNETVERSION45FULL</td><td/></row>
+		<row><td>SecureCustomProperties</td><td>ISFOUNDNEWERPRODUCTVERSION;USERNAME;COMPANYNAME;ISX_SERIALNUM;SUPPORTDIR</td><td/></row>
 		<row><td>SelectedSetupType</td><td>##IDS__DisplayName_Typical##</td><td/></row>
 		<row><td>SetupType</td><td>Typical</td><td/></row>
 		<row><td>UpgradeCode</td><td>{3B4387BA-5A9E-4A98-A9C6-BBE6B9A743E2}</td><td/></row>
@@ -4405,7 +4409,6 @@ UwBpAG4AZwBsAGUASQBtAGEAZwBlAAEARQB4AHAAcgBlAHMAcwA=
 		<col def="s255">Key</col>
 		<col def="S255">Name</col>
 		<col def="I2">Type</col>
-		<row><td>DotNet45Full</td><td>2</td><td>SOFTWARE\Microsoft\NET Framework Setup\NDP\v4\Full</td><td>Version</td><td>2</td></row>
 	</table>
 
 	<table name="Registry">

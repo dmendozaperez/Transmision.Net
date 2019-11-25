@@ -9,8 +9,9 @@
     <AppDesignerFolder>Properties</AppDesignerFolder>
     <RootNamespace>Transmision.Net.Basico.Oracle</RootNamespace>
     <AssemblyName>Transmision.Net.Basico.Oracle</AssemblyName>
-    <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
+    <TargetFrameworkVersion>v4.0</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
+    <TargetFrameworkProfile />
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <DebugSymbols>true</DebugSymbols>
@@ -103,72 +104,6 @@
       <DependentUpon>Reference.svcmap</DependentUpon>
     </None>
     <None Include="Service References\BataTransaction\Transmision.Net.Basico.Oracle.BataTransaction.Ent_Tk_Return.datasource">
-      <DependentUpon>Reference.svcmap</DependentUpon>
-    </None>
-    <None Include="Service References\BataTransaction\Transmision.Net.Basico.Oracle.BataTransaction.HelloWorldResponse.datasource">
-      <DependentUpon>Reference.svcmap</DependentUpon>
-    </None>
-    <None Include="Service References\BataTransaction\Transmision.Net.Basico.Oracle.BataTransaction.ws_download_fileResponse.datasource">
-      <DependentUpon>Reference.svcmap</DependentUpon>
-    </None>
-    <None Include="Service References\BataTransaction\Transmision.Net.Basico.Oracle.BataTransaction.ws_download_file_comunicadoResponse.datasource">
-      <DependentUpon>Reference.svcmap</DependentUpon>
-    </None>
-    <None Include="Service References\BataTransaction\Transmision.Net.Basico.Oracle.BataTransaction.ws_envia_Scactco_listResponse.datasource">
-      <DependentUpon>Reference.svcmap</DependentUpon>
-    </None>
-    <None Include="Service References\BataTransaction\Transmision.Net.Basico.Oracle.BataTransaction.ws_envia_scdrembResponse.datasource">
-      <DependentUpon>Reference.svcmap</DependentUpon>
-    </None>
-    <None Include="Service References\BataTransaction\Transmision.Net.Basico.Oracle.BataTransaction.ws_envia_stock_almacenResponse.datasource">
-      <DependentUpon>Reference.svcmap</DependentUpon>
-    </None>
-    <None Include="Service References\BataTransaction\Transmision.Net.Basico.Oracle.BataTransaction.ws_envia_stock_tdaResponse.datasource">
-      <DependentUpon>Reference.svcmap</DependentUpon>
-    </None>
-    <None Include="Service References\BataTransaction\Transmision.Net.Basico.Oracle.BataTransaction.ws_envia_venta_tdaResponse.datasource">
-      <DependentUpon>Reference.svcmap</DependentUpon>
-    </None>
-    <None Include="Service References\BataTransaction\Transmision.Net.Basico.Oracle.BataTransaction.ws_envia_venta_tda_listaResponse.datasource">
-      <DependentUpon>Reference.svcmap</DependentUpon>
-    </None>
-    <None Include="Service References\BataTransaction\Transmision.Net.Basico.Oracle.BataTransaction.ws_envia_venta_tda_listResponse.datasource">
-      <DependentUpon>Reference.svcmap</DependentUpon>
-    </None>
-    <None Include="Service References\BataTransaction\Transmision.Net.Basico.Oracle.BataTransaction.ws_envio_traspaso_tdaResponse.datasource">
-      <DependentUpon>Reference.svcmap</DependentUpon>
-    </None>
-    <None Include="Service References\BataTransaction\Transmision.Net.Basico.Oracle.BataTransaction.ws_errores_transactionResponse.datasource">
-      <DependentUpon>Reference.svcmap</DependentUpon>
-    </None>
-    <None Include="Service References\BataTransaction\Transmision.Net.Basico.Oracle.BataTransaction.ws_genera_cupon_returnResponse.datasource">
-      <DependentUpon>Reference.svcmap</DependentUpon>
-    </None>
-    <None Include="Service References\BataTransaction\Transmision.Net.Basico.Oracle.BataTransaction.ws_get_file_pathResponse.datasource">
-      <DependentUpon>Reference.svcmap</DependentUpon>
-    </None>
-    <None Include="Service References\BataTransaction\Transmision.Net.Basico.Oracle.BataTransaction.ws_get_file_uploadResponse.datasource">
-      <DependentUpon>Reference.svcmap</DependentUpon>
-    </None>
-    <None Include="Service References\BataTransaction\Transmision.Net.Basico.Oracle.BataTransaction.ws_get_location_dbfResponse.datasource">
-      <DependentUpon>Reference.svcmap</DependentUpon>
-    </None>
-    <None Include="Service References\BataTransaction\Transmision.Net.Basico.Oracle.BataTransaction.ws_get_time_servicetransResponse.datasource">
-      <DependentUpon>Reference.svcmap</DependentUpon>
-    </None>
-    <None Include="Service References\BataTransaction\Transmision.Net.Basico.Oracle.BataTransaction.ws_get_xstore_carpeta_uploadResponse.datasource">
-      <DependentUpon>Reference.svcmap</DependentUpon>
-    </None>
-    <None Include="Service References\BataTransaction\Transmision.Net.Basico.Oracle.BataTransaction.ws_lista_alma_EcuResponse.datasource">
-      <DependentUpon>Reference.svcmap</DependentUpon>
-    </None>
-    <None Include="Service References\BataTransaction\Transmision.Net.Basico.Oracle.BataTransaction.ws_transmision_ingreso_nubeResponse.datasource">
-      <DependentUpon>Reference.svcmap</DependentUpon>
-    </None>
-    <None Include="Service References\BataTransaction\Transmision.Net.Basico.Oracle.BataTransaction.ws_update_transaction_guiasResponse.datasource">
-      <DependentUpon>Reference.svcmap</DependentUpon>
-    </None>
-    <None Include="Service References\BataTransaction\Transmision.Net.Basico.Oracle.BataTransaction.ws_valida_traspaso_tdaResponse.datasource">
       <DependentUpon>Reference.svcmap</DependentUpon>
     </None>
   </ItemGroup>

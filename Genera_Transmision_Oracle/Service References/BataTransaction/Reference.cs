@@ -21,288 +21,174 @@ namespace Genera_Transmision_Oracle.BataTransaction {
         [System.ServiceModel.XmlSerializerFormatAttribute(SupportFaults=true)]
         Genera_Transmision_Oracle.BataTransaction.HelloWorldResponse HelloWorld(Genera_Transmision_Oracle.BataTransaction.HelloWorldRequest request);
         
-        [System.ServiceModel.OperationContractAttribute(Action="http://bataperu.com.pe/HelloWorld", ReplyAction="*")]
-        System.Threading.Tasks.Task<Genera_Transmision_Oracle.BataTransaction.HelloWorldResponse> HelloWorldAsync(Genera_Transmision_Oracle.BataTransaction.HelloWorldRequest request);
-        
         [System.ServiceModel.OperationContractAttribute(Action="http://bataperu.com.pe/fvdespc", ReplyAction="*")]
         [System.ServiceModel.XmlSerializerFormatAttribute(SupportFaults=true)]
         Genera_Transmision_Oracle.BataTransaction.Ent_Fvdespc fvdespc();
-        
-        [System.ServiceModel.OperationContractAttribute(Action="http://bataperu.com.pe/fvdespc", ReplyAction="*")]
-        System.Threading.Tasks.Task<Genera_Transmision_Oracle.BataTransaction.Ent_Fvdespc> fvdespcAsync();
         
         [System.ServiceModel.OperationContractAttribute(Action="http://bataperu.com.pe/scdddes", ReplyAction="*")]
         [System.ServiceModel.XmlSerializerFormatAttribute(SupportFaults=true)]
         Genera_Transmision_Oracle.BataTransaction.Ent_Scdddes scdddes();
         
-        [System.ServiceModel.OperationContractAttribute(Action="http://bataperu.com.pe/scdddes", ReplyAction="*")]
-        System.Threading.Tasks.Task<Genera_Transmision_Oracle.BataTransaction.Ent_Scdddes> scdddesAsync();
-        
         [System.ServiceModel.OperationContractAttribute(Action="http://bataperu.com.pe/pathdbf", ReplyAction="*")]
         [System.ServiceModel.XmlSerializerFormatAttribute(SupportFaults=true)]
         Genera_Transmision_Oracle.BataTransaction.Ent_PathDBF pathdbf();
         
-        [System.ServiceModel.OperationContractAttribute(Action="http://bataperu.com.pe/pathdbf", ReplyAction="*")]
-        System.Threading.Tasks.Task<Genera_Transmision_Oracle.BataTransaction.Ent_PathDBF> pathdbfAsync();
-        
         [System.ServiceModel.OperationContractAttribute(Action="http://bataperu.com.pe/list_file", ReplyAction="*")]
         [System.ServiceModel.XmlSerializerFormatAttribute(SupportFaults=true)]
         Genera_Transmision_Oracle.BataTransaction.Ent_File list_file();
-        
-        [System.ServiceModel.OperationContractAttribute(Action="http://bataperu.com.pe/list_file", ReplyAction="*")]
-        System.Threading.Tasks.Task<Genera_Transmision_Oracle.BataTransaction.Ent_File> list_fileAsync();
         
         // CODEGEN: Se está generando un contrato de mensaje, ya que el mensaje ws_lista_alma_EcuRequest tiene encabezados.
         [System.ServiceModel.OperationContractAttribute(Action="http://bataperu.com.pe/ws_lista_alma_Ecu", ReplyAction="*")]
         [System.ServiceModel.XmlSerializerFormatAttribute(SupportFaults=true)]
         Genera_Transmision_Oracle.BataTransaction.ws_lista_alma_EcuResponse ws_lista_alma_Ecu(Genera_Transmision_Oracle.BataTransaction.ws_lista_alma_EcuRequest request);
         
-        [System.ServiceModel.OperationContractAttribute(Action="http://bataperu.com.pe/ws_lista_alma_Ecu", ReplyAction="*")]
-        System.Threading.Tasks.Task<Genera_Transmision_Oracle.BataTransaction.ws_lista_alma_EcuResponse> ws_lista_alma_EcuAsync(Genera_Transmision_Oracle.BataTransaction.ws_lista_alma_EcuRequest request);
-        
         // CODEGEN: Se está generando un contrato de mensaje, ya que el mensaje ws_get_xstore_carpeta_uploadRequest tiene encabezados.
         [System.ServiceModel.OperationContractAttribute(Action="http://bataperu.com.pe/ws_get_xstore_carpeta_upload", ReplyAction="*")]
         [System.ServiceModel.XmlSerializerFormatAttribute(SupportFaults=true)]
         Genera_Transmision_Oracle.BataTransaction.ws_get_xstore_carpeta_uploadResponse ws_get_xstore_carpeta_upload(Genera_Transmision_Oracle.BataTransaction.ws_get_xstore_carpeta_uploadRequest request);
-        
-        [System.ServiceModel.OperationContractAttribute(Action="http://bataperu.com.pe/ws_get_xstore_carpeta_upload", ReplyAction="*")]
-        System.Threading.Tasks.Task<Genera_Transmision_Oracle.BataTransaction.ws_get_xstore_carpeta_uploadResponse> ws_get_xstore_carpeta_uploadAsync(Genera_Transmision_Oracle.BataTransaction.ws_get_xstore_carpeta_uploadRequest request);
         
         // CODEGEN: Se está generando un contrato de mensaje, ya que el mensaje ws_update_transaction_guiasRequest tiene encabezados.
         [System.ServiceModel.OperationContractAttribute(Action="http://bataperu.com.pe/ws_update_transaction_guias", ReplyAction="*")]
         [System.ServiceModel.XmlSerializerFormatAttribute(SupportFaults=true)]
         Genera_Transmision_Oracle.BataTransaction.ws_update_transaction_guiasResponse ws_update_transaction_guias(Genera_Transmision_Oracle.BataTransaction.ws_update_transaction_guiasRequest request);
         
-        [System.ServiceModel.OperationContractAttribute(Action="http://bataperu.com.pe/ws_update_transaction_guias", ReplyAction="*")]
-        System.Threading.Tasks.Task<Genera_Transmision_Oracle.BataTransaction.ws_update_transaction_guiasResponse> ws_update_transaction_guiasAsync(Genera_Transmision_Oracle.BataTransaction.ws_update_transaction_guiasRequest request);
-        
         // CODEGEN: Se está generando un contrato de mensaje, ya que el mensaje ws_errores_transactionRequest tiene encabezados.
         [System.ServiceModel.OperationContractAttribute(Action="http://bataperu.com.pe/ws_errores_transaction", ReplyAction="*")]
         [System.ServiceModel.XmlSerializerFormatAttribute(SupportFaults=true)]
         Genera_Transmision_Oracle.BataTransaction.ws_errores_transactionResponse ws_errores_transaction(Genera_Transmision_Oracle.BataTransaction.ws_errores_transactionRequest request);
-        
-        [System.ServiceModel.OperationContractAttribute(Action="http://bataperu.com.pe/ws_errores_transaction", ReplyAction="*")]
-        System.Threading.Tasks.Task<Genera_Transmision_Oracle.BataTransaction.ws_errores_transactionResponse> ws_errores_transactionAsync(Genera_Transmision_Oracle.BataTransaction.ws_errores_transactionRequest request);
         
         // CODEGEN: Se está generando un contrato de mensaje, ya que el mensaje ws_get_location_dbfRequest tiene encabezados.
         [System.ServiceModel.OperationContractAttribute(Action="http://bataperu.com.pe/ws_get_location_dbf", ReplyAction="*")]
         [System.ServiceModel.XmlSerializerFormatAttribute(SupportFaults=true)]
         Genera_Transmision_Oracle.BataTransaction.ws_get_location_dbfResponse ws_get_location_dbf(Genera_Transmision_Oracle.BataTransaction.ws_get_location_dbfRequest request);
         
-        [System.ServiceModel.OperationContractAttribute(Action="http://bataperu.com.pe/ws_get_location_dbf", ReplyAction="*")]
-        System.Threading.Tasks.Task<Genera_Transmision_Oracle.BataTransaction.ws_get_location_dbfResponse> ws_get_location_dbfAsync(Genera_Transmision_Oracle.BataTransaction.ws_get_location_dbfRequest request);
-        
         // CODEGEN: Se está generando un contrato de mensaje, ya que el mensaje ws_get_file_uploadRequest tiene encabezados.
         [System.ServiceModel.OperationContractAttribute(Action="http://bataperu.com.pe/ws_get_file_upload", ReplyAction="*")]
         [System.ServiceModel.XmlSerializerFormatAttribute(SupportFaults=true)]
         Genera_Transmision_Oracle.BataTransaction.ws_get_file_uploadResponse ws_get_file_upload(Genera_Transmision_Oracle.BataTransaction.ws_get_file_uploadRequest request);
-        
-        [System.ServiceModel.OperationContractAttribute(Action="http://bataperu.com.pe/ws_get_file_upload", ReplyAction="*")]
-        System.Threading.Tasks.Task<Genera_Transmision_Oracle.BataTransaction.ws_get_file_uploadResponse> ws_get_file_uploadAsync(Genera_Transmision_Oracle.BataTransaction.ws_get_file_uploadRequest request);
         
         // CODEGEN: Se está generando un contrato de mensaje, ya que el mensaje ws_get_file_pathRequest tiene encabezados.
         [System.ServiceModel.OperationContractAttribute(Action="http://bataperu.com.pe/ws_get_file_path", ReplyAction="*")]
         [System.ServiceModel.XmlSerializerFormatAttribute(SupportFaults=true)]
         Genera_Transmision_Oracle.BataTransaction.ws_get_file_pathResponse ws_get_file_path(Genera_Transmision_Oracle.BataTransaction.ws_get_file_pathRequest request);
         
-        [System.ServiceModel.OperationContractAttribute(Action="http://bataperu.com.pe/ws_get_file_path", ReplyAction="*")]
-        System.Threading.Tasks.Task<Genera_Transmision_Oracle.BataTransaction.ws_get_file_pathResponse> ws_get_file_pathAsync(Genera_Transmision_Oracle.BataTransaction.ws_get_file_pathRequest request);
-        
         // CODEGEN: Se está generando un contrato de mensaje, ya que el mensaje ws_download_file_comunicadoRequest tiene encabezados.
         [System.ServiceModel.OperationContractAttribute(Action="http://bataperu.com.pe/ws_download_file_comunicado", ReplyAction="*")]
         [System.ServiceModel.XmlSerializerFormatAttribute(SupportFaults=true)]
         Genera_Transmision_Oracle.BataTransaction.ws_download_file_comunicadoResponse ws_download_file_comunicado(Genera_Transmision_Oracle.BataTransaction.ws_download_file_comunicadoRequest request);
-        
-        [System.ServiceModel.OperationContractAttribute(Action="http://bataperu.com.pe/ws_download_file_comunicado", ReplyAction="*")]
-        System.Threading.Tasks.Task<Genera_Transmision_Oracle.BataTransaction.ws_download_file_comunicadoResponse> ws_download_file_comunicadoAsync(Genera_Transmision_Oracle.BataTransaction.ws_download_file_comunicadoRequest request);
         
         // CODEGEN: Se está generando un contrato de mensaje, ya que el mensaje ws_download_fileRequest tiene encabezados.
         [System.ServiceModel.OperationContractAttribute(Action="http://bataperu.com.pe/ws_download_file", ReplyAction="*")]
         [System.ServiceModel.XmlSerializerFormatAttribute(SupportFaults=true)]
         Genera_Transmision_Oracle.BataTransaction.ws_download_fileResponse ws_download_file(Genera_Transmision_Oracle.BataTransaction.ws_download_fileRequest request);
         
-        [System.ServiceModel.OperationContractAttribute(Action="http://bataperu.com.pe/ws_download_file", ReplyAction="*")]
-        System.Threading.Tasks.Task<Genera_Transmision_Oracle.BataTransaction.ws_download_fileResponse> ws_download_fileAsync(Genera_Transmision_Oracle.BataTransaction.ws_download_fileRequest request);
-        
         // CODEGEN: Se está generando un contrato de mensaje, ya que el mensaje ws_get_time_servicetransRequest tiene encabezados.
         [System.ServiceModel.OperationContractAttribute(Action="http://bataperu.com.pe/ws_get_time_servicetrans", ReplyAction="*")]
         [System.ServiceModel.XmlSerializerFormatAttribute(SupportFaults=true)]
         Genera_Transmision_Oracle.BataTransaction.ws_get_time_servicetransResponse ws_get_time_servicetrans(Genera_Transmision_Oracle.BataTransaction.ws_get_time_servicetransRequest request);
-        
-        [System.ServiceModel.OperationContractAttribute(Action="http://bataperu.com.pe/ws_get_time_servicetrans", ReplyAction="*")]
-        System.Threading.Tasks.Task<Genera_Transmision_Oracle.BataTransaction.ws_get_time_servicetransResponse> ws_get_time_servicetransAsync(Genera_Transmision_Oracle.BataTransaction.ws_get_time_servicetransRequest request);
         
         // CODEGEN: Se está generando un contrato de mensaje, ya que el mensaje ws_envia_stock_tdaRequest tiene encabezados.
         [System.ServiceModel.OperationContractAttribute(Action="http://bataperu.com.pe/ws_envia_stock_tda", ReplyAction="*")]
         [System.ServiceModel.XmlSerializerFormatAttribute(SupportFaults=true)]
         Genera_Transmision_Oracle.BataTransaction.ws_envia_stock_tdaResponse ws_envia_stock_tda(Genera_Transmision_Oracle.BataTransaction.ws_envia_stock_tdaRequest request);
         
-        [System.ServiceModel.OperationContractAttribute(Action="http://bataperu.com.pe/ws_envia_stock_tda", ReplyAction="*")]
-        System.Threading.Tasks.Task<Genera_Transmision_Oracle.BataTransaction.ws_envia_stock_tdaResponse> ws_envia_stock_tdaAsync(Genera_Transmision_Oracle.BataTransaction.ws_envia_stock_tdaRequest request);
-        
         // CODEGEN: Se está generando un contrato de mensaje, ya que el mensaje ws_envia_stock_almacenRequest tiene encabezados.
         [System.ServiceModel.OperationContractAttribute(Action="http://bataperu.com.pe/ws_envia_stock_almacen", ReplyAction="*")]
         [System.ServiceModel.XmlSerializerFormatAttribute(SupportFaults=true)]
         Genera_Transmision_Oracle.BataTransaction.ws_envia_stock_almacenResponse ws_envia_stock_almacen(Genera_Transmision_Oracle.BataTransaction.ws_envia_stock_almacenRequest request);
-        
-        [System.ServiceModel.OperationContractAttribute(Action="http://bataperu.com.pe/ws_envia_stock_almacen", ReplyAction="*")]
-        System.Threading.Tasks.Task<Genera_Transmision_Oracle.BataTransaction.ws_envia_stock_almacenResponse> ws_envia_stock_almacenAsync(Genera_Transmision_Oracle.BataTransaction.ws_envia_stock_almacenRequest request);
         
         // CODEGEN: Se está generando un contrato de mensaje, ya que el mensaje ws_envia_venta_tdaRequest tiene encabezados.
         [System.ServiceModel.OperationContractAttribute(Action="http://bataperu.com.pe/ws_envia_venta_tda", ReplyAction="*")]
         [System.ServiceModel.XmlSerializerFormatAttribute(SupportFaults=true)]
         Genera_Transmision_Oracle.BataTransaction.ws_envia_venta_tdaResponse ws_envia_venta_tda(Genera_Transmision_Oracle.BataTransaction.ws_envia_venta_tdaRequest request);
         
-        [System.ServiceModel.OperationContractAttribute(Action="http://bataperu.com.pe/ws_envia_venta_tda", ReplyAction="*")]
-        System.Threading.Tasks.Task<Genera_Transmision_Oracle.BataTransaction.ws_envia_venta_tdaResponse> ws_envia_venta_tdaAsync(Genera_Transmision_Oracle.BataTransaction.ws_envia_venta_tdaRequest request);
-        
         // CODEGEN: Se está generando un contrato de mensaje, ya que el mensaje ws_envia_venta_tda_listRequest tiene encabezados.
         [System.ServiceModel.OperationContractAttribute(Action="http://bataperu.com.pe/ws_envia_venta_tda_list", ReplyAction="*")]
         [System.ServiceModel.XmlSerializerFormatAttribute(SupportFaults=true)]
         Genera_Transmision_Oracle.BataTransaction.ws_envia_venta_tda_listResponse ws_envia_venta_tda_list(Genera_Transmision_Oracle.BataTransaction.ws_envia_venta_tda_listRequest request);
-        
-        [System.ServiceModel.OperationContractAttribute(Action="http://bataperu.com.pe/ws_envia_venta_tda_list", ReplyAction="*")]
-        System.Threading.Tasks.Task<Genera_Transmision_Oracle.BataTransaction.ws_envia_venta_tda_listResponse> ws_envia_venta_tda_listAsync(Genera_Transmision_Oracle.BataTransaction.ws_envia_venta_tda_listRequest request);
         
         // CODEGEN: Se está generando un contrato de mensaje, ya que el mensaje ws_envia_venta_tda_listaRequest tiene encabezados.
         [System.ServiceModel.OperationContractAttribute(Action="http://bataperu.com.pe/ws_envia_venta_tda_lista", ReplyAction="*")]
         [System.ServiceModel.XmlSerializerFormatAttribute(SupportFaults=true)]
         Genera_Transmision_Oracle.BataTransaction.ws_envia_venta_tda_listaResponse ws_envia_venta_tda_lista(Genera_Transmision_Oracle.BataTransaction.ws_envia_venta_tda_listaRequest request);
         
-        [System.ServiceModel.OperationContractAttribute(Action="http://bataperu.com.pe/ws_envia_venta_tda_lista", ReplyAction="*")]
-        System.Threading.Tasks.Task<Genera_Transmision_Oracle.BataTransaction.ws_envia_venta_tda_listaResponse> ws_envia_venta_tda_listaAsync(Genera_Transmision_Oracle.BataTransaction.ws_envia_venta_tda_listaRequest request);
-        
         // CODEGEN: Se está generando un contrato de mensaje, ya que el mensaje ws_transmision_ingreso_nubeRequest tiene encabezados.
         [System.ServiceModel.OperationContractAttribute(Action="http://bataperu.com.pe/ws_transmision_ingreso_nube", ReplyAction="*")]
         [System.ServiceModel.XmlSerializerFormatAttribute(SupportFaults=true)]
         Genera_Transmision_Oracle.BataTransaction.ws_transmision_ingreso_nubeResponse ws_transmision_ingreso_nube(Genera_Transmision_Oracle.BataTransaction.ws_transmision_ingreso_nubeRequest request);
-        
-        [System.ServiceModel.OperationContractAttribute(Action="http://bataperu.com.pe/ws_transmision_ingreso_nube", ReplyAction="*")]
-        System.Threading.Tasks.Task<Genera_Transmision_Oracle.BataTransaction.ws_transmision_ingreso_nubeResponse> ws_transmision_ingreso_nubeAsync(Genera_Transmision_Oracle.BataTransaction.ws_transmision_ingreso_nubeRequest request);
         
         // CODEGEN: Se está generando un contrato de mensaje, ya que el mensaje ws_envia_Scactco_listRequest tiene encabezados.
         [System.ServiceModel.OperationContractAttribute(Action="http://bataperu.com.pe/ws_envia_Scactco_list", ReplyAction="*")]
         [System.ServiceModel.XmlSerializerFormatAttribute(SupportFaults=true)]
         Genera_Transmision_Oracle.BataTransaction.ws_envia_Scactco_listResponse ws_envia_Scactco_list(Genera_Transmision_Oracle.BataTransaction.ws_envia_Scactco_listRequest request);
         
-        [System.ServiceModel.OperationContractAttribute(Action="http://bataperu.com.pe/ws_envia_Scactco_list", ReplyAction="*")]
-        System.Threading.Tasks.Task<Genera_Transmision_Oracle.BataTransaction.ws_envia_Scactco_listResponse> ws_envia_Scactco_listAsync(Genera_Transmision_Oracle.BataTransaction.ws_envia_Scactco_listRequest request);
-        
         // CODEGEN: Se está generando un contrato de mensaje, ya que el mensaje ws_envia_scdrembRequest tiene encabezados.
         [System.ServiceModel.OperationContractAttribute(Action="http://bataperu.com.pe/ws_envia_scdremb", ReplyAction="*")]
         [System.ServiceModel.XmlSerializerFormatAttribute(SupportFaults=true)]
         Genera_Transmision_Oracle.BataTransaction.ws_envia_scdrembResponse ws_envia_scdremb(Genera_Transmision_Oracle.BataTransaction.ws_envia_scdrembRequest request);
-        
-        [System.ServiceModel.OperationContractAttribute(Action="http://bataperu.com.pe/ws_envia_scdremb", ReplyAction="*")]
-        System.Threading.Tasks.Task<Genera_Transmision_Oracle.BataTransaction.ws_envia_scdrembResponse> ws_envia_scdrembAsync(Genera_Transmision_Oracle.BataTransaction.ws_envia_scdrembRequest request);
         
         // CODEGEN: Se está generando un contrato de mensaje, ya que el mensaje ws_valida_traspaso_tdaRequest tiene encabezados.
         [System.ServiceModel.OperationContractAttribute(Action="http://bataperu.com.pe/ws_valida_traspaso_tda", ReplyAction="*")]
         [System.ServiceModel.XmlSerializerFormatAttribute(SupportFaults=true)]
         Genera_Transmision_Oracle.BataTransaction.ws_valida_traspaso_tdaResponse ws_valida_traspaso_tda(Genera_Transmision_Oracle.BataTransaction.ws_valida_traspaso_tdaRequest request);
         
-        [System.ServiceModel.OperationContractAttribute(Action="http://bataperu.com.pe/ws_valida_traspaso_tda", ReplyAction="*")]
-        System.Threading.Tasks.Task<Genera_Transmision_Oracle.BataTransaction.ws_valida_traspaso_tdaResponse> ws_valida_traspaso_tdaAsync(Genera_Transmision_Oracle.BataTransaction.ws_valida_traspaso_tdaRequest request);
-        
         // CODEGEN: Se está generando un contrato de mensaje, ya que el mensaje ws_envio_traspaso_tdaRequest tiene encabezados.
         [System.ServiceModel.OperationContractAttribute(Action="http://bataperu.com.pe/ws_envio_traspaso_tda", ReplyAction="*")]
         [System.ServiceModel.XmlSerializerFormatAttribute(SupportFaults=true)]
         Genera_Transmision_Oracle.BataTransaction.ws_envio_traspaso_tdaResponse ws_envio_traspaso_tda(Genera_Transmision_Oracle.BataTransaction.ws_envio_traspaso_tdaRequest request);
-        
-        [System.ServiceModel.OperationContractAttribute(Action="http://bataperu.com.pe/ws_envio_traspaso_tda", ReplyAction="*")]
-        System.Threading.Tasks.Task<Genera_Transmision_Oracle.BataTransaction.ws_envio_traspaso_tdaResponse> ws_envio_traspaso_tdaAsync(Genera_Transmision_Oracle.BataTransaction.ws_envio_traspaso_tdaRequest request);
         
         // CODEGEN: Se está generando un contrato de mensaje, ya que el mensaje ws_genera_cupon_returnRequest tiene encabezados.
         [System.ServiceModel.OperationContractAttribute(Action="http://bataperu.com.pe/ws_genera_cupon_return", ReplyAction="*")]
         [System.ServiceModel.XmlSerializerFormatAttribute(SupportFaults=true)]
         Genera_Transmision_Oracle.BataTransaction.ws_genera_cupon_returnResponse ws_genera_cupon_return(Genera_Transmision_Oracle.BataTransaction.ws_genera_cupon_returnRequest request);
         
-        [System.ServiceModel.OperationContractAttribute(Action="http://bataperu.com.pe/ws_genera_cupon_return", ReplyAction="*")]
-        System.Threading.Tasks.Task<Genera_Transmision_Oracle.BataTransaction.ws_genera_cupon_returnResponse> ws_genera_cupon_returnAsync(Genera_Transmision_Oracle.BataTransaction.ws_genera_cupon_returnRequest request);
-        
         [System.ServiceModel.OperationContractAttribute(Action="http://bataperu.com.pe/ws_consulta_stock_otra_tda", ReplyAction="*")]
         [System.ServiceModel.XmlSerializerFormatAttribute(SupportFaults=true)]
         string[] ws_consulta_stock_otra_tda(string cod_tda, string cod_art, string calidad, string talla, double cant, string cod_tda_b);
-        
-        [System.ServiceModel.OperationContractAttribute(Action="http://bataperu.com.pe/ws_consulta_stock_otra_tda", ReplyAction="*")]
-        System.Threading.Tasks.Task<string[]> ws_consulta_stock_otra_tdaAsync(string cod_tda, string cod_art, string calidad, string talla, double cant, string cod_tda_b);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://bataperu.com.pe/ws_insertar_guia_cvt", ReplyAction="*")]
         [System.ServiceModel.XmlSerializerFormatAttribute(SupportFaults=true)]
         string[] ws_insertar_guia_cvt(string cod_tda, System.Data.DataSet dsGuia);
         
-        [System.ServiceModel.OperationContractAttribute(Action="http://bataperu.com.pe/ws_insertar_guia_cvt", ReplyAction="*")]
-        System.Threading.Tasks.Task<string[]> ws_insertar_guia_cvtAsync(string cod_tda, System.Data.DataSet dsGuia);
-        
         [System.ServiceModel.OperationContractAttribute(Action="http://bataperu.com.pe/ws_actualizar_guia", ReplyAction="*")]
         [System.ServiceModel.XmlSerializerFormatAttribute(SupportFaults=true)]
         string[] ws_actualizar_guia(string cod_tda, string serie, string numero, int id);
-        
-        [System.ServiceModel.OperationContractAttribute(Action="http://bataperu.com.pe/ws_actualizar_guia", ReplyAction="*")]
-        System.Threading.Tasks.Task<string[]> ws_actualizar_guiaAsync(string cod_tda, string serie, string numero, int id);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://bataperu.com.pe/ws_insertar_historial_estado_cv", ReplyAction="*")]
         [System.ServiceModel.XmlSerializerFormatAttribute(SupportFaults=true)]
         string[] ws_insertar_historial_estado_cv(string cod_tda, string cod_entid, string fc_nint, string id_estado, string cod_usuario, string descripcion, string cod_vendedor, string serie_numero);
         
-        [System.ServiceModel.OperationContractAttribute(Action="http://bataperu.com.pe/ws_insertar_historial_estado_cv", ReplyAction="*")]
-        System.Threading.Tasks.Task<string[]> ws_insertar_historial_estado_cvAsync(string cod_tda, string cod_entid, string fc_nint, string id_estado, string cod_usuario, string descripcion, string cod_vendedor, string serie_numero);
-        
         [System.ServiceModel.OperationContractAttribute(Action="http://bataperu.com.pe/ws_consultar_guias", ReplyAction="*")]
         [System.ServiceModel.XmlSerializerFormatAttribute(SupportFaults=true)]
         System.Data.DataSet ws_consultar_guias(string cod_tda);
-        
-        [System.ServiceModel.OperationContractAttribute(Action="http://bataperu.com.pe/ws_consultar_guias", ReplyAction="*")]
-        System.Threading.Tasks.Task<System.Data.DataSet> ws_consultar_guiasAsync(string cod_tda);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://bataperu.com.pe/ws_consultar_guias_actualizadas", ReplyAction="*")]
         [System.ServiceModel.XmlSerializerFormatAttribute(SupportFaults=true)]
         System.Data.DataSet ws_consultar_guias_actualizadas(string cod_tda, int id);
         
-        [System.ServiceModel.OperationContractAttribute(Action="http://bataperu.com.pe/ws_consultar_guias_actualizadas", ReplyAction="*")]
-        System.Threading.Tasks.Task<System.Data.DataSet> ws_consultar_guias_actualizadasAsync(string cod_tda, int id);
-        
         [System.ServiceModel.OperationContractAttribute(Action="http://bataperu.com.pe/ws_consultar_tiendas_disponibles_cv", ReplyAction="*")]
         [System.ServiceModel.XmlSerializerFormatAttribute(SupportFaults=true)]
         System.Data.DataSet ws_consultar_tiendas_disponibles_cv(string cod_tda);
-        
-        [System.ServiceModel.OperationContractAttribute(Action="http://bataperu.com.pe/ws_consultar_tiendas_disponibles_cv", ReplyAction="*")]
-        System.Threading.Tasks.Task<System.Data.DataSet> ws_consultar_tiendas_disponibles_cvAsync(string cod_tda);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://bataperu.com.pe/ws_consultar_comprobantes", ReplyAction="*")]
         [System.ServiceModel.XmlSerializerFormatAttribute(SupportFaults=true)]
         System.Data.DataSet ws_consultar_comprobantes(string cod_tda, string tipo, string serie, string numero, string cod_entid);
         
-        [System.ServiceModel.OperationContractAttribute(Action="http://bataperu.com.pe/ws_consultar_comprobantes", ReplyAction="*")]
-        System.Threading.Tasks.Task<System.Data.DataSet> ws_consultar_comprobantesAsync(string cod_tda, string tipo, string serie, string numero, string cod_entid);
-        
         [System.ServiceModel.OperationContractAttribute(Action="http://bataperu.com.pe/ws_get_FE", ReplyAction="*")]
         [System.ServiceModel.XmlSerializerFormatAttribute(SupportFaults=true)]
         Genera_Transmision_Oracle.BataTransaction.Ent_Paperless_Return ws_get_FE(string ruc, string login, string password, string tipodoc, string folio, string tipoRetorno);
-        
-        [System.ServiceModel.OperationContractAttribute(Action="http://bataperu.com.pe/ws_get_FE", ReplyAction="*")]
-        System.Threading.Tasks.Task<Genera_Transmision_Oracle.BataTransaction.Ent_Paperless_Return> ws_get_FEAsync(string ruc, string login, string password, string tipodoc, string folio, string tipoRetorno);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://bataperu.com.pe/ws_consultar_ganador_ruleta_bata", ReplyAction="*")]
         [System.ServiceModel.XmlSerializerFormatAttribute(SupportFaults=true)]
         System.Data.DataSet ws_consultar_ganador_ruleta_bata(string cod_tda);
         
-        [System.ServiceModel.OperationContractAttribute(Action="http://bataperu.com.pe/ws_consultar_ganador_ruleta_bata", ReplyAction="*")]
-        System.Threading.Tasks.Task<System.Data.DataSet> ws_consultar_ganador_ruleta_bataAsync(string cod_tda);
-        
         [System.ServiceModel.OperationContractAttribute(Action="http://bataperu.com.pe/ws_actualizar_cupon_ruleta", ReplyAction="*")]
         [System.ServiceModel.XmlSerializerFormatAttribute(SupportFaults=true)]
         string[] ws_actualizar_cupon_ruleta(string cod_tda, string codigo, string estado, string doc_vta);
         
-        [System.ServiceModel.OperationContractAttribute(Action="http://bataperu.com.pe/ws_actualizar_cupon_ruleta", ReplyAction="*")]
-        System.Threading.Tasks.Task<string[]> ws_actualizar_cupon_ruletaAsync(string cod_tda, string codigo, string estado, string doc_vta);
-        
         [System.ServiceModel.OperationContractAttribute(Action="http://bataperu.com.pe/ws_validar_cupon_ruleta_bata", ReplyAction="*")]
         [System.ServiceModel.XmlSerializerFormatAttribute(SupportFaults=true)]
         System.Data.DataSet ws_validar_cupon_ruleta_bata(string cod_tda, string codigo);
-        
-        [System.ServiceModel.OperationContractAttribute(Action="http://bataperu.com.pe/ws_validar_cupon_ruleta_bata", ReplyAction="*")]
-        System.Threading.Tasks.Task<System.Data.DataSet> ws_validar_cupon_ruleta_bataAsync(string cod_tda, string codigo);
     }
     
     /// <remarks/>
@@ -6464,48 +6350,20 @@ namespace Genera_Transmision_Oracle.BataTransaction {
             return retVal.HelloWorldResult;
         }
         
-        [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
-        System.Threading.Tasks.Task<Genera_Transmision_Oracle.BataTransaction.HelloWorldResponse> Genera_Transmision_Oracle.BataTransaction.Bata_TransactionSoap.HelloWorldAsync(Genera_Transmision_Oracle.BataTransaction.HelloWorldRequest request) {
-            return base.Channel.HelloWorldAsync(request);
-        }
-        
-        public System.Threading.Tasks.Task<Genera_Transmision_Oracle.BataTransaction.HelloWorldResponse> HelloWorldAsync(Genera_Transmision_Oracle.BataTransaction.ValidateAcceso ValidateAcceso, string cod_tda) {
-            Genera_Transmision_Oracle.BataTransaction.HelloWorldRequest inValue = new Genera_Transmision_Oracle.BataTransaction.HelloWorldRequest();
-            inValue.ValidateAcceso = ValidateAcceso;
-            inValue.cod_tda = cod_tda;
-            return ((Genera_Transmision_Oracle.BataTransaction.Bata_TransactionSoap)(this)).HelloWorldAsync(inValue);
-        }
-        
         public Genera_Transmision_Oracle.BataTransaction.Ent_Fvdespc fvdespc() {
             return base.Channel.fvdespc();
-        }
-        
-        public System.Threading.Tasks.Task<Genera_Transmision_Oracle.BataTransaction.Ent_Fvdespc> fvdespcAsync() {
-            return base.Channel.fvdespcAsync();
         }
         
         public Genera_Transmision_Oracle.BataTransaction.Ent_Scdddes scdddes() {
             return base.Channel.scdddes();
         }
         
-        public System.Threading.Tasks.Task<Genera_Transmision_Oracle.BataTransaction.Ent_Scdddes> scdddesAsync() {
-            return base.Channel.scdddesAsync();
-        }
-        
         public Genera_Transmision_Oracle.BataTransaction.Ent_PathDBF pathdbf() {
             return base.Channel.pathdbf();
         }
         
-        public System.Threading.Tasks.Task<Genera_Transmision_Oracle.BataTransaction.Ent_PathDBF> pathdbfAsync() {
-            return base.Channel.pathdbfAsync();
-        }
-        
         public Genera_Transmision_Oracle.BataTransaction.Ent_File list_file() {
             return base.Channel.list_file();
-        }
-        
-        public System.Threading.Tasks.Task<Genera_Transmision_Oracle.BataTransaction.Ent_File> list_fileAsync() {
-            return base.Channel.list_fileAsync();
         }
         
         [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
@@ -6521,17 +6379,6 @@ namespace Genera_Transmision_Oracle.BataTransaction {
         }
         
         [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
-        System.Threading.Tasks.Task<Genera_Transmision_Oracle.BataTransaction.ws_lista_alma_EcuResponse> Genera_Transmision_Oracle.BataTransaction.Bata_TransactionSoap.ws_lista_alma_EcuAsync(Genera_Transmision_Oracle.BataTransaction.ws_lista_alma_EcuRequest request) {
-            return base.Channel.ws_lista_alma_EcuAsync(request);
-        }
-        
-        public System.Threading.Tasks.Task<Genera_Transmision_Oracle.BataTransaction.ws_lista_alma_EcuResponse> ws_lista_alma_EcuAsync(Genera_Transmision_Oracle.BataTransaction.ValidateAcceso ValidateAcceso) {
-            Genera_Transmision_Oracle.BataTransaction.ws_lista_alma_EcuRequest inValue = new Genera_Transmision_Oracle.BataTransaction.ws_lista_alma_EcuRequest();
-            inValue.ValidateAcceso = ValidateAcceso;
-            return ((Genera_Transmision_Oracle.BataTransaction.Bata_TransactionSoap)(this)).ws_lista_alma_EcuAsync(inValue);
-        }
-        
-        [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
         Genera_Transmision_Oracle.BataTransaction.ws_get_xstore_carpeta_uploadResponse Genera_Transmision_Oracle.BataTransaction.Bata_TransactionSoap.ws_get_xstore_carpeta_upload(Genera_Transmision_Oracle.BataTransaction.ws_get_xstore_carpeta_uploadRequest request) {
             return base.Channel.ws_get_xstore_carpeta_upload(request);
         }
@@ -6541,17 +6388,6 @@ namespace Genera_Transmision_Oracle.BataTransaction {
             inValue.ValidateAcceso = ValidateAcceso;
             Genera_Transmision_Oracle.BataTransaction.ws_get_xstore_carpeta_uploadResponse retVal = ((Genera_Transmision_Oracle.BataTransaction.Bata_TransactionSoap)(this)).ws_get_xstore_carpeta_upload(inValue);
             return retVal.ws_get_xstore_carpeta_uploadResult;
-        }
-        
-        [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
-        System.Threading.Tasks.Task<Genera_Transmision_Oracle.BataTransaction.ws_get_xstore_carpeta_uploadResponse> Genera_Transmision_Oracle.BataTransaction.Bata_TransactionSoap.ws_get_xstore_carpeta_uploadAsync(Genera_Transmision_Oracle.BataTransaction.ws_get_xstore_carpeta_uploadRequest request) {
-            return base.Channel.ws_get_xstore_carpeta_uploadAsync(request);
-        }
-        
-        public System.Threading.Tasks.Task<Genera_Transmision_Oracle.BataTransaction.ws_get_xstore_carpeta_uploadResponse> ws_get_xstore_carpeta_uploadAsync(Genera_Transmision_Oracle.BataTransaction.ValidateAcceso ValidateAcceso) {
-            Genera_Transmision_Oracle.BataTransaction.ws_get_xstore_carpeta_uploadRequest inValue = new Genera_Transmision_Oracle.BataTransaction.ws_get_xstore_carpeta_uploadRequest();
-            inValue.ValidateAcceso = ValidateAcceso;
-            return ((Genera_Transmision_Oracle.BataTransaction.Bata_TransactionSoap)(this)).ws_get_xstore_carpeta_uploadAsync(inValue);
         }
         
         [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
@@ -6569,19 +6405,6 @@ namespace Genera_Transmision_Oracle.BataTransaction {
         }
         
         [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
-        System.Threading.Tasks.Task<Genera_Transmision_Oracle.BataTransaction.ws_update_transaction_guiasResponse> Genera_Transmision_Oracle.BataTransaction.Bata_TransactionSoap.ws_update_transaction_guiasAsync(Genera_Transmision_Oracle.BataTransaction.ws_update_transaction_guiasRequest request) {
-            return base.Channel.ws_update_transaction_guiasAsync(request);
-        }
-        
-        public System.Threading.Tasks.Task<Genera_Transmision_Oracle.BataTransaction.ws_update_transaction_guiasResponse> ws_update_transaction_guiasAsync(Genera_Transmision_Oracle.BataTransaction.ValidateAcceso ValidateAcceso, Genera_Transmision_Oracle.BataTransaction.Ent_Fvdespc fvdespc, Genera_Transmision_Oracle.BataTransaction.Ent_Scdddes scdddes) {
-            Genera_Transmision_Oracle.BataTransaction.ws_update_transaction_guiasRequest inValue = new Genera_Transmision_Oracle.BataTransaction.ws_update_transaction_guiasRequest();
-            inValue.ValidateAcceso = ValidateAcceso;
-            inValue.fvdespc = fvdespc;
-            inValue.scdddes = scdddes;
-            return ((Genera_Transmision_Oracle.BataTransaction.Bata_TransactionSoap)(this)).ws_update_transaction_guiasAsync(inValue);
-        }
-        
-        [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
         Genera_Transmision_Oracle.BataTransaction.ws_errores_transactionResponse Genera_Transmision_Oracle.BataTransaction.Bata_TransactionSoap.ws_errores_transaction(Genera_Transmision_Oracle.BataTransaction.ws_errores_transactionRequest request) {
             return base.Channel.ws_errores_transaction(request);
         }
@@ -6596,19 +6419,6 @@ namespace Genera_Transmision_Oracle.BataTransaction {
         }
         
         [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
-        System.Threading.Tasks.Task<Genera_Transmision_Oracle.BataTransaction.ws_errores_transactionResponse> Genera_Transmision_Oracle.BataTransaction.Bata_TransactionSoap.ws_errores_transactionAsync(Genera_Transmision_Oracle.BataTransaction.ws_errores_transactionRequest request) {
-            return base.Channel.ws_errores_transactionAsync(request);
-        }
-        
-        public System.Threading.Tasks.Task<Genera_Transmision_Oracle.BataTransaction.ws_errores_transactionResponse> ws_errores_transactionAsync(Genera_Transmision_Oracle.BataTransaction.ValidateAcceso ValidateAcceso, string tip_error, string msg) {
-            Genera_Transmision_Oracle.BataTransaction.ws_errores_transactionRequest inValue = new Genera_Transmision_Oracle.BataTransaction.ws_errores_transactionRequest();
-            inValue.ValidateAcceso = ValidateAcceso;
-            inValue.tip_error = tip_error;
-            inValue.msg = msg;
-            return ((Genera_Transmision_Oracle.BataTransaction.Bata_TransactionSoap)(this)).ws_errores_transactionAsync(inValue);
-        }
-        
-        [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
         Genera_Transmision_Oracle.BataTransaction.ws_get_location_dbfResponse Genera_Transmision_Oracle.BataTransaction.Bata_TransactionSoap.ws_get_location_dbf(Genera_Transmision_Oracle.BataTransaction.ws_get_location_dbfRequest request) {
             return base.Channel.ws_get_location_dbf(request);
         }
@@ -6618,17 +6428,6 @@ namespace Genera_Transmision_Oracle.BataTransaction {
             inValue.ValidateAcceso = ValidateAcceso;
             Genera_Transmision_Oracle.BataTransaction.ws_get_location_dbfResponse retVal = ((Genera_Transmision_Oracle.BataTransaction.Bata_TransactionSoap)(this)).ws_get_location_dbf(inValue);
             return retVal.ws_get_location_dbfResult;
-        }
-        
-        [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
-        System.Threading.Tasks.Task<Genera_Transmision_Oracle.BataTransaction.ws_get_location_dbfResponse> Genera_Transmision_Oracle.BataTransaction.Bata_TransactionSoap.ws_get_location_dbfAsync(Genera_Transmision_Oracle.BataTransaction.ws_get_location_dbfRequest request) {
-            return base.Channel.ws_get_location_dbfAsync(request);
-        }
-        
-        public System.Threading.Tasks.Task<Genera_Transmision_Oracle.BataTransaction.ws_get_location_dbfResponse> ws_get_location_dbfAsync(Genera_Transmision_Oracle.BataTransaction.ValidateAcceso ValidateAcceso) {
-            Genera_Transmision_Oracle.BataTransaction.ws_get_location_dbfRequest inValue = new Genera_Transmision_Oracle.BataTransaction.ws_get_location_dbfRequest();
-            inValue.ValidateAcceso = ValidateAcceso;
-            return ((Genera_Transmision_Oracle.BataTransaction.Bata_TransactionSoap)(this)).ws_get_location_dbfAsync(inValue);
         }
         
         [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
@@ -6646,19 +6445,6 @@ namespace Genera_Transmision_Oracle.BataTransaction {
         }
         
         [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
-        System.Threading.Tasks.Task<Genera_Transmision_Oracle.BataTransaction.ws_get_file_uploadResponse> Genera_Transmision_Oracle.BataTransaction.Bata_TransactionSoap.ws_get_file_uploadAsync(Genera_Transmision_Oracle.BataTransaction.ws_get_file_uploadRequest request) {
-            return base.Channel.ws_get_file_uploadAsync(request);
-        }
-        
-        public System.Threading.Tasks.Task<Genera_Transmision_Oracle.BataTransaction.ws_get_file_uploadResponse> ws_get_file_uploadAsync(Genera_Transmision_Oracle.BataTransaction.ValidateAcceso ValidateAcceso, string tipofile_cod, Genera_Transmision_Oracle.BataTransaction.Ent_Lista_File lista_in) {
-            Genera_Transmision_Oracle.BataTransaction.ws_get_file_uploadRequest inValue = new Genera_Transmision_Oracle.BataTransaction.ws_get_file_uploadRequest();
-            inValue.ValidateAcceso = ValidateAcceso;
-            inValue.tipofile_cod = tipofile_cod;
-            inValue.lista_in = lista_in;
-            return ((Genera_Transmision_Oracle.BataTransaction.Bata_TransactionSoap)(this)).ws_get_file_uploadAsync(inValue);
-        }
-        
-        [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
         Genera_Transmision_Oracle.BataTransaction.ws_get_file_pathResponse Genera_Transmision_Oracle.BataTransaction.Bata_TransactionSoap.ws_get_file_path(Genera_Transmision_Oracle.BataTransaction.ws_get_file_pathRequest request) {
             return base.Channel.ws_get_file_path(request);
         }
@@ -6669,18 +6455,6 @@ namespace Genera_Transmision_Oracle.BataTransaction {
             inValue.tipo_file_cod = tipo_file_cod;
             Genera_Transmision_Oracle.BataTransaction.ws_get_file_pathResponse retVal = ((Genera_Transmision_Oracle.BataTransaction.Bata_TransactionSoap)(this)).ws_get_file_path(inValue);
             return retVal.ws_get_file_pathResult;
-        }
-        
-        [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
-        System.Threading.Tasks.Task<Genera_Transmision_Oracle.BataTransaction.ws_get_file_pathResponse> Genera_Transmision_Oracle.BataTransaction.Bata_TransactionSoap.ws_get_file_pathAsync(Genera_Transmision_Oracle.BataTransaction.ws_get_file_pathRequest request) {
-            return base.Channel.ws_get_file_pathAsync(request);
-        }
-        
-        public System.Threading.Tasks.Task<Genera_Transmision_Oracle.BataTransaction.ws_get_file_pathResponse> ws_get_file_pathAsync(Genera_Transmision_Oracle.BataTransaction.ValidateAcceso ValidateAcceso, string tipo_file_cod) {
-            Genera_Transmision_Oracle.BataTransaction.ws_get_file_pathRequest inValue = new Genera_Transmision_Oracle.BataTransaction.ws_get_file_pathRequest();
-            inValue.ValidateAcceso = ValidateAcceso;
-            inValue.tipo_file_cod = tipo_file_cod;
-            return ((Genera_Transmision_Oracle.BataTransaction.Bata_TransactionSoap)(this)).ws_get_file_pathAsync(inValue);
         }
         
         [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
@@ -6697,21 +6471,6 @@ namespace Genera_Transmision_Oracle.BataTransaction {
             inValue.obj_com = obj_com;
             Genera_Transmision_Oracle.BataTransaction.ws_download_file_comunicadoResponse retVal = ((Genera_Transmision_Oracle.BataTransaction.Bata_TransactionSoap)(this)).ws_download_file_comunicado(inValue);
             return retVal.ws_download_file_comunicadoResult;
-        }
-        
-        [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
-        System.Threading.Tasks.Task<Genera_Transmision_Oracle.BataTransaction.ws_download_file_comunicadoResponse> Genera_Transmision_Oracle.BataTransaction.Bata_TransactionSoap.ws_download_file_comunicadoAsync(Genera_Transmision_Oracle.BataTransaction.ws_download_file_comunicadoRequest request) {
-            return base.Channel.ws_download_file_comunicadoAsync(request);
-        }
-        
-        public System.Threading.Tasks.Task<Genera_Transmision_Oracle.BataTransaction.ws_download_file_comunicadoResponse> ws_download_file_comunicadoAsync(Genera_Transmision_Oracle.BataTransaction.ValidateAcceso ValidateAcceso, byte[] file, string file_name, string ruta_server_comunicado, Genera_Transmision_Oracle.BataTransaction.Ent_Comunicado obj_com) {
-            Genera_Transmision_Oracle.BataTransaction.ws_download_file_comunicadoRequest inValue = new Genera_Transmision_Oracle.BataTransaction.ws_download_file_comunicadoRequest();
-            inValue.ValidateAcceso = ValidateAcceso;
-            inValue.file = file;
-            inValue.file_name = file_name;
-            inValue.ruta_server_comunicado = ruta_server_comunicado;
-            inValue.obj_com = obj_com;
-            return ((Genera_Transmision_Oracle.BataTransaction.Bata_TransactionSoap)(this)).ws_download_file_comunicadoAsync(inValue);
         }
         
         [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
@@ -6732,22 +6491,6 @@ namespace Genera_Transmision_Oracle.BataTransaction {
         }
         
         [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
-        System.Threading.Tasks.Task<Genera_Transmision_Oracle.BataTransaction.ws_download_fileResponse> Genera_Transmision_Oracle.BataTransaction.Bata_TransactionSoap.ws_download_fileAsync(Genera_Transmision_Oracle.BataTransaction.ws_download_fileRequest request) {
-            return base.Channel.ws_download_fileAsync(request);
-        }
-        
-        public System.Threading.Tasks.Task<Genera_Transmision_Oracle.BataTransaction.ws_download_fileResponse> ws_download_fileAsync(Genera_Transmision_Oracle.BataTransaction.ValidateAcceso ValidateAcceso, byte[] file, string file_name, string file_tipo, string file_creacion, string file_update) {
-            Genera_Transmision_Oracle.BataTransaction.ws_download_fileRequest inValue = new Genera_Transmision_Oracle.BataTransaction.ws_download_fileRequest();
-            inValue.ValidateAcceso = ValidateAcceso;
-            inValue.file = file;
-            inValue.file_name = file_name;
-            inValue.file_tipo = file_tipo;
-            inValue.file_creacion = file_creacion;
-            inValue.file_update = file_update;
-            return ((Genera_Transmision_Oracle.BataTransaction.Bata_TransactionSoap)(this)).ws_download_fileAsync(inValue);
-        }
-        
-        [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
         Genera_Transmision_Oracle.BataTransaction.ws_get_time_servicetransResponse Genera_Transmision_Oracle.BataTransaction.Bata_TransactionSoap.ws_get_time_servicetrans(Genera_Transmision_Oracle.BataTransaction.ws_get_time_servicetransRequest request) {
             return base.Channel.ws_get_time_servicetrans(request);
         }
@@ -6758,18 +6501,6 @@ namespace Genera_Transmision_Oracle.BataTransaction {
             inValue.cser_cod = cser_cod;
             Genera_Transmision_Oracle.BataTransaction.ws_get_time_servicetransResponse retVal = ((Genera_Transmision_Oracle.BataTransaction.Bata_TransactionSoap)(this)).ws_get_time_servicetrans(inValue);
             return retVal.ws_get_time_servicetransResult;
-        }
-        
-        [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
-        System.Threading.Tasks.Task<Genera_Transmision_Oracle.BataTransaction.ws_get_time_servicetransResponse> Genera_Transmision_Oracle.BataTransaction.Bata_TransactionSoap.ws_get_time_servicetransAsync(Genera_Transmision_Oracle.BataTransaction.ws_get_time_servicetransRequest request) {
-            return base.Channel.ws_get_time_servicetransAsync(request);
-        }
-        
-        public System.Threading.Tasks.Task<Genera_Transmision_Oracle.BataTransaction.ws_get_time_servicetransResponse> ws_get_time_servicetransAsync(Genera_Transmision_Oracle.BataTransaction.ValidateAcceso ValidateAcceso, string cser_cod) {
-            Genera_Transmision_Oracle.BataTransaction.ws_get_time_servicetransRequest inValue = new Genera_Transmision_Oracle.BataTransaction.ws_get_time_servicetransRequest();
-            inValue.ValidateAcceso = ValidateAcceso;
-            inValue.cser_cod = cser_cod;
-            return ((Genera_Transmision_Oracle.BataTransaction.Bata_TransactionSoap)(this)).ws_get_time_servicetransAsync(inValue);
         }
         
         [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
@@ -6786,18 +6517,6 @@ namespace Genera_Transmision_Oracle.BataTransaction {
         }
         
         [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
-        System.Threading.Tasks.Task<Genera_Transmision_Oracle.BataTransaction.ws_envia_stock_tdaResponse> Genera_Transmision_Oracle.BataTransaction.Bata_TransactionSoap.ws_envia_stock_tdaAsync(Genera_Transmision_Oracle.BataTransaction.ws_envia_stock_tdaRequest request) {
-            return base.Channel.ws_envia_stock_tdaAsync(request);
-        }
-        
-        public System.Threading.Tasks.Task<Genera_Transmision_Oracle.BataTransaction.ws_envia_stock_tdaResponse> ws_envia_stock_tdaAsync(Genera_Transmision_Oracle.BataTransaction.ValidateAcceso ValidateAcceso, Genera_Transmision_Oracle.BataTransaction.Ent_Lista_Stock lista_stk) {
-            Genera_Transmision_Oracle.BataTransaction.ws_envia_stock_tdaRequest inValue = new Genera_Transmision_Oracle.BataTransaction.ws_envia_stock_tdaRequest();
-            inValue.ValidateAcceso = ValidateAcceso;
-            inValue.lista_stk = lista_stk;
-            return ((Genera_Transmision_Oracle.BataTransaction.Bata_TransactionSoap)(this)).ws_envia_stock_tdaAsync(inValue);
-        }
-        
-        [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
         Genera_Transmision_Oracle.BataTransaction.ws_envia_stock_almacenResponse Genera_Transmision_Oracle.BataTransaction.Bata_TransactionSoap.ws_envia_stock_almacen(Genera_Transmision_Oracle.BataTransaction.ws_envia_stock_almacenRequest request) {
             return base.Channel.ws_envia_stock_almacen(request);
         }
@@ -6808,18 +6527,6 @@ namespace Genera_Transmision_Oracle.BataTransaction {
             inValue.lista_stk = lista_stk;
             Genera_Transmision_Oracle.BataTransaction.ws_envia_stock_almacenResponse retVal = ((Genera_Transmision_Oracle.BataTransaction.Bata_TransactionSoap)(this)).ws_envia_stock_almacen(inValue);
             return retVal.ws_envia_stock_almacenResult;
-        }
-        
-        [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
-        System.Threading.Tasks.Task<Genera_Transmision_Oracle.BataTransaction.ws_envia_stock_almacenResponse> Genera_Transmision_Oracle.BataTransaction.Bata_TransactionSoap.ws_envia_stock_almacenAsync(Genera_Transmision_Oracle.BataTransaction.ws_envia_stock_almacenRequest request) {
-            return base.Channel.ws_envia_stock_almacenAsync(request);
-        }
-        
-        public System.Threading.Tasks.Task<Genera_Transmision_Oracle.BataTransaction.ws_envia_stock_almacenResponse> ws_envia_stock_almacenAsync(Genera_Transmision_Oracle.BataTransaction.ValidateAcceso ValidateAcceso, Genera_Transmision_Oracle.BataTransaction.Ent_Lista_Stock_Almacen lista_stk) {
-            Genera_Transmision_Oracle.BataTransaction.ws_envia_stock_almacenRequest inValue = new Genera_Transmision_Oracle.BataTransaction.ws_envia_stock_almacenRequest();
-            inValue.ValidateAcceso = ValidateAcceso;
-            inValue.lista_stk = lista_stk;
-            return ((Genera_Transmision_Oracle.BataTransaction.Bata_TransactionSoap)(this)).ws_envia_stock_almacenAsync(inValue);
         }
         
         [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
@@ -6837,19 +6544,6 @@ namespace Genera_Transmision_Oracle.BataTransaction {
         }
         
         [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
-        System.Threading.Tasks.Task<Genera_Transmision_Oracle.BataTransaction.ws_envia_venta_tdaResponse> Genera_Transmision_Oracle.BataTransaction.Bata_TransactionSoap.ws_envia_venta_tdaAsync(Genera_Transmision_Oracle.BataTransaction.ws_envia_venta_tdaRequest request) {
-            return base.Channel.ws_envia_venta_tdaAsync(request);
-        }
-        
-        public System.Threading.Tasks.Task<Genera_Transmision_Oracle.BataTransaction.ws_envia_venta_tdaResponse> ws_envia_venta_tdaAsync(Genera_Transmision_Oracle.BataTransaction.ValidateAcceso ValidateAcceso, string cod_tda, System.Data.DataSet ds_transac_tda) {
-            Genera_Transmision_Oracle.BataTransaction.ws_envia_venta_tdaRequest inValue = new Genera_Transmision_Oracle.BataTransaction.ws_envia_venta_tdaRequest();
-            inValue.ValidateAcceso = ValidateAcceso;
-            inValue.cod_tda = cod_tda;
-            inValue.ds_transac_tda = ds_transac_tda;
-            return ((Genera_Transmision_Oracle.BataTransaction.Bata_TransactionSoap)(this)).ws_envia_venta_tdaAsync(inValue);
-        }
-        
-        [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
         Genera_Transmision_Oracle.BataTransaction.ws_envia_venta_tda_listResponse Genera_Transmision_Oracle.BataTransaction.Bata_TransactionSoap.ws_envia_venta_tda_list(Genera_Transmision_Oracle.BataTransaction.ws_envia_venta_tda_listRequest request) {
             return base.Channel.ws_envia_venta_tda_list(request);
         }
@@ -6861,19 +6555,6 @@ namespace Genera_Transmision_Oracle.BataTransaction {
             inValue.listaventa = listaventa;
             Genera_Transmision_Oracle.BataTransaction.ws_envia_venta_tda_listResponse retVal = ((Genera_Transmision_Oracle.BataTransaction.Bata_TransactionSoap)(this)).ws_envia_venta_tda_list(inValue);
             return retVal.ws_envia_venta_tda_listResult;
-        }
-        
-        [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
-        System.Threading.Tasks.Task<Genera_Transmision_Oracle.BataTransaction.ws_envia_venta_tda_listResponse> Genera_Transmision_Oracle.BataTransaction.Bata_TransactionSoap.ws_envia_venta_tda_listAsync(Genera_Transmision_Oracle.BataTransaction.ws_envia_venta_tda_listRequest request) {
-            return base.Channel.ws_envia_venta_tda_listAsync(request);
-        }
-        
-        public System.Threading.Tasks.Task<Genera_Transmision_Oracle.BataTransaction.ws_envia_venta_tda_listResponse> ws_envia_venta_tda_listAsync(Genera_Transmision_Oracle.BataTransaction.ValidateAcceso ValidateAcceso, string cod_tda, Genera_Transmision_Oracle.BataTransaction.Ent_Venta_List listaventa) {
-            Genera_Transmision_Oracle.BataTransaction.ws_envia_venta_tda_listRequest inValue = new Genera_Transmision_Oracle.BataTransaction.ws_envia_venta_tda_listRequest();
-            inValue.ValidateAcceso = ValidateAcceso;
-            inValue.cod_tda = cod_tda;
-            inValue.listaventa = listaventa;
-            return ((Genera_Transmision_Oracle.BataTransaction.Bata_TransactionSoap)(this)).ws_envia_venta_tda_listAsync(inValue);
         }
         
         [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
@@ -6893,21 +6574,6 @@ namespace Genera_Transmision_Oracle.BataTransaction {
         }
         
         [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
-        System.Threading.Tasks.Task<Genera_Transmision_Oracle.BataTransaction.ws_envia_venta_tda_listaResponse> Genera_Transmision_Oracle.BataTransaction.Bata_TransactionSoap.ws_envia_venta_tda_listaAsync(Genera_Transmision_Oracle.BataTransaction.ws_envia_venta_tda_listaRequest request) {
-            return base.Channel.ws_envia_venta_tda_listaAsync(request);
-        }
-        
-        public System.Threading.Tasks.Task<Genera_Transmision_Oracle.BataTransaction.ws_envia_venta_tda_listaResponse> ws_envia_venta_tda_listaAsync(Genera_Transmision_Oracle.BataTransaction.ValidateAcceso ValidateAcceso, string cod_tda, Genera_Transmision_Oracle.BataTransaction.Ent_List_Ffactc ffactc, Genera_Transmision_Oracle.BataTransaction.Ent_List_Ffactd ffactd, Genera_Transmision_Oracle.BataTransaction.Ent_List_Fnotaa fnotaa) {
-            Genera_Transmision_Oracle.BataTransaction.ws_envia_venta_tda_listaRequest inValue = new Genera_Transmision_Oracle.BataTransaction.ws_envia_venta_tda_listaRequest();
-            inValue.ValidateAcceso = ValidateAcceso;
-            inValue.cod_tda = cod_tda;
-            inValue.ffactc = ffactc;
-            inValue.ffactd = ffactd;
-            inValue.fnotaa = fnotaa;
-            return ((Genera_Transmision_Oracle.BataTransaction.Bata_TransactionSoap)(this)).ws_envia_venta_tda_listaAsync(inValue);
-        }
-        
-        [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
         Genera_Transmision_Oracle.BataTransaction.ws_transmision_ingreso_nubeResponse Genera_Transmision_Oracle.BataTransaction.Bata_TransactionSoap.ws_transmision_ingreso_nube(Genera_Transmision_Oracle.BataTransaction.ws_transmision_ingreso_nubeRequest request) {
             return base.Channel.ws_transmision_ingreso_nube(request);
         }
@@ -6919,19 +6585,6 @@ namespace Genera_Transmision_Oracle.BataTransaction {
             inValue._name = _name;
             Genera_Transmision_Oracle.BataTransaction.ws_transmision_ingreso_nubeResponse retVal = ((Genera_Transmision_Oracle.BataTransaction.Bata_TransactionSoap)(this)).ws_transmision_ingreso_nube(inValue);
             return retVal.ws_transmision_ingreso_nubeResult;
-        }
-        
-        [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
-        System.Threading.Tasks.Task<Genera_Transmision_Oracle.BataTransaction.ws_transmision_ingreso_nubeResponse> Genera_Transmision_Oracle.BataTransaction.Bata_TransactionSoap.ws_transmision_ingreso_nubeAsync(Genera_Transmision_Oracle.BataTransaction.ws_transmision_ingreso_nubeRequest request) {
-            return base.Channel.ws_transmision_ingreso_nubeAsync(request);
-        }
-        
-        public System.Threading.Tasks.Task<Genera_Transmision_Oracle.BataTransaction.ws_transmision_ingreso_nubeResponse> ws_transmision_ingreso_nubeAsync(Genera_Transmision_Oracle.BataTransaction.ValidateAcceso ValidateAcceso, byte[] _archivo_zip, string _name) {
-            Genera_Transmision_Oracle.BataTransaction.ws_transmision_ingreso_nubeRequest inValue = new Genera_Transmision_Oracle.BataTransaction.ws_transmision_ingreso_nubeRequest();
-            inValue.ValidateAcceso = ValidateAcceso;
-            inValue._archivo_zip = _archivo_zip;
-            inValue._name = _name;
-            return ((Genera_Transmision_Oracle.BataTransaction.Bata_TransactionSoap)(this)).ws_transmision_ingreso_nubeAsync(inValue);
         }
         
         [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
@@ -6948,18 +6601,6 @@ namespace Genera_Transmision_Oracle.BataTransaction {
         }
         
         [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
-        System.Threading.Tasks.Task<Genera_Transmision_Oracle.BataTransaction.ws_envia_Scactco_listResponse> Genera_Transmision_Oracle.BataTransaction.Bata_TransactionSoap.ws_envia_Scactco_listAsync(Genera_Transmision_Oracle.BataTransaction.ws_envia_Scactco_listRequest request) {
-            return base.Channel.ws_envia_Scactco_listAsync(request);
-        }
-        
-        public System.Threading.Tasks.Task<Genera_Transmision_Oracle.BataTransaction.ws_envia_Scactco_listResponse> ws_envia_Scactco_listAsync(Genera_Transmision_Oracle.BataTransaction.ValidateAcceso ValidateAcceso, Genera_Transmision_Oracle.BataTransaction.Ent_List_Scactco listscactco) {
-            Genera_Transmision_Oracle.BataTransaction.ws_envia_Scactco_listRequest inValue = new Genera_Transmision_Oracle.BataTransaction.ws_envia_Scactco_listRequest();
-            inValue.ValidateAcceso = ValidateAcceso;
-            inValue.listscactco = listscactco;
-            return ((Genera_Transmision_Oracle.BataTransaction.Bata_TransactionSoap)(this)).ws_envia_Scactco_listAsync(inValue);
-        }
-        
-        [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
         Genera_Transmision_Oracle.BataTransaction.ws_envia_scdrembResponse Genera_Transmision_Oracle.BataTransaction.Bata_TransactionSoap.ws_envia_scdremb(Genera_Transmision_Oracle.BataTransaction.ws_envia_scdrembRequest request) {
             return base.Channel.ws_envia_scdremb(request);
         }
@@ -6973,18 +6614,6 @@ namespace Genera_Transmision_Oracle.BataTransaction {
         }
         
         [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
-        System.Threading.Tasks.Task<Genera_Transmision_Oracle.BataTransaction.ws_envia_scdrembResponse> Genera_Transmision_Oracle.BataTransaction.Bata_TransactionSoap.ws_envia_scdrembAsync(Genera_Transmision_Oracle.BataTransaction.ws_envia_scdrembRequest request) {
-            return base.Channel.ws_envia_scdrembAsync(request);
-        }
-        
-        public System.Threading.Tasks.Task<Genera_Transmision_Oracle.BataTransaction.ws_envia_scdrembResponse> ws_envia_scdrembAsync(Genera_Transmision_Oracle.BataTransaction.ValidateAcceso ValidateAcceso, Genera_Transmision_Oracle.BataTransaction.Ent_List_Scdrem list_scdrem) {
-            Genera_Transmision_Oracle.BataTransaction.ws_envia_scdrembRequest inValue = new Genera_Transmision_Oracle.BataTransaction.ws_envia_scdrembRequest();
-            inValue.ValidateAcceso = ValidateAcceso;
-            inValue.list_scdrem = list_scdrem;
-            return ((Genera_Transmision_Oracle.BataTransaction.Bata_TransactionSoap)(this)).ws_envia_scdrembAsync(inValue);
-        }
-        
-        [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
         Genera_Transmision_Oracle.BataTransaction.ws_valida_traspaso_tdaResponse Genera_Transmision_Oracle.BataTransaction.Bata_TransactionSoap.ws_valida_traspaso_tda(Genera_Transmision_Oracle.BataTransaction.ws_valida_traspaso_tdaRequest request) {
             return base.Channel.ws_valida_traspaso_tda(request);
         }
@@ -6995,18 +6624,6 @@ namespace Genera_Transmision_Oracle.BataTransaction {
             inValue.cod_tda = cod_tda;
             Genera_Transmision_Oracle.BataTransaction.ws_valida_traspaso_tdaResponse retVal = ((Genera_Transmision_Oracle.BataTransaction.Bata_TransactionSoap)(this)).ws_valida_traspaso_tda(inValue);
             return retVal.ws_valida_traspaso_tdaResult;
-        }
-        
-        [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
-        System.Threading.Tasks.Task<Genera_Transmision_Oracle.BataTransaction.ws_valida_traspaso_tdaResponse> Genera_Transmision_Oracle.BataTransaction.Bata_TransactionSoap.ws_valida_traspaso_tdaAsync(Genera_Transmision_Oracle.BataTransaction.ws_valida_traspaso_tdaRequest request) {
-            return base.Channel.ws_valida_traspaso_tdaAsync(request);
-        }
-        
-        public System.Threading.Tasks.Task<Genera_Transmision_Oracle.BataTransaction.ws_valida_traspaso_tdaResponse> ws_valida_traspaso_tdaAsync(Genera_Transmision_Oracle.BataTransaction.ValidateAcceso ValidateAcceso, string cod_tda) {
-            Genera_Transmision_Oracle.BataTransaction.ws_valida_traspaso_tdaRequest inValue = new Genera_Transmision_Oracle.BataTransaction.ws_valida_traspaso_tdaRequest();
-            inValue.ValidateAcceso = ValidateAcceso;
-            inValue.cod_tda = cod_tda;
-            return ((Genera_Transmision_Oracle.BataTransaction.Bata_TransactionSoap)(this)).ws_valida_traspaso_tdaAsync(inValue);
         }
         
         [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
@@ -7024,19 +6641,6 @@ namespace Genera_Transmision_Oracle.BataTransaction {
         }
         
         [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
-        System.Threading.Tasks.Task<Genera_Transmision_Oracle.BataTransaction.ws_envio_traspaso_tdaResponse> Genera_Transmision_Oracle.BataTransaction.Bata_TransactionSoap.ws_envio_traspaso_tdaAsync(Genera_Transmision_Oracle.BataTransaction.ws_envio_traspaso_tdaRequest request) {
-            return base.Channel.ws_envio_traspaso_tdaAsync(request);
-        }
-        
-        public System.Threading.Tasks.Task<Genera_Transmision_Oracle.BataTransaction.ws_envio_traspaso_tdaResponse> ws_envio_traspaso_tdaAsync(Genera_Transmision_Oracle.BataTransaction.ValidateAcceso ValidateAcceso, string cod_tda, Genera_Transmision_Oracle.BataTransaction.Ent_Fvdespc[] despacho) {
-            Genera_Transmision_Oracle.BataTransaction.ws_envio_traspaso_tdaRequest inValue = new Genera_Transmision_Oracle.BataTransaction.ws_envio_traspaso_tdaRequest();
-            inValue.ValidateAcceso = ValidateAcceso;
-            inValue.cod_tda = cod_tda;
-            inValue.despacho = despacho;
-            return ((Genera_Transmision_Oracle.BataTransaction.Bata_TransactionSoap)(this)).ws_envio_traspaso_tdaAsync(inValue);
-        }
-        
-        [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
         Genera_Transmision_Oracle.BataTransaction.ws_genera_cupon_returnResponse Genera_Transmision_Oracle.BataTransaction.Bata_TransactionSoap.ws_genera_cupon_return(Genera_Transmision_Oracle.BataTransaction.ws_genera_cupon_returnRequest request) {
             return base.Channel.ws_genera_cupon_return(request);
         }
@@ -7049,112 +6653,52 @@ namespace Genera_Transmision_Oracle.BataTransaction {
             return retVal.ws_genera_cupon_returnResult;
         }
         
-        [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
-        System.Threading.Tasks.Task<Genera_Transmision_Oracle.BataTransaction.ws_genera_cupon_returnResponse> Genera_Transmision_Oracle.BataTransaction.Bata_TransactionSoap.ws_genera_cupon_returnAsync(Genera_Transmision_Oracle.BataTransaction.ws_genera_cupon_returnRequest request) {
-            return base.Channel.ws_genera_cupon_returnAsync(request);
-        }
-        
-        public System.Threading.Tasks.Task<Genera_Transmision_Oracle.BataTransaction.ws_genera_cupon_returnResponse> ws_genera_cupon_returnAsync(Genera_Transmision_Oracle.BataTransaction.ValidateAcceso ValidateAcceso, Genera_Transmision_Oracle.BataTransaction.Ent_Tk_Set_Parametro param) {
-            Genera_Transmision_Oracle.BataTransaction.ws_genera_cupon_returnRequest inValue = new Genera_Transmision_Oracle.BataTransaction.ws_genera_cupon_returnRequest();
-            inValue.ValidateAcceso = ValidateAcceso;
-            inValue.param = param;
-            return ((Genera_Transmision_Oracle.BataTransaction.Bata_TransactionSoap)(this)).ws_genera_cupon_returnAsync(inValue);
-        }
-        
         public string[] ws_consulta_stock_otra_tda(string cod_tda, string cod_art, string calidad, string talla, double cant, string cod_tda_b) {
             return base.Channel.ws_consulta_stock_otra_tda(cod_tda, cod_art, calidad, talla, cant, cod_tda_b);
-        }
-        
-        public System.Threading.Tasks.Task<string[]> ws_consulta_stock_otra_tdaAsync(string cod_tda, string cod_art, string calidad, string talla, double cant, string cod_tda_b) {
-            return base.Channel.ws_consulta_stock_otra_tdaAsync(cod_tda, cod_art, calidad, talla, cant, cod_tda_b);
         }
         
         public string[] ws_insertar_guia_cvt(string cod_tda, System.Data.DataSet dsGuia) {
             return base.Channel.ws_insertar_guia_cvt(cod_tda, dsGuia);
         }
         
-        public System.Threading.Tasks.Task<string[]> ws_insertar_guia_cvtAsync(string cod_tda, System.Data.DataSet dsGuia) {
-            return base.Channel.ws_insertar_guia_cvtAsync(cod_tda, dsGuia);
-        }
-        
         public string[] ws_actualizar_guia(string cod_tda, string serie, string numero, int id) {
             return base.Channel.ws_actualizar_guia(cod_tda, serie, numero, id);
-        }
-        
-        public System.Threading.Tasks.Task<string[]> ws_actualizar_guiaAsync(string cod_tda, string serie, string numero, int id) {
-            return base.Channel.ws_actualizar_guiaAsync(cod_tda, serie, numero, id);
         }
         
         public string[] ws_insertar_historial_estado_cv(string cod_tda, string cod_entid, string fc_nint, string id_estado, string cod_usuario, string descripcion, string cod_vendedor, string serie_numero) {
             return base.Channel.ws_insertar_historial_estado_cv(cod_tda, cod_entid, fc_nint, id_estado, cod_usuario, descripcion, cod_vendedor, serie_numero);
         }
         
-        public System.Threading.Tasks.Task<string[]> ws_insertar_historial_estado_cvAsync(string cod_tda, string cod_entid, string fc_nint, string id_estado, string cod_usuario, string descripcion, string cod_vendedor, string serie_numero) {
-            return base.Channel.ws_insertar_historial_estado_cvAsync(cod_tda, cod_entid, fc_nint, id_estado, cod_usuario, descripcion, cod_vendedor, serie_numero);
-        }
-        
         public System.Data.DataSet ws_consultar_guias(string cod_tda) {
             return base.Channel.ws_consultar_guias(cod_tda);
-        }
-        
-        public System.Threading.Tasks.Task<System.Data.DataSet> ws_consultar_guiasAsync(string cod_tda) {
-            return base.Channel.ws_consultar_guiasAsync(cod_tda);
         }
         
         public System.Data.DataSet ws_consultar_guias_actualizadas(string cod_tda, int id) {
             return base.Channel.ws_consultar_guias_actualizadas(cod_tda, id);
         }
         
-        public System.Threading.Tasks.Task<System.Data.DataSet> ws_consultar_guias_actualizadasAsync(string cod_tda, int id) {
-            return base.Channel.ws_consultar_guias_actualizadasAsync(cod_tda, id);
-        }
-        
         public System.Data.DataSet ws_consultar_tiendas_disponibles_cv(string cod_tda) {
             return base.Channel.ws_consultar_tiendas_disponibles_cv(cod_tda);
-        }
-        
-        public System.Threading.Tasks.Task<System.Data.DataSet> ws_consultar_tiendas_disponibles_cvAsync(string cod_tda) {
-            return base.Channel.ws_consultar_tiendas_disponibles_cvAsync(cod_tda);
         }
         
         public System.Data.DataSet ws_consultar_comprobantes(string cod_tda, string tipo, string serie, string numero, string cod_entid) {
             return base.Channel.ws_consultar_comprobantes(cod_tda, tipo, serie, numero, cod_entid);
         }
         
-        public System.Threading.Tasks.Task<System.Data.DataSet> ws_consultar_comprobantesAsync(string cod_tda, string tipo, string serie, string numero, string cod_entid) {
-            return base.Channel.ws_consultar_comprobantesAsync(cod_tda, tipo, serie, numero, cod_entid);
-        }
-        
         public Genera_Transmision_Oracle.BataTransaction.Ent_Paperless_Return ws_get_FE(string ruc, string login, string password, string tipodoc, string folio, string tipoRetorno) {
             return base.Channel.ws_get_FE(ruc, login, password, tipodoc, folio, tipoRetorno);
-        }
-        
-        public System.Threading.Tasks.Task<Genera_Transmision_Oracle.BataTransaction.Ent_Paperless_Return> ws_get_FEAsync(string ruc, string login, string password, string tipodoc, string folio, string tipoRetorno) {
-            return base.Channel.ws_get_FEAsync(ruc, login, password, tipodoc, folio, tipoRetorno);
         }
         
         public System.Data.DataSet ws_consultar_ganador_ruleta_bata(string cod_tda) {
             return base.Channel.ws_consultar_ganador_ruleta_bata(cod_tda);
         }
         
-        public System.Threading.Tasks.Task<System.Data.DataSet> ws_consultar_ganador_ruleta_bataAsync(string cod_tda) {
-            return base.Channel.ws_consultar_ganador_ruleta_bataAsync(cod_tda);
-        }
-        
         public string[] ws_actualizar_cupon_ruleta(string cod_tda, string codigo, string estado, string doc_vta) {
             return base.Channel.ws_actualizar_cupon_ruleta(cod_tda, codigo, estado, doc_vta);
         }
         
-        public System.Threading.Tasks.Task<string[]> ws_actualizar_cupon_ruletaAsync(string cod_tda, string codigo, string estado, string doc_vta) {
-            return base.Channel.ws_actualizar_cupon_ruletaAsync(cod_tda, codigo, estado, doc_vta);
-        }
-        
         public System.Data.DataSet ws_validar_cupon_ruleta_bata(string cod_tda, string codigo) {
             return base.Channel.ws_validar_cupon_ruleta_bata(cod_tda, codigo);
-        }
-        
-        public System.Threading.Tasks.Task<System.Data.DataSet> ws_validar_cupon_ruleta_bataAsync(string cod_tda, string codigo) {
-            return base.Channel.ws_validar_cupon_ruleta_bataAsync(cod_tda, codigo);
         }
     }
 }

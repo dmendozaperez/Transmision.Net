@@ -47,7 +47,8 @@
             // Install_Trans_Oracle
             // 
             this.Installers.AddRange(new System.Configuration.Install.Installer[] {
-            this.serviceInstaller1});
+            this.serviceInstaller1,
+            this.serviceProcessInstaller1});
 
         }
 
