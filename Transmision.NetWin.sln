@@ -40,6 +40,8 @@ Project("{6141683F-8A12-4E36-9623-2EB02B2C2303}") = "Instalador_Oracle", "Instal
 EndProject
 Project("{54435603-DBB4-11D2-8724-00A0C9A8B90C}") = "Instalador_Oracle_Project", "Instalador_Oracle_Project\Instalador_Oracle_Project.vdproj", "{AE9D97FD-C866-407E-8B0F-F51EDD6EFBBE}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Activar_Servicio_Oracle", "Activar_Servicio_Oracle\Activar_Servicio_Oracle.csproj", "{FA71B58E-A341-4115-ABAC-9B6A23FA6501}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		CD_ROM|Any CPU = CD_ROM|Any CPU
@@ -194,6 +196,16 @@ Global
 		{AE9D97FD-C866-407E-8B0F-F51EDD6EFBBE}.DVD-5|Any CPU.ActiveCfg = Debug
 		{AE9D97FD-C866-407E-8B0F-F51EDD6EFBBE}.Release|Any CPU.ActiveCfg = Release
 		{AE9D97FD-C866-407E-8B0F-F51EDD6EFBBE}.SingleImage|Any CPU.ActiveCfg = Release
+		{FA71B58E-A341-4115-ABAC-9B6A23FA6501}.CD_ROM|Any CPU.ActiveCfg = Release|Any CPU
+		{FA71B58E-A341-4115-ABAC-9B6A23FA6501}.CD_ROM|Any CPU.Build.0 = Release|Any CPU
+		{FA71B58E-A341-4115-ABAC-9B6A23FA6501}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{FA71B58E-A341-4115-ABAC-9B6A23FA6501}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{FA71B58E-A341-4115-ABAC-9B6A23FA6501}.DVD-5|Any CPU.ActiveCfg = Debug|Any CPU
+		{FA71B58E-A341-4115-ABAC-9B6A23FA6501}.DVD-5|Any CPU.Build.0 = Debug|Any CPU
+		{FA71B58E-A341-4115-ABAC-9B6A23FA6501}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{FA71B58E-A341-4115-ABAC-9B6A23FA6501}.Release|Any CPU.Build.0 = Release|Any CPU
+		{FA71B58E-A341-4115-ABAC-9B6A23FA6501}.SingleImage|Any CPU.ActiveCfg = Release|Any CPU
+		{FA71B58E-A341-4115-ABAC-9B6A23FA6501}.SingleImage|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
