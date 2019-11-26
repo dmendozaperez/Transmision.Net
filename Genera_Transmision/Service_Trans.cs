@@ -18,6 +18,8 @@ namespace Genera_Transmision
         Timer tmservicio = null;
         private Int32 _valida_service = 0;
 
+        Timer tmservicioTR = null;
+        private Int32 _valida_service_TR = 0;
 
         #region<timers cv>
         Timer tmservicioCS = null;
@@ -38,6 +40,8 @@ namespace Genera_Transmision
             tmservicio = new Timer(5000);
             tmservicio.Elapsed += new ElapsedEventHandler(tmpServicio_Elapsed);
 
+            tmservicioTR = new Timer(1000);
+            tmservicioTR.Elapsed += new ElapsedEventHandler(tmpServicioTR_Elapsed);
 
             #region<timers cv>
             tmservicioCS = new Timer(1000);
@@ -94,6 +98,50 @@ namespace Genera_Transmision
                 _valida_service = 0;             
             }
             
+
+        }
+        void tmpServicioTR_Elapsed(object sender, ElapsedEventArgs e)
+        {
+            //string varchivov = "c://valida_hash.txt";
+            Int32 _valor = 0;
+            try
+            {
+
+                //if (!(System.IO.File.Exists(varchivov)))
+                if (_valida_service_TR == 0)
+                {
+
+                    _valor = 1;
+                    _valida_service_TR = 1;
+                    string _error = "";
+                    Basico._ticket_retorno(ref _error);// Basico._ejecuta_proceso(ref _error);                    
+                    _valida_service_TR = 0;
+                    if (_error.Length > 0)
+                    {
+                        TextWriter tw = new StreamWriter(@"D:\POS\Transmision.net\ERROR.txt", true);
+                        tw.WriteLine(_error);
+                        tw.Flush();
+                        tw.Close();
+                        tw.Dispose();
+                    }
+                }
+                //****************************************************************************
+            }
+            catch (Exception EXC)
+            {
+                TextWriter tw = new StreamWriter(@"D:\POS\Transmision.net\ERROR.txt", true);
+                tw.WriteLine(EXC.Message);
+                tw.Flush();
+                tw.Close();
+                tw.Dispose();
+                _valida_service_TR = 0;
+            }
+
+            if (_valor == 1)
+            {
+                _valida_service_TR = 0;
+            }
+
 
         }
         #region Canal de Ventas
@@ -277,6 +325,7 @@ namespace Genera_Transmision
         protected override void OnStart(string[] args)
         {
             tmservicio.Start();
+            tmservicioTR.Start();
             #region timers canal de venta
             tmservicioCS.Start();
             tmservicioEG.Start();
@@ -288,6 +337,7 @@ namespace Genera_Transmision
         protected override void OnStop()
         {
             tmservicio.Stop();
+            tmservicioTR.Stop();
             #region timers canal de venta
             tmservicioCS.Stop();
             tmservicioEG.Stop();

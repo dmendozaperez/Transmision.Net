@@ -1,7 +1,9 @@
-﻿using System;
+﻿using BarcodeLib;
+using System;
 using System.Collections.Generic;
 using System.Configuration;
 using System.Data;
+using System.Drawing;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -105,7 +107,7 @@ namespace Transmision.Net.Basico.Oracle
                                 /*en este caso vemos que se genero el cupon*/
                                
                                 data_ora.update_tmp_ora(env.cupon_imprimir, RTL_LOC_ID, WKSTN_ID, TRANS_SEQ, FISCAL_NUMBER);
-                             
+                                imprimir(env);
                             }
 
                             // param.
@@ -121,6 +123,30 @@ namespace Transmision.Net.Basico.Oracle
             }
             return error;
         }
+        public void imprimir(Ent_Tk_Return env)
+        {
+            #region Imprimir
+            Ticket _tk = new Ticket();
+            _tk.leftMargin = 70f;//para el xstore
+            Barcode barcode = new Barcode();
+            //barcode.IncludeLabel = true;
+            Image img = barcode.Encode(TYPE.CODE128, env.cupon_imprimir.Trim(), Color.Black, Color.White, 250, 80);
 
+            Bitmap bmp = new Bitmap(img);
+            _tk.HeaderImage = bmp;
+            _tk.AddHeaderLine(env.text1_cup);
+            _tk.AddHeaderLine("");
+            _tk.AddHeaderLine(env.text2_cup);
+            _tk.AddHeaderLine("");
+            _tk.AddFooterLine0(env.cupon_imprimir.Trim());
+            _tk.AddFooterLine0("");
+            _tk.AddFooterLine0(env.text3_cup);
+            _tk.AddFooterLine0("");
+            _tk.AddFooterLine0("");
+            _tk.AddFooterLine0("");
+            _tk.AddFooterLine(env.text4_cup);
+            _tk.PrintTicket("HP LaserJet M14-M17");
+            #endregion
+        }
     }
 }

@@ -15,6 +15,8 @@ using System.ServiceModel.Configuration;
 using System.ServiceProcess;
 using System.Configuration;
 using BASICO.DBF.NET;
+using BarcodeLib;
+using System.Drawing;
 
 namespace Transmision.Net.Basico
 {
@@ -5303,6 +5305,118 @@ namespace Transmision.Net.Basico
 
         #endregion
 
+        #region TICKET RETORNO
+        public static void _ticket_retorno(ref string _error)
+        {
+            /** CONSULTAR VENTA **/
+            string dir = @"D:\POS\TR\";
+            string impresora = "TICKET"; // @"\\172.19.4.96\TICKET"; //"HP LaserJet M14-M17 PCLmS";
+            if (!Directory.Exists(dir))
+            {
+                Directory.CreateDirectory(dir);
+                Directory.CreateDirectory(dir + @"\RPTA");
+                Directory.CreateDirectory(dir + @"\PROC");
+                Directory.CreateDirectory(dir + @"\ERROR");
+            }
+
+            string[] file = Directory.GetFiles(@"" + dir);
+            if (file.Length > 0)
+            {
+                foreach (var item in file)
+                {
+                    try
+                    {
+                        if (Path.GetFileNameWithoutExtension(item).ToLower() == "venta")
+                        {
+                            string texto = File.ReadAllText(item);
+                            if (texto.IndexOf("|") == -1)
+                            {
+                                return;
+                            }
+                            //00767734|22/07/2019|50933|03|B933|00022579|09920800|ALMEYDA B, JOSE|140 
+                            string[] valores = texto.Split(Convert.ToChar("|"));
+                            string fc_nint = valores[0];
+                            string fecha = valores[1];
+                            string cod_entid = valores[2];
+                            string tipo_doc = valores[3];
+                            string serie = valores[4];
+                            string numero = valores[5];
+                            string dni = valores[6];
+                            string nombres = valores[7];
+                            string importe = valores[8];
+
+                            BataPos.Bata_TransactionSoapClient bata_tran = new BataPos.Bata_TransactionSoapClient();
+                            BataPos.ValidateAcceso header_user = new BataPos.ValidateAcceso();
+                            header_user.Username = "3D4F4673-98EB-4EB5-A468-4B7FAEC0C721";
+                            header_user.Password = "566FDFF1-5311-4FE2-B3FC-0346923FE4B4";
+
+                            BataPos.Ent_Tk_Set_Parametro param = new BataPos.Ent_Tk_Set_Parametro();
+                            param.COD_TDA = cod_entid;
+                            param.FECHA = Convert.ToDateTime(fecha);
+                            param.MONTO = Convert.ToDecimal(importe);
+                            param.FC_SUNA = tipo_doc;
+                            param.SERIE = serie;
+                            param.NUMERO = numero;
+                            BataPos.Ent_Tk_Return env = bata_tran.ws_genera_cupon_return(header_user, param);
+
+
+                            if (env.estado_error.Length == 0)
+                            {
+                                if (env.cupon_imprimir.Trim().Length > 0)
+                                {
+                                    #region Generar Archivo
+                                    using (StreamWriter rpta = new StreamWriter(dir + @"\RPTA\" + Path.GetFileNameWithoutExtension(item) + ".txt"))
+                                    {
+                                        //codigo|titulo|texto|texto2|texto3
+                                        rpta.WriteLine(env.cupon_imprimir + "|" + env.text1_cup.Trim() + "|" + env.text2_cup.Trim() + "|" + env.text3_cup.Trim() + "|" + env.text4_cup.Trim());
+                                        rpta.Close();
+                                    }
+                                    #endregion
+
+                                    #region Imprimir
+                                    Ticket _tk = new Ticket();
+                                    //_tk.leftMargin = 70f;//para el xstore
+                                    Barcode barcode = new Barcode();
+                                    //barcode.IncludeLabel = true;
+                                    Image img = barcode.Encode(TYPE.CODE128, env.cupon_imprimir.Trim(), Color.Black, Color.White, 250, 80);
+
+                                    Bitmap bmp = new Bitmap(img);
+                                    _tk.HeaderImage = bmp;
+                                    _tk.AddHeaderLine(env.text1_cup);
+                                    _tk.AddHeaderLine("");
+                                    _tk.AddHeaderLine(env.text2_cup);
+                                    _tk.AddHeaderLine("");
+                                    _tk.AddFooterLine0(env.cupon_imprimir.Trim());
+                                    _tk.AddFooterLine0("");
+                                    _tk.AddFooterLine0(env.text3_cup);
+                                    _tk.AddFooterLine0("");
+                                    _tk.AddFooterLine0("");
+                                    _tk.AddFooterLine0("");
+                                    _tk.AddFooterLine(env.text4_cup);
+                                    _tk.PrintTicket(impresora);
+                                    #endregion
+                                }
+                                else
+                                {
+                                    _error = "No aplica promocion.";
+                                }
+                                File.Move(item, dir + @"\PROC\" + Path.GetFileNameWithoutExtension(item) + "_" + DateTime.Now.ToString("ddmmyyyyhhmmss") + ".txt");
+                            }
+                            else
+                            {
+                                File.Move(item, dir + @"\ERROR\" + Path.GetFileNameWithoutExtension(item) + "_" + DateTime.Now.ToString("ddmmyyyyhhmmss") + ".txt");
+                            }
+                        }
+                    }
+                    catch (Exception ex)
+                    {
+                        _error = ex.ToString();
+                        File.Move(item, dir + @"\ERROR\" + Path.GetFileNameWithoutExtension(item) + "_" + DateTime.Now.ToString("ddmmyyyyhhmmss") + ".txt");
+                    }
+                }
+            }
+        }
+        #endregion
     }
 
 }
