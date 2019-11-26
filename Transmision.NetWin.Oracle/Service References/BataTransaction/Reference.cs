@@ -142,6 +142,11 @@ namespace Transmision.NetWin.Oracle.BataTransaction {
         [System.ServiceModel.XmlSerializerFormatAttribute(SupportFaults=true)]
         Transmision.NetWin.Oracle.BataTransaction.ws_genera_cupon_returnResponse ws_genera_cupon_return(Transmision.NetWin.Oracle.BataTransaction.ws_genera_cupon_returnRequest request);
         
+        // CODEGEN: Se está generando un contrato de mensaje, ya que el mensaje ws_get_cupon_returnRequest tiene encabezados.
+        [System.ServiceModel.OperationContractAttribute(Action="http://bataperu.com.pe/ws_get_cupon_return", ReplyAction="*")]
+        [System.ServiceModel.XmlSerializerFormatAttribute(SupportFaults=true)]
+        Transmision.NetWin.Oracle.BataTransaction.ws_get_cupon_returnResponse ws_get_cupon_return(Transmision.NetWin.Oracle.BataTransaction.ws_get_cupon_returnRequest request);
+        
         [System.ServiceModel.OperationContractAttribute(Action="http://bataperu.com.pe/ws_consulta_stock_otra_tda", ReplyAction="*")]
         [System.ServiceModel.XmlSerializerFormatAttribute(SupportFaults=true)]
         string[] ws_consulta_stock_otra_tda(string cod_tda, string cod_art, string calidad, string talla, double cant, string cod_tda_b);
@@ -303,6 +308,490 @@ namespace Transmision.NetWin.Oracle.BataTransaction {
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.ComponentModel.DesignerCategoryAttribute("code")]
     [System.Xml.Serialization.XmlTypeAttribute(Namespace="http://bataperu.com.pe/")]
+    public partial class Ent_Tk_Get_Valores : object, System.ComponentModel.INotifyPropertyChanged {
+        
+        private string cUP_RTN_BARRAField;
+        
+        private string cUP_RTN_TDA_GENField;
+        
+        private string cUP_RTN_FC_SUNA_GENField;
+        
+        private string cUP_RTN_SERIE_GENField;
+        
+        private string cUP_RTN_NUMERO_GENField;
+        
+        private string cUP_RTN_FECHA_GENField;
+        
+        private decimal cUP_RTN_MONTO_GENField;
+        
+        private string cUP_RTN_TDA_USOField;
+        
+        private string cUP_RTN_FC_SUNA_USOField;
+        
+        private string cUP_RTN_SERIE_USOField;
+        
+        private string cUP_RTN_NUMERO_USOField;
+        
+        private string cUP_RTN_FECHA_USOField;
+        
+        private decimal cUP_RTN_TOTAL_USOField;
+        
+        private string cUP_RTN_FEC_INI_USOField;
+        
+        private string cUP_RTN_FEC_FIN_USOField;
+        
+        private decimal cUP_RTN_MONTO_USOField;
+        
+        private string cUP_RTN_ESTADOField;
+        
+        private string cUP_RTN_FEC_INGField;
+        
+        private string cUP_RTN_FEC_ACTField;
+        
+        private string cUP_RTN_LOG_INGField;
+        
+        private string cUP_RTN_LOG_UPDField;
+        
+        private bool cUP_RTN_IMPField;
+        
+        private string cUP_RTN_IMP_LOGField;
+        
+        private string estado_errorField;
+        
+        private string cupon_imprimirField;
+        
+        /// <remarks/>
+        [System.Xml.Serialization.XmlElementAttribute(Order=0)]
+        public string CUP_RTN_BARRA {
+            get {
+                return this.cUP_RTN_BARRAField;
+            }
+            set {
+                this.cUP_RTN_BARRAField = value;
+                this.RaisePropertyChanged("CUP_RTN_BARRA");
+            }
+        }
+        
+        /// <remarks/>
+        [System.Xml.Serialization.XmlElementAttribute(Order=1)]
+        public string CUP_RTN_TDA_GEN {
+            get {
+                return this.cUP_RTN_TDA_GENField;
+            }
+            set {
+                this.cUP_RTN_TDA_GENField = value;
+                this.RaisePropertyChanged("CUP_RTN_TDA_GEN");
+            }
+        }
+        
+        /// <remarks/>
+        [System.Xml.Serialization.XmlElementAttribute(Order=2)]
+        public string CUP_RTN_FC_SUNA_GEN {
+            get {
+                return this.cUP_RTN_FC_SUNA_GENField;
+            }
+            set {
+                this.cUP_RTN_FC_SUNA_GENField = value;
+                this.RaisePropertyChanged("CUP_RTN_FC_SUNA_GEN");
+            }
+        }
+        
+        /// <remarks/>
+        [System.Xml.Serialization.XmlElementAttribute(Order=3)]
+        public string CUP_RTN_SERIE_GEN {
+            get {
+                return this.cUP_RTN_SERIE_GENField;
+            }
+            set {
+                this.cUP_RTN_SERIE_GENField = value;
+                this.RaisePropertyChanged("CUP_RTN_SERIE_GEN");
+            }
+        }
+        
+        /// <remarks/>
+        [System.Xml.Serialization.XmlElementAttribute(Order=4)]
+        public string CUP_RTN_NUMERO_GEN {
+            get {
+                return this.cUP_RTN_NUMERO_GENField;
+            }
+            set {
+                this.cUP_RTN_NUMERO_GENField = value;
+                this.RaisePropertyChanged("CUP_RTN_NUMERO_GEN");
+            }
+        }
+        
+        /// <remarks/>
+        [System.Xml.Serialization.XmlElementAttribute(Order=5)]
+        public string CUP_RTN_FECHA_GEN {
+            get {
+                return this.cUP_RTN_FECHA_GENField;
+            }
+            set {
+                this.cUP_RTN_FECHA_GENField = value;
+                this.RaisePropertyChanged("CUP_RTN_FECHA_GEN");
+            }
+        }
+        
+        /// <remarks/>
+        [System.Xml.Serialization.XmlElementAttribute(Order=6)]
+        public decimal CUP_RTN_MONTO_GEN {
+            get {
+                return this.cUP_RTN_MONTO_GENField;
+            }
+            set {
+                this.cUP_RTN_MONTO_GENField = value;
+                this.RaisePropertyChanged("CUP_RTN_MONTO_GEN");
+            }
+        }
+        
+        /// <remarks/>
+        [System.Xml.Serialization.XmlElementAttribute(Order=7)]
+        public string CUP_RTN_TDA_USO {
+            get {
+                return this.cUP_RTN_TDA_USOField;
+            }
+            set {
+                this.cUP_RTN_TDA_USOField = value;
+                this.RaisePropertyChanged("CUP_RTN_TDA_USO");
+            }
+        }
+        
+        /// <remarks/>
+        [System.Xml.Serialization.XmlElementAttribute(Order=8)]
+        public string CUP_RTN_FC_SUNA_USO {
+            get {
+                return this.cUP_RTN_FC_SUNA_USOField;
+            }
+            set {
+                this.cUP_RTN_FC_SUNA_USOField = value;
+                this.RaisePropertyChanged("CUP_RTN_FC_SUNA_USO");
+            }
+        }
+        
+        /// <remarks/>
+        [System.Xml.Serialization.XmlElementAttribute(Order=9)]
+        public string CUP_RTN_SERIE_USO {
+            get {
+                return this.cUP_RTN_SERIE_USOField;
+            }
+            set {
+                this.cUP_RTN_SERIE_USOField = value;
+                this.RaisePropertyChanged("CUP_RTN_SERIE_USO");
+            }
+        }
+        
+        /// <remarks/>
+        [System.Xml.Serialization.XmlElementAttribute(Order=10)]
+        public string CUP_RTN_NUMERO_USO {
+            get {
+                return this.cUP_RTN_NUMERO_USOField;
+            }
+            set {
+                this.cUP_RTN_NUMERO_USOField = value;
+                this.RaisePropertyChanged("CUP_RTN_NUMERO_USO");
+            }
+        }
+        
+        /// <remarks/>
+        [System.Xml.Serialization.XmlElementAttribute(Order=11)]
+        public string CUP_RTN_FECHA_USO {
+            get {
+                return this.cUP_RTN_FECHA_USOField;
+            }
+            set {
+                this.cUP_RTN_FECHA_USOField = value;
+                this.RaisePropertyChanged("CUP_RTN_FECHA_USO");
+            }
+        }
+        
+        /// <remarks/>
+        [System.Xml.Serialization.XmlElementAttribute(Order=12)]
+        public decimal CUP_RTN_TOTAL_USO {
+            get {
+                return this.cUP_RTN_TOTAL_USOField;
+            }
+            set {
+                this.cUP_RTN_TOTAL_USOField = value;
+                this.RaisePropertyChanged("CUP_RTN_TOTAL_USO");
+            }
+        }
+        
+        /// <remarks/>
+        [System.Xml.Serialization.XmlElementAttribute(Order=13)]
+        public string CUP_RTN_FEC_INI_USO {
+            get {
+                return this.cUP_RTN_FEC_INI_USOField;
+            }
+            set {
+                this.cUP_RTN_FEC_INI_USOField = value;
+                this.RaisePropertyChanged("CUP_RTN_FEC_INI_USO");
+            }
+        }
+        
+        /// <remarks/>
+        [System.Xml.Serialization.XmlElementAttribute(Order=14)]
+        public string CUP_RTN_FEC_FIN_USO {
+            get {
+                return this.cUP_RTN_FEC_FIN_USOField;
+            }
+            set {
+                this.cUP_RTN_FEC_FIN_USOField = value;
+                this.RaisePropertyChanged("CUP_RTN_FEC_FIN_USO");
+            }
+        }
+        
+        /// <remarks/>
+        [System.Xml.Serialization.XmlElementAttribute(Order=15)]
+        public decimal CUP_RTN_MONTO_USO {
+            get {
+                return this.cUP_RTN_MONTO_USOField;
+            }
+            set {
+                this.cUP_RTN_MONTO_USOField = value;
+                this.RaisePropertyChanged("CUP_RTN_MONTO_USO");
+            }
+        }
+        
+        /// <remarks/>
+        [System.Xml.Serialization.XmlElementAttribute(Order=16)]
+        public string CUP_RTN_ESTADO {
+            get {
+                return this.cUP_RTN_ESTADOField;
+            }
+            set {
+                this.cUP_RTN_ESTADOField = value;
+                this.RaisePropertyChanged("CUP_RTN_ESTADO");
+            }
+        }
+        
+        /// <remarks/>
+        [System.Xml.Serialization.XmlElementAttribute(Order=17)]
+        public string CUP_RTN_FEC_ING {
+            get {
+                return this.cUP_RTN_FEC_INGField;
+            }
+            set {
+                this.cUP_RTN_FEC_INGField = value;
+                this.RaisePropertyChanged("CUP_RTN_FEC_ING");
+            }
+        }
+        
+        /// <remarks/>
+        [System.Xml.Serialization.XmlElementAttribute(Order=18)]
+        public string CUP_RTN_FEC_ACT {
+            get {
+                return this.cUP_RTN_FEC_ACTField;
+            }
+            set {
+                this.cUP_RTN_FEC_ACTField = value;
+                this.RaisePropertyChanged("CUP_RTN_FEC_ACT");
+            }
+        }
+        
+        /// <remarks/>
+        [System.Xml.Serialization.XmlElementAttribute(Order=19)]
+        public string CUP_RTN_LOG_ING {
+            get {
+                return this.cUP_RTN_LOG_INGField;
+            }
+            set {
+                this.cUP_RTN_LOG_INGField = value;
+                this.RaisePropertyChanged("CUP_RTN_LOG_ING");
+            }
+        }
+        
+        /// <remarks/>
+        [System.Xml.Serialization.XmlElementAttribute(Order=20)]
+        public string CUP_RTN_LOG_UPD {
+            get {
+                return this.cUP_RTN_LOG_UPDField;
+            }
+            set {
+                this.cUP_RTN_LOG_UPDField = value;
+                this.RaisePropertyChanged("CUP_RTN_LOG_UPD");
+            }
+        }
+        
+        /// <remarks/>
+        [System.Xml.Serialization.XmlElementAttribute(Order=21)]
+        public bool CUP_RTN_IMP {
+            get {
+                return this.cUP_RTN_IMPField;
+            }
+            set {
+                this.cUP_RTN_IMPField = value;
+                this.RaisePropertyChanged("CUP_RTN_IMP");
+            }
+        }
+        
+        /// <remarks/>
+        [System.Xml.Serialization.XmlElementAttribute(Order=22)]
+        public string CUP_RTN_IMP_LOG {
+            get {
+                return this.cUP_RTN_IMP_LOGField;
+            }
+            set {
+                this.cUP_RTN_IMP_LOGField = value;
+                this.RaisePropertyChanged("CUP_RTN_IMP_LOG");
+            }
+        }
+        
+        /// <remarks/>
+        [System.Xml.Serialization.XmlElementAttribute(Order=23)]
+        public string estado_error {
+            get {
+                return this.estado_errorField;
+            }
+            set {
+                this.estado_errorField = value;
+                this.RaisePropertyChanged("estado_error");
+            }
+        }
+        
+        /// <remarks/>
+        [System.Xml.Serialization.XmlElementAttribute(Order=24)]
+        public string cupon_imprimir {
+            get {
+                return this.cupon_imprimirField;
+            }
+            set {
+                this.cupon_imprimirField = value;
+                this.RaisePropertyChanged("cupon_imprimir");
+            }
+        }
+        
+        public event System.ComponentModel.PropertyChangedEventHandler PropertyChanged;
+        
+        protected void RaisePropertyChanged(string propertyName) {
+            System.ComponentModel.PropertyChangedEventHandler propertyChanged = this.PropertyChanged;
+            if ((propertyChanged != null)) {
+                propertyChanged(this, new System.ComponentModel.PropertyChangedEventArgs(propertyName));
+            }
+        }
+    }
+    
+    /// <remarks/>
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.8.3752.0")]
+    [System.SerializableAttribute()]
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.ComponentModel.DesignerCategoryAttribute("code")]
+    [System.Xml.Serialization.XmlTypeAttribute(Namespace="http://bataperu.com.pe/")]
+    public partial class Ent_Tk_Get_Parametro : object, System.ComponentModel.INotifyPropertyChanged {
+        
+        private string cOD_CUPField;
+        
+        private string cOD_TDAField;
+        
+        private string fC_SUNAField;
+        
+        private string sERIEField;
+        
+        private string nUMEROField;
+        
+        private decimal mONTOField;
+        
+        private System.DateTime fECHAField;
+        
+        /// <remarks/>
+        [System.Xml.Serialization.XmlElementAttribute(Order=0)]
+        public string COD_CUP {
+            get {
+                return this.cOD_CUPField;
+            }
+            set {
+                this.cOD_CUPField = value;
+                this.RaisePropertyChanged("COD_CUP");
+            }
+        }
+        
+        /// <remarks/>
+        [System.Xml.Serialization.XmlElementAttribute(Order=1)]
+        public string COD_TDA {
+            get {
+                return this.cOD_TDAField;
+            }
+            set {
+                this.cOD_TDAField = value;
+                this.RaisePropertyChanged("COD_TDA");
+            }
+        }
+        
+        /// <remarks/>
+        [System.Xml.Serialization.XmlElementAttribute(Order=2)]
+        public string FC_SUNA {
+            get {
+                return this.fC_SUNAField;
+            }
+            set {
+                this.fC_SUNAField = value;
+                this.RaisePropertyChanged("FC_SUNA");
+            }
+        }
+        
+        /// <remarks/>
+        [System.Xml.Serialization.XmlElementAttribute(Order=3)]
+        public string SERIE {
+            get {
+                return this.sERIEField;
+            }
+            set {
+                this.sERIEField = value;
+                this.RaisePropertyChanged("SERIE");
+            }
+        }
+        
+        /// <remarks/>
+        [System.Xml.Serialization.XmlElementAttribute(Order=4)]
+        public string NUMERO {
+            get {
+                return this.nUMEROField;
+            }
+            set {
+                this.nUMEROField = value;
+                this.RaisePropertyChanged("NUMERO");
+            }
+        }
+        
+        /// <remarks/>
+        [System.Xml.Serialization.XmlElementAttribute(Order=5)]
+        public decimal MONTO {
+            get {
+                return this.mONTOField;
+            }
+            set {
+                this.mONTOField = value;
+                this.RaisePropertyChanged("MONTO");
+            }
+        }
+        
+        /// <remarks/>
+        [System.Xml.Serialization.XmlElementAttribute(Order=6)]
+        public System.DateTime FECHA {
+            get {
+                return this.fECHAField;
+            }
+            set {
+                this.fECHAField = value;
+                this.RaisePropertyChanged("FECHA");
+            }
+        }
+        
+        public event System.ComponentModel.PropertyChangedEventHandler PropertyChanged;
+        
+        protected void RaisePropertyChanged(string propertyName) {
+            System.ComponentModel.PropertyChangedEventHandler propertyChanged = this.PropertyChanged;
+            if ((propertyChanged != null)) {
+                propertyChanged(this, new System.ComponentModel.PropertyChangedEventArgs(propertyName));
+            }
+        }
+    }
+    
+    /// <remarks/>
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.8.3752.0")]
+    [System.SerializableAttribute()]
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.ComponentModel.DesignerCategoryAttribute("code")]
+    [System.Xml.Serialization.XmlTypeAttribute(Namespace="http://bataperu.com.pe/")]
     public partial class Ent_Tk_Return : object, System.ComponentModel.INotifyPropertyChanged {
         
         private string estado_errorField;
@@ -310,6 +799,14 @@ namespace Transmision.NetWin.Oracle.BataTransaction {
         private decimal genera_cuponField;
         
         private string cupon_imprimirField;
+        
+        private string text1_cupField;
+        
+        private string text2_cupField;
+        
+        private string text3_cupField;
+        
+        private string text4_cupField;
         
         /// <remarks/>
         [System.Xml.Serialization.XmlElementAttribute(Order=0)]
@@ -344,6 +841,54 @@ namespace Transmision.NetWin.Oracle.BataTransaction {
             set {
                 this.cupon_imprimirField = value;
                 this.RaisePropertyChanged("cupon_imprimir");
+            }
+        }
+        
+        /// <remarks/>
+        [System.Xml.Serialization.XmlElementAttribute(Order=3)]
+        public string text1_cup {
+            get {
+                return this.text1_cupField;
+            }
+            set {
+                this.text1_cupField = value;
+                this.RaisePropertyChanged("text1_cup");
+            }
+        }
+        
+        /// <remarks/>
+        [System.Xml.Serialization.XmlElementAttribute(Order=4)]
+        public string text2_cup {
+            get {
+                return this.text2_cupField;
+            }
+            set {
+                this.text2_cupField = value;
+                this.RaisePropertyChanged("text2_cup");
+            }
+        }
+        
+        /// <remarks/>
+        [System.Xml.Serialization.XmlElementAttribute(Order=5)]
+        public string text3_cup {
+            get {
+                return this.text3_cupField;
+            }
+            set {
+                this.text3_cupField = value;
+                this.RaisePropertyChanged("text3_cup");
+            }
+        }
+        
+        /// <remarks/>
+        [System.Xml.Serialization.XmlElementAttribute(Order=6)]
+        public string text4_cup {
+            get {
+                return this.text4_cupField;
+            }
+            set {
+                this.text4_cupField = value;
+                this.RaisePropertyChanged("text4_cup");
             }
         }
         
@@ -6310,6 +6855,44 @@ namespace Transmision.NetWin.Oracle.BataTransaction {
         }
     }
     
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
+    [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
+    [System.ServiceModel.MessageContractAttribute(WrapperName="ws_get_cupon_return", WrapperNamespace="http://bataperu.com.pe/", IsWrapped=true)]
+    public partial class ws_get_cupon_returnRequest {
+        
+        [System.ServiceModel.MessageHeaderAttribute(Namespace="http://bataperu.com.pe/")]
+        public Transmision.NetWin.Oracle.BataTransaction.ValidateAcceso ValidateAcceso;
+        
+        [System.ServiceModel.MessageBodyMemberAttribute(Namespace="http://bataperu.com.pe/", Order=0)]
+        public Transmision.NetWin.Oracle.BataTransaction.Ent_Tk_Get_Parametro param;
+        
+        public ws_get_cupon_returnRequest() {
+        }
+        
+        public ws_get_cupon_returnRequest(Transmision.NetWin.Oracle.BataTransaction.ValidateAcceso ValidateAcceso, Transmision.NetWin.Oracle.BataTransaction.Ent_Tk_Get_Parametro param) {
+            this.ValidateAcceso = ValidateAcceso;
+            this.param = param;
+        }
+    }
+    
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
+    [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
+    [System.ServiceModel.MessageContractAttribute(WrapperName="ws_get_cupon_returnResponse", WrapperNamespace="http://bataperu.com.pe/", IsWrapped=true)]
+    public partial class ws_get_cupon_returnResponse {
+        
+        [System.ServiceModel.MessageBodyMemberAttribute(Namespace="http://bataperu.com.pe/", Order=0)]
+        public Transmision.NetWin.Oracle.BataTransaction.Ent_Tk_Get_Valores ws_get_cupon_returnResult;
+        
+        public ws_get_cupon_returnResponse() {
+        }
+        
+        public ws_get_cupon_returnResponse(Transmision.NetWin.Oracle.BataTransaction.Ent_Tk_Get_Valores ws_get_cupon_returnResult) {
+            this.ws_get_cupon_returnResult = ws_get_cupon_returnResult;
+        }
+    }
+    
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
     public interface Bata_TransactionSoapChannel : Transmision.NetWin.Oracle.BataTransaction.Bata_TransactionSoap, System.ServiceModel.IClientChannel {
     }
@@ -6651,6 +7234,19 @@ namespace Transmision.NetWin.Oracle.BataTransaction {
             inValue.param = param;
             Transmision.NetWin.Oracle.BataTransaction.ws_genera_cupon_returnResponse retVal = ((Transmision.NetWin.Oracle.BataTransaction.Bata_TransactionSoap)(this)).ws_genera_cupon_return(inValue);
             return retVal.ws_genera_cupon_returnResult;
+        }
+        
+        [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
+        Transmision.NetWin.Oracle.BataTransaction.ws_get_cupon_returnResponse Transmision.NetWin.Oracle.BataTransaction.Bata_TransactionSoap.ws_get_cupon_return(Transmision.NetWin.Oracle.BataTransaction.ws_get_cupon_returnRequest request) {
+            return base.Channel.ws_get_cupon_return(request);
+        }
+        
+        public Transmision.NetWin.Oracle.BataTransaction.Ent_Tk_Get_Valores ws_get_cupon_return(Transmision.NetWin.Oracle.BataTransaction.ValidateAcceso ValidateAcceso, Transmision.NetWin.Oracle.BataTransaction.Ent_Tk_Get_Parametro param) {
+            Transmision.NetWin.Oracle.BataTransaction.ws_get_cupon_returnRequest inValue = new Transmision.NetWin.Oracle.BataTransaction.ws_get_cupon_returnRequest();
+            inValue.ValidateAcceso = ValidateAcceso;
+            inValue.param = param;
+            Transmision.NetWin.Oracle.BataTransaction.ws_get_cupon_returnResponse retVal = ((Transmision.NetWin.Oracle.BataTransaction.Bata_TransactionSoap)(this)).ws_get_cupon_return(inValue);
+            return retVal.ws_get_cupon_returnResult;
         }
         
         public string[] ws_consulta_stock_otra_tda(string cod_tda, string cod_art, string calidad, string talla, double cant, string cod_tda_b) {

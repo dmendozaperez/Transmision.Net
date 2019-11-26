@@ -145,7 +145,7 @@ namespace Transmision.Net.Basico.Oracle
             _tk.AddFooterLine0("");
             _tk.AddFooterLine0("");
             _tk.AddFooterLine(env.text4_cup);
-            _tk.PrintTicket("HP LaserJet M14-M17");
+            _tk.PrintTicket("TK_RETORNO");
             #endregion
         }
     }

@@ -200,7 +200,7 @@ namespace Transmision.NetWin.Update
                 //verificar y deshabilitar el servicio 
                 if (deshabilitando_servicio())
                 {
-                    for (Int32 i = 0; i < 5; ++i)
+                    for (Int32 i = 0; i < 6; ++i)
                     {
                         switch (i)
                         {
@@ -218,6 +218,9 @@ namespace Transmision.NetWin.Update
                                 break;
                             case 4:
                                 copiar_archivo_service("Genera_Transmision.exe");
+                                break;
+                            case 5:
+                                copiar_archivo_service("BarcodeLib.dll");
                                 break;
                                 //case 3:
                                 //    copiar_archivo_service("ICSharpCode.SharpZLib.dll");

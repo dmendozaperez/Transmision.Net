@@ -91,7 +91,7 @@
     </None>
     <None Include="packages.config" />
     <None Include="Properties\DataSources\System.Data.DataSet.datasource" />
-    <None Include="Service References\BataPos\Bata_Transaction1.wsdl" />
+    <None Include="Service References\BataPos\Bata_Transaction.wsdl" />
     <None Include="Service References\BataPos\Transmision.Net.Basico.BataPos.Ent_Alma_Ecu.datasource">
       <DependentUpon>Reference.svcmap</DependentUpon>
     </None>
@@ -177,7 +177,7 @@
     </None>
   </ItemGroup>
   <ItemGroup>
-    <None Include="Service References\BataPos\Bata_Transaction1.disco" />
+    <None Include="Service References\BataPos\Bata_Transaction.disco" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

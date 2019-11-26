@@ -85,7 +85,7 @@
       <DependentUpon>Settings.settings</DependentUpon>
       <DesignTimeSharedInput>True</DesignTimeSharedInput>
     </Compile>
-    <None Include="Service References\BataTransaction\Bata_Transaction.wsdl" />
+    <None Include="Service References\BataTransaction\Bata_Transaction1.wsdl" />
     <None Include="Service References\BataTransaction\Transmision.NetWin.Oracle.BataTransaction.Ent_Alma_Ecu.datasource">
       <DependentUpon>Reference.svcmap</DependentUpon>
     </None>
@@ -116,6 +116,9 @@
     <None Include="Service References\BataTransaction\Transmision.NetWin.Oracle.BataTransaction.Ent_Scdddes.datasource">
       <DependentUpon>Reference.svcmap</DependentUpon>
     </None>
+    <None Include="Service References\BataTransaction\Transmision.NetWin.Oracle.BataTransaction.Ent_Tk_Get_Valores.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
     <None Include="Service References\BataTransaction\Transmision.NetWin.Oracle.BataTransaction.Ent_Tk_Return.datasource">
       <DependentUpon>Reference.svcmap</DependentUpon>
     </None>
@@ -136,9 +139,6 @@
     <WCFMetadataStorage Include="Service References\BataTransaction\" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="Service References\BataTransaction\Bata_Transaction.disco" />
-  </ItemGroup>
-  <ItemGroup>
     <None Include="Service References\BataTransaction\configuration91.svcinfo" />
   </ItemGroup>
   <ItemGroup>
@@ -149,6 +149,9 @@
       <Generator>WCF Proxy Generator</Generator>
       <LastGenOutput>Reference.cs</LastGenOutput>
     </None>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Service References\BataTransaction\Bata_Transaction1.disco" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

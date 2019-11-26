@@ -2471,10 +2471,10 @@
   </wsdl:binding>
   <wsdl:service name="Bata_Transaction">
     <wsdl:port name="Bata_TransactionSoap" binding="tns:Bata_TransactionSoap">
-      <soap:address location="http://bataweb-test.bgr.pe/Ws_BataPOS/Bata_Transaction.ASMX" />
+      <soap:address location="http://posperu.bgr.pe/ws_batapos/Bata_Transaction.asmx" />
     </wsdl:port>
     <wsdl:port name="Bata_TransactionSoap12" binding="tns:Bata_TransactionSoap12">
-      <soap12:address location="http://bataweb-test.bgr.pe/Ws_BataPOS/Bata_Transaction.ASMX" />
+      <soap12:address location="http://posperu.bgr.pe/ws_batapos/Bata_Transaction.asmx" />
     </wsdl:port>
   </wsdl:service>
 </wsdl:definitions>
