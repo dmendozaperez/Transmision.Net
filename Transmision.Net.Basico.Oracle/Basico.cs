@@ -5,6 +5,7 @@ using System.Configuration;
 using System.Data;
 using System.Drawing;
 using System.Linq;
+using System.Management;
 using System.Text;
 using System.Threading.Tasks;
 using Transmision.Net.Basico.Oracle.BataTransaction;
@@ -145,8 +146,38 @@ namespace Transmision.Net.Basico.Oracle
             _tk.AddFooterLine0("");
             _tk.AddFooterLine0("");
             _tk.AddFooterLine(env.text4_cup);
-            _tk.PrintTicket("HP LaserJet M14-M17");
+
+            string printer = get_printer_disp();
+            if (printer != "")_tk.PrintTicket(printer);
+
+            
             #endregion
+        }
+        public string get_printer_disp()
+        {
+            string _printer = "";
+            try
+            {
+                var printerQuery = new ManagementObjectSearcher("SELECT * from Win32_Printer");
+                foreach (var printer in printerQuery.Get())
+                {
+                    var name = printer.GetPropertyValue("Name");
+                    var status = printer.GetPropertyValue("Status");
+                    var isDefault = printer.GetPropertyValue("Default");
+                    var isNetworkPrinter = printer.GetPropertyValue("Network");
+
+                    if (name.ToString().IndexOf("LaserJet") > 0 && !Convert.ToBoolean(isNetworkPrinter))
+                    {
+                        _printer = name.ToString();
+                        break;
+                    }
+                }
+            }
+            catch (Exception)
+            {
+                _printer = "";
+            }
+            return _printer;
         }
     }
 }
