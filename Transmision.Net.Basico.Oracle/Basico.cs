@@ -26,6 +26,16 @@ namespace Transmision.Net.Basico.Oracle
             try
             {
                 string nom_pc = Environment.MachineName;//"TIENDA-933-1"
+
+                string caja = nom_pc.Substring(nom_pc.Length - 1, 1);
+                string _server = nom_pc;
+                if (caja!="1")
+                {
+                    _server = nom_pc.Substring(0, nom_pc.Length - 1) + "1";
+                }
+
+                
+
                 _tienda = nom_pc.Substring(nom_pc.IndexOf('-') + 1, nom_pc.Length - (nom_pc.IndexOf('-') + 1));
                 _tienda = _tienda.Substring(0, _tienda.Length - 2);
                 if (_tienda.Length == 3) _tienda = "50" + _tienda;
@@ -34,9 +44,9 @@ namespace Transmision.Net.Basico.Oracle
                 #region<CONEXIONES DE ORACLE>
                 Ent_Conexion_Ora_Xstore con_ora = data_ora.ws_conexion_xstore();
 
-                if (con_ora == null) return "";  
+                if (con_ora == null) return "";
 
-                Ent_Acceso_BD.server = con_ora.server;//  ConfigurationManager.AppSettings["server"].ToString();
+                Ent_Acceso_BD.server = _server; //con_ora.server;//  ConfigurationManager.AppSettings["server"].ToString();
                 Ent_Acceso_BD.user = con_ora.usuario;// ConfigurationManager.AppSettings["usuario"].ToString();
                 Ent_Acceso_BD.password = con_ora.password;//  ConfigurationManager.AppSettings["password"].ToString();
                 Ent_Acceso_BD.port = con_ora.port;// Convert.ToInt32(ConfigurationManager.AppSettings["port"].ToString());
