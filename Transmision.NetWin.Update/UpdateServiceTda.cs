@@ -73,6 +73,7 @@ namespace Transmision.NetWin.Update
                 if (_name== "Transmision.Net.Basico.dll")
                 {
                     _dbftienda();
+
                     FileInfo infofile_pro = new FileInfo(@_ruta_local_service);
                     var fvi_pro = FileVersionInfo.GetVersionInfo(@_ruta_local_service);
                     var version_pro = fvi_pro.FileVersion;
