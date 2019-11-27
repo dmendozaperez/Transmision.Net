@@ -86,6 +86,9 @@
     <None Include="Service References\BataTransaction\Transmision.Net.Basico.Oracle.BataTransaction.Ent_CarpetaUpload_Xstore.datasource">
       <DependentUpon>Reference.svcmap</DependentUpon>
     </None>
+    <None Include="Service References\BataTransaction\Transmision.Net.Basico.Oracle.BataTransaction.Ent_Conexion_Ora_Xstore.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
     <None Include="Service References\BataTransaction\Transmision.Net.Basico.Oracle.BataTransaction.Ent_Config_Service.datasource">
       <DependentUpon>Reference.svcmap</DependentUpon>
     </None>
