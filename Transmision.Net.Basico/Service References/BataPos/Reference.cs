@@ -142,6 +142,21 @@ namespace Transmision.Net.Basico.BataPos {
         [System.ServiceModel.XmlSerializerFormatAttribute(SupportFaults=true)]
         Transmision.Net.Basico.BataPos.ws_genera_cupon_returnResponse ws_genera_cupon_return(Transmision.Net.Basico.BataPos.ws_genera_cupon_returnRequest request);
         
+        // CODEGEN: Se está generando un contrato de mensaje, ya que el mensaje ws_update_tk_return_reimprimirRequest tiene encabezados.
+        [System.ServiceModel.OperationContractAttribute(Action="http://bataperu.com.pe/ws_update_tk_return_reimprimir", ReplyAction="*")]
+        [System.ServiceModel.XmlSerializerFormatAttribute(SupportFaults=true)]
+        Transmision.Net.Basico.BataPos.ws_update_tk_return_reimprimirResponse ws_update_tk_return_reimprimir(Transmision.Net.Basico.BataPos.ws_update_tk_return_reimprimirRequest request);
+        
+        // CODEGEN: Se está generando un contrato de mensaje, ya que el mensaje ws_get_tk_return_reimprimirRequest tiene encabezados.
+        [System.ServiceModel.OperationContractAttribute(Action="http://bataperu.com.pe/ws_get_tk_return_reimprimir", ReplyAction="*")]
+        [System.ServiceModel.XmlSerializerFormatAttribute(SupportFaults=true)]
+        Transmision.Net.Basico.BataPos.ws_get_tk_return_reimprimirResponse ws_get_tk_return_reimprimir(Transmision.Net.Basico.BataPos.ws_get_tk_return_reimprimirRequest request);
+        
+        // CODEGEN: Se está generando un contrato de mensaje, ya que el mensaje ws_get_conexion_xstoreRequest tiene encabezados.
+        [System.ServiceModel.OperationContractAttribute(Action="http://bataperu.com.pe/ws_get_conexion_xstore", ReplyAction="*")]
+        [System.ServiceModel.XmlSerializerFormatAttribute(SupportFaults=true)]
+        Transmision.Net.Basico.BataPos.ws_get_conexion_xstoreResponse ws_get_conexion_xstore(Transmision.Net.Basico.BataPos.ws_get_conexion_xstoreRequest request);
+        
         // CODEGEN: Se está generando un contrato de mensaje, ya que el mensaje ws_get_cupon_returnRequest tiene encabezados.
         [System.ServiceModel.OperationContractAttribute(Action="http://bataperu.com.pe/ws_get_cupon_return", ReplyAction="*")]
         [System.ServiceModel.XmlSerializerFormatAttribute(SupportFaults=true)]
@@ -773,6 +788,94 @@ namespace Transmision.Net.Basico.BataPos {
             set {
                 this.fECHAField = value;
                 this.RaisePropertyChanged("FECHA");
+            }
+        }
+        
+        public event System.ComponentModel.PropertyChangedEventHandler PropertyChanged;
+        
+        protected void RaisePropertyChanged(string propertyName) {
+            System.ComponentModel.PropertyChangedEventHandler propertyChanged = this.PropertyChanged;
+            if ((propertyChanged != null)) {
+                propertyChanged(this, new System.ComponentModel.PropertyChangedEventArgs(propertyName));
+            }
+        }
+    }
+    
+    /// <remarks/>
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.8.3752.0")]
+    [System.SerializableAttribute()]
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.ComponentModel.DesignerCategoryAttribute("code")]
+    [System.Xml.Serialization.XmlTypeAttribute(Namespace="http://bataperu.com.pe/")]
+    public partial class Ent_Conexion_Ora_Xstore : object, System.ComponentModel.INotifyPropertyChanged {
+        
+        private string serverField;
+        
+        private string usuarioField;
+        
+        private string passwordField;
+        
+        private int portField;
+        
+        private string sidField;
+        
+        /// <remarks/>
+        [System.Xml.Serialization.XmlElementAttribute(Order=0)]
+        public string server {
+            get {
+                return this.serverField;
+            }
+            set {
+                this.serverField = value;
+                this.RaisePropertyChanged("server");
+            }
+        }
+        
+        /// <remarks/>
+        [System.Xml.Serialization.XmlElementAttribute(Order=1)]
+        public string usuario {
+            get {
+                return this.usuarioField;
+            }
+            set {
+                this.usuarioField = value;
+                this.RaisePropertyChanged("usuario");
+            }
+        }
+        
+        /// <remarks/>
+        [System.Xml.Serialization.XmlElementAttribute(Order=2)]
+        public string password {
+            get {
+                return this.passwordField;
+            }
+            set {
+                this.passwordField = value;
+                this.RaisePropertyChanged("password");
+            }
+        }
+        
+        /// <remarks/>
+        [System.Xml.Serialization.XmlElementAttribute(Order=3)]
+        public int port {
+            get {
+                return this.portField;
+            }
+            set {
+                this.portField = value;
+                this.RaisePropertyChanged("port");
+            }
+        }
+        
+        /// <remarks/>
+        [System.Xml.Serialization.XmlElementAttribute(Order=4)]
+        public string sid {
+            get {
+                return this.sidField;
+            }
+            set {
+                this.sidField = value;
+                this.RaisePropertyChanged("sid");
             }
         }
         
@@ -6858,6 +6961,113 @@ namespace Transmision.Net.Basico.BataPos {
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
     [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
+    [System.ServiceModel.MessageContractAttribute(WrapperName="ws_update_tk_return_reimprimir", WrapperNamespace="http://bataperu.com.pe/", IsWrapped=true)]
+    public partial class ws_update_tk_return_reimprimirRequest {
+        
+        [System.ServiceModel.MessageHeaderAttribute(Namespace="http://bataperu.com.pe/")]
+        public Transmision.Net.Basico.BataPos.ValidateAcceso ValidateAcceso;
+        
+        [System.ServiceModel.MessageBodyMemberAttribute(Namespace="http://bataperu.com.pe/", Order=0)]
+        public string cod_tda;
+        
+        [System.ServiceModel.MessageBodyMemberAttribute(Namespace="http://bataperu.com.pe/", Order=1)]
+        public string barra;
+        
+        public ws_update_tk_return_reimprimirRequest() {
+        }
+        
+        public ws_update_tk_return_reimprimirRequest(Transmision.Net.Basico.BataPos.ValidateAcceso ValidateAcceso, string cod_tda, string barra) {
+            this.ValidateAcceso = ValidateAcceso;
+            this.cod_tda = cod_tda;
+            this.barra = barra;
+        }
+    }
+    
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
+    [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
+    [System.ServiceModel.MessageContractAttribute(WrapperName="ws_update_tk_return_reimprimirResponse", WrapperNamespace="http://bataperu.com.pe/", IsWrapped=true)]
+    public partial class ws_update_tk_return_reimprimirResponse {
+        
+        public ws_update_tk_return_reimprimirResponse() {
+        }
+    }
+    
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
+    [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
+    [System.ServiceModel.MessageContractAttribute(WrapperName="ws_get_tk_return_reimprimir", WrapperNamespace="http://bataperu.com.pe/", IsWrapped=true)]
+    public partial class ws_get_tk_return_reimprimirRequest {
+        
+        [System.ServiceModel.MessageHeaderAttribute(Namespace="http://bataperu.com.pe/")]
+        public Transmision.Net.Basico.BataPos.ValidateAcceso ValidateAcceso;
+        
+        [System.ServiceModel.MessageBodyMemberAttribute(Namespace="http://bataperu.com.pe/", Order=0)]
+        public string cod_tda;
+        
+        public ws_get_tk_return_reimprimirRequest() {
+        }
+        
+        public ws_get_tk_return_reimprimirRequest(Transmision.Net.Basico.BataPos.ValidateAcceso ValidateAcceso, string cod_tda) {
+            this.ValidateAcceso = ValidateAcceso;
+            this.cod_tda = cod_tda;
+        }
+    }
+    
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
+    [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
+    [System.ServiceModel.MessageContractAttribute(WrapperName="ws_get_tk_return_reimprimirResponse", WrapperNamespace="http://bataperu.com.pe/", IsWrapped=true)]
+    public partial class ws_get_tk_return_reimprimirResponse {
+        
+        [System.ServiceModel.MessageBodyMemberAttribute(Namespace="http://bataperu.com.pe/", Order=0)]
+        public Transmision.Net.Basico.BataPos.Ent_Tk_Return[] ws_get_tk_return_reimprimirResult;
+        
+        public ws_get_tk_return_reimprimirResponse() {
+        }
+        
+        public ws_get_tk_return_reimprimirResponse(Transmision.Net.Basico.BataPos.Ent_Tk_Return[] ws_get_tk_return_reimprimirResult) {
+            this.ws_get_tk_return_reimprimirResult = ws_get_tk_return_reimprimirResult;
+        }
+    }
+    
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
+    [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
+    [System.ServiceModel.MessageContractAttribute(WrapperName="ws_get_conexion_xstore", WrapperNamespace="http://bataperu.com.pe/", IsWrapped=true)]
+    public partial class ws_get_conexion_xstoreRequest {
+        
+        [System.ServiceModel.MessageHeaderAttribute(Namespace="http://bataperu.com.pe/")]
+        public Transmision.Net.Basico.BataPos.ValidateAcceso ValidateAcceso;
+        
+        public ws_get_conexion_xstoreRequest() {
+        }
+        
+        public ws_get_conexion_xstoreRequest(Transmision.Net.Basico.BataPos.ValidateAcceso ValidateAcceso) {
+            this.ValidateAcceso = ValidateAcceso;
+        }
+    }
+    
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
+    [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
+    [System.ServiceModel.MessageContractAttribute(WrapperName="ws_get_conexion_xstoreResponse", WrapperNamespace="http://bataperu.com.pe/", IsWrapped=true)]
+    public partial class ws_get_conexion_xstoreResponse {
+        
+        [System.ServiceModel.MessageBodyMemberAttribute(Namespace="http://bataperu.com.pe/", Order=0)]
+        public Transmision.Net.Basico.BataPos.Ent_Conexion_Ora_Xstore ws_get_conexion_xstoreResult;
+        
+        public ws_get_conexion_xstoreResponse() {
+        }
+        
+        public ws_get_conexion_xstoreResponse(Transmision.Net.Basico.BataPos.Ent_Conexion_Ora_Xstore ws_get_conexion_xstoreResult) {
+            this.ws_get_conexion_xstoreResult = ws_get_conexion_xstoreResult;
+        }
+    }
+    
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
+    [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
     [System.ServiceModel.MessageContractAttribute(WrapperName="ws_get_cupon_return", WrapperNamespace="http://bataperu.com.pe/", IsWrapped=true)]
     public partial class ws_get_cupon_returnRequest {
         
@@ -7234,6 +7444,44 @@ namespace Transmision.Net.Basico.BataPos {
             inValue.param = param;
             Transmision.Net.Basico.BataPos.ws_genera_cupon_returnResponse retVal = ((Transmision.Net.Basico.BataPos.Bata_TransactionSoap)(this)).ws_genera_cupon_return(inValue);
             return retVal.ws_genera_cupon_returnResult;
+        }
+        
+        [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
+        Transmision.Net.Basico.BataPos.ws_update_tk_return_reimprimirResponse Transmision.Net.Basico.BataPos.Bata_TransactionSoap.ws_update_tk_return_reimprimir(Transmision.Net.Basico.BataPos.ws_update_tk_return_reimprimirRequest request) {
+            return base.Channel.ws_update_tk_return_reimprimir(request);
+        }
+        
+        public void ws_update_tk_return_reimprimir(Transmision.Net.Basico.BataPos.ValidateAcceso ValidateAcceso, string cod_tda, string barra) {
+            Transmision.Net.Basico.BataPos.ws_update_tk_return_reimprimirRequest inValue = new Transmision.Net.Basico.BataPos.ws_update_tk_return_reimprimirRequest();
+            inValue.ValidateAcceso = ValidateAcceso;
+            inValue.cod_tda = cod_tda;
+            inValue.barra = barra;
+            Transmision.Net.Basico.BataPos.ws_update_tk_return_reimprimirResponse retVal = ((Transmision.Net.Basico.BataPos.Bata_TransactionSoap)(this)).ws_update_tk_return_reimprimir(inValue);
+        }
+        
+        [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
+        Transmision.Net.Basico.BataPos.ws_get_tk_return_reimprimirResponse Transmision.Net.Basico.BataPos.Bata_TransactionSoap.ws_get_tk_return_reimprimir(Transmision.Net.Basico.BataPos.ws_get_tk_return_reimprimirRequest request) {
+            return base.Channel.ws_get_tk_return_reimprimir(request);
+        }
+        
+        public Transmision.Net.Basico.BataPos.Ent_Tk_Return[] ws_get_tk_return_reimprimir(Transmision.Net.Basico.BataPos.ValidateAcceso ValidateAcceso, string cod_tda) {
+            Transmision.Net.Basico.BataPos.ws_get_tk_return_reimprimirRequest inValue = new Transmision.Net.Basico.BataPos.ws_get_tk_return_reimprimirRequest();
+            inValue.ValidateAcceso = ValidateAcceso;
+            inValue.cod_tda = cod_tda;
+            Transmision.Net.Basico.BataPos.ws_get_tk_return_reimprimirResponse retVal = ((Transmision.Net.Basico.BataPos.Bata_TransactionSoap)(this)).ws_get_tk_return_reimprimir(inValue);
+            return retVal.ws_get_tk_return_reimprimirResult;
+        }
+        
+        [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
+        Transmision.Net.Basico.BataPos.ws_get_conexion_xstoreResponse Transmision.Net.Basico.BataPos.Bata_TransactionSoap.ws_get_conexion_xstore(Transmision.Net.Basico.BataPos.ws_get_conexion_xstoreRequest request) {
+            return base.Channel.ws_get_conexion_xstore(request);
+        }
+        
+        public Transmision.Net.Basico.BataPos.Ent_Conexion_Ora_Xstore ws_get_conexion_xstore(Transmision.Net.Basico.BataPos.ValidateAcceso ValidateAcceso) {
+            Transmision.Net.Basico.BataPos.ws_get_conexion_xstoreRequest inValue = new Transmision.Net.Basico.BataPos.ws_get_conexion_xstoreRequest();
+            inValue.ValidateAcceso = ValidateAcceso;
+            Transmision.Net.Basico.BataPos.ws_get_conexion_xstoreResponse retVal = ((Transmision.Net.Basico.BataPos.Bata_TransactionSoap)(this)).ws_get_conexion_xstore(inValue);
+            return retVal.ws_get_conexion_xstoreResult;
         }
         
         [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]

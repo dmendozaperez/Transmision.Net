@@ -5310,7 +5310,7 @@ namespace Transmision.Net.Basico
         {
             /** CONSULTAR VENTA **/
             string dir = @"D:\POS\TR\";
-            string impresora = "TICKET"; // @"\\172.19.4.96\TICKET"; //"HP LaserJet M14-M17 PCLmS";
+            string impresora = @"TICKET"; // @"\\172.19.4.96\TICKET"; //"HP LaserJet M14-M17 PCLmS";
             if (!Directory.Exists(dir))
             {
                 Directory.CreateDirectory(dir);
@@ -5364,38 +5364,15 @@ namespace Transmision.Net.Basico
                             {
                                 if (env.cupon_imprimir.Trim().Length > 0)
                                 {
-                                    //#region Generar Archivo
+                                    #region Generar Archivo (No se usa)
                                     //using (StreamWriter rpta = new StreamWriter(dir + @"\RPTA\" + Path.GetFileNameWithoutExtension(item) + ".txt"))
                                     //{
                                     //    //codigo | titulo | texto | texto2 | texto3
                                     //    rpta.WriteLine(env.cupon_imprimir + "|" + env.text1_cup.Trim() + "|" + env.text2_cup.Trim() + "|" + env.text3_cup.Trim() + "|" + env.text4_cup.Trim());
                                     //    rpta.Close();
                                     //}
-                                    //#endregion
-
-                                    #region Imprimir
-                                    Ticket _tk = new Ticket();
-                                    //_tk.leftMargin = 70f;//para el xstore
-                                    _tk.MaxChar = 38;
-                                    Barcode barcode = new Barcode();
-                                    //barcode.IncludeLabel = true;
-                                    Image img = barcode.Encode(TYPE.CODE128, env.cupon_imprimir.Trim(), Color.Black, Color.White, 250, 80);
-
-                                    Bitmap bmp = new Bitmap(img);
-                                    _tk.HeaderImage = bmp;
-                                    _tk.AddHeaderLine(env.text1_cup);
-                                    _tk.AddHeaderLine("");
-                                    _tk.AddHeaderLine(env.text2_cup);
-                                    _tk.AddHeaderLine("");
-                                    _tk.AddFooterLine0(env.cupon_imprimir.Trim());
-                                    _tk.AddFooterLine0("");
-                                    _tk.AddFooterLine0(env.text3_cup);
-                                    _tk.AddFooterLine0("");
-                                    _tk.AddFooterLine0("");
-                                    _tk.AddFooterLine0("");
-                                    _tk.AddFooterLine(env.text4_cup);
-                                    _tk.PrintTicket(impresora);
                                     #endregion
+                                    imprimir(env, impresora);
                                 }
                                 else
                                 {
@@ -5416,6 +5393,73 @@ namespace Transmision.Net.Basico
                     }
                 }
             }
+            else
+            {
+                #region Re-Impresi[on
+                try
+                {
+                    if (_tienda == null)
+                    {
+                        _error = "No hay codigo de tienda para re-impresi[on";
+                        return;                          
+                    }
+                    List<BataPos.Ent_Tk_Return> lista_reimprime = new List<BataPos.Ent_Tk_Return>();
+                    BataPos.ValidateAcceso header_user = new BataPos.ValidateAcceso();
+                    header_user.Username = "3D4F4673-98EB-4EB5-A468-4B7FAEC0C721";
+                    header_user.Password = "566FDFF1-5311-4FE2-B3FC-0346923FE4B4";
+                    BataPos.Bata_TransactionSoapClient batatran = new BataPos.Bata_TransactionSoapClient();
+                    lista_reimprime = batatran.ws_get_tk_return_reimprimir(header_user, _tienda).ToList();
+
+                    if (lista_reimprime != null)
+                    {
+                        if (lista_reimprime.Count > 0)
+                        {
+                            foreach (BataPos.Ent_Tk_Return fila in lista_reimprime)
+                            {
+                                imprimir(fila, impresora);
+                                batatran.ws_update_tk_return_reimprimir(header_user, _tienda, fila.cupon_imprimir);
+                            }
+                        }
+                    }
+                }
+                catch (Exception ex)
+                {
+                    _error = "Error reimpresión " + ex.ToString();
+                }                
+                #endregion
+            }
+        }
+        
+        static void imprimir(BataPos.Ent_Tk_Return env , string impresora)
+        {
+            try
+            {
+                #region Imprimir
+                Ticket _tk = new Ticket();
+                //_tk.leftMargin = 70f;//para el xstore
+                _tk.MaxChar = 38;
+                Barcode barcode = new Barcode();
+                //barcode.IncludeLabel = true;
+                Image img = barcode.Encode(TYPE.CODE128A, env.cupon_imprimir.Trim(), Color.Black, Color.White, 250, 80);
+
+                Bitmap bmp = new Bitmap(img);
+                _tk.HeaderImage = bmp;
+                _tk.AddHeaderLine(env.text1_cup);
+                _tk.AddHeaderLine("");
+                _tk.AddHeaderLine(env.text2_cup);
+                _tk.AddHeaderLine("");
+                _tk.AddFooterLine0(env.cupon_imprimir.Trim());
+                _tk.AddFooterLine0("");
+                _tk.AddFooterLine0(env.text3_cup);
+                _tk.AddFooterLine0("");
+                _tk.AddFooterLine0("");
+                //_tk.AddFooterLine0("");
+                _tk.AddFooterLine(env.text4_cup);
+                _tk.PrintTicket(impresora);
+                #endregion
+            }
+            catch (Exception)
+            {            }            
         }
         #endregion
     }
