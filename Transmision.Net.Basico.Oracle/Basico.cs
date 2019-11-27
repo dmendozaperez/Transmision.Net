@@ -144,7 +144,6 @@ namespace Transmision.Net.Basico.Oracle
                             }
                     }
                 }
-
                 #endregion
 
             }
