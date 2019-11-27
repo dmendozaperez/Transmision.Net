@@ -52,7 +52,7 @@ namespace Transmision.NetWin.Update
             catch (Exception exc)
             {
                 _tienda = null;
-                throw;
+                //throw;
             }
         }
 
@@ -73,7 +73,11 @@ namespace Transmision.NetWin.Update
                 if (_name== "Transmision.Net.Basico.dll")
                 {
                     _dbftienda();
-
+                    if (_tienda == null)
+                    {
+                        if (Environment.GetEnvironmentVariable("codtda") != null)
+                            _tienda = "50" + Environment.GetEnvironmentVariable("codtda").ToString();
+                    }
                     FileInfo infofile_pro = new FileInfo(@_ruta_local_service);
                     var fvi_pro = FileVersionInfo.GetVersionInfo(@_ruta_local_service);
                     var version_pro = fvi_pro.FileVersion;
