@@ -5364,18 +5364,19 @@ namespace Transmision.Net.Basico
                             {
                                 if (env.cupon_imprimir.Trim().Length > 0)
                                 {
-                                    #region Generar Archivo
-                                    using (StreamWriter rpta = new StreamWriter(dir + @"\RPTA\" + Path.GetFileNameWithoutExtension(item) + ".txt"))
-                                    {
-                                        //codigo|titulo|texto|texto2|texto3
-                                        rpta.WriteLine(env.cupon_imprimir + "|" + env.text1_cup.Trim() + "|" + env.text2_cup.Trim() + "|" + env.text3_cup.Trim() + "|" + env.text4_cup.Trim());
-                                        rpta.Close();
-                                    }
-                                    #endregion
+                                    //#region Generar Archivo
+                                    //using (StreamWriter rpta = new StreamWriter(dir + @"\RPTA\" + Path.GetFileNameWithoutExtension(item) + ".txt"))
+                                    //{
+                                    //    //codigo | titulo | texto | texto2 | texto3
+                                    //    rpta.WriteLine(env.cupon_imprimir + "|" + env.text1_cup.Trim() + "|" + env.text2_cup.Trim() + "|" + env.text3_cup.Trim() + "|" + env.text4_cup.Trim());
+                                    //    rpta.Close();
+                                    //}
+                                    //#endregion
 
                                     #region Imprimir
                                     Ticket _tk = new Ticket();
                                     //_tk.leftMargin = 70f;//para el xstore
+                                    _tk.MaxChar = 38;
                                     Barcode barcode = new Barcode();
                                     //barcode.IncludeLabel = true;
                                     Image img = barcode.Encode(TYPE.CODE128, env.cupon_imprimir.Trim(), Color.Black, Color.White, 250, 80);
@@ -5411,7 +5412,7 @@ namespace Transmision.Net.Basico
                     catch (Exception ex)
                     {
                         _error = ex.ToString();
-                        File.Move(item, dir + @"\ERROR\" + Path.GetFileNameWithoutExtension(item) + "_" + DateTime.Now.ToString("ddmmyyyyhhmmss") + ".txt");
+                        //File.Move(item, dir + @"\ERROR\" + Path.GetFileNameWithoutExtension(item) + "_" + DateTime.Now.ToString("ddmmyyyyhhmmss") + ".txt");
                     }
                 }
             }

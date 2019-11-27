@@ -142,10 +142,6 @@ namespace Transmision.Net.Basico
 
         private string CenterText(string text , ref string sobrante)
         {
-            if (text.IndexOf("cupón no puede")>0)
-            {
-                text = text;
-            }
             Console.WriteLine(text);
             text = text.TrimStart();
             sobrante = "";
@@ -220,7 +216,7 @@ namespace Transmision.Net.Basico
                 return;
             try
             {
-                this.gfx.DrawImage(this.headerImage, new Point((int)this.leftMargin, (int)this.YPosition()));
+                this.gfx.DrawImage(this.headerImage, new Point((int)this.leftMargin + 4, (int)this.YPosition()));
                 this.imageHeight = 18;// (int)Math.Round((double)this.headerImage.Height / 58.0 * 15.0) + 3;
                 this.DrawEspacio();
             }
