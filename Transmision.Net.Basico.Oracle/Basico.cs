@@ -158,32 +158,35 @@ namespace Transmision.Net.Basico.Oracle
 
 
         public void imprimir(Ent_Tk_Return env)
-        {
+        { 
             #region Imprimir
-            Ticket _tk = new Ticket();
-            _tk.leftMargin = 70f;//para el xstore
-            Barcode barcode = new Barcode();
-            //barcode.IncludeLabel = true;
-            Image img = barcode.Encode(TYPE.CODE128A, env.cupon_imprimir.Trim(), Color.Black, Color.White, 250, 80);
+            try
+            {
+                Ticket _tk = new Ticket();
+                _tk.leftMargin = 69f;//para el xstore
+                _tk.MaxChar = 38;
+                Barcode barcode = new Barcode();                
+                //barcode.IncludeLabel = true;
+                Image img = barcode.Encode(TYPE.CODE128A, env.cupon_imprimir.Trim(), Color.Black, Color.White, 250, 80);
 
-            Bitmap bmp = new Bitmap(img);
-            _tk.HeaderImage = bmp;
-            _tk.AddHeaderLine(env.text1_cup);
-            _tk.AddHeaderLine("");
-            _tk.AddHeaderLine(env.text2_cup);
-            _tk.AddHeaderLine("");
-            _tk.AddFooterLine0(env.cupon_imprimir.Trim());
-            _tk.AddFooterLine0("");
-            _tk.AddFooterLine0(env.text3_cup);
-            _tk.AddFooterLine0("");
-            _tk.AddFooterLine0("");
-            _tk.AddFooterLine0("");
-            _tk.AddFooterLine(env.text4_cup);
+                Bitmap bmp = new Bitmap(img);
+                _tk.HeaderImage = bmp;
+                _tk.AddHeaderLine(env.text1_cup);
+                _tk.AddHeaderLine("");
+                _tk.AddHeaderLine(env.text2_cup);
+                _tk.AddHeaderLine("");
+                _tk.AddFooterLine0(env.cupon_imprimir.Trim());
+                _tk.AddFooterLine0("");
+                _tk.AddFooterLine0(env.text3_cup);
+                _tk.AddFooterLine0("");
+                _tk.AddFooterLine0("");
+                //_tk.AddFooterLine0("");
+                _tk.AddFooterLine(env.text4_cup);
 
-            string printer = get_printer_disp();
-            if (printer != "")_tk.PrintTicket(printer);
-
-            
+                string printer = get_printer_disp();
+                if (printer != "") _tk.PrintTicket(printer);
+            }
+            catch (Exception) { }
             #endregion
         }
         public string get_printer_disp()
