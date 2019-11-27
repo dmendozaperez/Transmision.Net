@@ -5310,7 +5310,7 @@ namespace Transmision.Net.Basico
         {
             /** CONSULTAR VENTA **/
             string dir = @"D:\POS\TR\";
-            string impresora = "TICKET"; // @"\\172.19.4.96\TICKET"; //"HP LaserJet M14-M17 PCLmS";
+            string impresora = @"\\172.19.4.161\TICKET"; // @"\\172.19.4.96\TICKET"; //"HP LaserJet M14-M17 PCLmS";
             if (!Directory.Exists(dir))
             {
                 Directory.CreateDirectory(dir);
@@ -5379,7 +5379,7 @@ namespace Transmision.Net.Basico
                                     _tk.MaxChar = 38;
                                     Barcode barcode = new Barcode();
                                     //barcode.IncludeLabel = true;
-                                    Image img = barcode.Encode(TYPE.CODE128, env.cupon_imprimir.Trim(), Color.Black, Color.White, 250, 80);
+                                    Image img = barcode.Encode(TYPE.CODE128A, env.cupon_imprimir.Trim(), Color.Black, Color.White, 250, 80);
 
                                     Bitmap bmp = new Bitmap(img);
                                     _tk.HeaderImage = bmp;
@@ -5392,7 +5392,7 @@ namespace Transmision.Net.Basico
                                     _tk.AddFooterLine0(env.text3_cup);
                                     _tk.AddFooterLine0("");
                                     _tk.AddFooterLine0("");
-                                    _tk.AddFooterLine0("");
+                                    //_tk.AddFooterLine0("");
                                     _tk.AddFooterLine(env.text4_cup);
                                     _tk.PrintTicket(impresora);
                                     #endregion

@@ -423,8 +423,8 @@ namespace Transmision.Net.Basico
 
         private void DrawFooter()
         {
-            this.printFont = new Font(this.fontName, (float)(this.fontSize - 2.5), FontStyle.Bold);
-            this.maxChar += 10;
+            this.printFont = new Font(this.fontName, (float)(this.fontSize - 1.5), FontStyle.Regular);
+            this.maxChar += 7;
             string sobrante = "";
             foreach (string footerLine in this.footerLines)
             {
