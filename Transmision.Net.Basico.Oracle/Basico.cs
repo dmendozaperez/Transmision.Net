@@ -16,19 +16,31 @@ namespace Transmision.Net.Basico.Oracle
 {
     public class Basico
     {
+        private string _tienda = "";
+
+     
         public  string ejecuta_proceso_oracle()
         {
             string error = "";
             DateTime fecha = DateTime.Today;
             try
             {
+                string nom_pc = Environment.MachineName;//"TIENDA-933-1"
+                _tienda = nom_pc.Substring(nom_pc.IndexOf('-') + 1, nom_pc.Length - (nom_pc.IndexOf('-') + 1));
+                _tienda = _tienda.Substring(0, _tienda.Length - 2);
+                if (_tienda.Length == 3) _tienda = "50" + _tienda;
+
                 Dat_Ora_Data data_ora = new Dat_Ora_Data();
                 #region<CONEXIONES DE ORACLE>
-                Ent_Acceso_BD.server = ConfigurationManager.AppSettings["server"].ToString();
-                Ent_Acceso_BD.user = ConfigurationManager.AppSettings["usuario"].ToString();
-                Ent_Acceso_BD.password = ConfigurationManager.AppSettings["password"].ToString();
-                Ent_Acceso_BD.port =Convert.ToInt32(ConfigurationManager.AppSettings["port"].ToString());
-                Ent_Acceso_BD.sid = ConfigurationManager.AppSettings["sid"].ToString();
+                Ent_Conexion_Ora_Xstore con_ora = data_ora.ws_conexion_xstore();
+
+                if (con_ora == null) return "";  
+
+                Ent_Acceso_BD.server = con_ora.server;//  ConfigurationManager.AppSettings["server"].ToString();
+                Ent_Acceso_BD.user = con_ora.usuario;// ConfigurationManager.AppSettings["usuario"].ToString();
+                Ent_Acceso_BD.password = con_ora.password;//  ConfigurationManager.AppSettings["password"].ToString();
+                Ent_Acceso_BD.port = con_ora.port;// Convert.ToInt32(ConfigurationManager.AppSettings["port"].ToString());
+                Ent_Acceso_BD.sid = con_ora.sid;// ConfigurationManager.AppSettings["sid"].ToString();
                 Ent_Acceso_BD.nom_tabla = ConfigurationManager.AppSettings["tempo"].ToString();
                 #endregion               
                 #region<ORACLE CREACION Y EXISTENCIA>
@@ -117,6 +129,24 @@ namespace Transmision.Net.Basico.Oracle
                 }
 
                 #endregion
+                #region<REGION PARA LA REIMPRESION DE TICKETS RETORNO>
+                List<Ent_Tk_Return> lista_reimprime = data_ora.ws_get_reimprimir_tk_return(_tienda);
+
+                if (lista_reimprime != null)
+                {
+                    if (lista_reimprime.Count>0)
+                    {
+                            foreach(Ent_Tk_Return fila in lista_reimprime)
+                            {
+                                imprimir(fila);
+                                data_ora.ws_update_tk_return_reimprimir(_tienda, fila.cupon_imprimir);
+
+                            }
+                    }
+                }
+
+                #endregion
+
             }
             catch (Exception exc)
             {
@@ -124,6 +154,9 @@ namespace Transmision.Net.Basico.Oracle
             }
             return error;
         }
+
+
+
         public void imprimir(Ent_Tk_Return env)
         {
             #region Imprimir
@@ -131,7 +164,7 @@ namespace Transmision.Net.Basico.Oracle
             _tk.leftMargin = 70f;//para el xstore
             Barcode barcode = new Barcode();
             //barcode.IncludeLabel = true;
-            Image img = barcode.Encode(TYPE.CODE128, env.cupon_imprimir.Trim(), Color.Black, Color.White, 250, 80);
+            Image img = barcode.Encode(TYPE.CODE128A, env.cupon_imprimir.Trim(), Color.Black, Color.White, 250, 80);
 
             Bitmap bmp = new Bitmap(img);
             _tk.HeaderImage = bmp;

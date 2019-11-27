@@ -15,6 +15,12 @@
     {
         "Entry"
         {
+        "MsmKey" = "8:_004A529A91DA4494A7D1205CC4E07158"
+        "OwnerKey" = "8:_UNDEFINED"
+        "MsmSig" = "8:_UNDEFINED"
+        }
+        "Entry"
+        {
         "MsmKey" = "8:_04111A07FBFC5F27F77E371B9B174440"
         "OwnerKey" = "8:_EE585E0A8BE542FC93EF07DFEFD5CAE0"
         "MsmSig" = "8:_UNDEFINED"
@@ -69,6 +75,18 @@
         }
         "Entry"
         {
+        "MsmKey" = "8:_A590BC0F5CD22209C13EC2D7069E5870"
+        "OwnerKey" = "8:_EE585E0A8BE542FC93EF07DFEFD5CAE0"
+        "MsmSig" = "8:_UNDEFINED"
+        }
+        "Entry"
+        {
+        "MsmKey" = "8:_A590BC0F5CD22209C13EC2D7069E5870"
+        "OwnerKey" = "8:_37C1C1B018481C3C541CA49551EC179E"
+        "MsmSig" = "8:_UNDEFINED"
+        }
+        "Entry"
+        {
         "MsmKey" = "8:_EE585E0A8BE542FC93EF07DFEFD5CAE0"
         "OwnerKey" = "8:_UNDEFINED"
         "MsmSig" = "8:_UNDEFINED"
@@ -76,13 +94,13 @@
         "Entry"
         {
         "MsmKey" = "8:_UNDEFINED"
-        "OwnerKey" = "8:_3D1FEEDCE2242EA487598D95DD7AFD87"
+        "OwnerKey" = "8:_EE585E0A8BE542FC93EF07DFEFD5CAE0"
         "MsmSig" = "8:_UNDEFINED"
         }
         "Entry"
         {
         "MsmKey" = "8:_UNDEFINED"
-        "OwnerKey" = "8:_EE585E0A8BE542FC93EF07DFEFD5CAE0"
+        "OwnerKey" = "8:_004A529A91DA4494A7D1205CC4E07158"
         "MsmSig" = "8:_UNDEFINED"
         }
         "Entry"
@@ -109,6 +127,18 @@
         "OwnerKey" = "8:_A2FDFB03F7D9810DDB4324C49BAA7538"
         "MsmSig" = "8:_UNDEFINED"
         }
+        "Entry"
+        {
+        "MsmKey" = "8:_UNDEFINED"
+        "OwnerKey" = "8:_A590BC0F5CD22209C13EC2D7069E5870"
+        "MsmSig" = "8:_UNDEFINED"
+        }
+        "Entry"
+        {
+        "MsmKey" = "8:_UNDEFINED"
+        "OwnerKey" = "8:_3D1FEEDCE2242EA487598D95DD7AFD87"
+        "MsmSig" = "8:_UNDEFINED"
+        }
     }
     "Configurations"
     {
@@ -127,6 +157,22 @@
         "PrivateKeyFile" = "8:"
         "TimeStampServer" = "8:"
         "InstallerBootstrapper" = "3:2"
+            "BootstrapperCfg:{63ACBE69-63AA-4F98-B2B6-99F9E24495F2}"
+            {
+            "Enabled" = "11:TRUE"
+            "PromptEnabled" = "11:TRUE"
+            "PrerequisitesLocation" = "2:1"
+            "Url" = "8:"
+            "ComponentsUrl" = "8:"
+                "Items"
+                {
+                    "{EDC2488A-8267-493A-A98E-7D9C3B36CDF3}:.NETFramework,Version=v4.5"
+                    {
+                    "Name" = "8:Microsoft .NET Framework 4.5 (x86 and x64)"
+                    "ProductCode" = "8:.NETFramework,Version=v4.5"
+                    }
+                }
+            }
         }
         "Release"
         {
@@ -143,12 +189,34 @@
         "PrivateKeyFile" = "8:"
         "TimeStampServer" = "8:"
         "InstallerBootstrapper" = "3:2"
+            "BootstrapperCfg:{63ACBE69-63AA-4F98-B2B6-99F9E24495F2}"
+            {
+            "Enabled" = "11:TRUE"
+            "PromptEnabled" = "11:TRUE"
+            "PrerequisitesLocation" = "2:1"
+            "Url" = "8:"
+            "ComponentsUrl" = "8:"
+            }
         }
     }
     "Deployable"
     {
         "CustomAction"
         {
+            "{4AA51A2D-7D85-4A59-BA75-B0809FC8B380}:_0E49934E9127462A8DED38EAF0531022"
+            {
+            "Name" = "8:Activar_Servicio_Oracle.exe"
+            "Condition" = "8:"
+            "Object" = "8:_004A529A91DA4494A7D1205CC4E07158"
+            "FileType" = "3:2"
+            "InstallAction" = "3:2"
+            "Arguments" = "8:"
+            "EntryPoint" = "8:"
+            "Sequence" = "3:2"
+            "Identifier" = "8:_58B70F56_0F3A_42ED_8A54_74E2837FC2E6"
+            "InstallerClass" = "11:FALSE"
+            "CustomActionData" = "8:"
+            }
             "{4AA51A2D-7D85-4A59-BA75-B0809FC8B380}:_374A89FFCF7241B0A7E38E0FA4CDBD65"
             {
             "Name" = "8:Resultado principal from Genera_Transmision_Oracle (Active)"
@@ -163,6 +231,20 @@
             "InstallerClass" = "11:TRUE"
             "CustomActionData" = "8:"
             }
+            "{4AA51A2D-7D85-4A59-BA75-B0809FC8B380}:_3B32C3814C184AE68CDFA21A590077FB"
+            {
+            "Name" = "8:Resultado principal from Genera_Transmision_Oracle (Active)"
+            "Condition" = "8:"
+            "Object" = "8:_EE585E0A8BE542FC93EF07DFEFD5CAE0"
+            "FileType" = "3:2"
+            "InstallAction" = "3:3"
+            "Arguments" = "8:"
+            "EntryPoint" = "8:"
+            "Sequence" = "3:1"
+            "Identifier" = "8:_94E5D0F0_124F_46DD_97F7_0CAF40D3AB91"
+            "InstallerClass" = "11:TRUE"
+            "CustomActionData" = "8:"
+            }
             "{4AA51A2D-7D85-4A59-BA75-B0809FC8B380}:_97F66BDB80224BDC906EF12CD88E4CD8"
             {
             "Name" = "8:Resultado principal from Genera_Transmision_Oracle (Active)"
@@ -174,6 +256,20 @@
             "EntryPoint" = "8:"
             "Sequence" = "3:1"
             "Identifier" = "8:_46C743EE_1AEB_4378_91D9_5318B87DDECD"
+            "InstallerClass" = "11:TRUE"
+            "CustomActionData" = "8:"
+            }
+            "{4AA51A2D-7D85-4A59-BA75-B0809FC8B380}:_B8417FAF6AFC48DD9A04927717F844FC"
+            {
+            "Name" = "8:Resultado principal from Genera_Transmision_Oracle (Active)"
+            "Condition" = "8:"
+            "Object" = "8:_EE585E0A8BE542FC93EF07DFEFD5CAE0"
+            "FileType" = "3:2"
+            "InstallAction" = "3:2"
+            "Arguments" = "8:"
+            "EntryPoint" = "8:"
+            "Sequence" = "3:1"
+            "Identifier" = "8:_363E8FF6_4D3F_4C01_A2E7_4C733BF5CCB4"
             "InstallerClass" = "11:TRUE"
             "CustomActionData" = "8:"
             }
@@ -200,6 +296,37 @@
         }
         "File"
         {
+            "{9F6F8455-1EF1-4B85-886A-4223BCC8E7F7}:_004A529A91DA4494A7D1205CC4E07158"
+            {
+            "AssemblyRegister" = "3:1"
+            "AssemblyIsInGAC" = "11:FALSE"
+            "AssemblyAsmDisplayName" = "8:Activar_Servicio_Oracle, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL"
+                "ScatterAssemblies"
+                {
+                    "_004A529A91DA4494A7D1205CC4E07158"
+                    {
+                    "Name" = "8:Activar_Servicio_Oracle.exe"
+                    "Attributes" = "3:512"
+                    }
+                }
+            "SourcePath" = "8:..\\Activar_Servicio_Oracle\\bin\\Debug\\Activar_Servicio_Oracle.exe"
+            "TargetName" = "8:"
+            "Tag" = "8:"
+            "Folder" = "8:_F748E6523DAB49C6A29746F3922C9C6F"
+            "Condition" = "8:"
+            "Transitive" = "11:FALSE"
+            "Vital" = "11:TRUE"
+            "ReadOnly" = "11:FALSE"
+            "Hidden" = "11:FALSE"
+            "System" = "11:FALSE"
+            "Permanent" = "11:FALSE"
+            "SharedLegacy" = "11:FALSE"
+            "PackageAs" = "3:1"
+            "Register" = "3:1"
+            "Exclude" = "11:FALSE"
+            "IsDependency" = "11:FALSE"
+            "IsolateTo" = "8:"
+            }
             "{9F6F8455-1EF1-4B85-886A-4223BCC8E7F7}:_04111A07FBFC5F27F77E371B9B174440"
             {
             "AssemblyRegister" = "3:1"
@@ -355,6 +482,37 @@
             "IsDependency" = "11:TRUE"
             "IsolateTo" = "8:"
             }
+            "{9F6F8455-1EF1-4B85-886A-4223BCC8E7F7}:_A590BC0F5CD22209C13EC2D7069E5870"
+            {
+            "AssemblyRegister" = "3:1"
+            "AssemblyIsInGAC" = "11:FALSE"
+            "AssemblyAsmDisplayName" = "8:BarcodeLib, Version=1.3.0.0, Culture=neutral, PublicKeyToken=5f09bda868cc39e7, processorArchitecture=MSIL"
+                "ScatterAssemblies"
+                {
+                    "_A590BC0F5CD22209C13EC2D7069E5870"
+                    {
+                    "Name" = "8:BarcodeLib.dll"
+                    "Attributes" = "3:512"
+                    }
+                }
+            "SourcePath" = "8:BarcodeLib.dll"
+            "TargetName" = "8:"
+            "Tag" = "8:"
+            "Folder" = "8:_F748E6523DAB49C6A29746F3922C9C6F"
+            "Condition" = "8:"
+            "Transitive" = "11:FALSE"
+            "Vital" = "11:TRUE"
+            "ReadOnly" = "11:FALSE"
+            "Hidden" = "11:FALSE"
+            "System" = "11:FALSE"
+            "Permanent" = "11:FALSE"
+            "SharedLegacy" = "11:FALSE"
+            "PackageAs" = "3:1"
+            "Register" = "3:1"
+            "Exclude" = "11:FALSE"
+            "IsDependency" = "11:TRUE"
+            "IsolateTo" = "8:"
+            }
         }
         "FileType"
         {
@@ -412,7 +570,7 @@
         "Name" = "8:Microsoft Visual Studio"
         "ProductName" = "8:Service Transmision Oracle"
         "ProductCode" = "8:{3C5860FA-CBDF-420E-A243-7D1456718F21}"
-        "PackageCode" = "8:{07DBBA99-5512-4057-9B8D-8F278ECBD38B}"
+        "PackageCode" = "8:{764D37E2-DB7F-479B-9D1F-67CE21BC3DC9}"
         "UpgradeCode" = "8:{61F55304-166E-45C4-9A95-271E6AA7E10B}"
         "AspNetVersion" = "8:4.0.30319.0"
         "RestartWWWService" = "11:FALSE"

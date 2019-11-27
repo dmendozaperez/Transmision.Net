@@ -233,6 +233,61 @@ namespace Transmision.Net.Basico.Oracle.CapaDato
             return re;
         }
 
+        public Ent_Conexion_Ora_Xstore ws_conexion_xstore()
+        {
+            Ent_Conexion_Ora_Xstore con = null;
+            try
+            {
+                con = new Ent_Conexion_Ora_Xstore();
+                ValidateAcceso header_user = new ValidateAcceso();
+                header_user.Username = "3D4F4673-98EB-4EB5-A468-4B7FAEC0C721";
+                header_user.Password = "566FDFF1-5311-4FE2-B3FC-0346923FE4B4";
+                Bata_TransactionSoapClient batatran = new Bata_TransactionSoapClient();
+                con = batatran.ws_get_conexion_xstore(header_user);
+
+            }
+            catch 
+            {
+               
+            }
+            return con;
+        }
+        public List<Ent_Tk_Return> ws_get_reimprimir_tk_return(string cod_tda)
+        {
+            List<Ent_Tk_Return> list = null;
+            try
+            {
+                list = new List<Ent_Tk_Return>();
+                ValidateAcceso header_user = new ValidateAcceso();
+                header_user.Username = "3D4F4673-98EB-4EB5-A468-4B7FAEC0C721";
+                header_user.Password = "566FDFF1-5311-4FE2-B3FC-0346923FE4B4";
+                Bata_TransactionSoapClient batatran = new Bata_TransactionSoapClient();
+                list = batatran.ws_get_tk_return_reimprimir(header_user, cod_tda).ToList();
+
+            }
+            catch
+            {
+
+            }
+            return list;
+        }
+        public void ws_update_tk_return_reimprimir(string cod_tda, string barra)
+        {           
+            try
+            {
+         
+                ValidateAcceso header_user = new ValidateAcceso();
+                header_user.Username = "3D4F4673-98EB-4EB5-A468-4B7FAEC0C721";
+                header_user.Password = "566FDFF1-5311-4FE2-B3FC-0346923FE4B4";
+                Bata_TransactionSoapClient batatran = new Bata_TransactionSoapClient();
+                batatran.ws_update_tk_return_reimprimir(header_user, cod_tda,barra);
+            }
+            catch
+            {
+
+            }
+         
+        }
 
         #endregion
 
