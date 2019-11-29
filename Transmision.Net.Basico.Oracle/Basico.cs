@@ -4,11 +4,13 @@ using System.Collections.Generic;
 using System.Configuration;
 using System.Data;
 using System.Drawing;
+using System.Globalization;
 using System.Linq;
 using System.Management;
 using System.Text;
 using System.Threading.Tasks;
-using Transmision.Net.Basico.Oracle.BataTransaction;
+using Transmision.Net.Basico.Oracle.BataPos;
+//using Transmision.Net.Basico.Oracle.BataTransaction;
 using Transmision.Net.Basico.Oracle.CapaDato;
 using Transmision.Net.Basico.Oracle.CapaEntidad;
 
@@ -42,7 +44,8 @@ namespace Transmision.Net.Basico.Oracle
 
                 Dat_Ora_Data data_ora = new Dat_Ora_Data();
                 #region<CONEXIONES DE ORACLE>
-                Ent_Conexion_Ora_Xstore con_ora = data_ora.ws_conexion_xstore();
+                Ent_Conexion_Ora_Xstore con_ora = data_ora.ws_conexion_xstore(ref error);
+                if (error.Length > 0) return error;
 
                 if (con_ora == null) return "";
 
@@ -54,15 +57,17 @@ namespace Transmision.Net.Basico.Oracle
                 Ent_Acceso_BD.nom_tabla = ConfigurationManager.AppSettings["tempo"].ToString();
                 #endregion               
                 #region<ORACLE CREACION Y EXISTENCIA>
-                Boolean existe = data_ora.existe_tabla();
+                Boolean existe = data_ora.existe_tabla(ref error);
+                if (error.Length > 0) return error;
                 if (!existe)
                 {
-                    data_ora.crear_table();
+                    error = data_ora.crear_table();
                 }
+                if (error.Length > 0) return error;
                 #endregion
                 #region<REGION DE TRANSACCIONES AL TEMPORAL>
-                DataTable dtventa_ora = data_ora.get_documento_TRN_TRANS(fecha);
-
+                DataTable dtventa_ora = data_ora.get_documento_TRN_TRANS(fecha,ref error);
+                if (error.Length > 0) return error;
                 if (dtventa_ora != null)
                 {
                     if (dtventa_ora.Rows.Count > 0)
@@ -74,24 +79,31 @@ namespace Transmision.Net.Basico.Oracle
                             param.BUSINESS_DATE = Convert.ToDateTime(fila["BUSINESS_DATE"]);
                             param.WKSTN_ID = Convert.ToDecimal(fila["WKSTN_ID"]);
                             param.TRANS_SEQ = Convert.ToDecimal(fila["TRANS_SEQ"]);
-                            param.TOTAL = Convert.ToDecimal(fila["TOTAL"]);
+
+                            decimal _n = Convert.ToDecimal(fila["TOTAL"], new NumberFormatInfo() { NumberDecimalSeparator = "." });
+                            param.TOTAL = _n;// Convert.ToDecimal(fila["TOTAL"]);
+
                             param.FISCAL_NUMBER = fila["FISCAL_NUMBER"].ToString();
 
                             /*VERIFICAR QUE NO EXISTA EL DOCUMENTO*/
-                            Boolean existe_tmp = data_ora.existe_tabla_temp(param);
+                            Boolean existe_tmp = data_ora.existe_tabla_temp(param,ref error);
+                            if (error.Length > 0) return error;
                             if (!existe_tmp)
                             {
-                                Boolean insert = data_ora.inserta_tabla_temp(param);
+                                Boolean insert = data_ora.inserta_tabla_temp(param,ref error);
+                                if (error.Length > 0) return error;
                                 /*si el insert es correcto entonces hacemos un update*/
                                 if (insert)
                                 {
-                                    data_ora.update_documento_TRN_TRANS(param);
+                                    data_ora.update_documento_TRN_TRANS(param,ref error);
+                                    if (error.Length > 0) return error;
                                 }
                             }
                             else
                             {
                                 /*realizar el update en la tabla principal*/
-                                data_ora.update_documento_TRN_TRANS(param);
+                                data_ora.update_documento_TRN_TRANS(param, ref error);
+                                if (error.Length > 0) return error;
                             }
 
                         }
@@ -118,7 +130,8 @@ namespace Transmision.Net.Basico.Oracle
                             param.SERIE = FC_SFAC;
                             param.NUMERO = FC_NFAC;
 
-                            Ent_Tk_Return env = data_ora.ws_envio_param(param);
+                            Ent_Tk_Return env = data_ora.ws_envio_param(param,ref error);
+                            if (error.Length > 0) return error;
                             /*en este caso quiere decir que no hay errores en el envio*/
                             if (env.estado_error.Length == 0)
                             {
@@ -129,7 +142,7 @@ namespace Transmision.Net.Basico.Oracle
 
                                 /*en este caso vemos que se genero el cupon*/
                                
-                                data_ora.update_tmp_ora(env.cupon_imprimir, RTL_LOC_ID, WKSTN_ID, TRANS_SEQ, FISCAL_NUMBER);
+                                data_ora.update_tmp_ora(env.cupon_imprimir, RTL_LOC_ID, WKSTN_ID, TRANS_SEQ, FISCAL_NUMBER,ref error);
                                 imprimir(env);
                             }
 

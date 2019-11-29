@@ -17,7 +17,7 @@
     <DebugSymbols>true</DebugSymbols>
     <DebugType>full</DebugType>
     <Optimize>false</Optimize>
-    <OutputPath>bin\Debug\</OutputPath>
+    <OutputPath>..\ClickOnceService\bin\Debug\Actualizar\</OutputPath>
     <DefineConstants>DEBUG;TRACE</DefineConstants>
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
@@ -64,11 +64,18 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Basico.cs" />
+    <Compile Include="Basico_Update.cs" />
     <Compile Include="CapaDato\Dat_Ora_Data.cs" />
     <Compile Include="CapaEntidad\Ent_Bat_Tk_Return.cs" />
     <Compile Include="CapaEntidad\Ent_Ora_Conexion.cs" />
+    <Compile Include="CrearTicket.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="Service References\BataTransaction\Reference.cs">
+    <Compile Include="Service References\BataPos\Reference.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </Compile>
+    <Compile Include="Service References\BataTransmision\Reference.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
       <DependentUpon>Reference.svcmap</DependentUpon>
@@ -79,44 +86,63 @@
     <None Include="app.config" />
     <None Include="packages.config" />
     <None Include="Properties\DataSources\System.Data.DataSet.datasource" />
-    <None Include="Service References\BataTransaction\Bata_Transaction1.wsdl" />
-    <None Include="Service References\BataTransaction\Transmision.Net.Basico.Oracle.BataTransaction.Ent_Alma_Ecu.datasource">
+    <None Include="Service References\BataPos\Bata_Transaction.wsdl" />
+    <None Include="Service References\BataPos\Transmision.Net.Basico.Oracle.BataPos.Ent_Alma_Ecu.datasource">
       <DependentUpon>Reference.svcmap</DependentUpon>
     </None>
-    <None Include="Service References\BataTransaction\Transmision.Net.Basico.Oracle.BataTransaction.Ent_CarpetaUpload_Xstore.datasource">
+    <None Include="Service References\BataPos\Transmision.Net.Basico.Oracle.BataPos.Ent_CarpetaUpload_Xstore.datasource">
       <DependentUpon>Reference.svcmap</DependentUpon>
     </None>
-    <None Include="Service References\BataTransaction\Transmision.Net.Basico.Oracle.BataTransaction.Ent_Conexion_Ora_Xstore.datasource">
+    <None Include="Service References\BataPos\Transmision.Net.Basico.Oracle.BataPos.Ent_Conexion_Ora_Xstore.datasource">
       <DependentUpon>Reference.svcmap</DependentUpon>
     </None>
-    <None Include="Service References\BataTransaction\Transmision.Net.Basico.Oracle.BataTransaction.Ent_Config_Service.datasource">
+    <None Include="Service References\BataPos\Transmision.Net.Basico.Oracle.BataPos.Ent_Config_Service.datasource">
       <DependentUpon>Reference.svcmap</DependentUpon>
     </None>
-    <None Include="Service References\BataTransaction\Transmision.Net.Basico.Oracle.BataTransaction.Ent_File.datasource">
+    <None Include="Service References\BataPos\Transmision.Net.Basico.Oracle.BataPos.Ent_File.datasource">
       <DependentUpon>Reference.svcmap</DependentUpon>
     </None>
-    <None Include="Service References\BataTransaction\Transmision.Net.Basico.Oracle.BataTransaction.Ent_File_Ruta.datasource">
+    <None Include="Service References\BataPos\Transmision.Net.Basico.Oracle.BataPos.Ent_File_Ruta.datasource">
       <DependentUpon>Reference.svcmap</DependentUpon>
     </None>
-    <None Include="Service References\BataTransaction\Transmision.Net.Basico.Oracle.BataTransaction.Ent_Fvdespc.datasource">
+    <None Include="Service References\BataPos\Transmision.Net.Basico.Oracle.BataPos.Ent_Fvdespc.datasource">
       <DependentUpon>Reference.svcmap</DependentUpon>
     </None>
-    <None Include="Service References\BataTransaction\Transmision.Net.Basico.Oracle.BataTransaction.Ent_MsgTransac.datasource">
+    <None Include="Service References\BataPos\Transmision.Net.Basico.Oracle.BataPos.Ent_MsgTransac.datasource">
       <DependentUpon>Reference.svcmap</DependentUpon>
     </None>
-    <None Include="Service References\BataTransaction\Transmision.Net.Basico.Oracle.BataTransaction.Ent_Paperless_Return.datasource">
+    <None Include="Service References\BataPos\Transmision.Net.Basico.Oracle.BataPos.Ent_Paperless_Return.datasource">
       <DependentUpon>Reference.svcmap</DependentUpon>
     </None>
-    <None Include="Service References\BataTransaction\Transmision.Net.Basico.Oracle.BataTransaction.Ent_PathDBF.datasource">
+    <None Include="Service References\BataPos\Transmision.Net.Basico.Oracle.BataPos.Ent_PathDBF.datasource">
       <DependentUpon>Reference.svcmap</DependentUpon>
     </None>
-    <None Include="Service References\BataTransaction\Transmision.Net.Basico.Oracle.BataTransaction.Ent_Scdddes.datasource">
+    <None Include="Service References\BataPos\Transmision.Net.Basico.Oracle.BataPos.Ent_Scdddes.datasource">
       <DependentUpon>Reference.svcmap</DependentUpon>
     </None>
-    <None Include="Service References\BataTransaction\Transmision.Net.Basico.Oracle.BataTransaction.Ent_Tk_Get_Valores.datasource">
+    <None Include="Service References\BataPos\Transmision.Net.Basico.Oracle.BataPos.Ent_Tk_Get_Valores.datasource">
       <DependentUpon>Reference.svcmap</DependentUpon>
     </None>
-    <None Include="Service References\BataTransaction\Transmision.Net.Basico.Oracle.BataTransaction.Ent_Tk_Return.datasource">
+    <None Include="Service References\BataPos\Transmision.Net.Basico.Oracle.BataPos.Ent_Tk_Return.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\BataTransmision\bata_transaccion.wsdl" />
+    <None Include="Service References\BataTransmision\Transmision.Net.Basico.Oracle.BataTransmision.Fvdespc.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\BataTransmision\Transmision.Net.Basico.Oracle.BataTransmision.Impresion_QR.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\BataTransmision\Transmision.Net.Basico.Oracle.BataTransmision.Paq_Get.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\BataTransmision\Transmision.Net.Basico.Oracle.BataTransmision.Resultado_Tda_Ecu.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\BataTransmision\Transmision.Net.Basico.Oracle.BataTransmision.Ruta_Update_File.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\BataTransmision\Transmision.Net.Basico.Oracle.BataTransmision.Xml_Get.datasource">
       <DependentUpon>Reference.svcmap</DependentUpon>
     </None>
   </ItemGroup>
@@ -124,22 +150,35 @@
     <WCFMetadata Include="Service References\" />
   </ItemGroup>
   <ItemGroup>
-    <WCFMetadataStorage Include="Service References\BataTransaction\" />
+    <WCFMetadataStorage Include="Service References\BataPos\" />
+    <WCFMetadataStorage Include="Service References\BataTransmision\" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="Service References\BataTransaction\configuration91.svcinfo" />
+    <None Include="Service References\BataPos\Bata_Transaction.disco" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="Service References\BataTransaction\configuration.svcinfo" />
+    <None Include="Service References\BataPos\configuration91.svcinfo" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="Service References\BataTransaction\Reference.svcmap">
+    <None Include="Service References\BataPos\configuration.svcinfo" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Service References\BataPos\Reference.svcmap">
       <Generator>WCF Proxy Generator</Generator>
       <LastGenOutput>Reference.cs</LastGenOutput>
     </None>
   </ItemGroup>
   <ItemGroup>
-    <None Include="Service References\BataTransaction\Bata_Transaction1.disco" />
+    <None Include="Service References\BataTransmision\configuration91.svcinfo" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Service References\BataTransmision\configuration.svcinfo" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Service References\BataTransmision\Reference.svcmap">
+      <Generator>WCF Proxy Generator</Generator>
+      <LastGenOutput>Reference.cs</LastGenOutput>
+    </None>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

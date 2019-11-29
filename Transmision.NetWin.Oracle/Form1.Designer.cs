@@ -42,6 +42,8 @@
             this.btnconectar = new System.Windows.Forms.Button();
             this.btnenvio_ws = new System.Windows.Forms.Button();
             this.btnprueba_servicio = new System.Windows.Forms.Button();
+            this.button1 = new System.Windows.Forms.Button();
+            this.btn_updservice = new System.Windows.Forms.Button();
             this.groupBox1.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -188,11 +190,35 @@
             this.btnprueba_servicio.UseVisualStyleBackColor = true;
             this.btnprueba_servicio.Click += new System.EventHandler(this.btnprueba_servicio_Click);
             // 
+            // button1
+            // 
+            this.button1.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.button1.Location = new System.Drawing.Point(369, 201);
+            this.button1.Name = "button1";
+            this.button1.Size = new System.Drawing.Size(248, 23);
+            this.button1.TabIndex = 4;
+            this.button1.Text = "IMPRIMIR";
+            this.button1.UseVisualStyleBackColor = true;
+            this.button1.Click += new System.EventHandler(this.button1_Click);
+            // 
+            // btn_updservice
+            // 
+            this.btn_updservice.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btn_updservice.Location = new System.Drawing.Point(29, 215);
+            this.btn_updservice.Name = "btn_updservice";
+            this.btn_updservice.Size = new System.Drawing.Size(219, 23);
+            this.btn_updservice.TabIndex = 5;
+            this.btn_updservice.Text = "UPDATE SERVICE";
+            this.btn_updservice.UseVisualStyleBackColor = true;
+            this.btn_updservice.Click += new System.EventHandler(this.btn_updservice_Click);
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(632, 193);
+            this.ClientSize = new System.Drawing.Size(632, 259);
+            this.Controls.Add(this.btn_updservice);
+            this.Controls.Add(this.button1);
             this.Controls.Add(this.btnprueba_servicio);
             this.Controls.Add(this.btnenvio_ws);
             this.Controls.Add(this.btnconectar);
@@ -223,6 +249,8 @@
         private System.Windows.Forms.Button btnconectar;
         private System.Windows.Forms.Button btnenvio_ws;
         private System.Windows.Forms.Button btnprueba_servicio;
+        private System.Windows.Forms.Button button1;
+        private System.Windows.Forms.Button btn_updservice;
     }
 }
 
