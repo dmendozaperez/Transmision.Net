@@ -8,7 +8,8 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using Transmision.Net.Basico.Oracle;
-using Transmision.Net.Basico.Oracle.BataTransaction;
+using Transmision.Net.Basico.Oracle.BataPos;
+//using Transmision.Net.Basico.Oracle.BataTransaction;
 using Transmision.Net.Basico.Oracle.CapaDato;
 using Transmision.Net.Basico.Oracle.CapaEntidad;
 
@@ -40,7 +41,8 @@ namespace Transmision.NetWin.Oracle
                 Dat_Ora_Data data_ora = new Dat_Ora_Data();
                 #endregion
                 #region<ORACLE CREACION Y EXISTENCIA>
-                Boolean existe = data_ora.existe_tabla();
+                string error = "";
+                Boolean existe = data_ora.existe_tabla(ref error);
                 if (!existe)
                 {
                     data_ora.crear_table();
@@ -48,7 +50,7 @@ namespace Transmision.NetWin.Oracle
                 #endregion
 
                 #region<REGION DE TRANSACCIONES AL TEMPORAL>
-                DataTable dtventa_ora = data_ora.get_documento_TRN_TRANS(fecha);
+                DataTable dtventa_ora = data_ora.get_documento_TRN_TRANS(fecha,ref error);
 
                 if (dtventa_ora!=null)
                 {
@@ -63,22 +65,22 @@ namespace Transmision.NetWin.Oracle
                             param.TRANS_SEQ = Convert.ToDecimal(fila["TRANS_SEQ"]);
                             param.TOTAL = Convert.ToDecimal(fila["TOTAL"]);
                             param.FISCAL_NUMBER = fila["FISCAL_NUMBER"].ToString();
-
+                            //string error = "";
                             /*VERIFICAR QUE NO EXISTA EL DOCUMENTO*/
-                            Boolean existe_tmp = data_ora.existe_tabla_temp(param);
+                            Boolean existe_tmp = data_ora.existe_tabla_temp(param,ref  error);
                             if (!existe_tmp)
                             { 
-                                Boolean insert = data_ora.inserta_tabla_temp(param);
+                                Boolean insert = data_ora.inserta_tabla_temp(param,ref error);
                                 /*si el insert es correcto entonces hacemos un update*/
                                 if (insert)
                                 {
-                                    data_ora.update_documento_TRN_TRANS(param);
+                                    data_ora.update_documento_TRN_TRANS(param,ref error);
                                 }
                             }
                             else
                             {
                                 /*realizar el update en la tabla principal*/
-                                data_ora.update_documento_TRN_TRANS(param);
+                                data_ora.update_documento_TRN_TRANS(param,ref error);
                             }
 
                         }
@@ -131,7 +133,9 @@ namespace Transmision.NetWin.Oracle
                             param.SERIE = FC_SFAC;
                             param.NUMERO = FC_NFAC;
 
-                            Ent_Tk_Return env = data_ora.ws_envio_param(param);
+                            string error = "";
+
+                            Ent_Tk_Return env = data_ora.ws_envio_param(param,ref error);
                             /*en este caso quiere decir que no hay errores en el envio*/
                             if (env.estado_error.Length==0)
                             {
@@ -139,11 +143,11 @@ namespace Transmision.NetWin.Oracle
                                 Int32 WKSTN_ID = Convert.ToInt32(fila["WKSTN_ID"]);
                                 Int32 TRANS_SEQ = Convert.ToInt32(fila["TRANS_SEQ"]);
                                 string FISCAL_NUMBER = fila["FISCAL_NUMBER"].ToString();
-
+                                //string error = "";
                                 /*en este caso vemos que se genero el cupon*/
                                 //if (env.genera_cupon==1)
                                 //{
-                                data_ora.update_tmp_ora(env.cupon_imprimir, RTL_LOC_ID, WKSTN_ID, TRANS_SEQ, FISCAL_NUMBER);
+                                data_ora.update_tmp_ora(env.cupon_imprimir, RTL_LOC_ID, WKSTN_ID, TRANS_SEQ, FISCAL_NUMBER,ref error);
                                 //}
                                 ////else
                                 ////{
@@ -170,6 +174,25 @@ namespace Transmision.NetWin.Oracle
         {
             Basico ejecuta = new Basico();
             string error = ejecuta.ejecuta_proceso_oracle();
+        }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+            //Basico ejecuta = new Basico();
+            //Ent_Tk_Return tk = new Ent_Tk_Return();
+            //tk.cupon_imprimir = "BTRBF0LH01RL00DYI5";
+            //tk.text1_cup = "* BATA TE REGALA *";
+            //tk.text2_cup = "S/30.00 DSCTO EN TU PROXIMA COMPRA";
+            //tk.text3_cup = "";
+            //tk.text4_cup = "Por compras mayores o iguales a S/100.00 Soles en toda la tienda, realizadas del 28 de Noviembre al 02 de Diciembre del 2019 en una sola transacción, BATA te regala un cupón de descuento de S/30.00 Soles para ser utilizado durante el 03 al 09 de Diciembre del 2019 en tu siguiente compra mayor o igual a S/100.00 Soles en una sola transacción. Para hacer efectiva la promoción se hará entrega del cupón de descuento (impreso en el presente ticket de compra). Aplica para todas las tiendas BATA a nivel nacional. No acumulable con otras promociones. Solo aplica un descuento por transacción y por cliente. El cupón no puede ser canjeado por efectivo. Promoción sujeta a cambio sin previo aviso.";
+
+            //ejecuta.imprimir(tk);
+        }
+
+        private void btn_updservice_Click(object sender, EventArgs e)
+        {
+            Basico_Update ejecuta = new Basico_Update();
+            ejecuta.ejecuta_update_service();
         }
     }
 }

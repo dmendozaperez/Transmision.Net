@@ -26,7 +26,7 @@ namespace Transmision.Net.Basico
         private Image headerImage;
         private int count;
         private int imageHeight;
-        public float leftMargin ;
+        public float leftMargin;
         private Font printFont;
         private Graphics gfx;
         private string line;
@@ -140,9 +140,9 @@ namespace Transmision.Net.Basico
             return str;
         }
 
-        private string CenterText(string text , ref string sobrante)
+        private string CenterText(string text, ref string sobrante)
         {
-            if (text.IndexOf("cupón no puede")>0)
+            if (text.IndexOf("cupón no puede") > 0)
             {
                 text = text;
             }
@@ -151,15 +151,16 @@ namespace Transmision.Net.Basico
             sobrante = "";
             int len = text.Length;
             int lastSpacePos = text.LastIndexOf(" ");
-            if (lastSpacePos > 0 && lastSpacePos != len-1)
+            if (lastSpacePos > 0 && lastSpacePos != len - 1)
             {
                 sobrante = text.Substring(lastSpacePos + 1);
                 return text.Substring(0, lastSpacePos + 1);
-            }else
+            }
+            else
             {
                 return text;
             }
-                
+
         }
 
 

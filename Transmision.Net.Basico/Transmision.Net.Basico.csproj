@@ -53,6 +53,7 @@
   <ItemGroup>
     <Compile Include="Basico.cs" />
     <Compile Include="BASICODBFNET.cs" />
+    <Compile Include="CrearTicket.cs" />
     <Compile Include="FFCGUD02.cs" />
     <Compile Include="FFDGUD02.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

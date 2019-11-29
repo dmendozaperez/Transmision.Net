@@ -42,6 +42,8 @@ Project("{54435603-DBB4-11D2-8724-00A0C9A8B90C}") = "Instalador_Oracle_Project",
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Activar_Servicio_Oracle", "Activar_Servicio_Oracle\Activar_Servicio_Oracle.csproj", "{FA71B58E-A341-4115-ABAC-9B6A23FA6501}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Transmision.NetWin.Update.Oracle", "Transmision.NetWin.Update.Oracle\Transmision.NetWin.Update.Oracle.csproj", "{3EAF994E-DE96-4C3A-87B5-DC1F61A43286}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		CD_ROM|Any CPU = CD_ROM|Any CPU
@@ -206,6 +208,16 @@ Global
 		{FA71B58E-A341-4115-ABAC-9B6A23FA6501}.Release|Any CPU.Build.0 = Release|Any CPU
 		{FA71B58E-A341-4115-ABAC-9B6A23FA6501}.SingleImage|Any CPU.ActiveCfg = Release|Any CPU
 		{FA71B58E-A341-4115-ABAC-9B6A23FA6501}.SingleImage|Any CPU.Build.0 = Release|Any CPU
+		{3EAF994E-DE96-4C3A-87B5-DC1F61A43286}.CD_ROM|Any CPU.ActiveCfg = Release|Any CPU
+		{3EAF994E-DE96-4C3A-87B5-DC1F61A43286}.CD_ROM|Any CPU.Build.0 = Release|Any CPU
+		{3EAF994E-DE96-4C3A-87B5-DC1F61A43286}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{3EAF994E-DE96-4C3A-87B5-DC1F61A43286}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{3EAF994E-DE96-4C3A-87B5-DC1F61A43286}.DVD-5|Any CPU.ActiveCfg = Debug|Any CPU
+		{3EAF994E-DE96-4C3A-87B5-DC1F61A43286}.DVD-5|Any CPU.Build.0 = Debug|Any CPU
+		{3EAF994E-DE96-4C3A-87B5-DC1F61A43286}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{3EAF994E-DE96-4C3A-87B5-DC1F61A43286}.Release|Any CPU.Build.0 = Release|Any CPU
+		{3EAF994E-DE96-4C3A-87B5-DC1F61A43286}.SingleImage|Any CPU.ActiveCfg = Release|Any CPU
+		{3EAF994E-DE96-4C3A-87B5-DC1F61A43286}.SingleImage|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

@@ -9,6 +9,8 @@ using System.Linq;
 using System.Text;
 using System.Windows.Forms;
 using Transmision.Net.Basico;
+using Transmision.Net.Basico.BataPos;
+
 namespace Transmision.NetWin
 {
     public partial class Form1 : Form
@@ -111,6 +113,61 @@ namespace Transmision.NetWin
                 Cursor.Current = Cursors.Default;
             }
             Cursor.Current = Cursors.Default;
+        }
+
+        private void button2_Click(object sender, EventArgs e)
+        {
+            Basico ejecuta = new Basico();
+            Ent_Tk_Return tk = new Ent_Tk_Return();
+            tk.cupon_imprimir = "BTRBF0LH01RL00DYI5";
+            tk.text1_cup = "* BATA TE REGALA *";
+            tk.text2_cup = "S/30.00 DSCTO EN TU PROXIMA COMPRA";
+            tk.text3_cup = "";
+            tk.text4_cup = "Por compras mayores o iguales a S/100.00 Soles en toda la tienda, realizadas del 28 de Noviembre al 02 de Diciembre del 2019 en una sola transacción, BATA te regala un cupón de descuento de S/30.00 Soles para ser utilizado durante el 03 al 09 de Diciembre del 2019 en tu siguiente compra mayor o igual a S/100.00 Soles en una sola transacción. Para hacer efectiva la promoción se hará entrega del cupón de descuento (impreso en el presente ticket de compra). Aplica para todas las tiendas BATA a nivel nacional. No acumulable con otras promociones. Solo aplica un descuento por transacción y por cliente. El cupón no puede ser canjeado por efectivo. Promoción sujeta a cambio sin previo aviso.";
+
+            string error = "";
+            Basico.imprimir(tk, "Ticket");
+
+            //Basico._ticket_retorno(ref error);
+
+            //ejecuta. ._ticket_retorno();
+        }
+
+        private void button3_Click(object sender, EventArgs e)
+        {
+
+            Basico ejecuta = new Basico();
+            Ent_Tk_Return tk = new Ent_Tk_Return();
+            tk.cupon_imprimir = "BTRBF0LH01RL00DYI5";
+            tk.text1_cup = "* BATA TE REGALA *";
+            tk.text2_cup = "S/30.00 DSCTO EN TU PROXIMA COMPRA";
+            tk.text3_cup = "";
+            tk.text4_cup = "Por compras mayores o iguales a S/100.00 Soles en toda la tienda, realizadas del 28 de Noviembre al 02 de Diciembre del 2019 en una sola transacción, BATA te regala un cupón de descuento de S/30.00 Soles para ser utilizado durante el 03 al 09 de Diciembre del 2019 en tu siguiente compra mayor o igual a S/100.00 Soles en una sola transacción. Para hacer efectiva la promoción se hará entrega del cupón de descuento (impreso en el presente ticket de compra). Aplica para todas las tiendas BATA a nivel nacional. No acumulable con otras promociones. Solo aplica un descuento por transacción y por cliente. El cupón no puede ser canjeado por efectivo. Promoción sujeta a cambio sin previo aviso.";
+
+            string error = "";
+            Basico.imprimir2(tk, "Ticket");
+
+            //String impresora = "ticket";
+            //string barra =  "BTRBF0LH01RL00DYI5";
+            //CrearTicket tk = new CrearTicket();
+            //tk.TextoCentro("* BATA TE REGALA *");
+            //tk.lineasGuio();
+            //tk.TextoCentro("S/30.00 DSCTO EN TU PROXIMA COMPRA");
+            //tk.lineasGuio();
+            //tk.TextoIzquierda("Por compras mayores o iguales a S/100.00 Soles en toda la tienda, realizadas del 28 de Noviembre al 02 de Diciembre del 2019 en una sola transacción, BATA te regala un cupón de descuento de S/30.00 Soles para ser utilizado durante el 03 al 09 de Diciembre del 2019 en tu siguiente compra mayor o igual a S/100.00 Soles en una sola transacción. Para hacer efectiva la promoción se hará entrega del cupón de descuento (impreso en el presente ticket de compra). Aplica para todas las tiendas BATA a nivel nacional. No acumulable con otras promociones. Solo aplica un descuento por transacción y por cliente. El cupón no puede ser canjeado por efectivo. Promoción sujeta a cambio sin previo aviso.");
+            //tk.lineasGuio();
+            //tk.TextoCentro(barra);
+            //tk.lineasGuio();
+            //tk.ImprimirTicket(impresora);
+            //tk.lineasGuio();
+
+            //BarcodeLib.Barcode Codigo = new BarcodeLib.Barcode();
+            //Codigo.IncludeLabel = true;
+            //System.Drawing.Image im = Codigo.Encode(BarcodeLib.TYPE.CODE128, Barra, System.Drawing.Color.Black, System.Drawing.Color.White, 400, 100);
+
+            //tk.HeaderImage = im;
+
+            //tk.PrintQR(impresora);
         }
     }
 }
