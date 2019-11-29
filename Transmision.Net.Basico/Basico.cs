@@ -17,6 +17,7 @@ using System.Configuration;
 using BASICO.DBF.NET;
 using BarcodeLib;
 using System.Drawing;
+using System.Drawing.Imaging;
 
 namespace Transmision.Net.Basico
 {
@@ -5430,7 +5431,7 @@ namespace Transmision.Net.Basico
             }
         }
         
-        static void imprimir(BataPos.Ent_Tk_Return env , string impresora)
+        public static void imprimir(BataPos.Ent_Tk_Return env , string impresora)
         {
             try
             {
@@ -5440,27 +5441,40 @@ namespace Transmision.Net.Basico
                 _tk.MaxChar = 38;
                 Barcode barcode = new Barcode();
                 //barcode.IncludeLabel = true;
-                Image img = barcode.Encode(TYPE.CODE128A, env.cupon_imprimir.Trim(), Color.Black, Color.White, 250, 80);
+                Image img = barcode.Encode(TYPE.CODE128B, env.cupon_imprimir.Trim(), Color.Black, Color.White, 240, 17);
 
-                Bitmap bmp = new Bitmap(img);
-                _tk.HeaderImage = bmp;
+                //img.Save(@"D:\POS\TR\PROC\"+env.cupon_imprimir+".png", ImageFormat.Png);               
+
+                //if (File.Exists(@"D:\POS\TR\PROC\" + env.cupon_imprimir + ".png"))
+                //{
+                //    Image _img = Image.FromFile(@"D:\POS\TR\PROC\" + env.cupon_imprimir + ".png");
+                _tk.HeaderImage = img;
                 _tk.AddHeaderLine(env.text1_cup);
                 _tk.AddHeaderLine("");
                 _tk.AddHeaderLine(env.text2_cup);
                 _tk.AddHeaderLine("");
-                _tk.AddFooterLine0(env.cupon_imprimir.Trim());
-                _tk.AddFooterLine0("");
-                _tk.AddFooterLine0(env.text3_cup);
-                _tk.AddFooterLine0("");
-                _tk.AddFooterLine0("");
+                _tk.AddHeaderLine(env.cupon_imprimir.Trim());
+                _tk.AddHeaderLine("");
+                //_tk.AddHeaderLine("");
+                //_tk.AddFooterLine0(env.text3_cup);
+                
+                _tk.AddHeaderLine("");
+                
+                //_tk.AddFooterLine0("");
                 //_tk.AddFooterLine0("");
                 _tk.AddFooterLine(env.text4_cup);
+                _tk.AddFooterLine("");
+                _tk.AddFooterLine0("");
+                _tk.AddFooterLine0(env.cupon_imprimir.Trim());
                 _tk.PrintTicket(impresora);
+                //    File.Delete(@"D:\POS\TR\PROC\" + env.cupon_imprimir + ".png");
+                //}
                 #endregion
             }
-            catch (Exception)
+            catch (Exception ex)
             {            }            
         }
+        
         #endregion
     }
 

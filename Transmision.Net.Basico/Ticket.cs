@@ -193,12 +193,15 @@ namespace Transmision.Net.Basico
 
             this.DrawHeader();
             //this.DrawSubHeader();
-            this.DrawImage();
+
 
             //this.DrawItems();
             //this.DrawTotales();
-            this.DrawFooter0();
             this.DrawFooter();
+            this.DrawImage();
+            this.DrawFooter0();
+            
+            
             if (this.headerImage == null)
                 return;
             this.HeaderImage.Dispose();
@@ -217,7 +220,7 @@ namespace Transmision.Net.Basico
             try
             {
                 this.gfx.DrawImage(this.headerImage, new Point((int)this.leftMargin + 4, (int)this.YPosition()));
-                this.imageHeight = 18;// (int)Math.Round((double)this.headerImage.Height / 58.0 * 15.0) + 3;
+                this.imageHeight = 5;// (int)Math.Round((double)this.headerImage.Height / 58.0 * 15.0) + 3;
                 this.DrawEspacio();
             }
             catch (Exception ex)
@@ -289,6 +292,7 @@ namespace Transmision.Net.Basico
         {
             Font printFont = new Font(this.fontName, (float)(this.fontSize - 0.3), FontStyle.Bold);
 
+            this.maxChar -= 7;
 
             foreach (string header in this.footerLines0)
             {
