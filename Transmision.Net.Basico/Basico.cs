@@ -5439,7 +5439,9 @@ namespace Transmision.Net.Basico
         {
             try
             {
+
                 #region Esperar para imprimir
+                _espera_ejecuta(1);
                 if (Directory.Exists(@"D:\INTERFA\FEPERU\IN\Boletas\QR") && Directory.Exists(@"D:\INTERFA\FEPERU\IN\Facturas\QR"))
                 {
                     string[] fileB = Directory.GetFiles(@"D:\INTERFA\FEPERU\IN\Boletas\QR");
