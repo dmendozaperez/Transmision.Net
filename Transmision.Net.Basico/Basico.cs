@@ -18,6 +18,7 @@ using BASICO.DBF.NET;
 using BarcodeLib;
 using System.Drawing;
 using System.Drawing.Imaging;
+using System.Globalization;
 
 namespace Transmision.Net.Basico
 {
@@ -5354,7 +5355,8 @@ namespace Transmision.Net.Basico
                             BataPos.Ent_Tk_Set_Parametro param = new BataPos.Ent_Tk_Set_Parametro();
                             param.COD_TDA = cod_entid;
                             param.FECHA = Convert.ToDateTime(fecha);
-                            param.MONTO = Convert.ToDecimal(importe);
+                            decimal _n = Convert.ToDecimal(importe, new NumberFormatInfo() { NumberDecimalSeparator = "." });
+                            param.MONTO = _n;// Convert.ToDecimal(importe);
                             param.FC_SUNA = tipo_doc;
                             param.SERIE = serie;
                             param.NUMERO = numero;
@@ -5383,7 +5385,7 @@ namespace Transmision.Net.Basico
                             }
                             else
                             {
-                                File.Move(item, dir + @"\ERROR\" + Path.GetFileNameWithoutExtension(item) + "_" + DateTime.Now.ToString("ddmmyyyyhhmmss") + ".txt");
+                                //File.Move(item, dir + @"\ERROR\" + Path.GetFileNameWithoutExtension(item) + "_" + DateTime.Now.ToString("ddmmyyyyhhmmss") + ".txt");
                             }
                         }
                     }
@@ -5441,7 +5443,7 @@ namespace Transmision.Net.Basico
                 _tk.MaxChar = 38;
                 Barcode barcode = new Barcode();
                 //barcode.IncludeLabel = true;
-                Image img = barcode.Encode(TYPE.CODE128B, env.cupon_imprimir.Trim(), Color.Black, Color.White, 240, 17);
+                Image img = barcode.Encode(TYPE.CODE128B, env.cupon_imprimir.Trim(), Color.Black, Color.White, 240, 15);
 
                 //img.Save(@"D:\POS\TR\PROC\"+env.cupon_imprimir+".png", ImageFormat.Png);               
 

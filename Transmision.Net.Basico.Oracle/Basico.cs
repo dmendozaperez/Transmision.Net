@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using System.Configuration;
 using System.Data;
 using System.Drawing;
+using System.Globalization;
 using System.Linq;
 using System.Management;
 using System.Text;
@@ -78,7 +79,10 @@ namespace Transmision.Net.Basico.Oracle
                             param.BUSINESS_DATE = Convert.ToDateTime(fila["BUSINESS_DATE"]);
                             param.WKSTN_ID = Convert.ToDecimal(fila["WKSTN_ID"]);
                             param.TRANS_SEQ = Convert.ToDecimal(fila["TRANS_SEQ"]);
-                            param.TOTAL = Convert.ToDecimal(fila["TOTAL"]);
+
+                            decimal _n = Convert.ToDecimal(fila["TOTAL"], new NumberFormatInfo() { NumberDecimalSeparator = "." });
+                            param.TOTAL = _n;// Convert.ToDecimal(fila["TOTAL"]);
+
                             param.FISCAL_NUMBER = fila["FISCAL_NUMBER"].ToString();
 
                             /*VERIFICAR QUE NO EXISTA EL DOCUMENTO*/

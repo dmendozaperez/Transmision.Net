@@ -367,7 +367,7 @@ namespace Transmision.Net.Basico
             //Este metodo recibe el nombre de la impresora a la cual se mandara a imprimir y el texto que se imprimira.
             //Usaremos un código que nos proporciona Microsoft. https://support.microsoft.com/es-es/kb/322091
 
-            _esta_imp = RawPrinterHelper.SendStringToPrinter(impresora, linea.ToString()); //Imprime texto.
+            _esta_imp = RawPrinterHelper1.SendStringToPrinter(impresora, linea.ToString()); //Imprime texto.
             linea.Clear();//Al cabar de imprimir limpia la linea de todo el texto agregado.
         }
 
@@ -447,7 +447,7 @@ namespace Transmision.Net.Basico
 
 
     //Clase para mandara a imprimir texto plano a la impresora
-    public class RawPrinterHelper
+    public class RawPrinterHelper1
     {
         // Structure and API declarions:
         [StructLayout(LayoutKind.Sequential, CharSet = CharSet.Ansi)]

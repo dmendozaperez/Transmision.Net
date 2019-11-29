@@ -4,6 +4,7 @@ using System;
 using System.Collections.Generic;
 using System.Data;
 using System.Data.Common;
+using System.Globalization;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -101,8 +102,11 @@ namespace Transmision.Net.Basico.Oracle.CapaDato
         public Boolean inserta_tabla_temp(Ent_Bat_Tk_Return param,ref string error)
         {
             Boolean insert = false;
+
+            decimal _n = Convert.ToDecimal(param.TOTAL, new NumberFormatInfo() { NumberDecimalSeparator = "." });
+
             string sqlquery = "INSERT INTO  " + Ent_Acceso_BD.nom_tabla + "(RTL_LOC_ID,BUSINESS_DATE,WKSTN_ID,TRANS_SEQ,TOTAL,FISCAL_NUMBER)" +
-                " VALUES(" + param.RTL_LOC_ID + ",'" + param.BUSINESS_DATE + "'," + param.WKSTN_ID + "," + param.TRANS_SEQ + "," + param.TOTAL + ",'" + param.FISCAL_NUMBER + "')";
+                " VALUES(" + param.RTL_LOC_ID + ",'" + param.BUSINESS_DATE + "'," + param.WKSTN_ID + "," + param.TRANS_SEQ + "," + _n + ",'" + param.FISCAL_NUMBER + "')";
 
             try
             {
@@ -113,7 +117,7 @@ namespace Transmision.Net.Basico.Oracle.CapaDato
             }
             catch (Exception exc)
             {
-                error = exc.Message + " ==>inserta_tabla_temp"; 
+                error = exc.Message + " ==>inserta_tabla_temp ==QUERY==> " + sqlquery; 
                 
             }
             return insert;
