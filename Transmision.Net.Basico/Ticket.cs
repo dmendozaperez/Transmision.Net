@@ -16,16 +16,17 @@ namespace Transmision.Net.Basico
         private ArrayList items = new ArrayList();
         private ArrayList totales = new ArrayList();
         private ArrayList footerLines = new ArrayList();
-        private int maxChar = 46;
+        private ArrayList footerLines0 = new ArrayList();
+        private int maxChar = 35;
         private int maxCharDescription = 20;
         private float topMargin = 3f;
         private string fontName = "Lucida Console";
-        private double fontSize = 7.5;
+        private double fontSize = 9;
         private SolidBrush myBrush = new SolidBrush(Color.Black);
         private Image headerImage;
         private int count;
         private int imageHeight;
-        private float leftMargin;
+        public float leftMargin ;
         private Font printFont;
         private Graphics gfx;
         private string line;
@@ -125,6 +126,11 @@ namespace Transmision.Net.Basico
             this.footerLines.Add((object)line);
         }
 
+        public void AddFooterLine0(string line)
+        {
+            this.footerLines0.Add((object)line);
+        }
+
         private string AlignRightText(int lenght)
         {
             string str = "";
@@ -133,6 +139,25 @@ namespace Transmision.Net.Basico
                 str += " ";
             return str;
         }
+
+        private string CenterText(string text , ref string sobrante)
+        {
+            Console.WriteLine(text);
+            text = text.TrimStart();
+            sobrante = "";
+            int len = text.Length;
+            int lastSpacePos = text.LastIndexOf(" ");
+            if (lastSpacePos > 0 && lastSpacePos != len-1)
+            {
+                sobrante = text.Substring(lastSpacePos + 1);
+                return text.Substring(0, lastSpacePos + 1);
+            }else
+            {
+                return text;
+            }
+                
+        }
+
 
         private string DottedLine()
         {
@@ -168,11 +193,15 @@ namespace Transmision.Net.Basico
 
             this.DrawHeader();
             //this.DrawSubHeader();
-            this.DrawImage();
+
 
             //this.DrawItems();
             //this.DrawTotales();
             this.DrawFooter();
+            this.DrawImage();
+            this.DrawFooter0();
+            
+            
             if (this.headerImage == null)
                 return;
             this.HeaderImage.Dispose();
@@ -190,8 +219,8 @@ namespace Transmision.Net.Basico
                 return;
             try
             {
-                this.gfx.DrawImage(this.headerImage, new Point((int)0, (int)this.YPosition()));
-                this.imageHeight = 50;// (int)Math.Round((double)this.headerImage.Height / 58.0 * 15.0) + 3;
+                this.gfx.DrawImage(this.headerImage, new Point((int)this.leftMargin + 4, (int)this.YPosition()));
+                this.imageHeight = 5;// (int)Math.Round((double)this.headerImage.Height / 58.0 * 15.0) + 3;
                 this.DrawEspacio();
             }
             catch (Exception ex)
@@ -199,36 +228,107 @@ namespace Transmision.Net.Basico
             }
         }
 
+        //private void DrawHeader()
+        //{
+        //    Font printFont = new Font(this.fontName, (float)(this.fontSize - 0.3), FontStyle.Bold);
+        //    foreach (string headerLine in this.headerLines)
+        //    {
+        //        if (headerLine.Length > this.maxChar)
+        //        {
+        //            int startIndex = 0;
+        //            int length = headerLine.Length;
+        //            while (length > this.maxChar)
+        //            {
+        //                this.line = headerLine.Substring(startIndex, this.maxChar);
+        //                this.gfx.DrawString(this.line, this.printFont, (Brush)this.myBrush, this.leftMargin, this.YPosition(), new StringFormat());
+        //                ++this.count;
+        //                startIndex += this.maxChar;
+        //                length -= this.maxChar;
+        //            }
+        //            this.line = headerLine;
+        //            this.gfx.DrawString(this.line.Substring(startIndex, this.line.Length - startIndex), this.printFont, (Brush)this.myBrush, this.leftMargin, this.YPosition(), new StringFormat());
+        //            ++this.count;
+        //        }
+        //        else
+        //        {
+        //            this.line = headerLine;
+        //            this.gfx.DrawString(this.line, this.printFont, (Brush)this.myBrush, this.leftMargin, this.YPosition(), new StringFormat());
+        //            ++this.count;
+        //        }
+        //    }
+        //    //this.DrawEspacio();
+        //}
         private void DrawHeader()
         {
-            foreach (string headerLine in this.headerLines)
+            Font printFont = new Font(this.fontName, (float)(this.fontSize - 0.3), FontStyle.Bold);
+
+
+            foreach (string header in this.headerLines)
             {
-                if (headerLine.Length > this.maxChar)
+                if (header.Length > this.maxChar)
                 {
-                    int startIndex = 0;
-                    int length = headerLine.Length;
-                    while (length > this.maxChar)
+                    int currentChar = 0;
+                    for (int headerLenght = header.Length; headerLenght > this.maxChar; headerLenght -= this.maxChar)
                     {
-                        this.line = headerLine.Substring(startIndex, this.maxChar);
-                        this.gfx.DrawString(this.line, this.printFont, (Brush)this.myBrush, this.leftMargin, this.YPosition(), new StringFormat());
-                        ++this.count;
-                        startIndex += this.maxChar;
-                        length -= this.maxChar;
+                        this.line = AlignCenterText(header.Substring(currentChar, this.maxChar).Length) + header.Substring(currentChar, this.maxChar);
+                        this.gfx.DrawString(this.line, printFont, this.myBrush, this.leftMargin, this.YPosition(), new StringFormat());
+                        this.count++;
+                        currentChar += this.maxChar;
                     }
-                    this.line = headerLine;
-                    this.gfx.DrawString(this.line.Substring(startIndex, this.line.Length - startIndex), this.printFont, (Brush)this.myBrush, this.leftMargin, this.YPosition(), new StringFormat());
-                    ++this.count;
+                    this.line = AlignCenterText(header.Length) + header;
+                    this.gfx.DrawString(this.line.Substring(currentChar, this.line.Length - currentChar), printFont, this.myBrush, this.leftMargin, this.YPosition(), new StringFormat());
+                    this.count++;
                 }
                 else
                 {
-                    this.line = headerLine;
-                    this.gfx.DrawString(this.line, this.printFont, (Brush)this.myBrush, this.leftMargin, this.YPosition(), new StringFormat());
-                    ++this.count;
+                    this.line = AlignCenterText(header.Length) + header;
+                    this.gfx.DrawString(this.line, printFont, this.myBrush, this.leftMargin, this.YPosition(), new StringFormat());
+                    this.count++;
                 }
             }
-            //this.DrawEspacio();
+            // this.DrawEspacio();
         }
+        private void DrawFooter0()
+        {
+            Font printFont = new Font(this.fontName, (float)(this.fontSize - 0.3), FontStyle.Bold);
 
+            this.maxChar -= 7;
+
+            foreach (string header in this.footerLines0)
+            {
+                if (header.Length > this.maxChar)
+                {
+                    int currentChar = 0;
+                    for (int headerLenght = header.Length; headerLenght > this.maxChar; headerLenght -= this.maxChar)
+                    {
+                        this.line = AlignCenterText(header.Substring(currentChar, this.maxChar).Length) + header.Substring(currentChar, this.maxChar);
+                        this.gfx.DrawString(this.line, printFont, this.myBrush, this.leftMargin, this.YPosition(), new StringFormat());
+                        this.count++;
+                        currentChar += this.maxChar;
+                    }
+                    this.line = AlignCenterText(header.Length) + header;
+                    this.gfx.DrawString(this.line.Substring(currentChar, this.line.Length - currentChar), printFont, this.myBrush, this.leftMargin, this.YPosition(), new StringFormat());
+                    this.count++;
+                }
+                else
+                {
+                    this.line = AlignCenterText(header.Length) + header;
+                    this.gfx.DrawString(this.line, printFont, this.myBrush, this.leftMargin, this.YPosition(), new StringFormat());
+                    this.count++;
+                }
+            }
+            this.DrawEspacio();
+        }
+        private string AlignCenterText(int lenght)
+        {
+            string espacios = "";
+            int spaces = (this.maxChar - lenght) / 2;
+            for (int x = 0; x < spaces; x++)
+            {
+                espacios += " ";
+            }
+            return espacios;
+        }
         private void DrawSubHeader()
         {
             foreach (string subHeaderLine in this.subHeaderLines)
@@ -327,19 +427,26 @@ namespace Transmision.Net.Basico
 
         private void DrawFooter()
         {
+            this.printFont = new Font(this.fontName, (float)(this.fontSize - 1.5), FontStyle.Regular);
+            this.maxChar += 7;
+            string sobrante = "";
             foreach (string footerLine in this.footerLines)
             {
+                //string footerLine = sobrante + " " + footerLine1;
                 if (footerLine.Length > this.maxChar)
                 {
                     int startIndex = 0;
                     int length = footerLine.Length;
                     while (length > this.maxChar)
                     {
+                        sobrante = "";
                         this.line = footerLine;
-                        this.gfx.DrawString(this.line.Substring(startIndex, this.maxChar), this.printFont, (Brush)this.myBrush, this.leftMargin, this.YPosition(), new StringFormat());
+                        this.gfx.DrawString(CenterText(this.line.Substring(startIndex, this.maxChar), ref sobrante), this.printFont, (Brush)this.myBrush, this.leftMargin, this.YPosition(), new StringFormat());
                         ++this.count;
-                        startIndex += this.maxChar;
+                        startIndex += this.maxChar - (sobrante.Length);
                         length -= this.maxChar;
+                        length += (sobrante.Length);
+                        //this.line = sobrante + " " + this.line;
                     }
                     this.line = footerLine;
                     this.gfx.DrawString(this.line.Substring(startIndex, this.line.Length - startIndex), this.printFont, (Brush)this.myBrush, this.leftMargin, this.YPosition(), new StringFormat());
@@ -364,7 +471,7 @@ namespace Transmision.Net.Basico
         }
     }
     //Clase para mandara a imprimir texto plano a la impresora
-    public class RawPrinterHelper1
+    public class RawPrinterHelper
     {
         // Structure and API declarions:
         [StructLayout(LayoutKind.Sequential, CharSet = CharSet.Ansi)]

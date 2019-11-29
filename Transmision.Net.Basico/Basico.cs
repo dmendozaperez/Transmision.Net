@@ -17,8 +17,7 @@ using System.Configuration;
 using BASICO.DBF.NET;
 using BarcodeLib;
 using System.Drawing;
-using System.Globalization;
-//using Carvajal.FEPE.PreSC.Core;
+using System.Drawing.Imaging;
 
 namespace Transmision.Net.Basico
 {
@@ -5310,9 +5309,6 @@ namespace Transmision.Net.Basico
         #region TICKET RETORNO
         public static void _ticket_retorno(ref string _error)
         {
-
-            //System.Globalization.CultureInfo EnglishCulture = new System.Globalization.CultureInfo("en-EN");
-
             /** CONSULTAR VENTA **/
             string dir = @"D:\POS\TR\";
             string impresora = @"TICKET"; // @"\\172.19.4.96\TICKET"; //"HP LaserJet M14-M17 PCLmS";
@@ -5358,8 +5354,7 @@ namespace Transmision.Net.Basico
                             BataPos.Ent_Tk_Set_Parametro param = new BataPos.Ent_Tk_Set_Parametro();
                             param.COD_TDA = cod_entid;
                             param.FECHA = Convert.ToDateTime(fecha);
-                            decimal _n = Convert.ToDecimal(importe, new NumberFormatInfo() { NumberDecimalSeparator = "." });
-                            param.MONTO = _n;// Convert.ToDecimal(importe);
+                            param.MONTO = Convert.ToDecimal(importe);
                             param.FC_SUNA = tipo_doc;
                             param.SERIE = serie;
                             param.NUMERO = numero;
@@ -5435,141 +5430,51 @@ namespace Transmision.Net.Basico
                 #endregion
             }
         }
-
-        public static void imprimir(BataPos.Ent_Tk_Return env, string impresora)
-        {
-            CrearTicket tk = new CrearTicket();
-            tk.TextoCentro(env.text1_cup);
-            tk.lineasGuio();
-            tk.TextoCentro(env.text2_cup);
-            tk.lineasGuio();
-            tk.TextoIzquierda(env.text4_cup);
-            tk.lineasGuio();
-            tk.TextoCentro(env.cupon_imprimir);
-            tk.lineasGuio();
-          
-            tk.ImprimirTicket(impresora);
-            tk.CortaTicket();
-            //tk.lineasGuio();
-
-            BarcodeLib.Barcode Codigo = new BarcodeLib.Barcode();
-            Codigo.IncludeLabel = true;
-            System.Drawing.Image im = Codigo.Encode(BarcodeLib.TYPE.CODE128, env.cupon_imprimir, System.Drawing.Color.Black, System.Drawing.Color.White, 270, 80);
-            Bitmap bmp = new Bitmap(im, new Size(270, 80));
-            tk.HeaderImage = bmp;
-
-            tk.PrintQR(impresora);
-          
-        }
-
-        //private static byte[] generaQR(string str)
-        //{
-        //    byte[] QR = null;
-        //    try
-        //    {
-        //        GeneratorCdp genqr = new GeneratorCdp();
-
-        //        QR = genqr.GetImageBarCodeFromString(str);
-
-        //    }
-        //    catch
-        //    {
-        //        QR = null;
-        //    }
-        //    return QR;
-        //}
-        private static Image byteArrayToImage(byte[] bytesArr)
-        {
-            MemoryStream memstr = new MemoryStream(bytesArr);
-            Image img = Image.FromStream(memstr);
-            return img;
-        }
-        public static void imprimir2(BataPos.Ent_Tk_Return env , string impresora)
+        
+        public static void imprimir(BataPos.Ent_Tk_Return env , string impresora)
         {
             try
             {
                 #region Imprimir
-                Ticket tk = new Ticket();
-                Byte[] qr = null;
-                Image im = null;
-                Bitmap bmp;
-                string cadenaQR = env.cupon_imprimir;
-                //qr = generaQR(cadenaQR);
-                im = byteArrayToImage(qr);
-                //bmp = new Bitmap(im, new Size(200, 80));
-                tk.HeaderImage =im;
-               
+                Ticket _tk = new Ticket();
+                //_tk.leftMargin = 70f;//para el xstore
+                _tk.MaxChar = 38;
+                Barcode barcode = new Barcode();
+                //barcode.IncludeLabel = true;
+                Image img = barcode.Encode(TYPE.CODE128B, env.cupon_imprimir.Trim(), Color.Black, Color.White, 240, 17);
 
-              
-              
-                tk.AddHeaderLine(env.text1_cup);
-                tk.AddHeaderLine(env.text2_cup);
-                tk.AddHeaderLine(env.text4_cup);
+                //img.Save(@"D:\POS\TR\PROC\"+env.cupon_imprimir+".png", ImageFormat.Png);               
 
-                tk.PrintTicket(impresora);
-
-                //Byte[] qr = null;
-                ////Image im = null;
-                //Bitmap bmp;
-                ////string cadenaQR = str[1].ToString().Trim();
-                //BarcodeLib.Barcode Codigo = new BarcodeLib.Barcode();
-                //Codigo.IncludeLabel = true;
-                ////System.Drawing.Image im = Codigo.Encode(BarcodeLib.TYPE.CODE128, env.cupon_imprimir, System.Drawing.Color.Black, System.Drawing.Color.White, 400, 100);
-                //System.Drawing.Image im = Codigo.Encode(BarcodeLib.TYPE.CODE128A, env.cupon_imprimir, System.Drawing.Color.Black, System.Drawing.Color.White, 240, 60);
-                ////bmp = new Bitmap(im, new Size(360, 80));
-                //bmp = new Bitmap(im, new Size(240, 60));
-                //tk.HeaderImage =bmp;
-                //tk.AddHeaderLine(env.text1_cup);
-                //tk.AddHeaderLine("");
-                //tk.AddHeaderLine(env.text2_cup);
-                //tk.AddHeaderLine("");
-                //tk.AddHeaderLine(env.text4_cup);
-                //tk.AddHeaderLine("");
-                ////tk.AddFooterLine0(env.cupon_imprimir);
-                //tk.AddFooterLine("");
-                //tk.AddFooterLine("-----------------------");
-                //tk.PrintTicket(impresora);
-                //tk.HeaderImage = im;
-
-
-                //qr = generaQR(cadenaQR);
-                //im = byteArrayToImage(qr);
-                //bmp = new Bitmap(im, new Size(120, 120));
-                //tk.HeaderImage = bmp;
-
-                //impresora_tda = str[3].Trim();
-                //string cadena = item_str.PadLeft(42, ' ');
-                //cadena = item_str.PadRight(42, ' ');
-                //tk.AddHeaderLine(env.text1_cup);
-                //tk.PrintTicket(impresora);
-                //tk.PrintQR(impresora);
-
-                //Ticket _tk = new Ticket();
-                ////_tk.leftMargin = 70f;//para el xstore
-                //_tk.MaxChar = 38;
-                //Barcode barcode = new Barcode();
-                ////barcode.IncludeLabel = true;
-                //Image img = barcode.Encode(TYPE.CODE128, env.cupon_imprimir.Trim(), Color.Black, Color.White, 260, 65);
-
-                ////Bitmap bmp = new Bitmap(img);
-                //_tk.HeaderImage = img;
-                //_tk.AddHeaderLine(env.text1_cup);
+                //if (File.Exists(@"D:\POS\TR\PROC\" + env.cupon_imprimir + ".png"))
+                //{
+                //    Image _img = Image.FromFile(@"D:\POS\TR\PROC\" + env.cupon_imprimir + ".png");
+                _tk.HeaderImage = img;
+                _tk.AddHeaderLine(env.text1_cup);
+                _tk.AddHeaderLine("");
+                _tk.AddHeaderLine(env.text2_cup);
+                _tk.AddHeaderLine("");
+                _tk.AddHeaderLine(env.cupon_imprimir.Trim());
+                _tk.AddHeaderLine("");
                 //_tk.AddHeaderLine("");
-                //_tk.AddHeaderLine(env.text2_cup);
-                //_tk.AddHeaderLine("");
-                //_tk.AddFooterLine0(env.cupon_imprimir.Trim());
+                //_tk.AddFooterLine0(env.text3_cup);
+                
+                _tk.AddHeaderLine("");
+                
                 //_tk.AddFooterLine0("");
-                //if (env.text3_cup.Length>0) _tk.AddFooterLine0(env.text3_cup);
-                ////_tk.AddFooterLine0("");
                 //_tk.AddFooterLine0("");
-                ////_tk.AddFooterLine0("");
-                //_tk.AddFooterLine(env.text4_cup);
-                //_tk.PrintTicket(impresora);
+                _tk.AddFooterLine(env.text4_cup);
+                _tk.AddFooterLine("");
+                _tk.AddFooterLine0("");
+                _tk.AddFooterLine0(env.cupon_imprimir.Trim());
+                _tk.PrintTicket(impresora);
+                //    File.Delete(@"D:\POS\TR\PROC\" + env.cupon_imprimir + ".png");
+                //}
                 #endregion
             }
-            catch (Exception EXC)
+            catch (Exception ex)
             {            }            
         }
+        
         #endregion
     }
 
