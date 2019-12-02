@@ -32,7 +32,7 @@ namespace Transmision.NetWin.Oracle
                 DateTime fecha = DateTime.Today;/*fecha de validacion*/
 
                 #region<CONEXIONES DE ORACLE>
-                Ent_Acceso_BD.server = txtserver.Text;
+                Ent_Acceso_BD.server = "172.19.4.40";// txtserver.Text;
                 Ent_Acceso_BD.user = txtusuario.Text;
                 Ent_Acceso_BD.password = txtpassword.Text;
                 Ent_Acceso_BD.port =Convert.ToInt32(txtport.Text);
@@ -105,7 +105,7 @@ namespace Transmision.NetWin.Oracle
             try
             {
                 #region<CONEXIONES DE ORACLE>
-                Ent_Acceso_BD.server = txtserver.Text;
+                Ent_Acceso_BD.server = "172.19.4.40";// txtserver.Text;
                 Ent_Acceso_BD.user = txtusuario.Text;
                 Ent_Acceso_BD.password = txtpassword.Text;
                 Ent_Acceso_BD.port = Convert.ToInt32(txtport.Text);
