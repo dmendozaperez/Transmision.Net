@@ -18,7 +18,7 @@ namespace Genera_Transmision_Oracle
             ServicesToRun = new ServiceBase[]
             {
                 new Service_Trans_Oracle()
-            };
+            };        
             ServiceBase.Run(ServicesToRun);
         }
     }

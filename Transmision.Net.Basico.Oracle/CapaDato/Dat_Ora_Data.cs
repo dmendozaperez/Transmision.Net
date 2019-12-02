@@ -61,6 +61,7 @@ namespace Transmision.Net.Basico.Oracle.CapaDato
                 {
                     existe = Convert.ToInt32(dt_existe.Rows[0]["existe"]) == 1 ? true:false;
                 }
+                
             }
             catch (Exception exc)
             {
@@ -105,14 +106,31 @@ namespace Transmision.Net.Basico.Oracle.CapaDato
 
             decimal _n = Convert.ToDecimal(param.TOTAL, new NumberFormatInfo() { NumberDecimalSeparator = "." });
 
-            string sqlquery = "INSERT INTO  " + Ent_Acceso_BD.nom_tabla + "(RTL_LOC_ID,BUSINESS_DATE,WKSTN_ID,TRANS_SEQ,TOTAL,FISCAL_NUMBER)" +
-                " VALUES(" + param.RTL_LOC_ID + ",'" + param.BUSINESS_DATE + "'," + param.WKSTN_ID + "," + param.TRANS_SEQ + "," + _n + ",'" + param.FISCAL_NUMBER + "')";
+            //string sqlquery = "INSERT INTO  " + Ent_Acceso_BD.nom_tabla + "(RTL_LOC_ID,BUSINESS_DATE,WKSTN_ID,TRANS_SEQ,TOTAL,FISCAL_NUMBER)" +
+            //    " VALUES(" + param.RTL_LOC_ID + ",'" + param.BUSINESS_DATE + "'," + param.WKSTN_ID + "," + param.TRANS_SEQ + "," + Convert.ToDecimal(param.TOTAL, new NumberFormatInfo() { NumberDecimalSeparator = "." }) + ",'" + param.FISCAL_NUMBER + "')";
+            string sqlquery = "INSERT INTO  " + Ent_Acceso_BD.nom_tabla + "(RTL_LOC_ID,BUSINESS_DATE,WKSTN_ID,TRANS_SEQ,TOTAL,FISCAL_NUMBER) VALUES(:RTL_LOC_ID,:BUSINESS_DATE,:WKSTN_ID,:TRANS_SEQ,:TOTAL,:FISCAL_NUMBER)";
 
             try
             {
+
+
                 Database db = new OracleDatabase(Ent_Acceso_BD.conn());
                 DbCommand dbCommandWrapper = db.GetSqlStringCommand(sqlquery);
+                db.AddInParameter(dbCommandWrapper, "RTL_LOC_ID", DbType.Decimal,param.RTL_LOC_ID);
+                db.AddInParameter(dbCommandWrapper, "BUSINESS_DATE", DbType.DateTime, param.BUSINESS_DATE);
+                db.AddInParameter(dbCommandWrapper, "WKSTN_ID", DbType.Decimal, param.WKSTN_ID);
+                db.AddInParameter(dbCommandWrapper, "TRANS_SEQ", DbType.Decimal, param.TRANS_SEQ);
+                db.AddInParameter(dbCommandWrapper, "TOTAL", DbType.Decimal, param.TOTAL);
+                db.AddInParameter(dbCommandWrapper, "FISCAL_NUMBER", DbType.String, param.FISCAL_NUMBER);
+
+
+                //dbCommandWrapper.Parameters.Add("RTL_LOC_ID",DbType.)
+                //dbCommandWrapper.Parameters.Add(new OracleParameter(":FName", TextBox1.Text));
+
+
                 db.ExecuteNonQuery(dbCommandWrapper);
+                               
+                               
                 insert = true;
             }
             catch (Exception exc)
