@@ -126,10 +126,10 @@
     <None Include="Service References\BataPos\Transmision.Net.Basico.BataPos.Ent_Scdddes.datasource">
       <DependentUpon>Reference.svcmap</DependentUpon>
     </None>
-    <None Include="Service References\BataPos\Transmision.Net.Basico.BataPos.Ent_Tk_Get_Valores.datasource">
+    <None Include="Service References\BataPos\Transmision.Net.Basico.BataPos.Ent_Tk_Return.datasource">
       <DependentUpon>Reference.svcmap</DependentUpon>
     </None>
-    <None Include="Service References\BataPos\Transmision.Net.Basico.BataPos.Ent_Tk_Return.datasource">
+    <None Include="Service References\BataPos\Transmision.Net.Basico.BataPos.Ent_Tk_Valores.datasource">
       <DependentUpon>Reference.svcmap</DependentUpon>
     </None>
     <None Include="Service References\BataTransmision\bata_transaccion.wsdl" />

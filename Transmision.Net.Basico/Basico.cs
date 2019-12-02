@@ -5390,6 +5390,94 @@ namespace Transmision.Net.Basico
                                 //File.Move(item, dir + @"\ERROR\" + Path.GetFileNameWithoutExtension(item) + "_" + DateTime.Now.ToString("ddmmyyyyhhmmss") + ".txt");
                             }
                         }
+                        else if (Path.GetFileNameWithoutExtension(item).ToLower() == "valida")
+                        {
+                            string texto = File.ReadAllText(item).Trim();
+                            if (texto.IndexOf("|") == -1)
+                            {
+                                return;
+                            }
+                            //BTRBF0LH01RL00000D|50933 
+                            string[] valores = texto.Split(Convert.ToChar("|"));
+                            string cupon = valores[0];
+                            string tienda = valores[1];
+                            BataPos.Bata_TransactionSoapClient bata_tran = new BataPos.Bata_TransactionSoapClient();
+                            BataPos.ValidateAcceso header_user = new BataPos.ValidateAcceso();
+                            header_user.Username = "3D4F4673-98EB-4EB5-A468-4B7FAEC0C721";
+                            header_user.Password = "566FDFF1-5311-4FE2-B3FC-0346923FE4B4";
+
+                            BataPos.Ent_Tk_Get_Parametro param = new BataPos.Ent_Tk_Get_Parametro();
+                            param.COD_CUP = cupon;
+                            param.COD_TDA = tienda;
+                            try
+                            {
+                                BataPos.Ent_Tk_Valores env = bata_tran.ws_valida_cupon_return(header_user, param);
+                                     
+                                using (StreamWriter rpta = new StreamWriter(dir + @"\RPTA\" + Path.GetFileNameWithoutExtension(item) + ".txt"))
+                                {
+                                    rpta.WriteLine(env.valida_cupon.Trim() + "|" + env.estado_error.Trim() + "|" + env.CUP_RTN_BARRA + "|" +
+                                        (env.CUP_RTN_FEC_INI_USO == null ? "": Convert.ToDateTime(env.CUP_RTN_FEC_INI_USO).ToString("dd/MM/yyyy")) + "|" +
+                                       (env.CUP_RTN_FEC_FIN_USO == null ? "" : Convert.ToDateTime(env.CUP_RTN_FEC_FIN_USO).ToString("dd/MM/yyyy")) + "|" + 
+                                        (env.MTO_DCTO == 0 ? "" : env.MTO_DCTO.ToString()) + "|" +                                       
+                                       env.CUP_RTN_ESTADO);
+                                    rpta.Close();
+                                }
+                                File.Delete(item);
+                            }
+                            catch (Exception)
+                            {
+                                using (StreamWriter rpta = new StreamWriter(dir + @"\RPTA\" + Path.GetFileNameWithoutExtension(item) + ".txt"))
+                                {
+                                    rpta.WriteLine("0|Error al consultar el Cupon|||||");
+                                    rpta.Close();
+                                }
+                            }
+                        }
+                        else if (Path.GetFileNameWithoutExtension(item).ToLower() == "consumo")
+                        {
+                            string texto = File.ReadAllText(item).Trim();
+                            if (texto.IndexOf("|") == -1)
+                            {
+                                return;
+                            }
+                            string[] valores = texto.Split(Convert.ToChar("|"));
+                            string cupon = valores[0];
+                            string tienda = valores[1];
+                            string fc_suna = valores[2];
+                            string serie = valores[3];
+                            string numero = valores[4];
+                            string fecha = valores[5];
+                            string monto = valores[6];
+
+                            BataPos.Bata_TransactionSoapClient bata_tran = new BataPos.Bata_TransactionSoapClient();
+                            BataPos.ValidateAcceso header_user = new BataPos.ValidateAcceso();
+                            header_user.Username = "3D4F4673-98EB-4EB5-A468-4B7FAEC0C721";
+                            header_user.Password = "566FDFF1-5311-4FE2-B3FC-0346923FE4B4";
+
+                            BataPos.Ent_Tk_Get_Parametro param = new BataPos.Ent_Tk_Get_Parametro();
+                            param.COD_CUP = cupon;
+                            param.COD_TDA = tienda;
+                            param.FC_SUNA = fc_suna;
+                            param.SERIE = serie;
+                            param.NUMERO = numero;
+                            decimal _n = Convert.ToDecimal(monto, new NumberFormatInfo() { NumberDecimalSeparator = "." });
+                            param.MONTO = _n;// Convert.ToDecimal(importe);
+                            param.FECHA = Convert.ToDateTime(fecha);
+                            try
+                            {
+                                BataPos.Ent_Tk_Valores env = bata_tran.ws_consumo_cupon_return(header_user, param);
+
+                                if (env.valida_cupon == "1")
+                                {
+                                    File.Delete(item);
+                                }
+                                
+                            }
+                            catch (Exception ex)
+                            {
+                                _error = "consumo " + cupon + " " + ex.Message;
+                            }
+                        }
                     }
                     catch (Exception ex)
                     {
@@ -5434,7 +5522,7 @@ namespace Transmision.Net.Basico
                 #endregion
             }
         }
-        
+
         public static void imprimir(BataPos.Ent_Tk_Return env , string impresora)
         {
             try

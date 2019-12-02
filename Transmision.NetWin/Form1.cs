@@ -169,5 +169,15 @@ namespace Transmision.NetWin
 
             //tk.PrintQR(impresora);
         }
+
+        private void button4_Click(object sender, EventArgs e)
+        {
+            string error = "";
+            Basico._ticket_retorno(ref error);
+            if (error.Length > 0)
+            {
+                MessageBox.Show(error);
+            }
+        }
     }
 }
