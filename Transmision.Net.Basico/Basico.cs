@@ -2712,10 +2712,20 @@ namespace Transmision.Net.Basico
                 //return;
                 // _tienda = "50850";
                 //_envia_transaccion_mov();
-                //_dbftienda();
+
+                _dbftienda();
+                if (_tienda==null)
+                {
+                    if (Environment.GetEnvironmentVariable("codtda") != null)
+                        _tienda = "50" + Environment.GetEnvironmentVariable("codtda").ToString();
+                    /**/
+                }
+
+
+
                 //_envia_transaccion_mov();
 
-                /*elimina si diferente a 10 minutos*/
+                    /*elimina si diferente a 10 minutos*/
                 elimina_tblock();
                 /********************************/
                 /*COMENTE PORQUE PARECE QUE ESTE PARA EL SERVICIO*/
@@ -3737,7 +3747,7 @@ namespace Transmision.Net.Basico
             catch(Exception exc)
             {
                 _tienda = null;
-                throw;
+               // throw;
             }
         }
         private static void tabla_FFACTD(DataTable dt)
@@ -5310,6 +5320,20 @@ namespace Transmision.Net.Basico
         #region TICKET RETORNO
         public static void _ticket_retorno(ref string _error)
         {
+
+            /*CODIGO DE TIENDA ENTORNO*/
+            if (_tienda == null)
+            {
+                _error = "condicion 1";
+                if (Environment.GetEnvironmentVariable("codtda") != null)
+                    _tienda = "50" + Environment.GetEnvironmentVariable("codtda").ToString();
+                /**/
+            }
+            else
+            {
+                _error = "condicion 2";
+            }
+
             /** CONSULTAR VENTA **/
             string dir = @"D:\POS\TR\";
             string impresora = @"TICKET"; // @"\\172.19.4.96\TICKET"; //"HP LaserJet M14-M17 PCLmS";
@@ -5493,9 +5517,10 @@ namespace Transmision.Net.Basico
                 {
                     if (_tienda == null)
                     {
-                        _error = "No hay codigo de tienda para re-impresi[on";
+                        _error = "No hay codigo de tienda para re-impresion";
                         return;                          
                     }
+                   
                     List<BataPos.Ent_Tk_Return> lista_reimprime = new List<BataPos.Ent_Tk_Return>();
                     BataPos.ValidateAcceso header_user = new BataPos.ValidateAcceso();
                     header_user.Username = "3D4F4673-98EB-4EB5-A468-4B7FAEC0C721";
