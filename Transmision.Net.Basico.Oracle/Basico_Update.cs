@@ -47,7 +47,7 @@ namespace Transmision.Net.Basico.Oracle
                 conexion.user_name = "emcomer";
                 conexion.user_password = "Bata2013";
 
-                Boolean _valida_version = updateversion.ws_existe_exewinupdate_version(conexion, version);
+                Boolean _valida_version = updateversion.ws_existe_exewinupdate_version_ORA(conexion, version);
                 if (_valida_version)
                 {
                     copiar_archivo_service(_exe_servicio);
@@ -117,7 +117,7 @@ namespace Transmision.Net.Basico.Oracle
                 conexion.user_name = "emcomer";
                 conexion.user_password = "Bata2013";
 
-                Boolean _valida_version = updateversion.ws_existe_serviciowin_version(conexion, version);
+                Boolean _valida_version = updateversion.ws_existe_serviciowin_version_ORA(conexion, version);
 
                 if (_valida_version)
                 {

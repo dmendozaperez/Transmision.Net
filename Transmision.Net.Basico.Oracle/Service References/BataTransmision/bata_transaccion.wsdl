@@ -365,6 +365,20 @@
           </s:sequence>
         </s:complexType>
       </s:element>
+      <s:element name="ws_existe_exewinupdate_version_ORA">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="_version" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="ws_existe_exewinupdate_version_ORAResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="ws_existe_exewinupdate_version_ORAResult" type="s:boolean" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
       <s:element name="ws_existe_fepe_dll">
         <s:complexType>
           <s:sequence>
@@ -432,6 +446,20 @@
         <s:complexType>
           <s:sequence>
             <s:element minOccurs="1" maxOccurs="1" name="ws_existe_serviciowin_versionResult" type="s:boolean" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="ws_existe_serviciowin_version_ORA">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="_version" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="ws_existe_serviciowin_version_ORAResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="ws_existe_serviciowin_version_ORAResult" type="s:boolean" />
           </s:sequence>
         </s:complexType>
       </s:element>
@@ -1109,6 +1137,15 @@
   <wsdl:message name="ws_existe_exewinupdate_versionAutenticacion">
     <wsdl:part name="Autenticacion" element="tns:Autenticacion" />
   </wsdl:message>
+  <wsdl:message name="ws_existe_exewinupdate_version_ORASoapIn">
+    <wsdl:part name="parameters" element="tns:ws_existe_exewinupdate_version_ORA" />
+  </wsdl:message>
+  <wsdl:message name="ws_existe_exewinupdate_version_ORASoapOut">
+    <wsdl:part name="parameters" element="tns:ws_existe_exewinupdate_version_ORAResponse" />
+  </wsdl:message>
+  <wsdl:message name="ws_existe_exewinupdate_version_ORAAutenticacion">
+    <wsdl:part name="Autenticacion" element="tns:Autenticacion" />
+  </wsdl:message>
   <wsdl:message name="ws_existe_fepe_dllSoapIn">
     <wsdl:part name="parameters" element="tns:ws_existe_fepe_dll" />
   </wsdl:message>
@@ -1152,6 +1189,15 @@
     <wsdl:part name="parameters" element="tns:ws_existe_serviciowin_versionResponse" />
   </wsdl:message>
   <wsdl:message name="ws_existe_serviciowin_versionAutenticacion">
+    <wsdl:part name="Autenticacion" element="tns:Autenticacion" />
+  </wsdl:message>
+  <wsdl:message name="ws_existe_serviciowin_version_ORASoapIn">
+    <wsdl:part name="parameters" element="tns:ws_existe_serviciowin_version_ORA" />
+  </wsdl:message>
+  <wsdl:message name="ws_existe_serviciowin_version_ORASoapOut">
+    <wsdl:part name="parameters" element="tns:ws_existe_serviciowin_version_ORAResponse" />
+  </wsdl:message>
+  <wsdl:message name="ws_existe_serviciowin_version_ORAAutenticacion">
     <wsdl:part name="Autenticacion" element="tns:Autenticacion" />
   </wsdl:message>
   <wsdl:message name="ws_envia_stock_invSoapIn">
@@ -1439,6 +1485,10 @@
       <wsdl:input message="tns:ws_existe_exewinupdate_versionSoapIn" />
       <wsdl:output message="tns:ws_existe_exewinupdate_versionSoapOut" />
     </wsdl:operation>
+    <wsdl:operation name="ws_existe_exewinupdate_version_ORA">
+      <wsdl:input message="tns:ws_existe_exewinupdate_version_ORASoapIn" />
+      <wsdl:output message="tns:ws_existe_exewinupdate_version_ORASoapOut" />
+    </wsdl:operation>
     <wsdl:operation name="ws_existe_fepe_dll">
       <wsdl:input message="tns:ws_existe_fepe_dllSoapIn" />
       <wsdl:output message="tns:ws_existe_fepe_dllSoapOut" />
@@ -1458,6 +1508,10 @@
     <wsdl:operation name="ws_existe_serviciowin_version">
       <wsdl:input message="tns:ws_existe_serviciowin_versionSoapIn" />
       <wsdl:output message="tns:ws_existe_serviciowin_versionSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="ws_existe_serviciowin_version_ORA">
+      <wsdl:input message="tns:ws_existe_serviciowin_version_ORASoapIn" />
+      <wsdl:output message="tns:ws_existe_serviciowin_version_ORASoapOut" />
     </wsdl:operation>
     <wsdl:operation name="ws_envia_stock_inv">
       <wsdl:input message="tns:ws_envia_stock_invSoapIn" />
@@ -1780,6 +1834,16 @@
         <soap:body use="literal" />
       </wsdl:output>
     </wsdl:operation>
+    <wsdl:operation name="ws_existe_exewinupdate_version_ORA">
+      <soap:operation soapAction="http://tempuri.org/ws_existe_exewinupdate_version_ORA" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+        <soap:header message="tns:ws_existe_exewinupdate_version_ORAAutenticacion" part="Autenticacion" use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
     <wsdl:operation name="ws_existe_fepe_dll">
       <soap:operation soapAction="http://tempuri.org/ws_existe_fepe_dll" style="document" />
       <wsdl:input>
@@ -1825,6 +1889,16 @@
       <wsdl:input>
         <soap:body use="literal" />
         <soap:header message="tns:ws_existe_serviciowin_versionAutenticacion" part="Autenticacion" use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ws_existe_serviciowin_version_ORA">
+      <soap:operation soapAction="http://tempuri.org/ws_existe_serviciowin_version_ORA" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+        <soap:header message="tns:ws_existe_serviciowin_version_ORAAutenticacion" part="Autenticacion" use="literal" />
       </wsdl:input>
       <wsdl:output>
         <soap:body use="literal" />
@@ -2281,6 +2355,16 @@
         <soap12:body use="literal" />
       </wsdl:output>
     </wsdl:operation>
+    <wsdl:operation name="ws_existe_exewinupdate_version_ORA">
+      <soap12:operation soapAction="http://tempuri.org/ws_existe_exewinupdate_version_ORA" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+        <soap12:header message="tns:ws_existe_exewinupdate_version_ORAAutenticacion" part="Autenticacion" use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
     <wsdl:operation name="ws_existe_fepe_dll">
       <soap12:operation soapAction="http://tempuri.org/ws_existe_fepe_dll" style="document" />
       <wsdl:input>
@@ -2326,6 +2410,16 @@
       <wsdl:input>
         <soap12:body use="literal" />
         <soap12:header message="tns:ws_existe_serviciowin_versionAutenticacion" part="Autenticacion" use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ws_existe_serviciowin_version_ORA">
+      <soap12:operation soapAction="http://tempuri.org/ws_existe_serviciowin_version_ORA" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+        <soap12:header message="tns:ws_existe_serviciowin_version_ORAAutenticacion" part="Autenticacion" use="literal" />
       </wsdl:input>
       <wsdl:output>
         <soap12:body use="literal" />

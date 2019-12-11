@@ -131,6 +131,11 @@ namespace Transmision.Net.Basico.Oracle.BataTransmision {
         [System.ServiceModel.XmlSerializerFormatAttribute(SupportFaults=true)]
         Transmision.Net.Basico.Oracle.BataTransmision.ws_existe_exewinupdate_versionResponse ws_existe_exewinupdate_version(Transmision.Net.Basico.Oracle.BataTransmision.ws_existe_exewinupdate_versionRequest request);
         
+        // CODEGEN: Se está generando un contrato de mensaje, ya que el mensaje ws_existe_exewinupdate_version_ORARequest tiene encabezados.
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/ws_existe_exewinupdate_version_ORA", ReplyAction="*")]
+        [System.ServiceModel.XmlSerializerFormatAttribute(SupportFaults=true)]
+        Transmision.Net.Basico.Oracle.BataTransmision.ws_existe_exewinupdate_version_ORAResponse ws_existe_exewinupdate_version_ORA(Transmision.Net.Basico.Oracle.BataTransmision.ws_existe_exewinupdate_version_ORARequest request);
+        
         // CODEGEN: Se está generando un contrato de mensaje, ya que el mensaje ws_existe_fepe_dllRequest tiene encabezados.
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/ws_existe_fepe_dll", ReplyAction="*")]
         [System.ServiceModel.XmlSerializerFormatAttribute(SupportFaults=true)]
@@ -155,6 +160,11 @@ namespace Transmision.Net.Basico.Oracle.BataTransmision {
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/ws_existe_serviciowin_version", ReplyAction="*")]
         [System.ServiceModel.XmlSerializerFormatAttribute(SupportFaults=true)]
         Transmision.Net.Basico.Oracle.BataTransmision.ws_existe_serviciowin_versionResponse ws_existe_serviciowin_version(Transmision.Net.Basico.Oracle.BataTransmision.ws_existe_serviciowin_versionRequest request);
+        
+        // CODEGEN: Se está generando un contrato de mensaje, ya que el mensaje ws_existe_serviciowin_version_ORARequest tiene encabezados.
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/ws_existe_serviciowin_version_ORA", ReplyAction="*")]
+        [System.ServiceModel.XmlSerializerFormatAttribute(SupportFaults=true)]
+        Transmision.Net.Basico.Oracle.BataTransmision.ws_existe_serviciowin_version_ORAResponse ws_existe_serviciowin_version_ORA(Transmision.Net.Basico.Oracle.BataTransmision.ws_existe_serviciowin_version_ORARequest request);
         
         // CODEGEN: Se está generando un contrato de mensaje, ya que el mensaje ws_envia_stock_invRequest tiene encabezados.
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/ws_envia_stock_inv", ReplyAction="*")]
@@ -2102,6 +2112,44 @@ namespace Transmision.Net.Basico.Oracle.BataTransmision {
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
     [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
+    [System.ServiceModel.MessageContractAttribute(WrapperName="ws_existe_exewinupdate_version_ORA", WrapperNamespace="http://tempuri.org/", IsWrapped=true)]
+    public partial class ws_existe_exewinupdate_version_ORARequest {
+        
+        [System.ServiceModel.MessageHeaderAttribute(Namespace="http://tempuri.org/")]
+        public Transmision.Net.Basico.Oracle.BataTransmision.Autenticacion Autenticacion;
+        
+        [System.ServiceModel.MessageBodyMemberAttribute(Namespace="http://tempuri.org/", Order=0)]
+        public string _version;
+        
+        public ws_existe_exewinupdate_version_ORARequest() {
+        }
+        
+        public ws_existe_exewinupdate_version_ORARequest(Transmision.Net.Basico.Oracle.BataTransmision.Autenticacion Autenticacion, string _version) {
+            this.Autenticacion = Autenticacion;
+            this._version = _version;
+        }
+    }
+    
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
+    [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
+    [System.ServiceModel.MessageContractAttribute(WrapperName="ws_existe_exewinupdate_version_ORAResponse", WrapperNamespace="http://tempuri.org/", IsWrapped=true)]
+    public partial class ws_existe_exewinupdate_version_ORAResponse {
+        
+        [System.ServiceModel.MessageBodyMemberAttribute(Namespace="http://tempuri.org/", Order=0)]
+        public bool ws_existe_exewinupdate_version_ORAResult;
+        
+        public ws_existe_exewinupdate_version_ORAResponse() {
+        }
+        
+        public ws_existe_exewinupdate_version_ORAResponse(bool ws_existe_exewinupdate_version_ORAResult) {
+            this.ws_existe_exewinupdate_version_ORAResult = ws_existe_exewinupdate_version_ORAResult;
+        }
+    }
+    
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
+    [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
     [System.ServiceModel.MessageContractAttribute(WrapperName="ws_existe_fepe_dll", WrapperNamespace="http://tempuri.org/", IsWrapped=true)]
     public partial class ws_existe_fepe_dllRequest {
         
@@ -2286,6 +2334,44 @@ namespace Transmision.Net.Basico.Oracle.BataTransmision {
         
         public ws_existe_serviciowin_versionResponse(bool ws_existe_serviciowin_versionResult) {
             this.ws_existe_serviciowin_versionResult = ws_existe_serviciowin_versionResult;
+        }
+    }
+    
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
+    [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
+    [System.ServiceModel.MessageContractAttribute(WrapperName="ws_existe_serviciowin_version_ORA", WrapperNamespace="http://tempuri.org/", IsWrapped=true)]
+    public partial class ws_existe_serviciowin_version_ORARequest {
+        
+        [System.ServiceModel.MessageHeaderAttribute(Namespace="http://tempuri.org/")]
+        public Transmision.Net.Basico.Oracle.BataTransmision.Autenticacion Autenticacion;
+        
+        [System.ServiceModel.MessageBodyMemberAttribute(Namespace="http://tempuri.org/", Order=0)]
+        public string _version;
+        
+        public ws_existe_serviciowin_version_ORARequest() {
+        }
+        
+        public ws_existe_serviciowin_version_ORARequest(Transmision.Net.Basico.Oracle.BataTransmision.Autenticacion Autenticacion, string _version) {
+            this.Autenticacion = Autenticacion;
+            this._version = _version;
+        }
+    }
+    
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
+    [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
+    [System.ServiceModel.MessageContractAttribute(WrapperName="ws_existe_serviciowin_version_ORAResponse", WrapperNamespace="http://tempuri.org/", IsWrapped=true)]
+    public partial class ws_existe_serviciowin_version_ORAResponse {
+        
+        [System.ServiceModel.MessageBodyMemberAttribute(Namespace="http://tempuri.org/", Order=0)]
+        public bool ws_existe_serviciowin_version_ORAResult;
+        
+        public ws_existe_serviciowin_version_ORAResponse() {
+        }
+        
+        public ws_existe_serviciowin_version_ORAResponse(bool ws_existe_serviciowin_version_ORAResult) {
+            this.ws_existe_serviciowin_version_ORAResult = ws_existe_serviciowin_version_ORAResult;
         }
     }
     
@@ -3420,6 +3506,19 @@ namespace Transmision.Net.Basico.Oracle.BataTransmision {
         }
         
         [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
+        Transmision.Net.Basico.Oracle.BataTransmision.ws_existe_exewinupdate_version_ORAResponse Transmision.Net.Basico.Oracle.BataTransmision.bata_transaccionSoap.ws_existe_exewinupdate_version_ORA(Transmision.Net.Basico.Oracle.BataTransmision.ws_existe_exewinupdate_version_ORARequest request) {
+            return base.Channel.ws_existe_exewinupdate_version_ORA(request);
+        }
+        
+        public bool ws_existe_exewinupdate_version_ORA(Transmision.Net.Basico.Oracle.BataTransmision.Autenticacion Autenticacion, string _version) {
+            Transmision.Net.Basico.Oracle.BataTransmision.ws_existe_exewinupdate_version_ORARequest inValue = new Transmision.Net.Basico.Oracle.BataTransmision.ws_existe_exewinupdate_version_ORARequest();
+            inValue.Autenticacion = Autenticacion;
+            inValue._version = _version;
+            Transmision.Net.Basico.Oracle.BataTransmision.ws_existe_exewinupdate_version_ORAResponse retVal = ((Transmision.Net.Basico.Oracle.BataTransmision.bata_transaccionSoap)(this)).ws_existe_exewinupdate_version_ORA(inValue);
+            return retVal.ws_existe_exewinupdate_version_ORAResult;
+        }
+        
+        [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
         Transmision.Net.Basico.Oracle.BataTransmision.ws_existe_fepe_dllResponse Transmision.Net.Basico.Oracle.BataTransmision.bata_transaccionSoap.ws_existe_fepe_dll(Transmision.Net.Basico.Oracle.BataTransmision.ws_existe_fepe_dllRequest request) {
             return base.Channel.ws_existe_fepe_dll(request);
         }
@@ -3482,6 +3581,19 @@ namespace Transmision.Net.Basico.Oracle.BataTransmision {
             inValue._version = _version;
             Transmision.Net.Basico.Oracle.BataTransmision.ws_existe_serviciowin_versionResponse retVal = ((Transmision.Net.Basico.Oracle.BataTransmision.bata_transaccionSoap)(this)).ws_existe_serviciowin_version(inValue);
             return retVal.ws_existe_serviciowin_versionResult;
+        }
+        
+        [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
+        Transmision.Net.Basico.Oracle.BataTransmision.ws_existe_serviciowin_version_ORAResponse Transmision.Net.Basico.Oracle.BataTransmision.bata_transaccionSoap.ws_existe_serviciowin_version_ORA(Transmision.Net.Basico.Oracle.BataTransmision.ws_existe_serviciowin_version_ORARequest request) {
+            return base.Channel.ws_existe_serviciowin_version_ORA(request);
+        }
+        
+        public bool ws_existe_serviciowin_version_ORA(Transmision.Net.Basico.Oracle.BataTransmision.Autenticacion Autenticacion, string _version) {
+            Transmision.Net.Basico.Oracle.BataTransmision.ws_existe_serviciowin_version_ORARequest inValue = new Transmision.Net.Basico.Oracle.BataTransmision.ws_existe_serviciowin_version_ORARequest();
+            inValue.Autenticacion = Autenticacion;
+            inValue._version = _version;
+            Transmision.Net.Basico.Oracle.BataTransmision.ws_existe_serviciowin_version_ORAResponse retVal = ((Transmision.Net.Basico.Oracle.BataTransmision.bata_transaccionSoap)(this)).ws_existe_serviciowin_version_ORA(inValue);
+            return retVal.ws_existe_serviciowin_version_ORAResult;
         }
         
         [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
