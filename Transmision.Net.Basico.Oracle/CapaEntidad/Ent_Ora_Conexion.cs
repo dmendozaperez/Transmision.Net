@@ -25,7 +25,7 @@ namespace Transmision.Net.Basico.Oracle.CapaEntidad
         public static Int32 port { get; set; }
         public static string sid { get; set; }
         public static string nom_tabla { get; set; }
-
+        public static string nom_tabla_poslog { get; set; }
         public static string database()
         {
             string con = "";

@@ -142,6 +142,16 @@ namespace Transmision.NetWin.Oracle.BataPos {
         [System.ServiceModel.XmlSerializerFormatAttribute(SupportFaults=true)]
         Transmision.NetWin.Oracle.BataPos.ws_genera_cupon_returnResponse ws_genera_cupon_return(Transmision.NetWin.Oracle.BataPos.ws_genera_cupon_returnRequest request);
         
+        // CODEGEN: Se está generando un contrato de mensaje, ya que el mensaje ws_valida_cupon_returnRequest tiene encabezados.
+        [System.ServiceModel.OperationContractAttribute(Action="http://bataperu.com.pe/ws_valida_cupon_return", ReplyAction="*")]
+        [System.ServiceModel.XmlSerializerFormatAttribute(SupportFaults=true)]
+        Transmision.NetWin.Oracle.BataPos.ws_valida_cupon_returnResponse ws_valida_cupon_return(Transmision.NetWin.Oracle.BataPos.ws_valida_cupon_returnRequest request);
+        
+        // CODEGEN: Se está generando un contrato de mensaje, ya que el mensaje ws_consumo_cupon_returnRequest tiene encabezados.
+        [System.ServiceModel.OperationContractAttribute(Action="http://bataperu.com.pe/ws_consumo_cupon_return", ReplyAction="*")]
+        [System.ServiceModel.XmlSerializerFormatAttribute(SupportFaults=true)]
+        Transmision.NetWin.Oracle.BataPos.ws_consumo_cupon_returnResponse ws_consumo_cupon_return(Transmision.NetWin.Oracle.BataPos.ws_consumo_cupon_returnRequest request);
+        
         // CODEGEN: Se está generando un contrato de mensaje, ya que el mensaje ws_update_tk_return_reimprimirRequest tiene encabezados.
         [System.ServiceModel.OperationContractAttribute(Action="http://bataperu.com.pe/ws_update_tk_return_reimprimir", ReplyAction="*")]
         [System.ServiceModel.XmlSerializerFormatAttribute(SupportFaults=true)]
@@ -157,10 +167,10 @@ namespace Transmision.NetWin.Oracle.BataPos {
         [System.ServiceModel.XmlSerializerFormatAttribute(SupportFaults=true)]
         Transmision.NetWin.Oracle.BataPos.ws_get_conexion_xstoreResponse ws_get_conexion_xstore(Transmision.NetWin.Oracle.BataPos.ws_get_conexion_xstoreRequest request);
         
-        // CODEGEN: Se está generando un contrato de mensaje, ya que el mensaje ws_get_cupon_returnRequest tiene encabezados.
-        [System.ServiceModel.OperationContractAttribute(Action="http://bataperu.com.pe/ws_get_cupon_return", ReplyAction="*")]
+        // CODEGEN: Se está generando un contrato de mensaje, ya que el mensaje ws_envio_poslog_xstore_tdaRequest tiene encabezados.
+        [System.ServiceModel.OperationContractAttribute(Action="http://bataperu.com.pe/ws_envio_poslog_xstore_tda", ReplyAction="*")]
         [System.ServiceModel.XmlSerializerFormatAttribute(SupportFaults=true)]
-        Transmision.NetWin.Oracle.BataPos.ws_get_cupon_returnResponse ws_get_cupon_return(Transmision.NetWin.Oracle.BataPos.ws_get_cupon_returnRequest request);
+        Transmision.NetWin.Oracle.BataPos.ws_envio_poslog_xstore_tdaResponse ws_envio_poslog_xstore_tda(Transmision.NetWin.Oracle.BataPos.ws_envio_poslog_xstore_tdaRequest request);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://bataperu.com.pe/ws_consulta_stock_otra_tda", ReplyAction="*")]
         [System.ServiceModel.XmlSerializerFormatAttribute(SupportFaults=true)]
@@ -212,7 +222,7 @@ namespace Transmision.NetWin.Oracle.BataPos {
     }
     
     /// <remarks/>
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.8.3752.0")]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.8.3761.0")]
     [System.SerializableAttribute()]
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.ComponentModel.DesignerCategoryAttribute("code")]
@@ -272,7 +282,7 @@ namespace Transmision.NetWin.Oracle.BataPos {
     }
     
     /// <remarks/>
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.8.3752.0")]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.8.3761.0")]
     [System.SerializableAttribute()]
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.ComponentModel.DesignerCategoryAttribute("code")]
@@ -318,12 +328,230 @@ namespace Transmision.NetWin.Oracle.BataPos {
     }
     
     /// <remarks/>
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.8.3752.0")]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.8.3761.0")]
     [System.SerializableAttribute()]
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.ComponentModel.DesignerCategoryAttribute("code")]
     [System.Xml.Serialization.XmlTypeAttribute(Namespace="http://bataperu.com.pe/")]
-    public partial class Ent_Tk_Get_Valores : object, System.ComponentModel.INotifyPropertyChanged {
+    public partial class Ent_PosLog_Tda : object, System.ComponentModel.INotifyPropertyChanged {
+        
+        private int rtl_loc_idField;
+        
+        private int wkstn_idField;
+        
+        private decimal trans_seqField;
+        
+        private System.DateTime business_dateField;
+        
+        private string numdocField;
+        
+        private decimal totalField;
+        
+        private string document_typcodeField;
+        
+        private string pos_log_dataField;
+        
+        /// <remarks/>
+        [System.Xml.Serialization.XmlElementAttribute(Order=0)]
+        public int rtl_loc_id {
+            get {
+                return this.rtl_loc_idField;
+            }
+            set {
+                this.rtl_loc_idField = value;
+                this.RaisePropertyChanged("rtl_loc_id");
+            }
+        }
+        
+        /// <remarks/>
+        [System.Xml.Serialization.XmlElementAttribute(Order=1)]
+        public int wkstn_id {
+            get {
+                return this.wkstn_idField;
+            }
+            set {
+                this.wkstn_idField = value;
+                this.RaisePropertyChanged("wkstn_id");
+            }
+        }
+        
+        /// <remarks/>
+        [System.Xml.Serialization.XmlElementAttribute(Order=2)]
+        public decimal trans_seq {
+            get {
+                return this.trans_seqField;
+            }
+            set {
+                this.trans_seqField = value;
+                this.RaisePropertyChanged("trans_seq");
+            }
+        }
+        
+        /// <remarks/>
+        [System.Xml.Serialization.XmlElementAttribute(Order=3)]
+        public System.DateTime business_date {
+            get {
+                return this.business_dateField;
+            }
+            set {
+                this.business_dateField = value;
+                this.RaisePropertyChanged("business_date");
+            }
+        }
+        
+        /// <remarks/>
+        [System.Xml.Serialization.XmlElementAttribute(Order=4)]
+        public string numdoc {
+            get {
+                return this.numdocField;
+            }
+            set {
+                this.numdocField = value;
+                this.RaisePropertyChanged("numdoc");
+            }
+        }
+        
+        /// <remarks/>
+        [System.Xml.Serialization.XmlElementAttribute(Order=5)]
+        public decimal total {
+            get {
+                return this.totalField;
+            }
+            set {
+                this.totalField = value;
+                this.RaisePropertyChanged("total");
+            }
+        }
+        
+        /// <remarks/>
+        [System.Xml.Serialization.XmlElementAttribute(Order=6)]
+        public string document_typcode {
+            get {
+                return this.document_typcodeField;
+            }
+            set {
+                this.document_typcodeField = value;
+                this.RaisePropertyChanged("document_typcode");
+            }
+        }
+        
+        /// <remarks/>
+        [System.Xml.Serialization.XmlElementAttribute(Order=7)]
+        public string pos_log_data {
+            get {
+                return this.pos_log_dataField;
+            }
+            set {
+                this.pos_log_dataField = value;
+                this.RaisePropertyChanged("pos_log_data");
+            }
+        }
+        
+        public event System.ComponentModel.PropertyChangedEventHandler PropertyChanged;
+        
+        protected void RaisePropertyChanged(string propertyName) {
+            System.ComponentModel.PropertyChangedEventHandler propertyChanged = this.PropertyChanged;
+            if ((propertyChanged != null)) {
+                propertyChanged(this, new System.ComponentModel.PropertyChangedEventArgs(propertyName));
+            }
+        }
+    }
+    
+    /// <remarks/>
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.8.3761.0")]
+    [System.SerializableAttribute()]
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.ComponentModel.DesignerCategoryAttribute("code")]
+    [System.Xml.Serialization.XmlTypeAttribute(Namespace="http://bataperu.com.pe/")]
+    public partial class Ent_Conexion_Ora_Xstore : object, System.ComponentModel.INotifyPropertyChanged {
+        
+        private string serverField;
+        
+        private string usuarioField;
+        
+        private string passwordField;
+        
+        private int portField;
+        
+        private string sidField;
+        
+        /// <remarks/>
+        [System.Xml.Serialization.XmlElementAttribute(Order=0)]
+        public string server {
+            get {
+                return this.serverField;
+            }
+            set {
+                this.serverField = value;
+                this.RaisePropertyChanged("server");
+            }
+        }
+        
+        /// <remarks/>
+        [System.Xml.Serialization.XmlElementAttribute(Order=1)]
+        public string usuario {
+            get {
+                return this.usuarioField;
+            }
+            set {
+                this.usuarioField = value;
+                this.RaisePropertyChanged("usuario");
+            }
+        }
+        
+        /// <remarks/>
+        [System.Xml.Serialization.XmlElementAttribute(Order=2)]
+        public string password {
+            get {
+                return this.passwordField;
+            }
+            set {
+                this.passwordField = value;
+                this.RaisePropertyChanged("password");
+            }
+        }
+        
+        /// <remarks/>
+        [System.Xml.Serialization.XmlElementAttribute(Order=3)]
+        public int port {
+            get {
+                return this.portField;
+            }
+            set {
+                this.portField = value;
+                this.RaisePropertyChanged("port");
+            }
+        }
+        
+        /// <remarks/>
+        [System.Xml.Serialization.XmlElementAttribute(Order=4)]
+        public string sid {
+            get {
+                return this.sidField;
+            }
+            set {
+                this.sidField = value;
+                this.RaisePropertyChanged("sid");
+            }
+        }
+        
+        public event System.ComponentModel.PropertyChangedEventHandler PropertyChanged;
+        
+        protected void RaisePropertyChanged(string propertyName) {
+            System.ComponentModel.PropertyChangedEventHandler propertyChanged = this.PropertyChanged;
+            if ((propertyChanged != null)) {
+                propertyChanged(this, new System.ComponentModel.PropertyChangedEventArgs(propertyName));
+            }
+        }
+    }
+    
+    /// <remarks/>
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.8.3761.0")]
+    [System.SerializableAttribute()]
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.ComponentModel.DesignerCategoryAttribute("code")]
+    [System.Xml.Serialization.XmlTypeAttribute(Namespace="http://bataperu.com.pe/")]
+    public partial class Ent_Tk_Valores : object, System.ComponentModel.INotifyPropertyChanged {
         
         private string cUP_RTN_BARRAField;
         
@@ -371,9 +599,15 @@ namespace Transmision.NetWin.Oracle.BataPos {
         
         private string cUP_RTN_IMP_LOGField;
         
+        private decimal mTO_USO_MINField;
+        
+        private decimal mTO_DCTOField;
+        
         private string estado_errorField;
         
         private string cupon_imprimirField;
+        
+        private string valida_cuponField;
         
         /// <remarks/>
         [System.Xml.Serialization.XmlElementAttribute(Order=0)]
@@ -653,6 +887,30 @@ namespace Transmision.NetWin.Oracle.BataPos {
         
         /// <remarks/>
         [System.Xml.Serialization.XmlElementAttribute(Order=23)]
+        public decimal MTO_USO_MIN {
+            get {
+                return this.mTO_USO_MINField;
+            }
+            set {
+                this.mTO_USO_MINField = value;
+                this.RaisePropertyChanged("MTO_USO_MIN");
+            }
+        }
+        
+        /// <remarks/>
+        [System.Xml.Serialization.XmlElementAttribute(Order=24)]
+        public decimal MTO_DCTO {
+            get {
+                return this.mTO_DCTOField;
+            }
+            set {
+                this.mTO_DCTOField = value;
+                this.RaisePropertyChanged("MTO_DCTO");
+            }
+        }
+        
+        /// <remarks/>
+        [System.Xml.Serialization.XmlElementAttribute(Order=25)]
         public string estado_error {
             get {
                 return this.estado_errorField;
@@ -664,7 +922,7 @@ namespace Transmision.NetWin.Oracle.BataPos {
         }
         
         /// <remarks/>
-        [System.Xml.Serialization.XmlElementAttribute(Order=24)]
+        [System.Xml.Serialization.XmlElementAttribute(Order=26)]
         public string cupon_imprimir {
             get {
                 return this.cupon_imprimirField;
@@ -672,6 +930,18 @@ namespace Transmision.NetWin.Oracle.BataPos {
             set {
                 this.cupon_imprimirField = value;
                 this.RaisePropertyChanged("cupon_imprimir");
+            }
+        }
+        
+        /// <remarks/>
+        [System.Xml.Serialization.XmlElementAttribute(Order=27)]
+        public string valida_cupon {
+            get {
+                return this.valida_cuponField;
+            }
+            set {
+                this.valida_cuponField = value;
+                this.RaisePropertyChanged("valida_cupon");
             }
         }
         
@@ -686,7 +956,7 @@ namespace Transmision.NetWin.Oracle.BataPos {
     }
     
     /// <remarks/>
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.8.3752.0")]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.8.3761.0")]
     [System.SerializableAttribute()]
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.ComponentModel.DesignerCategoryAttribute("code")]
@@ -702,6 +972,8 @@ namespace Transmision.NetWin.Oracle.BataPos {
         private string sERIEField;
         
         private string nUMEROField;
+        
+        private string eSTADOField;
         
         private decimal mONTOField;
         
@@ -769,6 +1041,18 @@ namespace Transmision.NetWin.Oracle.BataPos {
         
         /// <remarks/>
         [System.Xml.Serialization.XmlElementAttribute(Order=5)]
+        public string ESTADO {
+            get {
+                return this.eSTADOField;
+            }
+            set {
+                this.eSTADOField = value;
+                this.RaisePropertyChanged("ESTADO");
+            }
+        }
+        
+        /// <remarks/>
+        [System.Xml.Serialization.XmlElementAttribute(Order=6)]
         public decimal MONTO {
             get {
                 return this.mONTOField;
@@ -780,7 +1064,7 @@ namespace Transmision.NetWin.Oracle.BataPos {
         }
         
         /// <remarks/>
-        [System.Xml.Serialization.XmlElementAttribute(Order=6)]
+        [System.Xml.Serialization.XmlElementAttribute(Order=7)]
         public System.DateTime FECHA {
             get {
                 return this.fECHAField;
@@ -802,95 +1086,7 @@ namespace Transmision.NetWin.Oracle.BataPos {
     }
     
     /// <remarks/>
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.8.3752.0")]
-    [System.SerializableAttribute()]
-    [System.Diagnostics.DebuggerStepThroughAttribute()]
-    [System.ComponentModel.DesignerCategoryAttribute("code")]
-    [System.Xml.Serialization.XmlTypeAttribute(Namespace="http://bataperu.com.pe/")]
-    public partial class Ent_Conexion_Ora_Xstore : object, System.ComponentModel.INotifyPropertyChanged {
-        
-        private string serverField;
-        
-        private string usuarioField;
-        
-        private string passwordField;
-        
-        private int portField;
-        
-        private string sidField;
-        
-        /// <remarks/>
-        [System.Xml.Serialization.XmlElementAttribute(Order=0)]
-        public string server {
-            get {
-                return this.serverField;
-            }
-            set {
-                this.serverField = value;
-                this.RaisePropertyChanged("server");
-            }
-        }
-        
-        /// <remarks/>
-        [System.Xml.Serialization.XmlElementAttribute(Order=1)]
-        public string usuario {
-            get {
-                return this.usuarioField;
-            }
-            set {
-                this.usuarioField = value;
-                this.RaisePropertyChanged("usuario");
-            }
-        }
-        
-        /// <remarks/>
-        [System.Xml.Serialization.XmlElementAttribute(Order=2)]
-        public string password {
-            get {
-                return this.passwordField;
-            }
-            set {
-                this.passwordField = value;
-                this.RaisePropertyChanged("password");
-            }
-        }
-        
-        /// <remarks/>
-        [System.Xml.Serialization.XmlElementAttribute(Order=3)]
-        public int port {
-            get {
-                return this.portField;
-            }
-            set {
-                this.portField = value;
-                this.RaisePropertyChanged("port");
-            }
-        }
-        
-        /// <remarks/>
-        [System.Xml.Serialization.XmlElementAttribute(Order=4)]
-        public string sid {
-            get {
-                return this.sidField;
-            }
-            set {
-                this.sidField = value;
-                this.RaisePropertyChanged("sid");
-            }
-        }
-        
-        public event System.ComponentModel.PropertyChangedEventHandler PropertyChanged;
-        
-        protected void RaisePropertyChanged(string propertyName) {
-            System.ComponentModel.PropertyChangedEventHandler propertyChanged = this.PropertyChanged;
-            if ((propertyChanged != null)) {
-                propertyChanged(this, new System.ComponentModel.PropertyChangedEventArgs(propertyName));
-            }
-        }
-    }
-    
-    /// <remarks/>
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.8.3752.0")]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.8.3761.0")]
     [System.SerializableAttribute()]
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.ComponentModel.DesignerCategoryAttribute("code")]
@@ -1006,7 +1202,7 @@ namespace Transmision.NetWin.Oracle.BataPos {
     }
     
     /// <remarks/>
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.8.3752.0")]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.8.3761.0")]
     [System.SerializableAttribute()]
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.ComponentModel.DesignerCategoryAttribute("code")]
@@ -1108,7 +1304,7 @@ namespace Transmision.NetWin.Oracle.BataPos {
     }
     
     /// <remarks/>
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.8.3752.0")]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.8.3761.0")]
     [System.SerializableAttribute()]
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.ComponentModel.DesignerCategoryAttribute("code")]
@@ -1532,7 +1728,7 @@ namespace Transmision.NetWin.Oracle.BataPos {
     }
     
     /// <remarks/>
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.8.3752.0")]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.8.3761.0")]
     [System.SerializableAttribute()]
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.ComponentModel.DesignerCategoryAttribute("code")]
@@ -1564,7 +1760,7 @@ namespace Transmision.NetWin.Oracle.BataPos {
     }
     
     /// <remarks/>
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.8.3752.0")]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.8.3761.0")]
     [System.SerializableAttribute()]
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.ComponentModel.DesignerCategoryAttribute("code")]
@@ -1918,7 +2114,7 @@ namespace Transmision.NetWin.Oracle.BataPos {
     }
     
     /// <remarks/>
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.8.3752.0")]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.8.3761.0")]
     [System.SerializableAttribute()]
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.ComponentModel.DesignerCategoryAttribute("code")]
@@ -1950,7 +2146,7 @@ namespace Transmision.NetWin.Oracle.BataPos {
     }
     
     /// <remarks/>
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.8.3752.0")]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.8.3761.0")]
     [System.SerializableAttribute()]
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.ComponentModel.DesignerCategoryAttribute("code")]
@@ -2164,7 +2360,7 @@ namespace Transmision.NetWin.Oracle.BataPos {
     }
     
     /// <remarks/>
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.8.3752.0")]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.8.3761.0")]
     [System.SerializableAttribute()]
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.ComponentModel.DesignerCategoryAttribute("code")]
@@ -2196,7 +2392,7 @@ namespace Transmision.NetWin.Oracle.BataPos {
     }
     
     /// <remarks/>
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.8.3752.0")]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.8.3761.0")]
     [System.SerializableAttribute()]
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.ComponentModel.DesignerCategoryAttribute("code")]
@@ -2746,7 +2942,7 @@ namespace Transmision.NetWin.Oracle.BataPos {
     }
     
     /// <remarks/>
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.8.3752.0")]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.8.3761.0")]
     [System.SerializableAttribute()]
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.ComponentModel.DesignerCategoryAttribute("code")]
@@ -2778,7 +2974,7 @@ namespace Transmision.NetWin.Oracle.BataPos {
     }
     
     /// <remarks/>
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.8.3752.0")]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.8.3761.0")]
     [System.SerializableAttribute()]
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.ComponentModel.DesignerCategoryAttribute("code")]
@@ -3818,7 +4014,7 @@ namespace Transmision.NetWin.Oracle.BataPos {
     }
     
     /// <remarks/>
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.8.3752.0")]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.8.3761.0")]
     [System.SerializableAttribute()]
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.ComponentModel.DesignerCategoryAttribute("code")]
@@ -3850,7 +4046,7 @@ namespace Transmision.NetWin.Oracle.BataPos {
     }
     
     /// <remarks/>
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.8.3752.0")]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.8.3761.0")]
     [System.SerializableAttribute()]
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.ComponentModel.DesignerCategoryAttribute("code")]
@@ -3966,7 +4162,7 @@ namespace Transmision.NetWin.Oracle.BataPos {
     }
     
     /// <remarks/>
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.8.3752.0")]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.8.3761.0")]
     [System.SerializableAttribute()]
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.ComponentModel.DesignerCategoryAttribute("code")]
@@ -3998,7 +4194,7 @@ namespace Transmision.NetWin.Oracle.BataPos {
     }
     
     /// <remarks/>
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.8.3752.0")]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.8.3761.0")]
     [System.SerializableAttribute()]
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.ComponentModel.DesignerCategoryAttribute("code")]
@@ -4170,7 +4366,7 @@ namespace Transmision.NetWin.Oracle.BataPos {
     }
     
     /// <remarks/>
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.8.3752.0")]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.8.3761.0")]
     [System.SerializableAttribute()]
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.ComponentModel.DesignerCategoryAttribute("code")]
@@ -4202,7 +4398,7 @@ namespace Transmision.NetWin.Oracle.BataPos {
     }
     
     /// <remarks/>
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.8.3752.0")]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.8.3761.0")]
     [System.SerializableAttribute()]
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.ComponentModel.DesignerCategoryAttribute("code")]
@@ -4290,7 +4486,7 @@ namespace Transmision.NetWin.Oracle.BataPos {
     }
     
     /// <remarks/>
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.8.3752.0")]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.8.3761.0")]
     [System.SerializableAttribute()]
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.ComponentModel.DesignerCategoryAttribute("code")]
@@ -4322,7 +4518,7 @@ namespace Transmision.NetWin.Oracle.BataPos {
     }
     
     /// <remarks/>
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.8.3752.0")]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.8.3761.0")]
     [System.SerializableAttribute()]
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.ComponentModel.DesignerCategoryAttribute("code")]
@@ -4354,7 +4550,7 @@ namespace Transmision.NetWin.Oracle.BataPos {
     }
     
     /// <remarks/>
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.8.3752.0")]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.8.3761.0")]
     [System.SerializableAttribute()]
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.ComponentModel.DesignerCategoryAttribute("code")]
@@ -4456,7 +4652,7 @@ namespace Transmision.NetWin.Oracle.BataPos {
     }
     
     /// <remarks/>
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.8.3752.0")]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.8.3761.0")]
     [System.SerializableAttribute()]
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.ComponentModel.DesignerCategoryAttribute("code")]
@@ -4502,7 +4698,7 @@ namespace Transmision.NetWin.Oracle.BataPos {
     }
     
     /// <remarks/>
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.8.3752.0")]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.8.3761.0")]
     [System.SerializableAttribute()]
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.ComponentModel.DesignerCategoryAttribute("code")]
@@ -4534,7 +4730,7 @@ namespace Transmision.NetWin.Oracle.BataPos {
     }
     
     /// <remarks/>
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.8.3752.0")]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.8.3761.0")]
     [System.SerializableAttribute()]
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.ComponentModel.DesignerCategoryAttribute("code")]
@@ -4594,7 +4790,7 @@ namespace Transmision.NetWin.Oracle.BataPos {
     }
     
     /// <remarks/>
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.8.3752.0")]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.8.3761.0")]
     [System.SerializableAttribute()]
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.ComponentModel.DesignerCategoryAttribute("code")]
@@ -4822,7 +5018,7 @@ namespace Transmision.NetWin.Oracle.BataPos {
     }
     
     /// <remarks/>
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.8.3752.0")]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.8.3761.0")]
     [System.SerializableAttribute()]
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.ComponentModel.DesignerCategoryAttribute("code")]
@@ -4854,7 +5050,7 @@ namespace Transmision.NetWin.Oracle.BataPos {
     }
     
     /// <remarks/>
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.8.3752.0")]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.8.3761.0")]
     [System.SerializableAttribute()]
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.ComponentModel.DesignerCategoryAttribute("code")]
@@ -4914,7 +5110,7 @@ namespace Transmision.NetWin.Oracle.BataPos {
     }
     
     /// <remarks/>
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.8.3752.0")]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.8.3761.0")]
     [System.SerializableAttribute()]
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.ComponentModel.DesignerCategoryAttribute("code")]
@@ -5422,7 +5618,7 @@ namespace Transmision.NetWin.Oracle.BataPos {
     }
     
     /// <remarks/>
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.8.3752.0")]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.8.3761.0")]
     [System.SerializableAttribute()]
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.ComponentModel.DesignerCategoryAttribute("code")]
@@ -5552,7 +5748,7 @@ namespace Transmision.NetWin.Oracle.BataPos {
     }
     
     /// <remarks/>
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.8.3752.0")]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.8.3761.0")]
     [System.SerializableAttribute()]
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.ComponentModel.DesignerCategoryAttribute("code")]
@@ -6018,7 +6214,7 @@ namespace Transmision.NetWin.Oracle.BataPos {
     }
     
     /// <remarks/>
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.8.3752.0")]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.8.3761.0")]
     [System.SerializableAttribute()]
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.ComponentModel.DesignerCategoryAttribute("code")]
@@ -6961,6 +7157,82 @@ namespace Transmision.NetWin.Oracle.BataPos {
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
     [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
+    [System.ServiceModel.MessageContractAttribute(WrapperName="ws_valida_cupon_return", WrapperNamespace="http://bataperu.com.pe/", IsWrapped=true)]
+    public partial class ws_valida_cupon_returnRequest {
+        
+        [System.ServiceModel.MessageHeaderAttribute(Namespace="http://bataperu.com.pe/")]
+        public Transmision.NetWin.Oracle.BataPos.ValidateAcceso ValidateAcceso;
+        
+        [System.ServiceModel.MessageBodyMemberAttribute(Namespace="http://bataperu.com.pe/", Order=0)]
+        public Transmision.NetWin.Oracle.BataPos.Ent_Tk_Get_Parametro param;
+        
+        public ws_valida_cupon_returnRequest() {
+        }
+        
+        public ws_valida_cupon_returnRequest(Transmision.NetWin.Oracle.BataPos.ValidateAcceso ValidateAcceso, Transmision.NetWin.Oracle.BataPos.Ent_Tk_Get_Parametro param) {
+            this.ValidateAcceso = ValidateAcceso;
+            this.param = param;
+        }
+    }
+    
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
+    [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
+    [System.ServiceModel.MessageContractAttribute(WrapperName="ws_valida_cupon_returnResponse", WrapperNamespace="http://bataperu.com.pe/", IsWrapped=true)]
+    public partial class ws_valida_cupon_returnResponse {
+        
+        [System.ServiceModel.MessageBodyMemberAttribute(Namespace="http://bataperu.com.pe/", Order=0)]
+        public Transmision.NetWin.Oracle.BataPos.Ent_Tk_Valores ws_valida_cupon_returnResult;
+        
+        public ws_valida_cupon_returnResponse() {
+        }
+        
+        public ws_valida_cupon_returnResponse(Transmision.NetWin.Oracle.BataPos.Ent_Tk_Valores ws_valida_cupon_returnResult) {
+            this.ws_valida_cupon_returnResult = ws_valida_cupon_returnResult;
+        }
+    }
+    
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
+    [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
+    [System.ServiceModel.MessageContractAttribute(WrapperName="ws_consumo_cupon_return", WrapperNamespace="http://bataperu.com.pe/", IsWrapped=true)]
+    public partial class ws_consumo_cupon_returnRequest {
+        
+        [System.ServiceModel.MessageHeaderAttribute(Namespace="http://bataperu.com.pe/")]
+        public Transmision.NetWin.Oracle.BataPos.ValidateAcceso ValidateAcceso;
+        
+        [System.ServiceModel.MessageBodyMemberAttribute(Namespace="http://bataperu.com.pe/", Order=0)]
+        public Transmision.NetWin.Oracle.BataPos.Ent_Tk_Get_Parametro param;
+        
+        public ws_consumo_cupon_returnRequest() {
+        }
+        
+        public ws_consumo_cupon_returnRequest(Transmision.NetWin.Oracle.BataPos.ValidateAcceso ValidateAcceso, Transmision.NetWin.Oracle.BataPos.Ent_Tk_Get_Parametro param) {
+            this.ValidateAcceso = ValidateAcceso;
+            this.param = param;
+        }
+    }
+    
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
+    [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
+    [System.ServiceModel.MessageContractAttribute(WrapperName="ws_consumo_cupon_returnResponse", WrapperNamespace="http://bataperu.com.pe/", IsWrapped=true)]
+    public partial class ws_consumo_cupon_returnResponse {
+        
+        [System.ServiceModel.MessageBodyMemberAttribute(Namespace="http://bataperu.com.pe/", Order=0)]
+        public Transmision.NetWin.Oracle.BataPos.Ent_Tk_Valores ws_consumo_cupon_returnResult;
+        
+        public ws_consumo_cupon_returnResponse() {
+        }
+        
+        public ws_consumo_cupon_returnResponse(Transmision.NetWin.Oracle.BataPos.Ent_Tk_Valores ws_consumo_cupon_returnResult) {
+            this.ws_consumo_cupon_returnResult = ws_consumo_cupon_returnResult;
+        }
+    }
+    
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
+    [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
     [System.ServiceModel.MessageContractAttribute(WrapperName="ws_update_tk_return_reimprimir", WrapperNamespace="http://bataperu.com.pe/", IsWrapped=true)]
     public partial class ws_update_tk_return_reimprimirRequest {
         
@@ -7068,19 +7340,19 @@ namespace Transmision.NetWin.Oracle.BataPos {
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
     [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
-    [System.ServiceModel.MessageContractAttribute(WrapperName="ws_get_cupon_return", WrapperNamespace="http://bataperu.com.pe/", IsWrapped=true)]
-    public partial class ws_get_cupon_returnRequest {
+    [System.ServiceModel.MessageContractAttribute(WrapperName="ws_envio_poslog_xstore_tda", WrapperNamespace="http://bataperu.com.pe/", IsWrapped=true)]
+    public partial class ws_envio_poslog_xstore_tdaRequest {
         
         [System.ServiceModel.MessageHeaderAttribute(Namespace="http://bataperu.com.pe/")]
         public Transmision.NetWin.Oracle.BataPos.ValidateAcceso ValidateAcceso;
         
         [System.ServiceModel.MessageBodyMemberAttribute(Namespace="http://bataperu.com.pe/", Order=0)]
-        public Transmision.NetWin.Oracle.BataPos.Ent_Tk_Get_Parametro param;
+        public Transmision.NetWin.Oracle.BataPos.Ent_PosLog_Tda param;
         
-        public ws_get_cupon_returnRequest() {
+        public ws_envio_poslog_xstore_tdaRequest() {
         }
         
-        public ws_get_cupon_returnRequest(Transmision.NetWin.Oracle.BataPos.ValidateAcceso ValidateAcceso, Transmision.NetWin.Oracle.BataPos.Ent_Tk_Get_Parametro param) {
+        public ws_envio_poslog_xstore_tdaRequest(Transmision.NetWin.Oracle.BataPos.ValidateAcceso ValidateAcceso, Transmision.NetWin.Oracle.BataPos.Ent_PosLog_Tda param) {
             this.ValidateAcceso = ValidateAcceso;
             this.param = param;
         }
@@ -7089,17 +7361,17 @@ namespace Transmision.NetWin.Oracle.BataPos {
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
     [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
-    [System.ServiceModel.MessageContractAttribute(WrapperName="ws_get_cupon_returnResponse", WrapperNamespace="http://bataperu.com.pe/", IsWrapped=true)]
-    public partial class ws_get_cupon_returnResponse {
+    [System.ServiceModel.MessageContractAttribute(WrapperName="ws_envio_poslog_xstore_tdaResponse", WrapperNamespace="http://bataperu.com.pe/", IsWrapped=true)]
+    public partial class ws_envio_poslog_xstore_tdaResponse {
         
         [System.ServiceModel.MessageBodyMemberAttribute(Namespace="http://bataperu.com.pe/", Order=0)]
-        public Transmision.NetWin.Oracle.BataPos.Ent_Tk_Get_Valores ws_get_cupon_returnResult;
+        public string ws_envio_poslog_xstore_tdaResult;
         
-        public ws_get_cupon_returnResponse() {
+        public ws_envio_poslog_xstore_tdaResponse() {
         }
         
-        public ws_get_cupon_returnResponse(Transmision.NetWin.Oracle.BataPos.Ent_Tk_Get_Valores ws_get_cupon_returnResult) {
-            this.ws_get_cupon_returnResult = ws_get_cupon_returnResult;
+        public ws_envio_poslog_xstore_tdaResponse(string ws_envio_poslog_xstore_tdaResult) {
+            this.ws_envio_poslog_xstore_tdaResult = ws_envio_poslog_xstore_tdaResult;
         }
     }
     
@@ -7447,6 +7719,32 @@ namespace Transmision.NetWin.Oracle.BataPos {
         }
         
         [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
+        Transmision.NetWin.Oracle.BataPos.ws_valida_cupon_returnResponse Transmision.NetWin.Oracle.BataPos.Bata_TransactionSoap.ws_valida_cupon_return(Transmision.NetWin.Oracle.BataPos.ws_valida_cupon_returnRequest request) {
+            return base.Channel.ws_valida_cupon_return(request);
+        }
+        
+        public Transmision.NetWin.Oracle.BataPos.Ent_Tk_Valores ws_valida_cupon_return(Transmision.NetWin.Oracle.BataPos.ValidateAcceso ValidateAcceso, Transmision.NetWin.Oracle.BataPos.Ent_Tk_Get_Parametro param) {
+            Transmision.NetWin.Oracle.BataPos.ws_valida_cupon_returnRequest inValue = new Transmision.NetWin.Oracle.BataPos.ws_valida_cupon_returnRequest();
+            inValue.ValidateAcceso = ValidateAcceso;
+            inValue.param = param;
+            Transmision.NetWin.Oracle.BataPos.ws_valida_cupon_returnResponse retVal = ((Transmision.NetWin.Oracle.BataPos.Bata_TransactionSoap)(this)).ws_valida_cupon_return(inValue);
+            return retVal.ws_valida_cupon_returnResult;
+        }
+        
+        [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
+        Transmision.NetWin.Oracle.BataPos.ws_consumo_cupon_returnResponse Transmision.NetWin.Oracle.BataPos.Bata_TransactionSoap.ws_consumo_cupon_return(Transmision.NetWin.Oracle.BataPos.ws_consumo_cupon_returnRequest request) {
+            return base.Channel.ws_consumo_cupon_return(request);
+        }
+        
+        public Transmision.NetWin.Oracle.BataPos.Ent_Tk_Valores ws_consumo_cupon_return(Transmision.NetWin.Oracle.BataPos.ValidateAcceso ValidateAcceso, Transmision.NetWin.Oracle.BataPos.Ent_Tk_Get_Parametro param) {
+            Transmision.NetWin.Oracle.BataPos.ws_consumo_cupon_returnRequest inValue = new Transmision.NetWin.Oracle.BataPos.ws_consumo_cupon_returnRequest();
+            inValue.ValidateAcceso = ValidateAcceso;
+            inValue.param = param;
+            Transmision.NetWin.Oracle.BataPos.ws_consumo_cupon_returnResponse retVal = ((Transmision.NetWin.Oracle.BataPos.Bata_TransactionSoap)(this)).ws_consumo_cupon_return(inValue);
+            return retVal.ws_consumo_cupon_returnResult;
+        }
+        
+        [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
         Transmision.NetWin.Oracle.BataPos.ws_update_tk_return_reimprimirResponse Transmision.NetWin.Oracle.BataPos.Bata_TransactionSoap.ws_update_tk_return_reimprimir(Transmision.NetWin.Oracle.BataPos.ws_update_tk_return_reimprimirRequest request) {
             return base.Channel.ws_update_tk_return_reimprimir(request);
         }
@@ -7485,16 +7783,16 @@ namespace Transmision.NetWin.Oracle.BataPos {
         }
         
         [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
-        Transmision.NetWin.Oracle.BataPos.ws_get_cupon_returnResponse Transmision.NetWin.Oracle.BataPos.Bata_TransactionSoap.ws_get_cupon_return(Transmision.NetWin.Oracle.BataPos.ws_get_cupon_returnRequest request) {
-            return base.Channel.ws_get_cupon_return(request);
+        Transmision.NetWin.Oracle.BataPos.ws_envio_poslog_xstore_tdaResponse Transmision.NetWin.Oracle.BataPos.Bata_TransactionSoap.ws_envio_poslog_xstore_tda(Transmision.NetWin.Oracle.BataPos.ws_envio_poslog_xstore_tdaRequest request) {
+            return base.Channel.ws_envio_poslog_xstore_tda(request);
         }
         
-        public Transmision.NetWin.Oracle.BataPos.Ent_Tk_Get_Valores ws_get_cupon_return(Transmision.NetWin.Oracle.BataPos.ValidateAcceso ValidateAcceso, Transmision.NetWin.Oracle.BataPos.Ent_Tk_Get_Parametro param) {
-            Transmision.NetWin.Oracle.BataPos.ws_get_cupon_returnRequest inValue = new Transmision.NetWin.Oracle.BataPos.ws_get_cupon_returnRequest();
+        public string ws_envio_poslog_xstore_tda(Transmision.NetWin.Oracle.BataPos.ValidateAcceso ValidateAcceso, Transmision.NetWin.Oracle.BataPos.Ent_PosLog_Tda param) {
+            Transmision.NetWin.Oracle.BataPos.ws_envio_poslog_xstore_tdaRequest inValue = new Transmision.NetWin.Oracle.BataPos.ws_envio_poslog_xstore_tdaRequest();
             inValue.ValidateAcceso = ValidateAcceso;
             inValue.param = param;
-            Transmision.NetWin.Oracle.BataPos.ws_get_cupon_returnResponse retVal = ((Transmision.NetWin.Oracle.BataPos.Bata_TransactionSoap)(this)).ws_get_cupon_return(inValue);
-            return retVal.ws_get_cupon_returnResult;
+            Transmision.NetWin.Oracle.BataPos.ws_envio_poslog_xstore_tdaResponse retVal = ((Transmision.NetWin.Oracle.BataPos.Bata_TransactionSoap)(this)).ws_envio_poslog_xstore_tda(inValue);
+            return retVal.ws_envio_poslog_xstore_tdaResult;
         }
         
         public string[] ws_consulta_stock_otra_tda(string cod_tda, string cod_art, string calidad, string talla, double cant, string cod_tda_b) {

@@ -32,7 +32,7 @@ namespace Transmision.NetWin.Oracle
                 DateTime fecha = DateTime.Today;/*fecha de validacion*/
 
                 #region<CONEXIONES DE ORACLE>
-                Ent_Acceso_BD.server = "172.30.64.10";// txtserver.Text;
+                Ent_Acceso_BD.server = "10.10.10.209";// txtserver.Text;
                 Ent_Acceso_BD.user = txtusuario.Text;
                 Ent_Acceso_BD.password = txtpassword.Text;
                 Ent_Acceso_BD.port =Convert.ToInt32(txtport.Text);
@@ -193,6 +193,15 @@ namespace Transmision.NetWin.Oracle
         {
             Basico_Update ejecuta = new Basico_Update();
             ejecuta.ejecuta_update_service();
+        }
+
+        private void btnejecuta_envio_poslog_Click(object sender, EventArgs e)
+        {
+            Cursor.Current = Cursors.WaitCursor;
+            Basico proc_pos = new Basico();
+            proc_pos.ejecuta_envio_poslog();
+            MessageBox.Show("Terminado el proceso");
+            Cursor.Current = Cursors.Default;
         }
     }
 }

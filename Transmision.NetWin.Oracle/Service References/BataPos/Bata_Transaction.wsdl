@@ -910,6 +910,78 @@
           <s:element minOccurs="0" maxOccurs="1" name="text4_cup" type="s:string" />
         </s:sequence>
       </s:complexType>
+      <s:element name="ws_valida_cupon_return">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="param" type="tns:Ent_Tk_Get_Parametro" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:complexType name="Ent_Tk_Get_Parametro">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="1" name="COD_CUP" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="COD_TDA" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="FC_SUNA" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="SERIE" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="NUMERO" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="ESTADO" type="s:string" />
+          <s:element minOccurs="1" maxOccurs="1" name="MONTO" type="s:decimal" />
+          <s:element minOccurs="1" maxOccurs="1" name="FECHA" type="s:dateTime" />
+        </s:sequence>
+      </s:complexType>
+      <s:element name="ws_valida_cupon_returnResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="ws_valida_cupon_returnResult" type="tns:Ent_Tk_Valores" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:complexType name="Ent_Tk_Valores">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="1" name="CUP_RTN_BARRA" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="CUP_RTN_TDA_GEN" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="CUP_RTN_FC_SUNA_GEN" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="CUP_RTN_SERIE_GEN" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="CUP_RTN_NUMERO_GEN" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="CUP_RTN_FECHA_GEN" type="s:string" />
+          <s:element minOccurs="1" maxOccurs="1" name="CUP_RTN_MONTO_GEN" type="s:decimal" />
+          <s:element minOccurs="0" maxOccurs="1" name="CUP_RTN_TDA_USO" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="CUP_RTN_FC_SUNA_USO" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="CUP_RTN_SERIE_USO" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="CUP_RTN_NUMERO_USO" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="CUP_RTN_FECHA_USO" type="s:string" />
+          <s:element minOccurs="1" maxOccurs="1" name="CUP_RTN_TOTAL_USO" type="s:decimal" />
+          <s:element minOccurs="0" maxOccurs="1" name="CUP_RTN_FEC_INI_USO" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="CUP_RTN_FEC_FIN_USO" type="s:string" />
+          <s:element minOccurs="1" maxOccurs="1" name="CUP_RTN_MONTO_USO" type="s:decimal" />
+          <s:element minOccurs="0" maxOccurs="1" name="CUP_RTN_ESTADO" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="CUP_RTN_FEC_ING" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="CUP_RTN_FEC_ACT" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="CUP_RTN_LOG_ING" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="CUP_RTN_LOG_UPD" type="s:string" />
+          <s:element minOccurs="1" maxOccurs="1" name="CUP_RTN_IMP" type="s:boolean" />
+          <s:element minOccurs="0" maxOccurs="1" name="CUP_RTN_IMP_LOG" type="s:string" />
+          <s:element minOccurs="1" maxOccurs="1" name="MTO_USO_MIN" type="s:decimal" />
+          <s:element minOccurs="1" maxOccurs="1" name="MTO_DCTO" type="s:decimal" />
+          <s:element minOccurs="0" maxOccurs="1" name="estado_error" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="cupon_imprimir" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="valida_cupon" type="s:string" />
+        </s:sequence>
+      </s:complexType>
+      <s:element name="ws_consumo_cupon_return">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="param" type="tns:Ent_Tk_Get_Parametro" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="ws_consumo_cupon_returnResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="ws_consumo_cupon_returnResult" type="tns:Ent_Tk_Valores" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
       <s:element name="ws_update_tk_return_reimprimir">
         <s:complexType>
           <s:sequence>
@@ -959,60 +1031,32 @@
           <s:element minOccurs="0" maxOccurs="1" name="sid" type="s:string" />
         </s:sequence>
       </s:complexType>
-      <s:element name="ws_get_cupon_return">
+      <s:element name="ws_envio_poslog_xstore_tda">
         <s:complexType>
           <s:sequence>
-            <s:element minOccurs="0" maxOccurs="1" name="param" type="tns:Ent_Tk_Get_Parametro" />
+            <s:element minOccurs="0" maxOccurs="1" name="param" type="tns:Ent_PosLog_Tda" />
           </s:sequence>
         </s:complexType>
       </s:element>
-      <s:complexType name="Ent_Tk_Get_Parametro">
+      <s:complexType name="Ent_PosLog_Tda">
         <s:sequence>
-          <s:element minOccurs="0" maxOccurs="1" name="COD_CUP" type="s:string" />
-          <s:element minOccurs="0" maxOccurs="1" name="COD_TDA" type="s:string" />
-          <s:element minOccurs="0" maxOccurs="1" name="FC_SUNA" type="s:string" />
-          <s:element minOccurs="0" maxOccurs="1" name="SERIE" type="s:string" />
-          <s:element minOccurs="0" maxOccurs="1" name="NUMERO" type="s:string" />
-          <s:element minOccurs="1" maxOccurs="1" name="MONTO" type="s:decimal" />
-          <s:element minOccurs="1" maxOccurs="1" name="FECHA" type="s:dateTime" />
+          <s:element minOccurs="1" maxOccurs="1" name="rtl_loc_id" type="s:int" />
+          <s:element minOccurs="1" maxOccurs="1" name="wkstn_id" type="s:int" />
+          <s:element minOccurs="1" maxOccurs="1" name="trans_seq" type="s:decimal" />
+          <s:element minOccurs="1" maxOccurs="1" name="business_date" type="s:dateTime" />
+          <s:element minOccurs="0" maxOccurs="1" name="numdoc" type="s:string" />
+          <s:element minOccurs="1" maxOccurs="1" name="total" type="s:decimal" />
+          <s:element minOccurs="0" maxOccurs="1" name="document_typcode" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="pos_log_data" type="s:string" />
         </s:sequence>
       </s:complexType>
-      <s:element name="ws_get_cupon_returnResponse">
+      <s:element name="ws_envio_poslog_xstore_tdaResponse">
         <s:complexType>
           <s:sequence>
-            <s:element minOccurs="0" maxOccurs="1" name="ws_get_cupon_returnResult" type="tns:Ent_Tk_Get_Valores" />
+            <s:element minOccurs="0" maxOccurs="1" name="ws_envio_poslog_xstore_tdaResult" type="s:string" />
           </s:sequence>
         </s:complexType>
       </s:element>
-      <s:complexType name="Ent_Tk_Get_Valores">
-        <s:sequence>
-          <s:element minOccurs="0" maxOccurs="1" name="CUP_RTN_BARRA" type="s:string" />
-          <s:element minOccurs="0" maxOccurs="1" name="CUP_RTN_TDA_GEN" type="s:string" />
-          <s:element minOccurs="0" maxOccurs="1" name="CUP_RTN_FC_SUNA_GEN" type="s:string" />
-          <s:element minOccurs="0" maxOccurs="1" name="CUP_RTN_SERIE_GEN" type="s:string" />
-          <s:element minOccurs="0" maxOccurs="1" name="CUP_RTN_NUMERO_GEN" type="s:string" />
-          <s:element minOccurs="0" maxOccurs="1" name="CUP_RTN_FECHA_GEN" type="s:string" />
-          <s:element minOccurs="1" maxOccurs="1" name="CUP_RTN_MONTO_GEN" type="s:decimal" />
-          <s:element minOccurs="0" maxOccurs="1" name="CUP_RTN_TDA_USO" type="s:string" />
-          <s:element minOccurs="0" maxOccurs="1" name="CUP_RTN_FC_SUNA_USO" type="s:string" />
-          <s:element minOccurs="0" maxOccurs="1" name="CUP_RTN_SERIE_USO" type="s:string" />
-          <s:element minOccurs="0" maxOccurs="1" name="CUP_RTN_NUMERO_USO" type="s:string" />
-          <s:element minOccurs="0" maxOccurs="1" name="CUP_RTN_FECHA_USO" type="s:string" />
-          <s:element minOccurs="1" maxOccurs="1" name="CUP_RTN_TOTAL_USO" type="s:decimal" />
-          <s:element minOccurs="0" maxOccurs="1" name="CUP_RTN_FEC_INI_USO" type="s:string" />
-          <s:element minOccurs="0" maxOccurs="1" name="CUP_RTN_FEC_FIN_USO" type="s:string" />
-          <s:element minOccurs="1" maxOccurs="1" name="CUP_RTN_MONTO_USO" type="s:decimal" />
-          <s:element minOccurs="0" maxOccurs="1" name="CUP_RTN_ESTADO" type="s:string" />
-          <s:element minOccurs="0" maxOccurs="1" name="CUP_RTN_FEC_ING" type="s:string" />
-          <s:element minOccurs="0" maxOccurs="1" name="CUP_RTN_FEC_ACT" type="s:string" />
-          <s:element minOccurs="0" maxOccurs="1" name="CUP_RTN_LOG_ING" type="s:string" />
-          <s:element minOccurs="0" maxOccurs="1" name="CUP_RTN_LOG_UPD" type="s:string" />
-          <s:element minOccurs="1" maxOccurs="1" name="CUP_RTN_IMP" type="s:boolean" />
-          <s:element minOccurs="0" maxOccurs="1" name="CUP_RTN_IMP_LOG" type="s:string" />
-          <s:element minOccurs="0" maxOccurs="1" name="estado_error" type="s:string" />
-          <s:element minOccurs="0" maxOccurs="1" name="cupon_imprimir" type="s:string" />
-        </s:sequence>
-      </s:complexType>
       <s:element name="ws_consulta_stock_otra_tda">
         <s:complexType>
           <s:sequence>
@@ -1490,6 +1534,24 @@
   <wsdl:message name="ws_genera_cupon_returnValidateAcceso">
     <wsdl:part name="ValidateAcceso" element="tns:ValidateAcceso" />
   </wsdl:message>
+  <wsdl:message name="ws_valida_cupon_returnSoapIn">
+    <wsdl:part name="parameters" element="tns:ws_valida_cupon_return" />
+  </wsdl:message>
+  <wsdl:message name="ws_valida_cupon_returnSoapOut">
+    <wsdl:part name="parameters" element="tns:ws_valida_cupon_returnResponse" />
+  </wsdl:message>
+  <wsdl:message name="ws_valida_cupon_returnValidateAcceso">
+    <wsdl:part name="ValidateAcceso" element="tns:ValidateAcceso" />
+  </wsdl:message>
+  <wsdl:message name="ws_consumo_cupon_returnSoapIn">
+    <wsdl:part name="parameters" element="tns:ws_consumo_cupon_return" />
+  </wsdl:message>
+  <wsdl:message name="ws_consumo_cupon_returnSoapOut">
+    <wsdl:part name="parameters" element="tns:ws_consumo_cupon_returnResponse" />
+  </wsdl:message>
+  <wsdl:message name="ws_consumo_cupon_returnValidateAcceso">
+    <wsdl:part name="ValidateAcceso" element="tns:ValidateAcceso" />
+  </wsdl:message>
   <wsdl:message name="ws_update_tk_return_reimprimirSoapIn">
     <wsdl:part name="parameters" element="tns:ws_update_tk_return_reimprimir" />
   </wsdl:message>
@@ -1517,13 +1579,13 @@
   <wsdl:message name="ws_get_conexion_xstoreValidateAcceso">
     <wsdl:part name="ValidateAcceso" element="tns:ValidateAcceso" />
   </wsdl:message>
-  <wsdl:message name="ws_get_cupon_returnSoapIn">
-    <wsdl:part name="parameters" element="tns:ws_get_cupon_return" />
+  <wsdl:message name="ws_envio_poslog_xstore_tdaSoapIn">
+    <wsdl:part name="parameters" element="tns:ws_envio_poslog_xstore_tda" />
   </wsdl:message>
-  <wsdl:message name="ws_get_cupon_returnSoapOut">
-    <wsdl:part name="parameters" element="tns:ws_get_cupon_returnResponse" />
+  <wsdl:message name="ws_envio_poslog_xstore_tdaSoapOut">
+    <wsdl:part name="parameters" element="tns:ws_envio_poslog_xstore_tdaResponse" />
   </wsdl:message>
-  <wsdl:message name="ws_get_cupon_returnValidateAcceso">
+  <wsdl:message name="ws_envio_poslog_xstore_tdaValidateAcceso">
     <wsdl:part name="ValidateAcceso" element="tns:ValidateAcceso" />
   </wsdl:message>
   <wsdl:message name="ws_consulta_stock_otra_tdaSoapIn">
@@ -1725,6 +1787,16 @@
       <wsdl:input message="tns:ws_genera_cupon_returnSoapIn" />
       <wsdl:output message="tns:ws_genera_cupon_returnSoapOut" />
     </wsdl:operation>
+    <wsdl:operation name="ws_valida_cupon_return">
+      <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">Valida cupon</wsdl:documentation>
+      <wsdl:input message="tns:ws_valida_cupon_returnSoapIn" />
+      <wsdl:output message="tns:ws_valida_cupon_returnSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="ws_consumo_cupon_return">
+      <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">Marca como consumido un cupon</wsdl:documentation>
+      <wsdl:input message="tns:ws_consumo_cupon_returnSoapIn" />
+      <wsdl:output message="tns:ws_consumo_cupon_returnSoapOut" />
+    </wsdl:operation>
     <wsdl:operation name="ws_update_tk_return_reimprimir">
       <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">update reimpresion de tickets retorno</wsdl:documentation>
       <wsdl:input message="tns:ws_update_tk_return_reimprimirSoapIn" />
@@ -1740,10 +1812,10 @@
       <wsdl:input message="tns:ws_get_conexion_xstoreSoapIn" />
       <wsdl:output message="tns:ws_get_conexion_xstoreSoapOut" />
     </wsdl:operation>
-    <wsdl:operation name="ws_get_cupon_return">
-      <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">Get info de ticket de retorno</wsdl:documentation>
-      <wsdl:input message="tns:ws_get_cupon_returnSoapIn" />
-      <wsdl:output message="tns:ws_get_cupon_returnSoapOut" />
+    <wsdl:operation name="ws_envio_poslog_xstore_tda">
+      <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">envio del poslog desde tienda</wsdl:documentation>
+      <wsdl:input message="tns:ws_envio_poslog_xstore_tdaSoapIn" />
+      <wsdl:output message="tns:ws_envio_poslog_xstore_tdaSoapOut" />
     </wsdl:operation>
     <wsdl:operation name="ws_consulta_stock_otra_tda">
       <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">Consultar disponibilidad de stock en otra tienda</wsdl:documentation>
@@ -2064,6 +2136,26 @@
         <soap:body use="literal" />
       </wsdl:output>
     </wsdl:operation>
+    <wsdl:operation name="ws_valida_cupon_return">
+      <soap:operation soapAction="http://bataperu.com.pe/ws_valida_cupon_return" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+        <soap:header message="tns:ws_valida_cupon_returnValidateAcceso" part="ValidateAcceso" use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ws_consumo_cupon_return">
+      <soap:operation soapAction="http://bataperu.com.pe/ws_consumo_cupon_return" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+        <soap:header message="tns:ws_consumo_cupon_returnValidateAcceso" part="ValidateAcceso" use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
     <wsdl:operation name="ws_update_tk_return_reimprimir">
       <soap:operation soapAction="http://bataperu.com.pe/ws_update_tk_return_reimprimir" style="document" />
       <wsdl:input>
@@ -2094,11 +2186,11 @@
         <soap:body use="literal" />
       </wsdl:output>
     </wsdl:operation>
-    <wsdl:operation name="ws_get_cupon_return">
-      <soap:operation soapAction="http://bataperu.com.pe/ws_get_cupon_return" style="document" />
+    <wsdl:operation name="ws_envio_poslog_xstore_tda">
+      <soap:operation soapAction="http://bataperu.com.pe/ws_envio_poslog_xstore_tda" style="document" />
       <wsdl:input>
         <soap:body use="literal" />
-        <soap:header message="tns:ws_get_cupon_returnValidateAcceso" part="ValidateAcceso" use="literal" />
+        <soap:header message="tns:ws_envio_poslog_xstore_tdaValidateAcceso" part="ValidateAcceso" use="literal" />
       </wsdl:input>
       <wsdl:output>
         <soap:body use="literal" />
@@ -2471,6 +2563,26 @@
         <soap12:body use="literal" />
       </wsdl:output>
     </wsdl:operation>
+    <wsdl:operation name="ws_valida_cupon_return">
+      <soap12:operation soapAction="http://bataperu.com.pe/ws_valida_cupon_return" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+        <soap12:header message="tns:ws_valida_cupon_returnValidateAcceso" part="ValidateAcceso" use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ws_consumo_cupon_return">
+      <soap12:operation soapAction="http://bataperu.com.pe/ws_consumo_cupon_return" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+        <soap12:header message="tns:ws_consumo_cupon_returnValidateAcceso" part="ValidateAcceso" use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
     <wsdl:operation name="ws_update_tk_return_reimprimir">
       <soap12:operation soapAction="http://bataperu.com.pe/ws_update_tk_return_reimprimir" style="document" />
       <wsdl:input>
@@ -2501,11 +2613,11 @@
         <soap12:body use="literal" />
       </wsdl:output>
     </wsdl:operation>
-    <wsdl:operation name="ws_get_cupon_return">
-      <soap12:operation soapAction="http://bataperu.com.pe/ws_get_cupon_return" style="document" />
+    <wsdl:operation name="ws_envio_poslog_xstore_tda">
+      <soap12:operation soapAction="http://bataperu.com.pe/ws_envio_poslog_xstore_tda" style="document" />
       <wsdl:input>
         <soap12:body use="literal" />
-        <soap12:header message="tns:ws_get_cupon_returnValidateAcceso" part="ValidateAcceso" use="literal" />
+        <soap12:header message="tns:ws_envio_poslog_xstore_tdaValidateAcceso" part="ValidateAcceso" use="literal" />
       </wsdl:input>
       <wsdl:output>
         <soap12:body use="literal" />

@@ -176,9 +176,6 @@ namespace Transmision.Net.Basico.Oracle
             }
             return error;
         }
-
-
-
         public void imprimir(Ent_Tk_Return env)
         { 
             #region Imprimir
@@ -236,6 +233,150 @@ namespace Transmision.Net.Basico.Oracle
                 _printer = "";
             }
             return _printer;
+        }
+
+        public string ejecuta_envio_poslog()
+        {
+            DateTime _fecha_ini = DateTime.Today.AddDays(-90);
+            DateTime _fecha_fin = DateTime.Today;
+            string error = "";
+            try
+            {
+                string nom_pc = Environment.MachineName;//"TIENDA-933-1"
+
+                string caja = nom_pc.Substring(nom_pc.Length - 1, 1);
+                string _server = nom_pc;
+                if (caja != "1")
+                {
+                    _server = nom_pc.Substring(0, nom_pc.Length - 1) + "1";
+                }
+
+
+
+                _tienda = nom_pc.Substring(nom_pc.IndexOf('-') + 1, nom_pc.Length - (nom_pc.IndexOf('-') + 1));
+                _tienda = _tienda.Substring(0, _tienda.Length - 2);
+                if (_tienda.Length == 3) _tienda = "50" + _tienda;
+
+                Dat_Ora_Data data_ora = new Dat_Ora_Data();
+                #region<CONEXIONES DE ORACLE>
+                Ent_Conexion_Ora_Xstore con_ora = data_ora.ws_conexion_xstore(ref error);
+                if (error.Length > 0) return error;
+
+                if (con_ora == null) return "";
+
+                //_server = "";
+                // "172.30.41.10" TDA 143
+                // 172.30.39.10  TDA 141
+
+                Ent_Acceso_BD.server = _server;//"172.16.100.200";// _server;// "172.16.100.189";// _server; //con_ora.server;//  ConfigurationManager.AppSettings["server"].ToString();
+                Ent_Acceso_BD.user = con_ora.usuario;// ConfigurationManager.AppSettings["usuario"].ToString();
+                Ent_Acceso_BD.password = con_ora.password;//  ConfigurationManager.AppSettings["password"].ToString();
+                Ent_Acceso_BD.port = con_ora.port;// Convert.ToInt32(ConfigurationManager.AppSettings["port"].ToString());
+                Ent_Acceso_BD.sid = con_ora.sid;// ConfigurationManager.AppSettings["sid"].ToString();
+                Ent_Acceso_BD.nom_tabla = ConfigurationManager.AppSettings["tempo"].ToString();
+                Ent_Acceso_BD.nom_tabla_poslog = "TMP_BATA_TRANSAC";
+                #endregion               
+                #region<ORACLE CREACION Y EXISTENCIA>
+                Boolean existe = data_ora.existe_tabla_poslog(ref error);
+                if (error.Length > 0) return error;
+                if (!existe)
+                {
+                    error = data_ora.crear_table_poslog();
+                }
+                if (error.Length > 0) return error;
+                #endregion
+
+                #region<ENVIO DE DATOS DE VENTA,GUIAS AL TEMPORAL>
+               // _tienda = "50704";
+                DataTable dtventa_ora = data_ora.get_documento_TRN_INV_TRANS_POSLOG(_tienda,_fecha_ini,_fecha_fin, ref error);
+                if (error.Length > 0) return error;
+                if (dtventa_ora != null)
+                {
+                    if (dtventa_ora.Rows.Count > 0)
+                    {
+                        foreach (DataRow fila in dtventa_ora.Rows)
+                        {
+                            Ent_Ora_Transac transac = new Ent_Ora_Transac();
+                            transac.RTL_LOC_ID =Convert.ToDecimal(fila["RTL_LOC_ID"]);
+                            transac.WKSTN_ID =Convert.ToInt32(fila["WKSTN_ID"]);
+                            transac.TRANS_SEQ =Convert.ToDecimal(fila["TRANS_SEQ"]);
+                            transac.BUSINESS_DATE = Convert.ToDateTime(fila["BUSINESS_DATE"]);
+                            transac.NUMDOC = fila["NUMDOC"].ToString();
+                            transac.TOTAL = Convert.ToDecimal(fila["TOTAL"]);
+                            transac.DOCUMENT_TYPCODE = fila["DOCUMENT_TYPCODE"].ToString();
+
+                            decimal _numero_region = Convert.ToDecimal(fila["TOTAL"], new NumberFormatInfo() { NumberDecimalSeparator = "." });
+                            transac.TOTAL = _numero_region;
+
+                            /*VERIFICAR QUE NO EXISTA EL DOCUMENTO*/
+                            Boolean existe_tmp = data_ora.existe_data_temp_transac(transac, ref error);
+                            if (error.Length > 0) return error;
+                            if (!existe_tmp)
+                            {
+                                Boolean insert = data_ora.inserta_tabla_temp_poslog(transac, ref error);
+                                if (error.Length > 0) return error;
+                                /*si el insert es correcto entonces hacemos un update*/
+                                if (insert)
+                                {
+                                    data_ora.update_documento_Transac_Mov(transac, ref error);
+                                    if (error.Length > 0) return error;
+                                }
+                            }
+                            else
+                            {
+                                /*realizar el update en la tabla principal*/
+                                data_ora.update_documento_Transac_Mov(transac, ref error);
+                                if (error.Length > 0) return error;
+                            }
+
+                        }
+
+                    }
+                    }
+
+
+                #endregion
+                #region<ENVIO LOS DATOS AL SERVER AL POSLOG POR WEBSERVICE>
+                DataTable dt_envio = data_ora.select_tmp_poslog_ora();/*seleccionamos datos del oracle*/
+                if (dt_envio != null)
+                {
+                    if (dt_envio.Rows.Count > 0)
+                    {
+                        foreach (DataRow fila in dt_envio.Rows)
+                        {
+                            Ent_PosLog_Tda param = new Ent_PosLog_Tda();                            
+                            param.rtl_loc_id =Convert.ToInt32(fila["RTL_LOC_ID"]);
+                            param.wkstn_id = Convert.ToInt32(fila["WKSTN_ID"]);
+                            param.trans_seq = Convert.ToDecimal(fila["TRANS_SEQ"]);
+                            param.business_date = Convert.ToDateTime(fila["BUSINESS_DATE"]);
+                            param.numdoc = fila["NUMDOC"].ToString();
+                            param.total = Convert.ToDecimal(fila["TOTAL"]);
+                            param.document_typcode = fila["DOCUMENT_TYPCODE"].ToString();
+                            param.pos_log_data = fila["POSLOG_DATA"].ToString();
+
+                            string env = data_ora.ws_envio_poslog_tda(param);
+                            if (error.Length > 0) return error;
+                            /*en este caso quiere decir que no hay errores en el envio*/
+                            if (env.Length == 0)
+                            {
+                               
+
+                                data_ora.update_tmp_bata_transac_ora(param, ref error);
+
+                            }
+
+                            // param.
+                        }
+                    }
+                }
+                #endregion
+
+            }
+            catch (Exception exc) 
+            {
+                error = exc.Message;                
+            }
+            return error;
         }
     }
 }

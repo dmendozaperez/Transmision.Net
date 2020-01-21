@@ -44,7 +44,10 @@
             this.btnprueba_servicio = new System.Windows.Forms.Button();
             this.button1 = new System.Windows.Forms.Button();
             this.btn_updservice = new System.Windows.Forms.Button();
+            this.groupBox2 = new System.Windows.Forms.GroupBox();
+            this.btnejecuta_envio_poslog = new System.Windows.Forms.Button();
             this.groupBox1.SuspendLayout();
+            this.groupBox2.SuspendLayout();
             this.SuspendLayout();
             // 
             // groupBox1
@@ -193,7 +196,7 @@
             // button1
             // 
             this.button1.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.button1.Location = new System.Drawing.Point(369, 201);
+            this.button1.Location = new System.Drawing.Point(369, 188);
             this.button1.Name = "button1";
             this.button1.Size = new System.Drawing.Size(248, 23);
             this.button1.TabIndex = 4;
@@ -212,11 +215,33 @@
             this.btn_updservice.UseVisualStyleBackColor = true;
             this.btn_updservice.Click += new System.EventHandler(this.btn_updservice_Click);
             // 
+            // groupBox2
+            // 
+            this.groupBox2.Controls.Add(this.btnejecuta_envio_poslog);
+            this.groupBox2.Location = new System.Drawing.Point(28, 288);
+            this.groupBox2.Name = "groupBox2";
+            this.groupBox2.Size = new System.Drawing.Size(325, 100);
+            this.groupBox2.TabIndex = 6;
+            this.groupBox2.TabStop = false;
+            this.groupBox2.Text = "Procesos de envio POSLOG";
+            // 
+            // btnejecuta_envio_poslog
+            // 
+            this.btnejecuta_envio_poslog.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnejecuta_envio_poslog.Location = new System.Drawing.Point(15, 33);
+            this.btnejecuta_envio_poslog.Name = "btnejecuta_envio_poslog";
+            this.btnejecuta_envio_poslog.Size = new System.Drawing.Size(289, 29);
+            this.btnejecuta_envio_poslog.TabIndex = 0;
+            this.btnejecuta_envio_poslog.Text = "ejecuta_envio_poslog";
+            this.btnejecuta_envio_poslog.UseVisualStyleBackColor = true;
+            this.btnejecuta_envio_poslog.Click += new System.EventHandler(this.btnejecuta_envio_poslog_Click);
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(632, 259);
+            this.ClientSize = new System.Drawing.Size(632, 430);
+            this.Controls.Add(this.groupBox2);
             this.Controls.Add(this.btn_updservice);
             this.Controls.Add(this.button1);
             this.Controls.Add(this.btnprueba_servicio);
@@ -229,6 +254,7 @@
             this.Text = "ACCESO BD ORACLE";
             this.groupBox1.ResumeLayout(false);
             this.groupBox1.PerformLayout();
+            this.groupBox2.ResumeLayout(false);
             this.ResumeLayout(false);
 
         }
@@ -251,6 +277,8 @@
         private System.Windows.Forms.Button btnprueba_servicio;
         private System.Windows.Forms.Button button1;
         private System.Windows.Forms.Button btn_updservice;
+        private System.Windows.Forms.GroupBox groupBox2;
+        private System.Windows.Forms.Button btnejecuta_envio_poslog;
     }
 }
 
