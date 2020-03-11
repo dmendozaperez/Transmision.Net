@@ -2605,7 +2605,7 @@ namespace Transmision.Net.Basico
                                             string _emai_venta = "";
                                             string _telefono_venta = "";
 
-                                            if (_serie == "302001" || _serie == "302003" || _serie == "000051" || _serie == "000055")
+                                            if (_serie == "302001" || _serie == "302002" || _serie == "302003" || _serie == "000051" || _serie == "000055")
                                             {
                                                 /*en este proceso vamos a capturar el archivo dbf cuando se genero en el in*/
                                                 if (!captura_data_dbf_in(_serie, _numero, ref _dni_venta, ref _nombres_venta, ref _telefono_venta, ref _emai_venta))
@@ -5546,6 +5546,69 @@ namespace Transmision.Net.Basico
                 }                
                 #endregion
             }
+        }
+
+        public static void imprimir_qr(BataPos.Ent_Tk_Return env, string impresora)
+        {
+            //try
+            //{
+            //    #region Imprimir
+            //    Ticket _tk = new Ticket();
+            //    //_tk.leftMargin = 70f;//para el xstore
+            //    _tk.MaxChar = 38;
+
+            //    QrEncoder qrEncoder = new QrEncoder(ErrorCorrectionLevel.H);
+            //    QrCode qrCode = new QrCode();
+            //    qrEncoder.TryEncode("BATA10200002", out qrCode);
+
+            //    GraphicsRenderer renderer = new GraphicsRenderer(new FixedCodeSize(100, QuietZoneModules.Zero), Brushes.Black, Brushes.White);
+
+            //    MemoryStream ms = new MemoryStream();
+
+            //    renderer.WriteToStream(qrCode.Matrix, ImageFormat.Png, ms);
+            //    var imageTemporal = new Bitmap(ms);
+            //    var imagen = new Bitmap(imageTemporal, new Size(new Point(110, 110)));
+            //    //panel1.BackgroundImage = imagen;
+
+
+
+            //    //Barcode barcode = new Barcode();
+            //    ////barcode.IncludeLabel = true;
+            //    //Image img = barcode.Encode(TYPE.CODE128B, env.cupon_imprimir.Trim(), Color.Black, Color.White, 240, 15);
+
+            //    //img.Save(@"D:\POS\TR\PROC\"+env.cupon_imprimir+".png", ImageFormat.Png);               
+
+            //    //if (File.Exists(@"D:\POS\TR\PROC\" + env.cupon_imprimir + ".png"))
+            //    //{
+            //    //    Image _img = Image.FromFile(@"D:\POS\TR\PROC\" + env.cupon_imprimir + ".png");
+            //    _tk.HeaderImage = imagen;
+            //    _tk.AddHeaderLine(env.text1_cup);
+            //    _tk.AddHeaderLine("");
+            //    _tk.AddHeaderLine(env.text2_cup);
+            //    _tk.AddHeaderLine("");
+            //    //_tk.AddHeaderLine(env.cupon_imprimir.Trim());
+            //    //_tk.AddHeaderLine("");
+            //    //_tk.AddHeaderLine("");
+            //    //_tk.AddFooterLine0(env.text3_cup);
+
+            //    _tk.AddHeaderLine("");
+
+            //    //_tk.AddFooterLine0("");
+            //    //_tk.AddFooterLine0("");
+            //    _tk.AddFooterLine(env.text4_cup);
+            //    _tk.AddFooterLine("");
+            //    _tk.AddFooterLine0("");
+            //    _tk.AddFooterLine0(env.cupon_imprimir.Trim());
+            //    _tk.PrintTicket(impresora);
+            //    //    File.Delete(@"D:\POS\TR\PROC\" + env.cupon_imprimir + ".png");
+            //    //}
+            //    #endregion
+            //}
+            //catch (Exception)
+            //{
+
+            //    throw;
+            //}
         }
 
         public static void imprimir(BataPos.Ent_Tk_Return env , string impresora)

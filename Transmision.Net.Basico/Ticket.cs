@@ -219,7 +219,10 @@ namespace Transmision.Net.Basico
                 return;
             try
             {
-                this.gfx.DrawImage(this.headerImage, new Point((int)this.leftMargin + 4, (int)this.YPosition()));
+                this.gfx.DrawImage(this.headerImage, new Point((int)this.leftMargin + 4, (int)this.YPosition()));/*posicion para el codigo de barra*/
+
+
+                //this.gfx.DrawImage(this.headerImage, new Point((int)this.leftMargin + 20, (int)this.YPosition()));
                 this.imageHeight = 5;// (int)Math.Round((double)this.headerImage.Height / 58.0 * 15.0) + 3;
                 this.DrawEspacio();
             }

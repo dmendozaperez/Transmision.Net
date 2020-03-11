@@ -203,5 +203,10 @@ namespace Transmision.NetWin.Oracle
             MessageBox.Show("Terminado el proceso");
             Cursor.Current = Cursors.Default;
         }
+
+        private void Form1_Load(object sender, EventArgs e)
+        {
+
+        }
     }
 }

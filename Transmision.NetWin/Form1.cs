@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
 using System.Data.OleDb;
+using System.Data.SqlClient;
 using System.Diagnostics;
 using System.Drawing;
 using System.Linq;
@@ -179,5 +180,78 @@ namespace Transmision.NetWin
                 MessageBox.Show(error);
             }
         }
+
+        private void print_qr_Click(object sender, EventArgs e)
+        {
+            Basico ejecuta = new Basico();
+            Ent_Tk_Return tk = new Ent_Tk_Return();
+            tk.cupon_imprimir = "";
+            tk.text1_cup = "* BATA TE REGALA *";
+            tk.text2_cup = "*2X1 EN ENTRADAS AL CINE EN CINEMARK*";
+            tk.text3_cup = "** USALO YA ** ";
+            tk.text4_cup = "*Por compras mayores o igual a S/ 99.00 Soles en toda la tienda, realizadas del 01 al 29 de Febrero de 2020 en una sola transacción, Bata te regala un cupón de 2x1 en entradas 2D al cine en cualquier local de Cinemark para ser utilizado durante el 01 de febrero al 15 de marzo del 2020. La promoción es válida en los locales Cinemark de Lima, Arequipa, Huancayo y Trujillo. No aplica para asientos DBOX ni sala XD. No válido para películas con la restricción del distribuidor según el tiempo que indiquen. Para hacer efectiva la promoción se hará entrega del cupón en cualquier boletería de Cinemark. No valido para pre ventas, pre estrenos, contenido alternativo ni compra online. Indispensable presentar este cupon en la boletería para acceder al descuento. No aplica con otros descuentos y/ promociones. Promoción válida solo para personas mayores de 18 años.";
+
+            string error = "";
+            Basico.imprimir_qr(tk, "Ticket");
+        }
+
+        private void button5_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void btnreimporimir_Click(object sender, EventArgs e)
+        {
+            Basico ejecuta = new Basico();
+            //Ent_Tk_Return tk = new Ent_Tk_Return();
+            //tk.cupon_imprimir = "";
+            //tk.text1_cup = "";
+            //tk.text2_cup = "";
+            //tk.text3_cup = "";
+            //tk.text4_cup = "";
+
+            Ent_Tk_Return tk = reim("50143");
+
+            string error = "";
+            Basico.imprimir(tk, "Ticket");
+        }
+        private Ent_Tk_Return reim(string tienda)
+        {
+            string sqlquery = "[USP_BATA_GET_TKRETURN_REIMPR_BK]";
+            string con = "Server=172.28.7.14;Database=BDPOS;User ID=pos_oracle;Password=Bata2018**;Trusted_Connection=False;";
+            Ent_Tk_Return tk = null;
+            try
+            {
+                tk = new Ent_Tk_Return();
+                using (SqlConnection cn = new SqlConnection(con))
+                {
+                    using (SqlCommand cmd = new SqlCommand(sqlquery, cn))
+                    {
+                        cmd.CommandTimeout = 0;
+                        cmd.CommandType = CommandType.StoredProcedure;
+                        cmd.Parameters.AddWithValue("@COD_TDA", tienda);
+                        using (SqlDataAdapter da = new SqlDataAdapter(cmd))
+                        {
+                            DataTable dt = new DataTable();
+                            da.Fill(dt);
+                            tk.cupon_imprimir = dt.Rows[0]["cup_rtn_barra"].ToString();
+                            tk.text1_cup= dt.Rows[0]["tex1_cup"].ToString();
+                            tk.text2_cup= dt.Rows[0]["tex2_cup"].ToString();
+                            tk.text3_cup = dt.Rows[0]["tex3_cup"].ToString();
+                            tk.text4_cup = dt.Rows[0]["tex4_cup"].ToString();
+                            
+
+                        }
+                    }
+                }
+            }
+            catch (Exception)
+            {
+
+               
+            }
+            return tk;
+        }
+
     }
 }
