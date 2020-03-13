@@ -2605,7 +2605,14 @@ namespace Transmision.Net.Basico
                                             string _emai_venta = "";
                                             string _telefono_venta = "";
 
-                                            if (_serie == "302001" || _serie == "302002" || _serie == "302003" || _serie == "000051" || _serie == "000055")
+                                            //SERIE 302001=BATACLUB
+                                            //SERIE 302002=EMPLEADOS
+                                            //SERIE 302003=BENEFICIOS
+                                            //SERIE 302004=GEL Y OTROS RRHH
+                                            //SERIE 000051=VALES
+                                            //SERIE 000055=GIFT CARD
+
+                                            if (_serie == "302001" || _serie == "302002" || _serie == "302003" || _serie == "302004" || _serie == "000051" || _serie == "000055")
                                             {
                                                 /*en este proceso vamos a capturar el archivo dbf cuando se genero en el in*/
                                                 if (!captura_data_dbf_in(_serie, _numero, ref _dni_venta, ref _nombres_venta, ref _telefono_venta, ref _emai_venta))
