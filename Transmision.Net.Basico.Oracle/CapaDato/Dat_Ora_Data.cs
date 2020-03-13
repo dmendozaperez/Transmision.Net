@@ -22,12 +22,13 @@ namespace Transmision.Net.Basico.Oracle.CapaDato
         /// </summary>
         /// <param name="fecha"></param>
         /// <returns>data de venta</returns>
-        public DataTable get_documento_TRN_TRANS(DateTime fecha, ref string error)
+        public DataTable get_documento_TRN_TRANS(string fecha, ref string error,ref string query)
         {
             DataTable dtdoc = null;
-            string sqlquery = "select rtl_loc_id,business_date,wkstn_id,trans_seq,TOTAL,fiscal_number from trn_trans where trans_typcode='RETAIL_SALE' AND trans_statcode='COMPLETE' AND TOTAL>0 AND RECORD_STATE IS NULL and business_date>='" + fecha + "' and fiscal_number is not null";
+            string sqlquery = "select rtl_loc_id,business_date,wkstn_id,trans_seq,TOTAL,fiscal_number from trn_trans where trans_typcode='RETAIL_SALE' AND trans_statcode='COMPLETE' AND TOTAL>0 AND RECORD_STATE IS NULL and business_date>=to_date('" + fecha + "') and fiscal_number is not null";
             try
             {
+                query = sqlquery;
                 object results = new object[1];
                 Database db = new OracleDatabase(Ent_Acceso_BD.conn());               
 
@@ -44,23 +45,23 @@ namespace Transmision.Net.Basico.Oracle.CapaDato
             return dtdoc;
         }
 
-        public DataTable get_documento_TRN_INV_TRANS_POSLOG(String tienda,DateTime fechaini,DateTime fechafin, ref string error)
+        public DataTable get_documento_TRN_INV_TRANS_POSLOG(String tienda,string fechaini,string fechafin, ref string error)
         {
             DataTable dtdoc = null;
             //string sqlquery = "select rtl_loc_id,business_date,wkstn_id,trans_seq,TOTAL,fiscal_number from trn_trans where trans_typcode='RETAIL_SALE' AND trans_statcode='COMPLETE' AND TOTAL>0 AND RECORD_STATE IS NULL and business_date>='" + fecha + "' and fiscal_number is not null";
             string sqlquery = "select RTL_LOC_ID,WKSTN_ID,TRANS_SEQ,BUSINESS_DATE,INVCTL_DOCUMENT_ID as numdoc,0 AS TOTAL,document_typcode "+
                               "from inv_invctl_trans where organization_id = 2000 and RTL_LOC_ID='" + tienda + "' and document_typcode = 'RECEIVING' and new_status_code = 'CLOSED' " + 
-                              "AND(BUSINESS_DATE >='" + fechaini + "' AND BUSINESS_DATE <='" + fechafin + "') AND RECORD_STATE is null " + 
+                              "AND(BUSINESS_DATE >=to_date('" + fechaini + "') AND BUSINESS_DATE <=to_date('" + fechafin + "')) AND RECORD_STATE is null " + 
                               "UNION ALL " + 
                               "SELECT a.rtl_loc_id,a.wkstn_id,b.trans_seq,b.BUSINESS_DATE,A.string_value as numdoc,0 AS TOTAL, b.document_typcode FROM trn_trans_p A " +
                               "inner join inv_invctl_trans B ON a.organization_id = b.organization_id AND a.rtl_loc_id = b.rtl_loc_id and b.new_status_code = 'CLOSED' " +
                               "and A.property_code = 'FOLIO_GD' AND a.wkstn_id = b.wkstn_id AND a.trans_seq = b.trans_seq AND B.organization_id = 2000 " +
                               "where A.organization_id = 2000 AND b.document_typcode = 'SHIPPING' AND a.rtl_loc_id='" + tienda + "' " +  
-                              "AND(B.BUSINESS_DATE >='" + fechaini + "' AND B.BUSINESS_DATE <='" + fechafin + "')  AND B.RECORD_STATE is null " +
+                              "AND(B.BUSINESS_DATE >=to_date('" + fechaini + "') AND B.BUSINESS_DATE <=to_date('" + fechafin + "'))  AND B.RECORD_STATE is null " +
                               "UNION ALL " +
                               "SELECT RTL_LOC_ID, WKSTN_ID, TRANS_SEQ, BUSINESS_DATE, FISCAL_NUMBER AS NUMDOC, TOTAL, TRANS_TYPCODE AS document_typcode " + 
                               "FROM TRN_TRANS WHERE organization_id = 2000 AND FISCAL_NUMBER IS NOT NULL AND RTL_LOC_ID ='" + tienda  +"' AND TRANS_TYPCODE = 'RETAIL_SALE' " +
-                              "AND(BUSINESS_DATE >='" + fechaini + "' AND BUSINESS_DATE <='" + fechafin + "')" +
+                              "AND(BUSINESS_DATE >=to_date('" + fechaini + "') AND BUSINESS_DATE <=to_date('" + fechafin + "'))" +
                               "AND trans_statcode = 'COMPLETE' AND fiscal_number IS NOT NULL AND (RECORD_STATE = 'X' OR (RECORD_STATE is null and total<0) OR (RECORD_STATE is null and SUBSTR(FISCAL_NUMBER,0,1) NOT IN('B','F') ))";
                                         
             try

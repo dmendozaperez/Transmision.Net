@@ -5,6 +5,7 @@ using System.Configuration;
 using System.Data;
 using System.Drawing;
 using System.Globalization;
+using System.IO;
 using System.Linq;
 using System.Management;
 using System.Text;
@@ -20,13 +21,33 @@ namespace Transmision.Net.Basico.Oracle
     {
         private string _tienda = "";
 
-     
+        private string ruta_log = @"D:\Transmision.net.ORACLE\LOG.TXT";
         public  string ejecuta_proceso_oracle()
         {
             string error = "";
-            DateTime fecha = DateTime.Today;
+            //string fecha = DateTime.Today.AddDays(-1).ToString("dd/MM/yyyy");
+            string fecha = DateTime.Today.ToString("dd/MM/yyyy");
+            //TextWriter tw = null;
+
+            //System.Globalization.CultureInfo cultureinfo = new System.Globalization.CultureInfo("ES-Pe");
+            //DateTime fecha = DateTime.Parse(d, cultureinfo);
+
+            //var culturaArgentina = CultureInfo.GetCultureInfo("es-PE");
+
+            //var dutchCulture = CultureInfo.CreateSpecificCulture("Es-Pe");
+
+            //DateTime fecha = DateTime.Parse(d, dutchCulture);
+
+            //var fecha = DateTime.ParseExact(d, "dd/MM/yyyy HH:mm:ss", dutchCulture);
+
             try
             {
+                //tw = new StreamWriter(ruta_log, true);
+                //tw.WriteLine(DateTime.Today.ToString() + " " + DateTime.Now.ToString("HH:mm:ss") + "==>" + fecha.ToString());
+                //tw.Flush();
+                //tw.Close();
+                //tw.Dispose();
+
                 string nom_pc = Environment.MachineName;//"TIENDA-933-1"
 
                 string caja = nom_pc.Substring(nom_pc.Length - 1, 1);
@@ -36,16 +57,30 @@ namespace Transmision.Net.Basico.Oracle
                     _server = nom_pc.Substring(0, nom_pc.Length - 1) + "1";
                 }
 
-                
+                //tw = new StreamWriter(ruta_log, true);
+                //tw.WriteLine(DateTime.Today.ToString() + " " + DateTime.Now.ToString("HH:mm:ss") + "==>" + "entrando paso 1");
+                //tw.Flush();
+                //tw.Close();
+                //tw.Dispose();
+
+                //_server = "172.16.100.252";
 
                 _tienda = nom_pc.Substring(nom_pc.IndexOf('-') + 1, nom_pc.Length - (nom_pc.IndexOf('-') + 1));
                 _tienda = _tienda.Substring(0, _tienda.Length - 2);
                 if (_tienda.Length == 3) _tienda = "50" + _tienda;
 
+                //_tienda = "50702";
+
                 Dat_Ora_Data data_ora = new Dat_Ora_Data();
                 #region<CONEXIONES DE ORACLE>
                 Ent_Conexion_Ora_Xstore con_ora = data_ora.ws_conexion_xstore(ref error);
                 if (error.Length > 0) return error;
+
+                //tw = new StreamWriter(ruta_log, true);
+                //tw.WriteLine(DateTime.Today.ToString() + " " + DateTime.Now.ToString("HH:mm:ss") + "==>" + "entrando paso 2");
+                //tw.Flush();
+                //tw.Close();
+                //tw.Dispose();
 
                 if (con_ora == null) return "";
 
@@ -66,12 +101,31 @@ namespace Transmision.Net.Basico.Oracle
                 if (error.Length > 0) return error;
                 #endregion
                 #region<REGION DE TRANSACCIONES AL TEMPORAL>
-                DataTable dtventa_ora = data_ora.get_documento_TRN_TRANS(fecha,ref error);
+
+                //tw = new StreamWriter(ruta_log, true);
+                //tw.WriteLine(DateTime.Today.ToString() + " " + DateTime.Now.ToString("HH:mm:ss") + "==>" + "entrando paso 3");
+                //tw.Flush();
+                //tw.Close();
+                //tw.Dispose();
+
+
+                string query = "";
+                DataTable dtventa_ora = data_ora.get_documento_TRN_TRANS(fecha,ref error,ref  query);
+                //tw = new StreamWriter(ruta_log, true);
+                //tw.WriteLine(DateTime.Today.ToString() + " " + DateTime.Now.ToString("HH:mm:ss") + "==>" + query);
+                //tw.Flush();
+                //tw.Close();
+                //tw.Dispose();
                 if (error.Length > 0) return error;
                 if (dtventa_ora != null)
                 {
                     if (dtventa_ora.Rows.Count > 0)
                     {
+                        //tw = new StreamWriter(ruta_log, true);
+                        //tw.WriteLine(DateTime.Today.ToString() + " " + DateTime.Now.ToString("HH:mm:ss") + "==>" + "Si hay Datos");
+                        //tw.Flush();
+                        //tw.Close();
+                        //tw.Dispose();
                         foreach (DataRow fila in dtventa_ora.Rows)
                         {
                             Ent_Bat_Tk_Return param = new Ent_Bat_Tk_Return();
@@ -107,6 +161,14 @@ namespace Transmision.Net.Basico.Oracle
                             }
 
                         }
+                    }
+                    else
+                    {
+                        //tw = new StreamWriter(ruta_log, true);
+                        //tw.WriteLine(DateTime.Today.ToString() + " " + DateTime.Now.ToString("HH:mm:ss") + "==>" + "No hay Datos");
+                        //tw.Flush();
+                        //tw.Close();
+                        //tw.Dispose();
                     }
                 }
                 #endregion
@@ -172,7 +234,7 @@ namespace Transmision.Net.Basico.Oracle
             }
             catch (Exception exc)
             {
-                error = exc.Message;                
+                error = error + "==>" + exc.Message;                
             }
             return error;
         }
@@ -237,8 +299,8 @@ namespace Transmision.Net.Basico.Oracle
 
         public string ejecuta_envio_poslog()
         {
-            DateTime _fecha_ini = DateTime.Today.AddDays(-90);
-            DateTime _fecha_fin = DateTime.Today;
+            string  _fecha_ini = DateTime.Today.AddDays(-90).ToString("dd/MM/yyyy");
+            string _fecha_fin = DateTime.Today.ToString("dd/MM/yyyy"); ;
             string error = "";
             try
             {
@@ -374,7 +436,7 @@ namespace Transmision.Net.Basico.Oracle
             }
             catch (Exception exc) 
             {
-                error = exc.Message;                
+                error = exc.Message + "==>POSLOG"  ;                
             }
             return error;
         }

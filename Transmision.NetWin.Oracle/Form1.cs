@@ -29,7 +29,7 @@ namespace Transmision.NetWin.Oracle
             try
             {
 
-                DateTime fecha = DateTime.Today;/*fecha de validacion*/
+                string fecha = DateTime.Today.ToString("dd/MM/yyyy");/*fecha de validacion*/
 
                 #region<CONEXIONES DE ORACLE>
                 Ent_Acceso_BD.server = "10.10.10.209";// txtserver.Text;
@@ -172,8 +172,11 @@ namespace Transmision.NetWin.Oracle
 
         private void btnprueba_servicio_Click(object sender, EventArgs e)
         {
+            Cursor.Current = Cursors.WaitCursor;
             Basico ejecuta = new Basico();
             string error = ejecuta.ejecuta_proceso_oracle();
+            MessageBox.Show(error);
+            Cursor.Current = Cursors.Default;
         }
 
         private void button1_Click(object sender, EventArgs e)
