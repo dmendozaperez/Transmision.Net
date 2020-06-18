@@ -171,6 +171,7 @@
           <s:element minOccurs="0" maxOccurs="1" name="rutloc_namedbf" type="s:string" />
           <s:element minOccurs="0" maxOccurs="1" name="rutloc_location" type="s:string" />
           <s:element minOccurs="0" maxOccurs="1" name="rutloc_location_ecu" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="rutloc_location_lur" type="s:string" />
         </s:sequence>
       </s:complexType>
       <s:element name="list_file">
@@ -1031,6 +1032,32 @@
           <s:element minOccurs="0" maxOccurs="1" name="sid" type="s:string" />
         </s:sequence>
       </s:complexType>
+      <s:element name="ws_envio_poslog_xstore_tda">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="param" type="tns:Ent_PosLog_Tda" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:complexType name="Ent_PosLog_Tda">
+        <s:sequence>
+          <s:element minOccurs="1" maxOccurs="1" name="rtl_loc_id" type="s:int" />
+          <s:element minOccurs="1" maxOccurs="1" name="wkstn_id" type="s:int" />
+          <s:element minOccurs="1" maxOccurs="1" name="trans_seq" type="s:decimal" />
+          <s:element minOccurs="1" maxOccurs="1" name="business_date" type="s:dateTime" />
+          <s:element minOccurs="0" maxOccurs="1" name="numdoc" type="s:string" />
+          <s:element minOccurs="1" maxOccurs="1" name="total" type="s:decimal" />
+          <s:element minOccurs="0" maxOccurs="1" name="document_typcode" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="pos_log_data" type="s:string" />
+        </s:sequence>
+      </s:complexType>
+      <s:element name="ws_envio_poslog_xstore_tdaResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="ws_envio_poslog_xstore_tdaResult" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
       <s:element name="ws_consulta_stock_otra_tda">
         <s:complexType>
           <s:sequence>
@@ -1196,6 +1223,23 @@
                 </s:sequence>
               </s:complexType>
             </s:element>
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="ws_inserta_compartir">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="dni" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="correo" type="s:string" />
+            <s:element minOccurs="1" maxOccurs="1" name="total" type="s:decimal" />
+            <s:element minOccurs="0" maxOccurs="1" name="cod_tda" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="ws_inserta_compartirResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="ws_inserta_compartirResult" type="s:string" />
           </s:sequence>
         </s:complexType>
       </s:element>
@@ -1553,6 +1597,15 @@
   <wsdl:message name="ws_get_conexion_xstoreValidateAcceso">
     <wsdl:part name="ValidateAcceso" element="tns:ValidateAcceso" />
   </wsdl:message>
+  <wsdl:message name="ws_envio_poslog_xstore_tdaSoapIn">
+    <wsdl:part name="parameters" element="tns:ws_envio_poslog_xstore_tda" />
+  </wsdl:message>
+  <wsdl:message name="ws_envio_poslog_xstore_tdaSoapOut">
+    <wsdl:part name="parameters" element="tns:ws_envio_poslog_xstore_tdaResponse" />
+  </wsdl:message>
+  <wsdl:message name="ws_envio_poslog_xstore_tdaValidateAcceso">
+    <wsdl:part name="ValidateAcceso" element="tns:ValidateAcceso" />
+  </wsdl:message>
   <wsdl:message name="ws_consulta_stock_otra_tdaSoapIn">
     <wsdl:part name="parameters" element="tns:ws_consulta_stock_otra_tda" />
   </wsdl:message>
@@ -1600,6 +1653,12 @@
   </wsdl:message>
   <wsdl:message name="ws_consultar_comprobantesSoapOut">
     <wsdl:part name="parameters" element="tns:ws_consultar_comprobantesResponse" />
+  </wsdl:message>
+  <wsdl:message name="ws_inserta_compartirSoapIn">
+    <wsdl:part name="parameters" element="tns:ws_inserta_compartir" />
+  </wsdl:message>
+  <wsdl:message name="ws_inserta_compartirSoapOut">
+    <wsdl:part name="parameters" element="tns:ws_inserta_compartirResponse" />
   </wsdl:message>
   <wsdl:message name="ws_get_FESoapIn">
     <wsdl:part name="parameters" element="tns:ws_get_FE" />
@@ -1777,6 +1836,11 @@
       <wsdl:input message="tns:ws_get_conexion_xstoreSoapIn" />
       <wsdl:output message="tns:ws_get_conexion_xstoreSoapOut" />
     </wsdl:operation>
+    <wsdl:operation name="ws_envio_poslog_xstore_tda">
+      <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">envio del poslog desde tienda</wsdl:documentation>
+      <wsdl:input message="tns:ws_envio_poslog_xstore_tdaSoapIn" />
+      <wsdl:output message="tns:ws_envio_poslog_xstore_tdaSoapOut" />
+    </wsdl:operation>
     <wsdl:operation name="ws_consulta_stock_otra_tda">
       <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">Consultar disponibilidad de stock en otra tienda</wsdl:documentation>
       <wsdl:input message="tns:ws_consulta_stock_otra_tdaSoapIn" />
@@ -1816,6 +1880,11 @@
       <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">consultar comprobantes Nota de credito multitiendas</wsdl:documentation>
       <wsdl:input message="tns:ws_consultar_comprobantesSoapIn" />
       <wsdl:output message="tns:ws_consultar_comprobantesSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="ws_inserta_compartir">
+      <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">Descuentos para compartir</wsdl:documentation>
+      <wsdl:input message="tns:ws_inserta_compartirSoapIn" />
+      <wsdl:output message="tns:ws_inserta_compartirSoapOut" />
     </wsdl:operation>
     <wsdl:operation name="ws_get_FE">
       <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">consultar facturacion electronica PAPERLESS</wsdl:documentation>
@@ -2146,6 +2215,16 @@
         <soap:body use="literal" />
       </wsdl:output>
     </wsdl:operation>
+    <wsdl:operation name="ws_envio_poslog_xstore_tda">
+      <soap:operation soapAction="http://bataperu.com.pe/ws_envio_poslog_xstore_tda" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+        <soap:header message="tns:ws_envio_poslog_xstore_tdaValidateAcceso" part="ValidateAcceso" use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
     <wsdl:operation name="ws_consulta_stock_otra_tda">
       <soap:operation soapAction="http://bataperu.com.pe/ws_consulta_stock_otra_tda" style="document" />
       <wsdl:input>
@@ -2211,6 +2290,15 @@
     </wsdl:operation>
     <wsdl:operation name="ws_consultar_comprobantes">
       <soap:operation soapAction="http://bataperu.com.pe/ws_consultar_comprobantes" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ws_inserta_compartir">
+      <soap:operation soapAction="http://bataperu.com.pe/ws_inserta_compartir" style="document" />
       <wsdl:input>
         <soap:body use="literal" />
       </wsdl:input>
@@ -2563,6 +2651,16 @@
         <soap12:body use="literal" />
       </wsdl:output>
     </wsdl:operation>
+    <wsdl:operation name="ws_envio_poslog_xstore_tda">
+      <soap12:operation soapAction="http://bataperu.com.pe/ws_envio_poslog_xstore_tda" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+        <soap12:header message="tns:ws_envio_poslog_xstore_tdaValidateAcceso" part="ValidateAcceso" use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
     <wsdl:operation name="ws_consulta_stock_otra_tda">
       <soap12:operation soapAction="http://bataperu.com.pe/ws_consulta_stock_otra_tda" style="document" />
       <wsdl:input>
@@ -2628,6 +2726,15 @@
     </wsdl:operation>
     <wsdl:operation name="ws_consultar_comprobantes">
       <soap12:operation soapAction="http://bataperu.com.pe/ws_consultar_comprobantes" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ws_inserta_compartir">
+      <soap12:operation soapAction="http://bataperu.com.pe/ws_inserta_compartir" style="document" />
       <wsdl:input>
         <soap12:body use="literal" />
       </wsdl:input>

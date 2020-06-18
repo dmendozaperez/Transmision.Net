@@ -2282,6 +2282,35 @@ namespace Transmision.Net.Basico
             }
             return _valida;
         }
+
+        private static DataTable  getcliente_fmacli(string _fc_ruc)
+        {
+            string sqlquery = "select fc_nomb,fc_apep,fc_apem,fc_mail,fc_tele from FMACLI02 where fc_ruc='" + _fc_ruc + "'";
+            OleDbConnection cn = null;
+            OleDbCommand cmd = null;
+            OleDbDataAdapter da = null;
+            DataTable dt = null;
+            string _path_default = @"D:\POS";
+            //conexion
+            string _conexion = "Provider=Microsoft.Jet.OLEDB.4.0;Data Source=" + _path_default + ";Extended Properties=dBASE IV;";
+
+            try
+            {
+                cn = new OleDbConnection(_conexion);
+                cmd = new OleDbCommand(sqlquery, cn);
+                cmd.CommandTimeout = 0;
+                da = new OleDbDataAdapter(cmd);
+                dt = new DataTable();
+                da.Fill(dt);
+             
+            }
+            catch
+            {
+                dt = null;
+            }
+            return dt;
+        }
+
         private static void telefono_email_clienteV(string _fc_nint, ref string _emai, ref string telefono)
         {
             string sqlquery = "select FC_LCON,FC_RUC from FFACTC02 where fc_nint='" + _fc_nint + "'";
@@ -3605,6 +3634,39 @@ namespace Transmision.Net.Basico
                             }
                             #endregion
 
+                            #region<enviar datos del cliente>
+                            var listacli = result_ffactc.Where(c => c.fc_ruc.Trim().Length>0).ToArray();
+
+                            
+                            foreach (var cli in listacli)
+                            {
+                                DataTable dt= getcliente_fmacli(cli.fc_ruc);
+                                if (dt!=null)
+                                {
+                                    if (dt.Rows.Count>0)
+                                    {
+                                        foreach(DataRow fila in dt.Rows)
+                                        {
+                                            string fc_nomb, fc_apep, fc_apem, fc_mail, fc_tele;
+                                            fc_nomb = fila["fc_nomb"].ToString();
+                                            fc_apep = fila["fc_apep"].ToString();
+                                            fc_apem = fila["fc_apem"].ToString();
+                                            fc_mail = fila["fc_mail"].ToString();
+                                            fc_tele = fila["fc_tele"].ToString();
+                                            /*actualiza en la tabla clientebata*/
+                                            _insertar_cliente_bata(cli.fc_ruc, fc_nomb, fc_apep, fc_apem, fc_mail, fc_tele, _tienda);
+                                            /**/
+
+                                            /*inserta en la tabla de BATACLUB_EMAIL_ENVIAR_COMPARTIR*/
+                                            if (cli.fc_suna == "01" || cli.fc_suna == "03") _insertar_cliente_compartir(cli.fc_ruc, fc_mail, cli.fc_total, _tienda);
+                                        }
+                                    }
+                                }
+                            }
+
+
+                            #endregion
+
                             var array_ffactc = new BataPos.Ent_List_Ffactc();
                             array_ffactc.lista_ffactc = result_ffactc.ToArray();
 
@@ -3643,12 +3705,47 @@ namespace Transmision.Net.Basico
             if (cn!=null)            
             if (cn.State == ConnectionState.Open) cn.Close();            
         }
+        public static Boolean _insertar_cliente_bata(string dniruc, string nombres, string apelpat, string apemat,
+                                                    string email, string telefono, string codtda)
+        {
+            Boolean valida = false;
+            try
+            {
+
+                BataTransmision.bata_transaccionSoapClient cliente_bata = new BataTransmision.bata_transaccionSoapClient();
+              
+                valida = cliente_bata.ws_insertcliente_bata(dniruc, nombres, apelpat, apemat,
+                                                            email, telefono, codtda);
+            }
+            catch (Exception)
+            {
+                valida = false;
+            }
+            return valida;
+        }
+        public static string _insertar_cliente_compartir(string dniruc,string email,decimal total, string codtda)
+        {
+            string valida = "";
+            try
+            {
+
+                BataPos.Bata_TransactionSoapClient cli_compartir = new BataPos.Bata_TransactionSoapClient();
+               // total = 120;
+                valida = cli_compartir.ws_inserta_compartir(dniruc,email,total, codtda);
+            }
+            catch (Exception exc)
+            {
+                valida = exc.Message;
+            }
+            return valida;
+        }
         private static string formatear_caracteres(string strIn)
         {
             // Replace invalid characters with empty strings.
             try
             {
-                return System.Text.RegularExpressions.Regex.Replace(strIn, @"[^\w\.@-]", "");
+                //return System.Text.RegularExpressions.Regex.Replace(strIn, @"[^\w\.@-]", "");
+                return System.Text.RegularExpressions.Regex.Replace(strIn, @"^\w\.@-]", "");
             }
             // If we timeout when replacing invalid characters, 
             // we should return Empty.

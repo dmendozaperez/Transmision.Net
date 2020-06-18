@@ -30,7 +30,7 @@ namespace ClickOnceService
         }
         private void _actualizar()
         {
-            string _ruta_produccion = @"\\172.28.7.9\inetpub\wwwroot\service_windows_tda";
+            string _ruta_produccion = @"\\192.168.2.6\inetpub\wwwroot\service_windows_tda";
             string _ruta_desarrollo = System.IO.Path.GetDirectoryName(System.Reflection.Assembly.GetExecutingAssembly().Location) + "\\Actualizar";
             try
             {
@@ -93,7 +93,7 @@ namespace ClickOnceService
         private void cargar()
         {
             Cursor.Current = Cursors.WaitCursor;
-            string _ruta_produccion = @"\\172.28.7.9\inetpub\wwwroot\service_windows_tda\Transmision.Net.Basico.dll";
+            string _ruta_produccion = @"\\192.168.2.6\inetpub\wwwroot\service_windows_tda\Transmision.Net.Basico.dll";
             string _ruta_desarrollo = System.IO.Path.GetDirectoryName(System.Reflection.Assembly.GetExecutingAssembly().Location) + "\\Actualizar\\Transmision.Net.Basico.dll";
             try
             {
@@ -121,7 +121,7 @@ namespace ClickOnceService
         private void cargar_xstore()
         {
             Cursor.Current = Cursors.WaitCursor;
-            string _ruta_produccion = @"\\172.28.7.9\inetpub\wwwroot\service_windows_tda\Transmision.Net.Basico.Oracle.dll";
+            string _ruta_produccion = @"\\192.168.2.6\inetpub\wwwroot\service_windows_tda\Transmision.Net.Basico.Oracle.dll";
             string _ruta_desarrollo = System.IO.Path.GetDirectoryName(System.Reflection.Assembly.GetExecutingAssembly().Location) + "\\Actualizar\\Transmision.Net.Basico.Oracle.dll";
             try
             {
@@ -162,7 +162,7 @@ namespace ClickOnceService
         }
         private void _actualizar_X()
         {
-            string _ruta_produccion = @"\\172.28.7.9\inetpub\wwwroot\service_windows_tda";
+            string _ruta_produccion = @"\\192.168.2.6\inetpub\wwwroot\service_windows_tda";
             string _ruta_desarrollo = System.IO.Path.GetDirectoryName(System.Reflection.Assembly.GetExecutingAssembly().Location) + "\\Actualizar";
             try
             {
