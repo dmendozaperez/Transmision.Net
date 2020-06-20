@@ -2869,11 +2869,20 @@ namespace Transmision.Net.Basico
                     if (!_ejecute_reindex_dbf())
                     {
                         DataTable dt = _dt_fecha_venta();
+                        //if (dt.Rows.Count==0)
+                        //{
+                        //    TextWriter tw = new StreamWriter(@"D:\POS\Transmision.net\ERROR.txt", true);
+                        //    tw.WriteLine("no encontro venta " + _tienda + " " +  _fecha_tda.ToString());
+                        //    tw.Flush();
+                        //    tw.Close();
+                        //    tw.Dispose();
+                        //}
 
                                 if (dt != null)
                                 {
                                         if (dt.Rows.Count > 0)
                                         {
+                                        
                                             if (!_ejecute_reindex_dbf())
                                             { 
                                                    
