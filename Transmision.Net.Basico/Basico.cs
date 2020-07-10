@@ -421,7 +421,7 @@ namespace Transmision.Net.Basico
                                            "v_almd,v_tane,v_anex,v_tdoc,v_suna,v_sdoc,v_ndoc,v_fdoc,v_tref,v_sref,v_nref,v_tipo," +
                                            "v_arti,v_regl,v_colo,v_cant,v_pres,v_pred,v_vvts,v_vvtd,v_auto,v_ptot,v_impr,v_cuse," +
                                            "v_muse,v_fcre,v_fmod,v_ftrx,v_ctra,v_memo,v_motr,v_par1,v_par2,v_par3,v_lle1,v_lle2," +
-                                           "v_lle3,'' as v_hstd FROM " + _FMC + " WHERE EMPTY(v_tane) and (v_cfor='32' OR v_cfor='33') " + ((_fecha_plan.Length == 0) ? "" : " and DTOS(V_ffor)>='" + _fecha_proceso_mov.ToString("yyyyMMdd") + "' and (v_cfor='32' or v_cfor='33' ) "); //and (v_cfor='32' or v_cfor='31' )";
+                                           "v_lle3,'' as v_hstd FROM " + _FMC + " WHERE EMPTY(v_tane) and (v_cfor='32' OR v_cfor='33' OR v_cfor='31' OR v_cfor='30' ) " + ((_fecha_plan.Length == 0) ? "" : " and DTOS(V_ffor)>='" + _fecha_proceso_mov.ToString("yyyyMMdd") + "' and (v_cfor='32' or v_cfor='33' OR v_cfor='31' OR v_cfor='30' ) "); //and (v_cfor='32' or v_cfor='31' )";
                                 //"v_lle3,v_tipe,v_ruc2,v_rzo2,'' as v_hstd FROM " + _FMC + " WHERE EMPTY(v_tane) and (v_cfor!='01' and v_cfor!='03' and v_cfor!='NB' and v_cfor!='NC' and v_cfor!='ND' and v_cfor!='NF' and v_cfor!='TI') " + ((_fecha_plan.Length==0)?"": " and DTOS(V_ffor)>='" + _fecha_proceso_mov.ToString("yyyyMMdd") + "' and (v_cfor!='01' and v_cfor!='03' and v_cfor!='NB' and v_cfor!='NC' and v_cfor!='ND' and v_cfor!='NF' and v_cfor!='TI') "); //and (v_cfor='32' or v_cfor='31' )";
                             }
                             cmd = new OleDbCommand(sqlquery, cn);
@@ -449,7 +449,7 @@ namespace Transmision.Net.Basico
                                            "v_arti,v_regl,v_colo,v_cant,v_pres,v_pred,v_vvts,v_vvtd,v_auto,v_ptot,v_impr,v_cuse," +
                                            "v_muse,v_fcre,v_fmod,v_ftrx,v_ctra,v_memo,v_motr,v_par1,v_par2,v_par3,v_lle1,v_lle2," +
                                            "v_lle3,'' as v_hstd,i_tfor,i_proc,i_cfor,i_sfor,i_nfor,i_arti,i_arti,i_regl,i_canm,i_pred FROM " + _FMC + " INNER JOIN " + _FMD +
-                                         " ON v_tfor=i_tfor AND v_cfor=i_cfor  AND v_sfor=i_sfor  AND v_nfor=i_nfor  WHERE EMPTY(v_tane) and (v_cfor='32' OR v_cfor='33') " + ((_fecha_plan.Length == 0) ? "" : " and DTOS(V_ffor)>='" + _fecha_proceso_mov.ToString("yyyyMMdd") + "' and (v_cfor!='01' and (v_cfor='32' or v_cfor='33' ))");
+                                         " ON v_tfor=i_tfor AND v_cfor=i_cfor  AND v_sfor=i_sfor  AND v_nfor=i_nfor  WHERE EMPTY(v_tane) and (v_cfor='32' OR v_cfor='33' OR v_cfor='31' OR v_cfor='30') " + ((_fecha_plan.Length == 0) ? "" : " and DTOS(V_ffor)>='" + _fecha_proceso_mov.ToString("yyyyMMdd") + "' and (v_cfor!='01' and (v_cfor='32' or v_cfor='33' or v_cfor='31' OR v_cfor='30' ))");
 
                                     //and (v_cfor='32' or v_cfor='31' )";
                                     //" ON v_tfor=i_tfor AND v_cfor=i_cfor  AND v_sfor=i_sfor  AND v_nfor=i_nfor  WHERE EMPTY(v_tane)" + ((_fecha_plan.Length == 0) ? "" : " and DTOS(V_ffor)>='" + _fecha_proceso_mov.ToString("yyyyMMdd") + "' and (v_cfor!='01' and v_cfor!='03' and v_cfor!='NB' and v_cfor!='NC' and v_cfor!='ND' and v_cfor!='NF' and v_cfor!='TI')"); //and (v_cfor='32' or v_cfor='31' )";
@@ -555,11 +555,27 @@ namespace Transmision.Net.Basico
                                                 string v_cfor = fila_cab["v_cfor"].ToString();
                                                 string v_sfor = fila_cab["v_sfor"].ToString();
                                                 string v_nfor = fila_cab["v_nfor"].ToString();
+                                                string tipo_doc = fila_cab["v_cfor"].ToString();
+                                                string gudis = "";
+                                                switch (tipo_doc)
+                                                {
+                                                    case "30":
+                                                        gudis =Convert.ToString(Convert.ToDecimal(fila_cab["v_nfor"].ToString()));
+                                                        break;
+                                                    case "31":
+                                                    case "33":
+                                                        gudis = fila_cab["v_sfor"].ToString() + fila_cab["v_nfor"].ToString();
+                                                        break;
+                                                    default:
+                                                        gudis = fila_cab["v_nfor"].ToString();
+                                                        break;
+                                                }
+
 
                                                 BataPos.Ent_Fvdespc Fvdespc = new BataPos.Ent_Fvdespc()
                                                 {
-                                                    DESC_ALMAC = "50" + Basico.Left(fila_cab["v_almo"].ToString(), 3),
-                                                    DESC_GUDIS = fila_cab["v_nfor"].ToString(),
+                                                    DESC_ALMAC = "50" + ((fila_cab["v_cfor"].ToString()=="31" || fila_cab["v_cfor"].ToString() == "30") ? Basico.Left(fila_cab["v_almd"].ToString().Trim(), 3) : Basico.Left(fila_cab["v_almo"].ToString(), 3)),
+                                                    DESC_GUDIS = gudis, //(fila_cab["v_cfor"].ToString() == "31") ? fila_cab["v_sfor"].ToString() + fila_cab["v_nfor"].ToString() : fila_cab["v_nfor"].ToString(),
                                                     DESC_NDESP = fila_cab["v_sfor"].ToString() + fila_cab["v_nfor"].ToString(),
                                                     DESC_TDES = "50" + Basico.Left(fila_cab["v_almd"].ToString().Trim(), 3),
                                                     DESC_FECHA = Convert.ToDateTime(fila_cab["v_fdoc"]),
@@ -569,17 +585,18 @@ namespace Transmision.Net.Basico
                                                     DESC_NUME = fila_cab["v_nfor"].ToString(),
                                                     DESC_DBL_TRA = (fila_cab["v_anex"].ToString().Trim() == "0010") ? "1":"",
                                                     DESC_AUTO= fila_cab["v_auto"].ToString(),
+                                                    DESC_CONCE=fila_cab["v_cfor"].ToString(),
                                                 };
-
+                                                
                                                 List<BataPos.Ent_Fvdespd> lista_Fvdespd = new List<BataPos.Ent_Fvdespd>();
                                                 foreach (DataRow fila_det in dt_fmd_clone.Select("i_tfor='" + v_tfor + "' and i_proc='" + v_proc + "' and i_cfor='" + v_cfor + 
                                                                                                 "' and i_sfor='" + v_sfor + "' and i_nfor='" + v_nfor + "'"))
                                                 {
                                                     BataPos.Ent_Fvdespd Fvdespd = new BataPos.Ent_Fvdespd()
                                                     {
-                                                        DESD_GUDIS=fila_det["i_nfor"].ToString(),
-                                                        DESD_NDESP= fila_det["i_sfor"].ToString() + fila_det["i_nfor"].ToString(),
-                                                        DESD_ALMAC = "50" + Basico.Left(fila_cab["v_almo"].ToString(), 3),
+                                                        DESD_GUDIS= gudis,//(fila_cab["v_cfor"].ToString() == "31") ? fila_cab["v_sfor"].ToString() + fila_cab["v_nfor"].ToString() : fila_cab["v_nfor"].ToString(),//fila_det["i_nfor"].ToString(),
+                                                        DESD_NDESP = fila_det["i_sfor"].ToString() + fila_det["i_nfor"].ToString(),
+                                                        DESD_ALMAC = "50" + ((fila_cab["v_cfor"].ToString() == "31" || fila_cab["v_cfor"].ToString() == "30") ? Basico.Left(fila_cab["v_almd"].ToString().Trim(), 3) : Basico.Left(fila_cab["v_almo"].ToString(), 3)), //"50" + Basico.Left(fila_cab["v_almo"].ToString(), 3),
                                                         DESD_ARTIC = Basico.Left(fila_det["i_arti"].ToString().Trim(),7),
                                                         DESD_CALID = Basico.Right(fila_det["i_arti"].ToString().Trim(), 1),
                                                         DESD_TALLA = fila_det["i_regl"].ToString().Trim(),
@@ -2757,11 +2774,11 @@ namespace Transmision.Net.Basico
                     /**/
                 }
 
-
+               // _envia_transaccion_mov();
 
                 //_envia_transaccion_mov();
 
-                    /*elimina si diferente a 10 minutos*/
+                /*elimina si diferente a 10 minutos*/
                 elimina_tblock();
                 /********************************/
                 /*COMENTE PORQUE PARECE QUE ESTE PARA EL SERVICIO*/

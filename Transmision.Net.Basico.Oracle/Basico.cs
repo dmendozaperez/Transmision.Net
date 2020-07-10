@@ -26,7 +26,8 @@ namespace Transmision.Net.Basico.Oracle
         {
             string error = "";
             //string fecha = DateTime.Today.AddDays(-1).ToString("dd/MM/yyyy");
-            string fecha = DateTime.Today.ToString("dd/MM/yyyy");
+            string fecha = DateTime.Today.AddDays(-90).ToString("dd/MM/yyyy");// DateTime.Today.ToString("dd/MM/yyyy");
+            //string _fecha_ini = DateTime.Today.AddDays(-90).ToString("dd/MM/yyyy");
             //TextWriter tw = null;
 
             //System.Globalization.CultureInfo cultureinfo = new System.Globalization.CultureInfo("ES-Pe");
