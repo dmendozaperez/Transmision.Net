@@ -557,24 +557,37 @@ namespace Transmision.Net.Basico
                                                 string v_nfor = fila_cab["v_nfor"].ToString();
                                                 string tipo_doc = fila_cab["v_cfor"].ToString();
                                                 string gudis = "";
+                                                string DESC_TIPO = "";
+                                                string DESC_TORI="";
                                                 switch (tipo_doc)
                                                 {
                                                     case "30":
                                                         gudis =Convert.ToString(Convert.ToDecimal(fila_cab["v_nfor"].ToString()));
+                                                        DESC_TIPO = "DES";
+                                                        DESC_TORI = "5";
                                                         break;
                                                     case "31":
+                                                        gudis = fila_cab["v_sfor"].ToString() + fila_cab["v_nfor"].ToString();
+                                                        DESC_TIPO = "TRA";
+                                                        DESC_TORI = "50" + Basico.Left(fila_cab["v_almo"].ToString(), 3);
+                                                        break;
+                                                    case "32":
+                                                        gudis = fila_cab["v_sfor"].ToString() + fila_cab["v_nfor"].ToString();
+                                                        DESC_TIPO = "TRA";
+                                                        DESC_TORI = "50" + Basico.Left(fila_cab["v_almo"].ToString(), 3); 
+                                                        break;
                                                     case "33":
                                                         gudis = fila_cab["v_sfor"].ToString() + fila_cab["v_nfor"].ToString();
+                                                        DESC_TIPO = "DEV";
+                                                        DESC_TORI = DESC_TORI = "50" + Basico.Left(fila_cab["v_almo"].ToString(), 3); ;
                                                         break;
-                                                    default:
-                                                        gudis = fila_cab["v_nfor"].ToString();
-                                                        break;
+                                                    
                                                 }
 
 
                                                 BataPos.Ent_Fvdespc Fvdespc = new BataPos.Ent_Fvdespc()
                                                 {
-                                                    DESC_ALMAC = "50" + ((fila_cab["v_cfor"].ToString()=="31" || fila_cab["v_cfor"].ToString() == "30") ? Basico.Left(fila_cab["v_almd"].ToString().Trim(), 3) : Basico.Left(fila_cab["v_almo"].ToString(), 3)),
+                                                    DESC_ALMAC = "50" + ((fila_cab["v_cfor"].ToString() == "31" || fila_cab["v_cfor"].ToString() == "30") ? Basico.Left(fila_cab["v_almd"].ToString().Trim(), 3) : Basico.Left(fila_cab["v_almo"].ToString(), 3)),
                                                     DESC_GUDIS = gudis, //(fila_cab["v_cfor"].ToString() == "31") ? fila_cab["v_sfor"].ToString() + fila_cab["v_nfor"].ToString() : fila_cab["v_nfor"].ToString(),
                                                     DESC_NDESP = fila_cab["v_sfor"].ToString() + fila_cab["v_nfor"].ToString(),
                                                     DESC_TDES = "50" + Basico.Left(fila_cab["v_almd"].ToString().Trim(), 3),
@@ -583,9 +596,11 @@ namespace Transmision.Net.Basico
                                                     DESC_FEMI = Convert.ToDateTime(fila_cab["v_fdoc"]),
                                                     DESC_FTRA = Convert.ToDateTime(fila_cab["v_fdoc"]),
                                                     DESC_NUME = fila_cab["v_nfor"].ToString(),
-                                                    DESC_DBL_TRA = (fila_cab["v_anex"].ToString().Trim() == "0010") ? "1":"",
-                                                    DESC_AUTO= fila_cab["v_auto"].ToString(),
-                                                    DESC_CONCE=fila_cab["v_cfor"].ToString(),
+                                                    DESC_DBL_TRA = (fila_cab["v_anex"].ToString().Trim() == "0010") ? "1" : "",
+                                                    DESC_AUTO = fila_cab["v_auto"].ToString(),
+                                                    DESC_CONCE = fila_cab["v_cfor"].ToString(),
+                                                    DESC_TORI = DESC_TORI,
+                                                    DESC_TIPO=DESC_TIPO,
                                                 };
                                                 
                                                 List<BataPos.Ent_Fvdespd> lista_Fvdespd = new List<BataPos.Ent_Fvdespd>();
@@ -2774,7 +2789,7 @@ namespace Transmision.Net.Basico
                     /**/
                 }
 
-               // _envia_transaccion_mov();
+                _envia_transaccion_mov();
 
                 //_envia_transaccion_mov();
 
