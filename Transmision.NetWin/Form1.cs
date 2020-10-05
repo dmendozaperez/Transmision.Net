@@ -253,5 +253,13 @@ namespace Transmision.NetWin
             return tk;
         }
 
+        private void btnruleta_Click(object sender, EventArgs e)
+        {
+            string _error = "";
+            //Basico ejecuta = new Basico();
+            Basico._ruleta_bata(ref _error);
+
+            //ejecuta.  _ruleta_bata(ref _error);
+        }
     }
 }

@@ -50,7 +50,8 @@ namespace Transmision.NetWin.Oracle
                 #endregion
 
                 #region<REGION DE TRANSACCIONES AL TEMPORAL>
-                DataTable dtventa_ora = data_ora.get_documento_TRN_TRANS(fecha,ref error);
+                string query = "";
+                DataTable dtventa_ora = data_ora.get_documento_TRN_TRANS(fecha,ref error,ref query);
 
                 if (dtventa_ora!=null)
                 {

@@ -39,8 +39,9 @@
             this.print_qr = new System.Windows.Forms.Button();
             this.button5 = new System.Windows.Forms.Button();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
-            this.btnreimporimir = new System.Windows.Forms.Button();
             this.textBox1 = new System.Windows.Forms.TextBox();
+            this.btnreimporimir = new System.Windows.Forms.Button();
+            this.btnruleta = new System.Windows.Forms.Button();
             this.groupBox1.SuspendLayout();
             this.groupBox2.SuspendLayout();
             this.SuspendLayout();
@@ -155,6 +156,14 @@
             this.groupBox2.TabStop = false;
             this.groupBox2.Text = "Reimpresion de Ticket Retorno";
             // 
+            // textBox1
+            // 
+            this.textBox1.Location = new System.Drawing.Point(46, 28);
+            this.textBox1.Name = "textBox1";
+            this.textBox1.Size = new System.Drawing.Size(120, 20);
+            this.textBox1.TabIndex = 9;
+            this.textBox1.Text = "123456789101234567";
+            // 
             // btnreimporimir
             // 
             this.btnreimporimir.Location = new System.Drawing.Point(64, 54);
@@ -165,19 +174,23 @@
             this.btnreimporimir.UseVisualStyleBackColor = true;
             this.btnreimporimir.Click += new System.EventHandler(this.btnreimporimir_Click);
             // 
-            // textBox1
+            // btnruleta
             // 
-            this.textBox1.Location = new System.Drawing.Point(46, 28);
-            this.textBox1.Name = "textBox1";
-            this.textBox1.Size = new System.Drawing.Size(120, 20);
-            this.textBox1.TabIndex = 9;
-            this.textBox1.Text = "123456789101234567";
+            this.btnruleta.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnruleta.Location = new System.Drawing.Point(513, 187);
+            this.btnruleta.Name = "btnruleta";
+            this.btnruleta.Size = new System.Drawing.Size(75, 23);
+            this.btnruleta.TabIndex = 9;
+            this.btnruleta.Text = "RULETA";
+            this.btnruleta.UseVisualStyleBackColor = true;
+            this.btnruleta.Click += new System.EventHandler(this.btnruleta_Click);
             // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(714, 262);
+            this.Controls.Add(this.btnruleta);
             this.Controls.Add(this.groupBox2);
             this.Controls.Add(this.button5);
             this.Controls.Add(this.print_qr);
@@ -214,6 +227,7 @@
         private System.Windows.Forms.GroupBox groupBox2;
         private System.Windows.Forms.TextBox textBox1;
         private System.Windows.Forms.Button btnreimporimir;
+        private System.Windows.Forms.Button btnruleta;
     }
 }
 

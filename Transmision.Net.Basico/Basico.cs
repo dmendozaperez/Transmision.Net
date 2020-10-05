@@ -4944,11 +4944,20 @@ namespace Transmision.Net.Basico
                                 while (!res.EndOfStream)
                                 {
                                     string detalles = res.ReadLine().Trim();
-                                    if (detalles.IndexOf('-') > 0)
+                                    if (detalles.IndexOf(',') > 0)
                                     {
-                                        string[] valores = detalles.Split(Convert.ToChar("-"));
+                                        string[] valores = detalles.Split(Convert.ToChar(","));
+
+                                        string cod_tda_venta = valores[0].Trim();
+                                        string barra = valores[1].Trim();
+                                        string fecha_doc = valores[2].Trim();
+                                        string tipo_doc = valores[3].Trim();
+                                        string serie_doc = valores[4].Trim();
+                                        string numerodoc = valores[5].Trim();
+                                        string fc_nin = valores[6].Trim();
+
                                         BataPos.Bata_TransactionSoapClient batatran = new BataPos.Bata_TransactionSoapClient();
-                                        batatran.ws_actualizar_cupon_ruleta(cod_tda, valores[0].Trim(), "EM", valores[1].Trim() + "-" + valores[2].Trim());
+                                        batatran.ws_actualizar_cupon_ruleta(cod_tda_venta, barra, fecha_doc, tipo_doc, serie_doc, numerodoc, fc_nin);
                                     }
                                 }
                             }
@@ -4968,10 +4977,10 @@ namespace Transmision.Net.Basico
                     {
                         foreach (var item in file)
                         {
-                            if (Path.GetFileName(item) == "VALIDA.TXT")
+                            if (Path.GetFileName(item).ToUpper() == "VALIDA.TXT")
                             {
                                 string codigo = File.ReadAllText(item).Trim();
-                                if (codigo.Length != 15) return;
+                                if (codigo.Length != 15 && codigo.Length != 18) return;
 
                                 BataPos.Bata_TransactionSoapClient batatran = new BataPos.Bata_TransactionSoapClient();
                                 DataTable dtResult = batatran.ws_validar_cupon_ruleta_bata(cod_tda, codigo).Tables[0];
@@ -4985,7 +4994,7 @@ namespace Transmision.Net.Basico
                                 }
                                 File.Delete(item);
                             }
-                            if (Path.GetFileName(item) == "PROC.TXT")
+                            if (Path.GetFileName(item).ToUpper() == "PROC.TXT")
                             {
                                 string nombre = Path.GetFileName(item);
                                 using (StreamReader res = new StreamReader(item))
@@ -4993,11 +5002,23 @@ namespace Transmision.Net.Basico
                                     while (!res.EndOfStream)
                                     {
                                         string detalles = res.ReadLine().Trim();
-                                        if (detalles.IndexOf('-') > 0)
+                                        if (detalles.IndexOf(',') > 0)
                                         {
-                                            string[] valores = detalles.Split(Convert.ToChar("-"));
+                                            string[] valores = detalles.Split(Convert.ToChar(","));
+
+                                            string cod_tda_venta = valores[0].Trim();
+                                            string barra = valores[1].Trim();
+                                            string fecha_doc = valores[2].Trim();
+                                            string tipo_doc = valores[3].Trim();
+                                            string serie_doc = valores[4].Trim();
+                                            string numerodoc = valores[5].Trim();
+                                            string fc_nin = valores[6].Trim();
+
                                             BataPos.Bata_TransactionSoapClient batatran = new BataPos.Bata_TransactionSoapClient();
-                                            batatran.ws_actualizar_cupon_ruleta(cod_tda, valores[0].Trim(), "CO", valores[1].Trim() + "-" + valores[2].Trim());
+                                            batatran.ws_actualizar_cupon_ruleta(cod_tda_venta, barra, fecha_doc, tipo_doc, serie_doc, numerodoc, fc_nin);
+
+                                            //BataPos.Bata_TransactionSoapClient batatran = new BataPos.Bata_TransactionSoapClient();
+                                            //batatran.ws_actualizar_cupon_ruleta(cod_tda, valores[0].Trim(), "CO", valores[1].Trim() + "-" + valores[2].Trim());
                                         }
                                     }
                                 }

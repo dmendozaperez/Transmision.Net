@@ -52,6 +52,11 @@ namespace Transmision.Net.Basico.BataPos {
         [System.ServiceModel.XmlSerializerFormatAttribute(SupportFaults=true)]
         Transmision.Net.Basico.BataPos.ws_update_transaction_guiasResponse ws_update_transaction_guias(Transmision.Net.Basico.BataPos.ws_update_transaction_guiasRequest request);
         
+        // CODEGEN: Se está generando un contrato de mensaje, ya que el mensaje ws_update_transaction_guias_recepcionRequest tiene encabezados.
+        [System.ServiceModel.OperationContractAttribute(Action="http://bataperu.com.pe/ws_update_transaction_guias_recepcion", ReplyAction="*")]
+        [System.ServiceModel.XmlSerializerFormatAttribute(SupportFaults=true)]
+        Transmision.Net.Basico.BataPos.ws_update_transaction_guias_recepcionResponse ws_update_transaction_guias_recepcion(Transmision.Net.Basico.BataPos.ws_update_transaction_guias_recepcionRequest request);
+        
         // CODEGEN: Se está generando un contrato de mensaje, ya que el mensaje ws_errores_transactionRequest tiene encabezados.
         [System.ServiceModel.OperationContractAttribute(Action="http://bataperu.com.pe/ws_errores_transaction", ReplyAction="*")]
         [System.ServiceModel.XmlSerializerFormatAttribute(SupportFaults=true)]
@@ -218,7 +223,7 @@ namespace Transmision.Net.Basico.BataPos {
         
         [System.ServiceModel.OperationContractAttribute(Action="http://bataperu.com.pe/ws_actualizar_cupon_ruleta", ReplyAction="*")]
         [System.ServiceModel.XmlSerializerFormatAttribute(SupportFaults=true)]
-        string[] ws_actualizar_cupon_ruleta(string cod_tda, string codigo, string estado, string doc_vta);
+        string[] ws_actualizar_cupon_ruleta(string cod_tda_venta, string barra, string fecha_doc, string tipo_doc, string serie_doc, string numerodoc, string fc_nin);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://bataperu.com.pe/ws_validar_cupon_ruleta_bata", ReplyAction="*")]
         [System.ServiceModel.XmlSerializerFormatAttribute(SupportFaults=true)]
@@ -226,7 +231,7 @@ namespace Transmision.Net.Basico.BataPos {
     }
     
     /// <remarks/>
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.8.3761.0")]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.8.3752.0")]
     [System.SerializableAttribute()]
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.ComponentModel.DesignerCategoryAttribute("code")]
@@ -286,7 +291,7 @@ namespace Transmision.Net.Basico.BataPos {
     }
     
     /// <remarks/>
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.8.3761.0")]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.8.3752.0")]
     [System.SerializableAttribute()]
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.ComponentModel.DesignerCategoryAttribute("code")]
@@ -332,7 +337,7 @@ namespace Transmision.Net.Basico.BataPos {
     }
     
     /// <remarks/>
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.8.3761.0")]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.8.3752.0")]
     [System.SerializableAttribute()]
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.ComponentModel.DesignerCategoryAttribute("code")]
@@ -462,7 +467,7 @@ namespace Transmision.Net.Basico.BataPos {
     }
     
     /// <remarks/>
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.8.3761.0")]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.8.3752.0")]
     [System.SerializableAttribute()]
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.ComponentModel.DesignerCategoryAttribute("code")]
@@ -550,7 +555,7 @@ namespace Transmision.Net.Basico.BataPos {
     }
     
     /// <remarks/>
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.8.3761.0")]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.8.3752.0")]
     [System.SerializableAttribute()]
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.ComponentModel.DesignerCategoryAttribute("code")]
@@ -960,7 +965,7 @@ namespace Transmision.Net.Basico.BataPos {
     }
     
     /// <remarks/>
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.8.3761.0")]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.8.3752.0")]
     [System.SerializableAttribute()]
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.ComponentModel.DesignerCategoryAttribute("code")]
@@ -1090,7 +1095,7 @@ namespace Transmision.Net.Basico.BataPos {
     }
     
     /// <remarks/>
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.8.3761.0")]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.8.3752.0")]
     [System.SerializableAttribute()]
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.ComponentModel.DesignerCategoryAttribute("code")]
@@ -1206,7 +1211,7 @@ namespace Transmision.Net.Basico.BataPos {
     }
     
     /// <remarks/>
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.8.3761.0")]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.8.3752.0")]
     [System.SerializableAttribute()]
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.ComponentModel.DesignerCategoryAttribute("code")]
@@ -1308,7 +1313,7 @@ namespace Transmision.Net.Basico.BataPos {
     }
     
     /// <remarks/>
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.8.3761.0")]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.8.3752.0")]
     [System.SerializableAttribute()]
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.ComponentModel.DesignerCategoryAttribute("code")]
@@ -1732,7 +1737,7 @@ namespace Transmision.Net.Basico.BataPos {
     }
     
     /// <remarks/>
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.8.3761.0")]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.8.3752.0")]
     [System.SerializableAttribute()]
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.ComponentModel.DesignerCategoryAttribute("code")]
@@ -1764,7 +1769,7 @@ namespace Transmision.Net.Basico.BataPos {
     }
     
     /// <remarks/>
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.8.3761.0")]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.8.3752.0")]
     [System.SerializableAttribute()]
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.ComponentModel.DesignerCategoryAttribute("code")]
@@ -2118,7 +2123,7 @@ namespace Transmision.Net.Basico.BataPos {
     }
     
     /// <remarks/>
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.8.3761.0")]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.8.3752.0")]
     [System.SerializableAttribute()]
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.ComponentModel.DesignerCategoryAttribute("code")]
@@ -2150,7 +2155,7 @@ namespace Transmision.Net.Basico.BataPos {
     }
     
     /// <remarks/>
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.8.3761.0")]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.8.3752.0")]
     [System.SerializableAttribute()]
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.ComponentModel.DesignerCategoryAttribute("code")]
@@ -2364,7 +2369,7 @@ namespace Transmision.Net.Basico.BataPos {
     }
     
     /// <remarks/>
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.8.3761.0")]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.8.3752.0")]
     [System.SerializableAttribute()]
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.ComponentModel.DesignerCategoryAttribute("code")]
@@ -2396,7 +2401,7 @@ namespace Transmision.Net.Basico.BataPos {
     }
     
     /// <remarks/>
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.8.3761.0")]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.8.3752.0")]
     [System.SerializableAttribute()]
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.ComponentModel.DesignerCategoryAttribute("code")]
@@ -2946,7 +2951,7 @@ namespace Transmision.Net.Basico.BataPos {
     }
     
     /// <remarks/>
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.8.3761.0")]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.8.3752.0")]
     [System.SerializableAttribute()]
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.ComponentModel.DesignerCategoryAttribute("code")]
@@ -2978,7 +2983,7 @@ namespace Transmision.Net.Basico.BataPos {
     }
     
     /// <remarks/>
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.8.3761.0")]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.8.3752.0")]
     [System.SerializableAttribute()]
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.ComponentModel.DesignerCategoryAttribute("code")]
@@ -4018,7 +4023,7 @@ namespace Transmision.Net.Basico.BataPos {
     }
     
     /// <remarks/>
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.8.3761.0")]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.8.3752.0")]
     [System.SerializableAttribute()]
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.ComponentModel.DesignerCategoryAttribute("code")]
@@ -4050,7 +4055,7 @@ namespace Transmision.Net.Basico.BataPos {
     }
     
     /// <remarks/>
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.8.3761.0")]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.8.3752.0")]
     [System.SerializableAttribute()]
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.ComponentModel.DesignerCategoryAttribute("code")]
@@ -4166,7 +4171,7 @@ namespace Transmision.Net.Basico.BataPos {
     }
     
     /// <remarks/>
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.8.3761.0")]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.8.3752.0")]
     [System.SerializableAttribute()]
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.ComponentModel.DesignerCategoryAttribute("code")]
@@ -4198,7 +4203,7 @@ namespace Transmision.Net.Basico.BataPos {
     }
     
     /// <remarks/>
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.8.3761.0")]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.8.3752.0")]
     [System.SerializableAttribute()]
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.ComponentModel.DesignerCategoryAttribute("code")]
@@ -4370,7 +4375,7 @@ namespace Transmision.Net.Basico.BataPos {
     }
     
     /// <remarks/>
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.8.3761.0")]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.8.3752.0")]
     [System.SerializableAttribute()]
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.ComponentModel.DesignerCategoryAttribute("code")]
@@ -4402,7 +4407,7 @@ namespace Transmision.Net.Basico.BataPos {
     }
     
     /// <remarks/>
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.8.3761.0")]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.8.3752.0")]
     [System.SerializableAttribute()]
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.ComponentModel.DesignerCategoryAttribute("code")]
@@ -4490,7 +4495,7 @@ namespace Transmision.Net.Basico.BataPos {
     }
     
     /// <remarks/>
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.8.3761.0")]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.8.3752.0")]
     [System.SerializableAttribute()]
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.ComponentModel.DesignerCategoryAttribute("code")]
@@ -4522,7 +4527,7 @@ namespace Transmision.Net.Basico.BataPos {
     }
     
     /// <remarks/>
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.8.3761.0")]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.8.3752.0")]
     [System.SerializableAttribute()]
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.ComponentModel.DesignerCategoryAttribute("code")]
@@ -4554,7 +4559,7 @@ namespace Transmision.Net.Basico.BataPos {
     }
     
     /// <remarks/>
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.8.3761.0")]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.8.3752.0")]
     [System.SerializableAttribute()]
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.ComponentModel.DesignerCategoryAttribute("code")]
@@ -4656,7 +4661,7 @@ namespace Transmision.Net.Basico.BataPos {
     }
     
     /// <remarks/>
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.8.3761.0")]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.8.3752.0")]
     [System.SerializableAttribute()]
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.ComponentModel.DesignerCategoryAttribute("code")]
@@ -4702,7 +4707,7 @@ namespace Transmision.Net.Basico.BataPos {
     }
     
     /// <remarks/>
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.8.3761.0")]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.8.3752.0")]
     [System.SerializableAttribute()]
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.ComponentModel.DesignerCategoryAttribute("code")]
@@ -4734,7 +4739,7 @@ namespace Transmision.Net.Basico.BataPos {
     }
     
     /// <remarks/>
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.8.3761.0")]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.8.3752.0")]
     [System.SerializableAttribute()]
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.ComponentModel.DesignerCategoryAttribute("code")]
@@ -4794,7 +4799,7 @@ namespace Transmision.Net.Basico.BataPos {
     }
     
     /// <remarks/>
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.8.3761.0")]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.8.3752.0")]
     [System.SerializableAttribute()]
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.ComponentModel.DesignerCategoryAttribute("code")]
@@ -5022,7 +5027,7 @@ namespace Transmision.Net.Basico.BataPos {
     }
     
     /// <remarks/>
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.8.3761.0")]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.8.3752.0")]
     [System.SerializableAttribute()]
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.ComponentModel.DesignerCategoryAttribute("code")]
@@ -5054,7 +5059,7 @@ namespace Transmision.Net.Basico.BataPos {
     }
     
     /// <remarks/>
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.8.3761.0")]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.8.3752.0")]
     [System.SerializableAttribute()]
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.ComponentModel.DesignerCategoryAttribute("code")]
@@ -5128,7 +5133,7 @@ namespace Transmision.Net.Basico.BataPos {
     }
     
     /// <remarks/>
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.8.3761.0")]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.8.3752.0")]
     [System.SerializableAttribute()]
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.ComponentModel.DesignerCategoryAttribute("code")]
@@ -5636,7 +5641,7 @@ namespace Transmision.Net.Basico.BataPos {
     }
     
     /// <remarks/>
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.8.3761.0")]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.8.3752.0")]
     [System.SerializableAttribute()]
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.ComponentModel.DesignerCategoryAttribute("code")]
@@ -5766,7 +5771,7 @@ namespace Transmision.Net.Basico.BataPos {
     }
     
     /// <remarks/>
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.8.3761.0")]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.8.3752.0")]
     [System.SerializableAttribute()]
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.ComponentModel.DesignerCategoryAttribute("code")]
@@ -6232,7 +6237,7 @@ namespace Transmision.Net.Basico.BataPos {
     }
     
     /// <remarks/>
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.8.3761.0")]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.8.3752.0")]
     [System.SerializableAttribute()]
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.ComponentModel.DesignerCategoryAttribute("code")]
@@ -6422,6 +6427,44 @@ namespace Transmision.Net.Basico.BataPos {
         
         public ws_update_transaction_guiasResponse(Transmision.Net.Basico.BataPos.Ent_MsgTransac ws_update_transaction_guiasResult) {
             this.ws_update_transaction_guiasResult = ws_update_transaction_guiasResult;
+        }
+    }
+    
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
+    [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
+    [System.ServiceModel.MessageContractAttribute(WrapperName="ws_update_transaction_guias_recepcion", WrapperNamespace="http://bataperu.com.pe/", IsWrapped=true)]
+    public partial class ws_update_transaction_guias_recepcionRequest {
+        
+        [System.ServiceModel.MessageHeaderAttribute(Namespace="http://bataperu.com.pe/")]
+        public Transmision.Net.Basico.BataPos.ValidateAcceso ValidateAcceso;
+        
+        [System.ServiceModel.MessageBodyMemberAttribute(Namespace="http://bataperu.com.pe/", Order=0)]
+        public Transmision.Net.Basico.BataPos.Ent_Fvdespc fvdespc;
+        
+        public ws_update_transaction_guias_recepcionRequest() {
+        }
+        
+        public ws_update_transaction_guias_recepcionRequest(Transmision.Net.Basico.BataPos.ValidateAcceso ValidateAcceso, Transmision.Net.Basico.BataPos.Ent_Fvdespc fvdespc) {
+            this.ValidateAcceso = ValidateAcceso;
+            this.fvdespc = fvdespc;
+        }
+    }
+    
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
+    [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
+    [System.ServiceModel.MessageContractAttribute(WrapperName="ws_update_transaction_guias_recepcionResponse", WrapperNamespace="http://bataperu.com.pe/", IsWrapped=true)]
+    public partial class ws_update_transaction_guias_recepcionResponse {
+        
+        [System.ServiceModel.MessageBodyMemberAttribute(Namespace="http://bataperu.com.pe/", Order=0)]
+        public Transmision.Net.Basico.BataPos.Ent_MsgTransac ws_update_transaction_guias_recepcionResult;
+        
+        public ws_update_transaction_guias_recepcionResponse() {
+        }
+        
+        public ws_update_transaction_guias_recepcionResponse(Transmision.Net.Basico.BataPos.Ent_MsgTransac ws_update_transaction_guias_recepcionResult) {
+            this.ws_update_transaction_guias_recepcionResult = ws_update_transaction_guias_recepcionResult;
         }
     }
     
@@ -7488,6 +7531,19 @@ namespace Transmision.Net.Basico.BataPos {
         }
         
         [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
+        Transmision.Net.Basico.BataPos.ws_update_transaction_guias_recepcionResponse Transmision.Net.Basico.BataPos.Bata_TransactionSoap.ws_update_transaction_guias_recepcion(Transmision.Net.Basico.BataPos.ws_update_transaction_guias_recepcionRequest request) {
+            return base.Channel.ws_update_transaction_guias_recepcion(request);
+        }
+        
+        public Transmision.Net.Basico.BataPos.Ent_MsgTransac ws_update_transaction_guias_recepcion(Transmision.Net.Basico.BataPos.ValidateAcceso ValidateAcceso, Transmision.Net.Basico.BataPos.Ent_Fvdespc fvdespc) {
+            Transmision.Net.Basico.BataPos.ws_update_transaction_guias_recepcionRequest inValue = new Transmision.Net.Basico.BataPos.ws_update_transaction_guias_recepcionRequest();
+            inValue.ValidateAcceso = ValidateAcceso;
+            inValue.fvdespc = fvdespc;
+            Transmision.Net.Basico.BataPos.ws_update_transaction_guias_recepcionResponse retVal = ((Transmision.Net.Basico.BataPos.Bata_TransactionSoap)(this)).ws_update_transaction_guias_recepcion(inValue);
+            return retVal.ws_update_transaction_guias_recepcionResult;
+        }
+        
+        [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
         Transmision.Net.Basico.BataPos.ws_errores_transactionResponse Transmision.Net.Basico.BataPos.Bata_TransactionSoap.ws_errores_transaction(Transmision.Net.Basico.BataPos.ws_errores_transactionRequest request) {
             return base.Channel.ws_errores_transaction(request);
         }
@@ -7857,8 +7913,8 @@ namespace Transmision.Net.Basico.BataPos {
             return base.Channel.ws_consultar_ganador_ruleta_bata(cod_tda);
         }
         
-        public string[] ws_actualizar_cupon_ruleta(string cod_tda, string codigo, string estado, string doc_vta) {
-            return base.Channel.ws_actualizar_cupon_ruleta(cod_tda, codigo, estado, doc_vta);
+        public string[] ws_actualizar_cupon_ruleta(string cod_tda_venta, string barra, string fecha_doc, string tipo_doc, string serie_doc, string numerodoc, string fc_nin) {
+            return base.Channel.ws_actualizar_cupon_ruleta(cod_tda_venta, barra, fecha_doc, tipo_doc, serie_doc, numerodoc, fc_nin);
         }
         
         public System.Data.DataSet ws_validar_cupon_ruleta_bata(string cod_tda, string codigo) {
