@@ -276,20 +276,21 @@ namespace Transmision.Net.Basico.Oracle
             string _printer = "";
             try
             {
-                var printerQuery = new ManagementObjectSearcher("SELECT * from Win32_Printer");
-                foreach (var printer in printerQuery.Get())
-                {
-                    var name = printer.GetPropertyValue("Name");
-                    var status = printer.GetPropertyValue("Status");
-                    var isDefault = printer.GetPropertyValue("Default");
-                    var isNetworkPrinter = printer.GetPropertyValue("Network");
+                _printer = "TICKET";
+                //var printerQuery = new ManagementObjectSearcher("SELECT * from Win32_Printer");
+                //foreach (var printer in printerQuery.Get())
+                //{
+                //    var name = printer.GetPropertyValue("Name");
+                //    var status = printer.GetPropertyValue("Status");
+                //    var isDefault = printer.GetPropertyValue("Default");
+                //    var isNetworkPrinter = printer.GetPropertyValue("Network");
 
-                    if (name.ToString().IndexOf("LaserJet") > 0 && !Convert.ToBoolean(isNetworkPrinter))
-                    {
-                        _printer = name.ToString();
-                        break;
-                    }
-                }
+                //    if (name.ToString().IndexOf("LaserJet") > 0 && !Convert.ToBoolean(isNetworkPrinter))
+                //    {
+                //        _printer = name.ToString();
+                //        break;
+                //    }
+                //}
             }
             catch (Exception)
             {
